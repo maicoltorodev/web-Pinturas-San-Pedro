@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils"
 import Image from "next/image"
 
 export function Hero() {
-  const { ref, isInView } = useInView({ threshold: 0.3, triggerOnce: true })
+  const { ref, isInView } = useInView<HTMLDivElement>({ threshold: 0.3, triggerOnce: true })
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">

@@ -48,7 +48,7 @@ const steps = [
 ]
 
 function ProcessStep({ step, index }: { step: typeof steps[0]; index: number }) {
-  const { ref, isInView } = useInView({ threshold: 0.4, triggerOnce: true })
+  const { ref, isInView } = useInView<HTMLDivElement>({ threshold: 0.4, triggerOnce: true })
   const Icon = step.icon
 
   return (
@@ -150,7 +150,7 @@ function ProcessStep({ step, index }: { step: typeof steps[0]; index: number }) 
 }
 
 export function Process() {
-  const { ref: sectionRef, isInView: sectionInView } = useInView({ threshold: 0.2, triggerOnce: true })
+  const { ref: sectionRef, isInView: sectionInView } = useInView<HTMLDivElement>({ threshold: 0.2, triggerOnce: true })
 
   return (
     <section id="process" className="relative py-20 md:py-32 lg:py-40 bg-background overflow-hidden">

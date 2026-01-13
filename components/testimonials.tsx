@@ -123,7 +123,7 @@ function TestimonialCard({ testimonial, isActive }: { testimonial: typeof testim
 }
 
 export function Testimonials() {
-  const { ref: sectionRef, isInView: sectionInView } = useInView({ threshold: 0.2, triggerOnce: true })
+  const { ref: sectionRef, isInView: sectionInView } = useInView<HTMLDivElement>({ threshold: 0.2, triggerOnce: true })
   const [currentIndex, setCurrentIndex] = useState(0)
   
   // Mostrar 3 testimonios a la vez, moviéndose de a uno

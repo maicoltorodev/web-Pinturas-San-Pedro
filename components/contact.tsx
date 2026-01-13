@@ -20,7 +20,7 @@ export function Contact() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const { ref: sectionRef, isInView: sectionInView } = useInView({ threshold: 0.2, triggerOnce: true })
+  const { ref: sectionRef, isInView: sectionInView } = useInView<HTMLDivElement>({ threshold: 0.2, triggerOnce: true })
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()

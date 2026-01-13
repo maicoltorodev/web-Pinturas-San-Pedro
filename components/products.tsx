@@ -81,7 +81,7 @@ const products = [
 ]
 
 function ProductCard({ product, index }: { product: typeof products[0]; index: number }) {
-  const { ref, isInView } = useInView({ threshold: 0.3, triggerOnce: true })
+  const { ref, isInView } = useInView<HTMLDivElement>({ threshold: 0.3, triggerOnce: true })
   const Icon = product.icon
 
   return (
@@ -175,7 +175,7 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
 }
 
 export function Products() {
-  const { ref: sectionRef, isInView: sectionInView } = useInView({ threshold: 0.2, triggerOnce: true })
+  const { ref: sectionRef, isInView: sectionInView } = useInView<HTMLDivElement>({ threshold: 0.2, triggerOnce: true })
 
   return (
     <section id="products" className="relative py-20 md:py-32 lg:py-40 overflow-hidden">

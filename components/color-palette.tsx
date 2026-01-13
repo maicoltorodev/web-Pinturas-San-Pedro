@@ -126,7 +126,7 @@ const colorCategories = [
 ]
 
 export function ColorPalette() {
-  const { ref, isInView } = useInView({ threshold: 0.05, triggerOnce: true })
+  const { ref, isInView } = useInView<HTMLDivElement>({ threshold: 0.05, triggerOnce: true })
   const [activeTab, setActiveTab] = useState<string | null>(null) // null = "Todos"
   const [searchQuery, setSearchQuery] = useState("")
   const [copiedColor, setCopiedColor] = useState<string | null>(null)

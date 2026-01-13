@@ -6,7 +6,7 @@ import { useInView } from "@/lib/useInView"
 import { cn } from "@/lib/utils"
 
 export function Location() {
-  const { ref: sectionRef, isInView: sectionInView } = useInView({ threshold: 0.2, triggerOnce: true })
+  const { ref: sectionRef, isInView: sectionInView } = useInView<HTMLDivElement>({ threshold: 0.2, triggerOnce: true })
 
   return (
     <section id="location" className="relative py-20 md:py-32 lg:py-40 overflow-hidden">

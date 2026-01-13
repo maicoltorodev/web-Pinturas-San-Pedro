@@ -47,7 +47,7 @@ const projects = [
 ]
 
 function PortfolioItem({ project, index }: { project: typeof projects[0]; index: number }) {
-  const { ref, isInView } = useInView({ threshold: 0.3, triggerOnce: true })
+  const { ref, isInView } = useInView<HTMLDivElement>({ threshold: 0.3, triggerOnce: true })
 
   return (
     <div 
@@ -100,7 +100,7 @@ function PortfolioItem({ project, index }: { project: typeof projects[0]; index:
 }
 
 export function Portfolio() {
-  const { ref: sectionRef, isInView: sectionInView } = useInView({ threshold: 0.2, triggerOnce: true })
+  const { ref: sectionRef, isInView: sectionInView } = useInView<HTMLDivElement>({ threshold: 0.2, triggerOnce: true })
 
   return (
     <section id="portfolio" className="relative py-20 md:py-32 lg:py-40 overflow-hidden">

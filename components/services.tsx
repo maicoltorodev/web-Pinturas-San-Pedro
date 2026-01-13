@@ -37,7 +37,7 @@ const services = [
 ]
 
 function ServiceCard({ service, index }: { service: typeof services[0]; index: number }) {
-  const { ref, isInView } = useInView({ threshold: 0.3, triggerOnce: true })
+  const { ref, isInView } = useInView<HTMLDivElement>({ threshold: 0.3, triggerOnce: true })
 
   return (
     <div 
@@ -88,7 +88,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
 }
 
 export function Services() {
-  const { ref: sectionRef, isInView: sectionInView } = useInView({ threshold: 0.2, triggerOnce: true })
+  const { ref: sectionRef, isInView: sectionInView } = useInView<HTMLDivElement>({ threshold: 0.2, triggerOnce: true })
 
   return (
     <section id="services" className="relative py-20 md:py-32 lg:py-40 bg-gradient-to-b from-background via-background to-muted/20 overflow-hidden">
