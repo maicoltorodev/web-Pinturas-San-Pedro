@@ -1,8 +1,8 @@
 "use client"
 
 import { Card, CardContent } from "@/components/ui/card"
-import { CirclePattern } from "@/components/ui/circle-pattern"
-import { useInView } from "@/lib/useInView"
+import { SectionHeader } from "@/components/ui/section-header"
+import { SectionBackground } from "@/components/ui/section-background"
 import { cn } from "@/lib/utils"
 import { Paintbrush, Palette, Droplet, Brush } from "lucide-react"
 import Image from "next/image"
@@ -80,13 +80,12 @@ const products = [
   },
 ]
 
-function ProductCard({ product, index }: { product: typeof products[0]; index: number }) {
+function ProductCard({ product }: { product: typeof products[0] }) {
   const Icon = product.icon
 
   return (
-    <Card className="h-full border-2 border-primary-foreground/30 bg-white/95 backdrop-blur-sm hover:border-secondary hover:shadow-premium-lg transition-all duration-500 hover:-translate-y-3 group relative overflow-hidden flex flex-col">
-        {/* Efecto de brillo en hover */}
-        <div className="absolute inset-0 bg-gradient-to-br from-secondary/0 via-secondary/0 to-secondary/0 group-hover:from-secondary/10 group-hover:via-secondary/15 group-hover:to-secondary/10 transition-all duration-500 pointer-events-none z-10" />
+    <Card className="h-full border-2 border-primary-foreground/30 bg-white/95 backdrop-blur-sm md:hover:border-secondary md:hover:shadow-premium-lg transition-all duration-500 md:hover:-translate-y-3 group relative overflow-hidden flex flex-col">
+        <div className="absolute inset-0 bg-gradient-to-br from-secondary/0 via-secondary/0 to-secondary/0 md:group-hover:from-secondary/10 md:group-hover:via-secondary/15 md:group-hover:to-secondary/10 transition-all duration-500 pointer-events-none z-10" />
         
         <CardContent className="p-6 flex-1 flex flex-col relative z-10">
           {/* Header con categoría */}
@@ -111,7 +110,9 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
                 alt={product.name}
                 fill
                 className="object-contain p-4"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                loading="lazy"
+                quality={85}
               />
             </div>
           </div>
@@ -125,38 +126,28 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
             {product.description}
           </p>
 
-          {/* Características mejoradas */}
-          <div className="pt-5 border-t-2 border-border group-hover:border-secondary transition-colors duration-300 mb-5">
+          <div className="pt-5 border-t-2 border-border md:group-hover:border-secondary transition-colors duration-300 mb-5">
             <div className="text-xs font-bold text-secondary uppercase tracking-widest mb-3 flex items-center gap-2">
               <div className="w-6 h-1 bg-secondary rounded-full" />
               <span>Características</span>
             </div>
             <ul className="space-y-2">
-              {product.features.map((feature, idx) => (
-                <li key={idx} className="flex items-start gap-2.5 text-xs text-foreground">
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="w-2 h-2 rounded-full bg-secondary shadow-sm" />
-                  </div>
+              {product.features.map((feature) => (
+                <li key={feature} className="flex items-start gap-2.5 text-xs text-foreground">
+                  <div className="flex-shrink-0 mt-1 w-2 h-2 rounded-full bg-secondary shadow-sm" />
                   <span className="font-semibold leading-relaxed">{feature}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Precio y Badge de calidad */}
           <div className="pt-5 border-t border-border/50 flex items-center justify-between">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-secondary/20 border-2 border-secondary/40 shadow-sm">
               <div className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-              <span className="text-xs font-bold text-secondary uppercase tracking-wider">
-                Premium
-              </span>
+              <span className="text-xs font-bold text-secondary uppercase tracking-wider">Premium</span>
             </div>
             {product.price && (
-              <div className="text-right">
-                <p className="text-xl font-black text-secondary">
-                  {product.price}
-                </p>
-              </div>
+              <p className="text-xl font-black text-secondary">{product.price}</p>
             )}
           </div>
         </CardContent>
@@ -165,49 +156,21 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
 }
 
 export function Products() {
-  const { ref: sectionRef, isInView: sectionInView } = useInView<HTMLDivElement>({ 
-    threshold: 0.1, 
-    rootMargin: "-50px",
-    triggerOnce: true 
-  })
-
   return (
     <section id="products" className="relative py-20 md:py-32 lg:py-40 overflow-hidden">
-      {/* Premium Background with Gradient Overlay */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-[oklch(0.25_0.15_252)]" />
-        <CirclePattern variant="default" />
-        {/* Animated gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60" />
-        {/* Premium light effect */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-secondary/35 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/25 rounded-full blur-3xl animate-pulse delay-1000" />
-      </div>
-
-      <div ref={sectionRef} className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className={cn(
-          "text-center mb-16 md:mb-20 transition-opacity duration-300",
-          sectionInView ? "opacity-100" : "opacity-0"
-        )}>
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20 mb-6">
-            <Palette className="h-4 w-4 text-secondary" />
-            <span className="text-xs sm:text-sm font-bold text-secondary uppercase tracking-wider">
-              Productos
-            </span>
-          </div>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-primary-foreground mb-6 leading-tight">
-            <span className="block">Nuestros</span>
-            <span className="block gradient-text">Productos Premium</span>
-          </h2>
-          <p className="text-lg md:text-xl text-primary-foreground/80 max-w-3xl mx-auto leading-relaxed">
-            Ofrecemos una amplia gama de productos de pintura de la más alta calidad. 
-            Desde pinturas para interiores hasta productos especializados para cada necesidad.
-          </p>
-        </div>
+      <SectionBackground variant="primary" />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <SectionHeader
+          badge={{ icon: Palette, text: "Productos" }}
+          title="Nuestros"
+          subtitle="Productos Premium"
+          description="Ofrecemos una amplia gama de productos de pintura de la más alta calidad. Desde pinturas para interiores hasta productos especializados para cada necesidad."
+          className="text-primary-foreground [&_p]:text-primary-foreground/80"
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {products.map((product, index) => (
-            <ProductCard key={index} product={product} index={index} />
+          {products.map((product) => (
+            <ProductCard key={product.name} product={product} />
           ))}
         </div>
       </div>

@@ -81,24 +81,33 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <Phone className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
                 <a
-                  href="tel:+34123456789"
+                  href="tel:+573223716811"
                   className="text-primary-foreground/80 hover:text-secondary transition-colors text-sm"
                 >
-                  +34 123 456 789
+                  +57 322 371 6811
+                </a>
+              </li>
+              <li className="flex items-start gap-3">
+                <Phone className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
+                <a
+                  href="tel:+573224579483"
+                  className="text-primary-foreground/80 hover:text-secondary transition-colors text-sm"
+                >
+                  +57 322 457 9483
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
                 <a
-                  href="mailto:info@pinturassanpedro.com"
+                  href="mailto:pinturassanpedro@hotmail.com"
                   className="text-primary-foreground/80 hover:text-secondary transition-colors text-sm break-all"
                 >
-                  info@pinturassanpedro.com
+                  pinturassanpedro@hotmail.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
-                <span className="text-primary-foreground/80 text-sm">Colombia</span>
+                <span className="text-primary-foreground/80 text-sm">Calle 132D N 145A-02, Bogotá</span>
               </li>
             </ul>
           </div>

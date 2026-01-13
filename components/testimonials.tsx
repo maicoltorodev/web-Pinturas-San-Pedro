@@ -4,7 +4,7 @@ import { useState } from "react"
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { useInView } from "@/lib/useInView"
+import { SectionHeader } from "@/components/ui/section-header"
 import { cn } from "@/lib/utils"
 
 const testimonials = [
@@ -123,36 +123,18 @@ function TestimonialCard({ testimonial, isActive }: { testimonial: typeof testim
 }
 
 export function Testimonials() {
-  const { ref: sectionRef, isInView: sectionInView } = useInView<HTMLDivElement>({ 
-    threshold: 0.1, 
-    rootMargin: "-50px",
-    triggerOnce: true 
-  })
   const [currentIndex, setCurrentIndex] = useState(0)
-  
-  // Mostrar 3 testimonios a la vez, moviéndose de a uno
-  const itemsToShow = 3
   
   const getVisibleTestimonials = () => {
     const visible: typeof testimonials = []
-    for (let i = 0; i < itemsToShow; i++) {
-      const index = (currentIndex + i) % testimonials.length
-      visible.push(testimonials[index])
+    for (let i = 0; i < 3; i++) {
+      visible.push(testimonials[(currentIndex + i) % testimonials.length])
     }
     return visible
   }
   
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-  }
-  
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
-  }
-  
-  // Calcular el número de "páginas" para los indicadores (basado en movimientos de 1)
-  const totalSlides = testimonials.length
-  const currentPage = Math.floor(currentIndex / 1) % totalSlides
+  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+  const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
 
   return (
     <section id="testimonials" className="relative py-24 md:py-32 lg:py-40 bg-background overflow-hidden">
@@ -162,46 +144,26 @@ export function Testimonials() {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary rounded-full blur-3xl" />
       </div>
 
-      <div ref={sectionRef} className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <div className={cn(
-          "text-center mb-16 md:mb-20 transition-opacity duration-300",
-          sectionInView ? "opacity-100" : "opacity-0"
-        )}>
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-secondary/10 border-2 border-secondary/20 mb-8 shadow-sm">
-            <Star className="h-4 w-4 text-secondary fill-secondary" />
-            <span className="text-xs sm:text-sm font-bold text-secondary uppercase tracking-wider">
-              Testimonios de Google
-            </span>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <SectionHeader
+          badge={{ icon: Star, text: "Testimonios de Google" }}
+          title="Lo Que Dicen"
+          subtitle="Nuestros Clientes"
+          description="Miles de clientes satisfechos confían en nosotros para transformar sus espacios. Descubre por qué somos la mejor opción en servicios de pintura profesional."
+        />
+        
+        <div className="flex items-center justify-center gap-3 mt-8 mb-16">
+          <div className="flex items-center gap-1">
+            {[...Array(5)].map((_, i) => (
+              <Star 
+                key={i} 
+                className={cn("h-6 w-6", i < 4 ? "fill-secondary text-secondary" : "fill-transparent text-secondary/30")} 
+              />
+            ))}
           </div>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground mb-6 leading-tight">
-            <span className="block">Lo Que Dicen</span>
-            <span className="block">
-              <span className="gradient-text">Nuestros Clientes</span>
-            </span>
-          </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Miles de clientes satisfechos confían en nosotros para transformar sus espacios. 
-            Descubre por qué somos la mejor opción en servicios de pintura profesional.
-          </p>
-          
-          {/* Rating promedio */}
-          <div className="flex items-center justify-center gap-3 mt-8">
-            <div className="flex items-center gap-1">
-              {[...Array(5)].map((_, i) => (
-                <Star 
-                  key={i} 
-                  className={cn(
-                    "h-6 w-6",
-                    i < 4 ? "fill-secondary text-secondary" : "fill-transparent text-secondary/30"
-                  )} 
-                />
-              ))}
-            </div>
-            <div className="text-left">
-              <p className="text-2xl font-black text-foreground">4.3</p>
-              <p className="text-sm text-muted-foreground">Basado en 171 reseñas</p>
-            </div>
+          <div className="text-left">
+            <p className="text-2xl font-black text-foreground">4.3</p>
+            <p className="text-sm text-muted-foreground">Basado en 171 reseñas</p>
           </div>
         </div>
 
@@ -210,18 +172,9 @@ export function Testimonials() {
           {/* Contenedor del carrusel */}
           <div className="relative mb-12 overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {getVisibleTestimonials().map((testimonial, index) => {
-                // Calcular el índice real del testimonio para la key única
-                const realIndex = (currentIndex + index) % testimonials.length
-                return (
-                  <div
-                    key={`${realIndex}-${currentIndex}`}
-                    className="transition-all duration-500 ease-in-out"
-                  >
-                    <TestimonialCard testimonial={testimonial} isActive={index === 1} />
-                  </div>
-                )
-              })}
+              {getVisibleTestimonials().map((testimonial, index) => (
+                <TestimonialCard key={`${currentIndex}-${index}`} testimonial={testimonial} isActive={index === 1} />
+              ))}
             </div>
           </div>
 
@@ -237,7 +190,6 @@ export function Testimonials() {
               <ChevronLeft className="h-6 w-6" />
             </Button>
             
-            {/* Indicadores mejorados */}
             <div className="flex items-center gap-3">
               {testimonials.map((_, index) => (
                 <button
@@ -245,9 +197,7 @@ export function Testimonials() {
                   onClick={() => setCurrentIndex(index)}
                   className={cn(
                     "h-2 rounded-full transition-all duration-300",
-                    currentIndex === index
-                      ? "bg-secondary w-10 shadow-md"
-                      : "bg-border w-2 hover:bg-secondary/50"
+                    currentIndex === index ? "bg-secondary w-10 shadow-md" : "bg-border w-2 hover:bg-secondary/50"
                   )}
                   aria-label={`Ir a testimonio ${index + 1}`}
                 />

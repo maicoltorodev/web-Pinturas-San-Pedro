@@ -9,15 +9,15 @@ import Image from "next/image"
 export function Hero() {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Premium Background with Gradient Overlay */}
+      {/* Premium Background with Gradient Overlay - Optimized for mobile */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-[oklch(0.25_0.15_252)]" />
         <CirclePattern variant="default" />
         {/* Animated gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60" />
-        {/* Premium light effect */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-secondary/35 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/25 rounded-full blur-3xl animate-pulse delay-1000" />
+        {/* Premium light effect - Reduced on mobile */}
+        <div className="hidden md:block absolute top-1/4 left-1/4 w-96 h-96 bg-secondary/35 rounded-full blur-3xl animate-pulse" />
+        <div className="hidden md:block absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/25 rounded-full blur-3xl animate-pulse delay-1000" />
       </div>
 
       {/* Content */}
@@ -32,15 +32,15 @@ export function Hero() {
               </span>
             </div>
 
-            {/* Logo */}
+            {/* Logo - Optimized for mobile */}
             <div className="flex justify-center mb-6">
-              <div className="relative w-64 h-32 sm:w-80 sm:h-40 md:w-96 md:h-48 lg:w-[500px] lg:h-[250px] animate-float">
-                {/* Efecto de luz detrás del logo */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-full h-full bg-secondary/35 rounded-full blur-3xl animate-pulse" style={{ transform: 'scale(1.2)' }} />
+              <div className="relative w-64 h-32 sm:w-80 sm:h-40 md:w-96 md:h-48 lg:w-[500px] lg:h-[250px] md:animate-float">
+                {/* Efecto de luz detrás del logo - Reduced on mobile */}
+                <div className="hidden md:block absolute inset-0 flex items-center justify-center">
+                  <div className="w-full h-full bg-secondary/35 rounded-full blur-3xl md:animate-pulse" style={{ transform: 'scale(1.2)' }} />
                 </div>
-                {/* Efecto de glow pulsante alrededor de la imagen */}
-                <div className="absolute inset-0 animate-glow-pulse pointer-events-none" style={{ 
+                {/* Efecto de glow pulsante - Reduced on mobile */}
+                <div className="hidden md:block absolute inset-0 md:animate-glow-pulse pointer-events-none" style={{ 
                   filter: 'drop-shadow(0 0 20px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 40px rgba(255, 215, 0, 0.3)) drop-shadow(0 0 60px rgba(255, 215, 0, 0.2))',
                   zIndex: 5
                 }} />
@@ -50,6 +50,7 @@ export function Hero() {
                   fill
                   className="object-contain relative z-10"
                   priority
+                  sizes="(max-width: 640px) 256px, (max-width: 768px) 320px, (max-width: 1024px) 384px, 500px"
                   style={{ filter: 'drop-shadow(0 0 10px rgba(255, 215, 0, 0.3))' }}
                 />
               </div>
@@ -112,8 +113,8 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+      {/* Scroll indicator - Hidden on mobile for performance */}
+      <div className="hidden md:block absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
         <div className="w-6 h-10 border-2 border-primary-foreground/30 rounded-full flex justify-center">
           <div className="w-1 h-3 bg-primary-foreground/50 rounded-full mt-2 animate-pulse" />
         </div>

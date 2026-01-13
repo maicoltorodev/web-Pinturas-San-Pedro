@@ -1,7 +1,7 @@
 "use client"
 
 import { CheckCircle2, ArrowRight, MessageSquare, Palette, Wrench, Paintbrush, CheckCircle } from "lucide-react"
-import { useInView } from "@/lib/useInView"
+import { SectionHeader } from "@/components/ui/section-header"
 import { cn } from "@/lib/utils"
 
 const steps = [
@@ -49,10 +49,8 @@ const steps = [
 
 function ProcessStep({ step, index }: { step: typeof steps[0]; index: number }) {
   const Icon = step.icon
-
   return (
     <div className="group relative">
-      {/* Connection Line mejorada */}
       {index < steps.length - 1 && (
         <div className="absolute left-12 top-24 w-1 h-full hidden md:block">
           <div className="w-full h-full bg-gradient-to-b from-secondary/40 via-secondary/20 to-transparent rounded-full" />
@@ -82,33 +80,26 @@ function ProcessStep({ step, index }: { step: typeof steps[0]; index: number }) 
 
         {/* Content mejorado */}
         <div className="flex-1 pb-8 md:pb-12">
-          <div className="bg-white rounded-3xl p-8 md:p-10 border-2 border-border/50 shadow-lg transition-all duration-500 group-hover:border-secondary group-hover:shadow-2xl group-hover:-translate-y-1 relative overflow-hidden">
-            {/* Efecto de brillo en hover */}
-            <div className="absolute inset-0 bg-gradient-to-br from-secondary/0 via-secondary/0 to-secondary/0 group-hover:from-secondary/5 group-hover:via-secondary/10 group-hover:to-secondary/5 transition-all duration-500" />
+          <div className="bg-white rounded-3xl p-8 md:p-10 border-2 border-border/50 shadow-lg transition-all duration-500 md:group-hover:border-secondary md:group-hover:shadow-2xl md:group-hover:-translate-y-1 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-secondary/0 via-secondary/0 to-secondary/0 md:group-hover:from-secondary/5 md:group-hover:via-secondary/10 md:group-hover:to-secondary/5 transition-all duration-500" />
             
             <div className="relative z-10">
               <div className="flex items-start justify-between gap-4 mb-4">
-                <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-foreground group-hover:text-secondary transition-colors duration-300 leading-tight">
+                <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-foreground md:group-hover:text-secondary transition-colors duration-300 leading-tight">
                   {step.title}
                 </h3>
-                <CheckCircle2
-                  className={cn(
-                    "h-8 w-8 text-secondary transition-all duration-300 flex-shrink-0",
-                    "opacity-0 group-hover:opacity-100 group-hover:scale-110 group-hover:rotate-12"
-                  )}
-                />
+                <CheckCircle2 className="h-8 w-8 text-secondary transition-all duration-300 flex-shrink-0 opacity-0 md:group-hover:opacity-100 md:group-hover:scale-110 md:group-hover:rotate-12" />
               </div>
               
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6 font-medium">
                 {step.description}
               </p>
               
-              {/* Indicador de progreso */}
-              <div className="flex items-center justify-between pt-6 border-t-2 border-border/50 group-hover:border-secondary/50 transition-colors duration-300">
-                <div className="flex items-center gap-3 text-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="flex items-center justify-between pt-6 border-t-2 border-border/50 md:group-hover:border-secondary/50 transition-colors duration-300">
+                <div className="flex items-center gap-3 text-secondary opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                   {index < steps.length - 1 ? (
                     <>
-                      <ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-transform duration-300" />
+                      <ArrowRight className="h-5 w-5 md:group-hover:translate-x-2 transition-transform duration-300" />
                       <span className="text-sm font-bold uppercase tracking-wider">Siguiente paso</span>
                     </>
                   ) : (
@@ -121,11 +112,7 @@ function ProcessStep({ step, index }: { step: typeof steps[0]; index: number }) 
                       key={idx}
                       className={cn(
                         "w-2 h-2 rounded-full transition-all duration-300",
-                        idx === index
-                          ? "bg-secondary w-6"
-                          : idx < index
-                          ? "bg-secondary/50"
-                          : "bg-border"
+                        idx === index ? "bg-secondary w-6" : idx < index ? "bg-secondary/50" : "bg-border"
                       )}
                     />
                   ))}
@@ -140,37 +127,16 @@ function ProcessStep({ step, index }: { step: typeof steps[0]; index: number }) 
 }
 
 export function Process() {
-  const { ref: sectionRef, isInView: sectionInView } = useInView<HTMLDivElement>({ 
-    threshold: 0.1, 
-    rootMargin: "-50px",
-    triggerOnce: true 
-  })
-
   return (
     <section id="process" className="relative py-20 md:py-32 lg:py-40 bg-background overflow-hidden">
-
-      <div ref={sectionRef} className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className={cn(
-          "text-center mb-16 md:mb-20 transition-opacity duration-300",
-          sectionInView ? "opacity-100" : "opacity-0"
-        )}>
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-secondary/10 border-2 border-secondary/20 mb-8 shadow-sm">
-            <span className="text-xs sm:text-sm font-bold text-secondary uppercase tracking-wider">
-              Nuestro Proceso Profesional
-            </span>
-          </div>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground mb-6 leading-tight">
-            <span className="block">Cómo Trabajamos</span>
-            <span className="block">
-              <span className="gradient-text">De Forma Profesional</span>
-            </span>
-          </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-medium">
-            Un enfoque sistemático y eficiente que garantiza resultados excepcionales 
-            en cada proyecto, desde la consulta inicial hasta la entrega final. 
-            Cada paso está diseñado para superar tus expectativas.
-          </p>
-        </div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <SectionHeader
+          badge={{ text: "Nuestro Proceso Profesional" }}
+          title="Cómo Trabajamos"
+          subtitle="De Forma Profesional"
+          description="Un enfoque sistemático y eficiente que garantiza resultados excepcionales en cada proyecto, desde la consulta inicial hasta la entrega final. Cada paso está diseñado para superar tus expectativas."
+          className="[&_p]:font-medium"
+        />
 
         <div className="max-w-5xl mx-auto">
           <div className="space-y-4 md:space-y-6">

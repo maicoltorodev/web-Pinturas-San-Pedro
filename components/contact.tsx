@@ -1,14 +1,13 @@
 "use client"
 
-import type React from "react"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
-import { CirclePattern } from "@/components/ui/circle-pattern"
+import { SectionHeader } from "@/components/ui/section-header"
+import { SectionBackground } from "@/components/ui/section-background"
 import { Mail, Phone, MapPin, Send, Sparkles } from "lucide-react"
-import { useInView } from "@/lib/useInView"
 import { cn } from "@/lib/utils"
 
 export function Contact() {
@@ -20,13 +19,7 @@ export function Contact() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const { ref: sectionRef, isInView: sectionInView } = useInView<HTMLDivElement>({ 
-    threshold: 0.1, 
-    rootMargin: "-50px",
-    triggerOnce: true 
-  })
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
     // Simulate API call
@@ -41,21 +34,21 @@ export function Contact() {
     {
       icon: Phone,
       title: "Teléfono",
-      content: "+34 123 456 789",
-      href: "tel:+34123456789",
+      content: "+57 322 371 6811",
+      href: "tel:+573223716811",
       color: "from-blue-500 to-blue-600",
     },
     {
       icon: Mail,
       title: "Correo",
-      content: "info@pinturassanpedro.com",
-      href: "mailto:info@pinturassanpedro.com",
+      content: "pinturassanpedro@hotmail.com",
+      href: "mailto:pinturassanpedro@hotmail.com",
       color: "from-yellow-500 to-yellow-600",
     },
     {
       icon: MapPin,
       title: "Ubicación",
-      content: "Colombia",
+      content: "Calle 132D N 145A-02, Bogotá",
       href: null,
       color: "from-purple-500 to-purple-600",
     },
@@ -63,37 +56,15 @@ export function Contact() {
 
   return (
     <section id="contact" className="relative py-20 md:py-32 lg:py-40 overflow-hidden">
-      {/* Premium Background with Gradient Overlay */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-[oklch(0.25_0.15_252)]" />
-        <CirclePattern variant="default" />
-        {/* Animated gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60" />
-        {/* Premium light effect */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-secondary/35 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/25 rounded-full blur-3xl animate-pulse delay-1000" />
-      </div>
-
-      <div ref={sectionRef} className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className={cn(
-          "text-center mb-16 md:mb-20 transition-opacity duration-300",
-          sectionInView ? "opacity-100" : "opacity-0"
-        )}>
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20 mb-6">
-            <Sparkles className="h-4 w-4 text-secondary" />
-            <span className="text-xs sm:text-sm font-bold text-secondary uppercase tracking-wider">
-              Contáctanos
-            </span>
-          </div>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-primary-foreground mb-6 leading-tight">
-            <span className="block">Hablemos de</span>
-            <span className="block gradient-text">Tu Proyecto</span>
-          </h2>
-          <p className="text-lg md:text-xl text-primary-foreground/80 max-w-3xl mx-auto leading-relaxed">
-            ¿Listo para transformar tu espacio? Contáctanos para una consulta gratuita 
-            y descubre cómo podemos hacer realidad tu visión
-          </p>
-        </div>
+      <SectionBackground variant="primary" />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <SectionHeader
+          badge={{ icon: Sparkles, text: "Contáctanos" }}
+          title="Hablemos de"
+          subtitle="Tu Proyecto"
+          description="¿Listo para transformar tu espacio? Contáctanos para una consulta gratuita y descubre cómo podemos hacer realidad tu visión"
+          className="text-primary-foreground [&_p]:text-primary-foreground/80"
+        />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 max-w-7xl mx-auto">
           {/* Form */}
@@ -179,37 +150,28 @@ export function Contact() {
             </Card>
           </div>
 
-          {/* Contact Info Cards */}
           <div className="space-y-6">
-            {contactInfo.map((info, index) => {
+            {contactInfo.map((info) => {
               const Icon = info.icon
               return (
                 <Card
-                  key={index}
-                  className={cn(
-                    "border-2 border-primary-foreground/20 bg-card/80 backdrop-blur-sm",
-                    "hover:border-secondary hover:shadow-premium-lg transition-all duration-500 hover:-translate-y-1",
-                    "group cursor-pointer"
-                  )}
+                  key={info.title}
+                  className="border-2 border-primary-foreground/20 bg-card/80 backdrop-blur-sm md:hover:border-secondary md:hover:shadow-premium-lg transition-all duration-500 md:hover:-translate-y-1 group cursor-pointer"
                 >
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
                       <div className={cn(
-                        "flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br",
-                        info.color,
-                        "flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
+                        "flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br flex items-center justify-center shadow-lg md:group-hover:scale-110 transition-transform duration-300",
+                        info.color
                       )}>
                         <Icon className="h-6 w-6 text-white" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-bold text-foreground mb-2 text-base group-hover:text-secondary transition-colors">
+                        <h3 className="font-bold text-foreground mb-2 text-base md:group-hover:text-secondary transition-colors">
                           {info.title}
                         </h3>
                         {info.href ? (
-                          <a
-                            href={info.href}
-                            className="text-muted-foreground hover:text-secondary transition-colors text-sm break-all block"
-                          >
+                          <a href={info.href} className="text-muted-foreground hover:text-secondary transition-colors text-sm break-all block">
                             {info.content}
                           </a>
                         ) : (

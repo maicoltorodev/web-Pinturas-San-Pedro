@@ -181,7 +181,7 @@ export function ColorPalette() {
       <CirclePattern className="absolute inset-0 opacity-30" />
       
       {/* Light effects */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse" />
+      <div className="hidden md:block absolute top-1/4 left-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -281,16 +281,16 @@ export function ColorPalette() {
                     return (
                       <Card
                         key={color.name}
-                        className="group cursor-pointer bg-card/80 border-2 border-primary-foreground/20 hover:border-secondary/50 transition-all duration-300 hover:scale-105 hover:shadow-xl overflow-hidden"
+                        className="group cursor-pointer bg-card/80 border-2 border-primary-foreground/20 md:hover:border-secondary/50 transition-all duration-300 md:hover:scale-105 md:hover:shadow-xl overflow-hidden"
                       >
                         <CardContent className="p-0">
                           {/* Color Swatch */}
                           <div
-                            className="w-full h-24 md:h-32 relative group-hover:scale-110 transition-transform duration-300"
+                            className="w-full h-24 md:h-32 relative md:group-hover:scale-110 transition-transform duration-300"
                             style={{ backgroundColor: color.hex }}
                             onClick={() => copyToClipboard(color.hex, `${category.name}-${color.name}`)}
                           >
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-300" />
                             {isCopied && (
                               <div className="absolute inset-0 bg-secondary/20 flex items-center justify-center">
                                 <div className="bg-white rounded-full p-2 shadow-lg">

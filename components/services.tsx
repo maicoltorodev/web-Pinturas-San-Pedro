@@ -1,7 +1,8 @@
 "use client"
 
 import { Card, CardContent } from "@/components/ui/card"
-import { useInView } from "@/lib/useInView"
+import { SectionHeader } from "@/components/ui/section-header"
+import { SectionBackground } from "@/components/ui/section-background"
 import { Home, Building2, Brush, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -36,84 +37,52 @@ const services = [
   },
 ]
 
-function ServiceCard({ service, index }: { service: typeof services[0]; index: number }) {
+function ServiceCard({ service }: { service: typeof services[0] }) {
+  const Icon = service.icon
   return (
-    <div className="group">
-      <Card
-        className={cn(
-          "h-full border-2 border-border/50 bg-card/50 backdrop-blur-sm",
-          "transition-all duration-500 ease-out",
-          "hover:border-secondary hover:shadow-premium-lg hover:-translate-y-2",
-          "hover:bg-gradient-to-br hover:from-card hover:to-card/80",
-          "shadow-premium"
-        )}
-      >
-        <CardContent className="p-6 md:p-8 relative overflow-hidden">
-          {/* Decorative gradient background */}
-          <div className={cn(
-            "absolute top-0 right-0 w-32 h-32 rounded-full opacity-0 group-hover:opacity-10 transition-opacity duration-500",
-            `bg-gradient-to-br ${service.color} blur-3xl`
-          )} />
-          
-          {/* Icon */}
-          <div className={cn(
-            "mb-6 inline-flex items-center justify-center w-16 h-16 rounded-2xl",
-            "bg-gradient-to-br from-secondary/20 to-secondary/10",
-            "group-hover:from-secondary/30 group-hover:to-secondary/20",
-            "transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"
-          )}>
-            <service.icon className="h-8 w-8 text-secondary transition-transform duration-500 group-hover:scale-110" />
-          </div>
-
-          {/* Content */}
-          <h3 className="text-xl md:text-2xl font-black text-card-foreground mb-3 group-hover:text-secondary transition-colors duration-300">
-            {service.title}
-          </h3>
-          <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-            {service.description}
-          </p>
-        </CardContent>
-      </Card>
-    </div>
+    <Card className="h-full border-2 border-border/50 bg-card/50 backdrop-blur-sm transition-all duration-500 md:hover:border-secondary md:hover:shadow-premium-lg md:hover:-translate-y-2 shadow-premium group">
+      <CardContent className="p-6 md:p-8 relative overflow-hidden">
+        <div className={cn(
+          "absolute top-0 right-0 w-32 h-32 rounded-full opacity-0 md:group-hover:opacity-10 transition-opacity duration-500",
+          `bg-gradient-to-br ${service.color} blur-3xl`
+        )} />
+        <div className={cn(
+          "mb-6 inline-flex items-center justify-center w-16 h-16 rounded-2xl",
+          "bg-gradient-to-br from-secondary/20 to-secondary/10",
+          "md:group-hover:from-secondary/30 md:group-hover:to-secondary/20",
+          "transition-all duration-500 md:group-hover:scale-110 md:group-hover:rotate-3"
+        )}>
+          <Icon className="h-8 w-8 text-secondary transition-transform duration-500 md:group-hover:scale-110" />
+        </div>
+        <h3 className="text-xl md:text-2xl font-black text-card-foreground mb-3 md:group-hover:text-secondary transition-colors duration-300">
+          {service.title}
+        </h3>
+        <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+          {service.description}
+        </p>
+      </CardContent>
+    </Card>
   )
 }
 
 export function Services() {
-  const { ref: sectionRef, isInView: sectionInView } = useInView<HTMLDivElement>({ 
-    threshold: 0.1, 
-    rootMargin: "-50px",
-    triggerOnce: true 
-  })
-
   return (
-    <section id="services" className="relative py-20 md:py-32 lg:py-40 bg-gradient-to-b from-background via-background to-muted/20 overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]" />
+    <section id="services" className="relative py-20 md:py-32 lg:py-40 overflow-hidden">
+      <SectionBackground variant="gradient" />
+      <div className="absolute inset-0 bg-grid-pattern opacity-[0.02] z-0" />
       
-      <div ref={sectionRef} className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className={cn(
-          "text-center mb-16 md:mb-20 transition-opacity duration-300",
-          sectionInView ? "opacity-100" : "opacity-0"
-        )}>
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20 mb-6">
-            <Sparkles className="h-4 w-4 text-secondary" />
-            <span className="text-xs sm:text-sm font-bold text-secondary uppercase tracking-wider">
-              Nuestros Servicios
-            </span>
-          </div>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground mb-6 leading-tight">
-            <span className="block">Soluciones</span>
-            <span className="block gradient-text">Premium</span>
-          </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Servicios integrales de pintura adaptados a tus necesidades, 
-            con la más alta calidad y atención al detalle
-          </p>
-        </div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <SectionHeader
+          badge={{ icon: Sparkles, text: "Nuestros Servicios" }}
+          title="Soluciones"
+          subtitle="Premium"
+          description="Servicios integrales de pintura adaptados a tus necesidades, con la más alta calidad y atención al detalle"
+          className="text-foreground"
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {services.map((service, index) => (
-            <ServiceCard key={index} service={service} index={index} />
+          {services.map((service) => (
+            <ServiceCard key={service.title} service={service} />
           ))}
         </div>
       </div>
