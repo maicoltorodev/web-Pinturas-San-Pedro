@@ -20,7 +20,11 @@ export function Contact() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const { ref: sectionRef, isInView: sectionInView } = useInView<HTMLDivElement>({ threshold: 0.2, triggerOnce: true })
+  const { ref: sectionRef, isInView: sectionInView } = useInView<HTMLDivElement>({ 
+    threshold: 0.1, 
+    rootMargin: "-50px",
+    triggerOnce: true 
+  })
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -72,8 +76,8 @@ export function Contact() {
 
       <div ref={sectionRef} className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className={cn(
-          "text-center mb-16 md:mb-20 transition-all duration-1000",
-          sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          "text-center mb-16 md:mb-20 transition-opacity duration-300",
+          sectionInView ? "opacity-100" : "opacity-0"
         )}>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20 mb-6">
             <Sparkles className="h-4 w-4 text-secondary" />

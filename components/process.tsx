@@ -48,18 +48,10 @@ const steps = [
 ]
 
 function ProcessStep({ step, index }: { step: typeof steps[0]; index: number }) {
-  const { ref, isInView } = useInView<HTMLDivElement>({ threshold: 0.4, triggerOnce: true })
   const Icon = step.icon
 
   return (
-    <div 
-      ref={ref}
-      className={cn(
-        "group relative transition-all duration-700 ease-out",
-        isInView ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
-      )}
-      style={{ transitionDelay: `${index * 150}ms` }}
-    >
+    <div className="group relative">
       {/* Connection Line mejorada */}
       {index < steps.length - 1 && (
         <div className="absolute left-12 top-24 w-1 h-full hidden md:block">
@@ -77,8 +69,7 @@ function ProcessStep({ step, index }: { step: typeof steps[0]; index: number }) 
               "border-4 border-white shadow-2xl",
               "transition-all duration-500 group-hover:scale-110 group-hover:rotate-3",
               "group-hover:shadow-3xl",
-              step.color,
-              isInView && "ring-4 ring-secondary/30"
+              step.color
             )}
           >
             <Icon className="h-12 w-12 text-white drop-shadow-lg" />
@@ -103,8 +94,7 @@ function ProcessStep({ step, index }: { step: typeof steps[0]; index: number }) 
                 <CheckCircle2
                   className={cn(
                     "h-8 w-8 text-secondary transition-all duration-300 flex-shrink-0",
-                    "opacity-0 group-hover:opacity-100 group-hover:scale-110 group-hover:rotate-12",
-                    isInView && "opacity-100"
+                    "opacity-0 group-hover:opacity-100 group-hover:scale-110 group-hover:rotate-12"
                   )}
                 />
               </div>
@@ -150,15 +140,19 @@ function ProcessStep({ step, index }: { step: typeof steps[0]; index: number }) 
 }
 
 export function Process() {
-  const { ref: sectionRef, isInView: sectionInView } = useInView<HTMLDivElement>({ threshold: 0.2, triggerOnce: true })
+  const { ref: sectionRef, isInView: sectionInView } = useInView<HTMLDivElement>({ 
+    threshold: 0.1, 
+    rootMargin: "-50px",
+    triggerOnce: true 
+  })
 
   return (
     <section id="process" className="relative py-20 md:py-32 lg:py-40 bg-background overflow-hidden">
 
       <div ref={sectionRef} className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className={cn(
-          "text-center mb-16 md:mb-20 transition-all duration-1000",
-          sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          "text-center mb-16 md:mb-20 transition-opacity duration-300",
+          sectionInView ? "opacity-100" : "opacity-0"
         )}>
           <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-secondary/10 border-2 border-secondary/20 mb-8 shadow-sm">
             <span className="text-xs sm:text-sm font-bold text-secondary uppercase tracking-wider">

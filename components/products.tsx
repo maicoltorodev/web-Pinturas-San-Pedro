@@ -81,19 +81,10 @@ const products = [
 ]
 
 function ProductCard({ product, index }: { product: typeof products[0]; index: number }) {
-  const { ref, isInView } = useInView<HTMLDivElement>({ threshold: 0.3, triggerOnce: true })
   const Icon = product.icon
 
   return (
-    <div
-      ref={ref}
-      className={cn(
-        "transition-all duration-700 ease-out",
-        isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      )}
-      style={{ transitionDelay: `${index * 100}ms` }}
-    >
-      <Card className="h-full border-2 border-primary-foreground/30 bg-white/95 backdrop-blur-sm hover:border-secondary hover:shadow-premium-lg transition-all duration-500 hover:-translate-y-3 group relative overflow-hidden flex flex-col">
+    <Card className="h-full border-2 border-primary-foreground/30 bg-white/95 backdrop-blur-sm hover:border-secondary hover:shadow-premium-lg transition-all duration-500 hover:-translate-y-3 group relative overflow-hidden flex flex-col">
         {/* Efecto de brillo en hover */}
         <div className="absolute inset-0 bg-gradient-to-br from-secondary/0 via-secondary/0 to-secondary/0 group-hover:from-secondary/10 group-hover:via-secondary/15 group-hover:to-secondary/10 transition-all duration-500 pointer-events-none z-10" />
         
@@ -170,12 +161,15 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
           </div>
         </CardContent>
       </Card>
-    </div>
   )
 }
 
 export function Products() {
-  const { ref: sectionRef, isInView: sectionInView } = useInView<HTMLDivElement>({ threshold: 0.2, triggerOnce: true })
+  const { ref: sectionRef, isInView: sectionInView } = useInView<HTMLDivElement>({ 
+    threshold: 0.1, 
+    rootMargin: "-50px",
+    triggerOnce: true 
+  })
 
   return (
     <section id="products" className="relative py-20 md:py-32 lg:py-40 overflow-hidden">
@@ -192,8 +186,8 @@ export function Products() {
 
       <div ref={sectionRef} className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className={cn(
-          "text-center mb-16 md:mb-20 transition-all duration-1000",
-          sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          "text-center mb-16 md:mb-20 transition-opacity duration-300",
+          sectionInView ? "opacity-100" : "opacity-0"
         )}>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20 mb-6">
             <Palette className="h-4 w-4 text-secondary" />

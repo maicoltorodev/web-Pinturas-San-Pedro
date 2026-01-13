@@ -123,7 +123,11 @@ function TestimonialCard({ testimonial, isActive }: { testimonial: typeof testim
 }
 
 export function Testimonials() {
-  const { ref: sectionRef, isInView: sectionInView } = useInView<HTMLDivElement>({ threshold: 0.2, triggerOnce: true })
+  const { ref: sectionRef, isInView: sectionInView } = useInView<HTMLDivElement>({ 
+    threshold: 0.1, 
+    rootMargin: "-50px",
+    triggerOnce: true 
+  })
   const [currentIndex, setCurrentIndex] = useState(0)
   
   // Mostrar 3 testimonios a la vez, moviéndose de a uno
@@ -161,8 +165,8 @@ export function Testimonials() {
       <div ref={sectionRef} className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className={cn(
-          "text-center mb-16 md:mb-20 transition-all duration-1000",
-          sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          "text-center mb-16 md:mb-20 transition-opacity duration-300",
+          sectionInView ? "opacity-100" : "opacity-0"
         )}>
           <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-secondary/10 border-2 border-secondary/20 mb-8 shadow-sm">
             <Star className="h-4 w-4 text-secondary fill-secondary" />
@@ -212,11 +216,7 @@ export function Testimonials() {
                 return (
                   <div
                     key={`${realIndex}-${currentIndex}`}
-                    className={cn(
-                      "transition-all duration-500 ease-in-out",
-                      sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                    )}
-                    style={{ transitionDelay: `${index * 100}ms` }}
+                    className="transition-all duration-500 ease-in-out"
                   >
                     <TestimonialCard testimonial={testimonial} isActive={index === 1} />
                   </div>

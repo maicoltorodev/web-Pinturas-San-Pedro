@@ -47,24 +47,17 @@ const projects = [
 ]
 
 function PortfolioItem({ project, index }: { project: typeof projects[0]; index: number }) {
-  const { ref, isInView } = useInView<HTMLDivElement>({ threshold: 0.3, triggerOnce: true })
-
   return (
-    <div 
-      ref={ref}
-      className={cn(
-        "group transition-all duration-700 ease-out",
-        isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
-        project.featured && "md:col-span-2"
-      )}
-      style={{ transitionDelay: `${index * 100}ms` }}
-    >
+    <div className={cn(
+      "group",
+      project.featured && "md:col-span-2"
+    )}>
       <Card
         className={cn(
           "relative overflow-hidden border-2 border-border/50 bg-card group cursor-pointer",
           "transition-all duration-500 ease-out",
           "hover:border-secondary hover:shadow-premium-lg",
-          isInView && "shadow-premium"
+          "shadow-premium"
         )}
       >
         <div className={cn(
@@ -100,7 +93,11 @@ function PortfolioItem({ project, index }: { project: typeof projects[0]; index:
 }
 
 export function Portfolio() {
-  const { ref: sectionRef, isInView: sectionInView } = useInView<HTMLDivElement>({ threshold: 0.2, triggerOnce: true })
+  const { ref: sectionRef, isInView: sectionInView } = useInView<HTMLDivElement>({ 
+    threshold: 0.1, 
+    rootMargin: "-50px",
+    triggerOnce: true 
+  })
 
   return (
     <section id="portfolio" className="relative py-20 md:py-32 lg:py-40 overflow-hidden">
@@ -117,8 +114,8 @@ export function Portfolio() {
 
       <div ref={sectionRef} className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className={cn(
-          "text-center mb-16 md:mb-20 transition-all duration-1000",
-          sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          "text-center mb-16 md:mb-20 transition-opacity duration-300",
+          sectionInView ? "opacity-100" : "opacity-0"
         )}>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20 mb-6">
             <span className="text-xs sm:text-sm font-bold text-secondary uppercase tracking-wider">

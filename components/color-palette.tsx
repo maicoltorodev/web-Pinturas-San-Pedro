@@ -126,7 +126,11 @@ const colorCategories = [
 ]
 
 export function ColorPalette() {
-  const { ref, isInView } = useInView<HTMLDivElement>({ threshold: 0.05, triggerOnce: true })
+  const { ref, isInView } = useInView<HTMLDivElement>({ 
+    threshold: 0.1, 
+    rootMargin: "-50px",
+    triggerOnce: true 
+  })
   const [activeTab, setActiveTab] = useState<string | null>(null) // null = "Todos"
   const [searchQuery, setSearchQuery] = useState("")
   const [copiedColor, setCopiedColor] = useState<string | null>(null)
@@ -185,8 +189,8 @@ export function ColorPalette() {
         <div 
           ref={ref as React.RefObject<HTMLDivElement>}
           className={cn(
-            "text-center mb-12 md:mb-16 transition-all duration-1000",
-            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            "text-center mb-12 md:mb-16 transition-opacity duration-300",
+            isInView ? "opacity-100" : "opacity-0"
           )}
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/10 border-2 border-secondary/20 rounded-full mb-6">
@@ -205,10 +209,7 @@ export function ColorPalette() {
         </div>
 
         {/* Barra de búsqueda */}
-        <div className={cn(
-          "mb-8 transition-all duration-1000 delay-200",
-          isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        )}>
+        <div className="mb-8">
           <div className="max-w-2xl mx-auto relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-primary-foreground/40" />
             <Input
@@ -231,10 +232,7 @@ export function ColorPalette() {
         </div>
 
         {/* Pestañas de categorías */}
-        <div className={cn(
-          "mb-8 transition-all duration-1000 delay-300",
-          isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        )}>
+        <div className="mb-8">
           <div className="flex flex-wrap justify-center gap-2 md:gap-3">
             <button
               onClick={() => setActiveTab(null)}
@@ -270,11 +268,6 @@ export function ColorPalette() {
             {filteredCategories.map((category, categoryIndex) => (
               <div
                 key={category.name}
-                className={cn(
-                  "transition-all duration-1000",
-                  isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                )}
-                style={{ transitionDelay: `${categoryIndex * 100}ms` }}
               >
                 {activeTab === null && (
                   <h3 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-6 text-center">
@@ -288,12 +281,7 @@ export function ColorPalette() {
                     return (
                       <Card
                         key={color.name}
-                        className={cn(
-                          "group cursor-pointer bg-card/80 border-2 border-primary-foreground/20 hover:border-secondary/50 transition-all duration-300 hover:scale-105 hover:shadow-xl overflow-hidden",
-                          "transition-all duration-500",
-                          isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                        )}
-                        style={{ transitionDelay: `${(categoryIndex * 50) + (colorIndex * 30)}ms` }}
+                        className="group cursor-pointer bg-card/80 border-2 border-primary-foreground/20 hover:border-secondary/50 transition-all duration-300 hover:scale-105 hover:shadow-xl overflow-hidden"
                       >
                         <CardContent className="p-0">
                           {/* Color Swatch */}
@@ -355,10 +343,7 @@ export function ColorPalette() {
             ))}
           </div>
         ) : (
-          <div className={cn(
-            "text-center py-12 transition-all duration-1000",
-            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          )}>
+          <div className="text-center py-12">
             <p className="text-lg text-primary-foreground/70">
               No se encontraron colores que coincidan con "{searchQuery}"
             </p>
@@ -366,12 +351,7 @@ export function ColorPalette() {
         )}
 
         {/* CTA */}
-        <div 
-          className={cn(
-            "text-center mt-12 md:mt-16 transition-all duration-1000 delay-700",
-            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          )}
-        >
+        <div className="text-center mt-12 md:mt-16">
           <p className="text-lg text-primary-foreground/90 mb-4">
             ¿No encuentras el color que buscas?
           </p>

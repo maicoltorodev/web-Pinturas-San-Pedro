@@ -37,24 +37,15 @@ const services = [
 ]
 
 function ServiceCard({ service, index }: { service: typeof services[0]; index: number }) {
-  const { ref, isInView } = useInView<HTMLDivElement>({ threshold: 0.3, triggerOnce: true })
-
   return (
-    <div 
-      ref={ref}
-      className={cn(
-        "group transition-all duration-700 ease-out",
-        isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      )}
-      style={{ transitionDelay: `${index * 100}ms` }}
-    >
+    <div className="group">
       <Card
         className={cn(
           "h-full border-2 border-border/50 bg-card/50 backdrop-blur-sm",
           "transition-all duration-500 ease-out",
           "hover:border-secondary hover:shadow-premium-lg hover:-translate-y-2",
           "hover:bg-gradient-to-br hover:from-card hover:to-card/80",
-          isInView && "shadow-premium"
+          "shadow-premium"
         )}
       >
         <CardContent className="p-6 md:p-8 relative overflow-hidden">
@@ -88,7 +79,11 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
 }
 
 export function Services() {
-  const { ref: sectionRef, isInView: sectionInView } = useInView<HTMLDivElement>({ threshold: 0.2, triggerOnce: true })
+  const { ref: sectionRef, isInView: sectionInView } = useInView<HTMLDivElement>({ 
+    threshold: 0.1, 
+    rootMargin: "-50px",
+    triggerOnce: true 
+  })
 
   return (
     <section id="services" className="relative py-20 md:py-32 lg:py-40 bg-gradient-to-b from-background via-background to-muted/20 overflow-hidden">
@@ -97,8 +92,8 @@ export function Services() {
       
       <div ref={sectionRef} className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className={cn(
-          "text-center mb-16 md:mb-20 transition-all duration-1000",
-          sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          "text-center mb-16 md:mb-20 transition-opacity duration-300",
+          sectionInView ? "opacity-100" : "opacity-0"
         )}>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20 mb-6">
             <Sparkles className="h-4 w-4 text-secondary" />
