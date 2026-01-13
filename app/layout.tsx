@@ -13,6 +13,8 @@ const geist = Geist({
   variable: '--font-geist',
 })
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://pinturassanpedro.com'
+
 export const metadata: Metadata = {
   title: "Pinturas San Pedro - Servicios Profesionales de Pintura",
   description:
@@ -37,25 +39,26 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://pinturassanpedro.com'),
+  metadataBase: new URL(siteUrl),
   applicationName: "Pinturas San Pedro",
   category: "Servicios de Pintura",
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: "Pinturas San Pedro - Servicios Profesionales de Pintura",
+    title: "Pinturas San Pedro - Servicios Profesionales",
     description:
       "Servicios profesionales de pintura residencial y comercial. Transformamos espacios con calidad artesanal y atención al detalle. Más de 15 años de experiencia.",
-    url: '/',
+    url: siteUrl,
     siteName: "Pinturas San Pedro",
     images: [
       {
-        url: '/imagen-metadata.jpg',
+        url: `${siteUrl}/imagen-metadata.jpg`,
         width: 1200,
         height: 630,
         alt: 'Pinturas San Pedro - Creamos Color',
         type: 'image/jpeg',
+        secureUrl: `${siteUrl}/imagen-metadata.jpg`,
       },
     ],
     locale: 'es_CO',
@@ -64,10 +67,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Pinturas San Pedro - Servicios Profesionales de Pintura",
+    title: "Pinturas San Pedro - Servicios Profesionales",
     description:
-      "Servicios profesionales de pintura residencial y comercial. Transformamos espacios con calidad artesanal y atención al detalle.",
-    images: ['/imagen-metadata.jpg'],
+      "Servicios profesionales de pintura residencial y comercial. Transformamos espacios con calidad artesanal.",
+    images: [`${siteUrl}/imagen-metadata.jpg`],
     creator: '@pinturassanpedro',
   },
   robots: {
@@ -93,6 +96,11 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
   other: {
     'theme-color': '#0D47A1',
+    // Meta tags adicionales para WhatsApp
+    'og:image:width': '1200',
+    'og:image:height': '630',
+    'og:image:type': 'image/jpeg',
+    'og:image:secure_url': `${siteUrl}/imagen-metadata.jpg`,
   },
 }
 
