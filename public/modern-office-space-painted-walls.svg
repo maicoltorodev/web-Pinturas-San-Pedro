@@ -1,0 +1,27 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e40af;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg2)"/>
+  <!-- Office walls -->
+  <rect x="0" y="0" width="800" height="500" fill="#3b82f6"/>
+  <!-- Floor -->
+  <rect x="0" y="500" width="800" height="100" fill="#1e40af"/>
+  <!-- Desk -->
+  <rect x="150" y="350" width="300" height="20" fill="#fbbf24"/>
+  <rect x="150" y="350" width="300" height="150" fill="#f59e0b"/>
+  <!-- Chair -->
+  <circle cx="300" cy="480" r="40" fill="#fbbf24"/>
+  <rect x="280" y="480" width="40" height="60" fill="#f59e0b"/>
+  <!-- Window -->
+  <rect x="500" y="100" width="250" height="300" fill="#60a5fa" stroke="#fbbf24" stroke-width="4"/>
+  <line x1="625" y1="100" x2="625" y2="400" stroke="#fbbf24" stroke-width="3"/>
+  <line x1="500" y1="250" x2="750" y2="250" stroke="#fbbf24" stroke-width="3"/>
+  <!-- Decorative circles -->
+  <circle cx="100" cy="150" r="50" fill="#fbbf24" opacity="0.4"/>
+  <circle cx="50" cy="200" r="35" fill="#fbbf24" opacity="0.3"/>
+  <text x="200" y="550" font-family="Arial" font-size="24" fill="#fbbf24" font-weight="bold">Oficina Moderna</text>
+</svg>
