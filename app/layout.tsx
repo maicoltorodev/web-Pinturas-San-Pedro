@@ -13,23 +13,28 @@ const geist = Geist({
   variable: '--font-geist',
 })
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://pinturassanpedro.com'
-
 export const metadata: Metadata = {
-  title: "Pinturas San Pedro - Servicios Profesionales de Pintura",
+  title: "Pinturas San Pedro - Productos Premium de Pintura | Vinilo Acrílico, Impermeabilizante y Más",
   description:
-    "Servicios profesionales de pintura residencial y comercial. Transformamos espacios con calidad artesanal y atención al detalle. Más de 15 años de experiencia.",
+    "Venta de productos de pintura premium: Vinilo Acrílico T1 Superlavable, Impermeabilizante, Vinilo Coraza Hidrofugado Certificado, y más. También servicios profesionales de pintura residencial y comercial. Calidad certificada, más de 15 años de experiencia.",
   keywords: [
-    "pintura profesional",
-    "pintura residencial",
-    "pintura comercial",
+    "productos de pintura",
     "pinturas San Pedro",
-    "servicios de pintura",
+    "vinilo acrílico superlavable",
+    "impermeabilizante",
+    "vinilo coraza hidrofugado",
+    "pintura certificada",
+    "pintura para interiores",
+    "pintura para exteriores",
     "pintura en Colombia",
+    "vinilo tipo 1",
+    "vinilo tipo 3",
     "colores de pintura",
-    "pintura de interiores",
-    "pintura de exteriores",
-    "consultoría de color"
+    "venta de pintura",
+    "pintura profesional",
+    "servicios de pintura",
+    "pintura residencial",
+    "pintura comercial"
   ],
   authors: [{ name: "Pinturas San Pedro" }],
   creator: "Pinturas San Pedro",
@@ -39,26 +44,25 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://demo-pinturas-san-pedro.vercel.app'),
   applicationName: "Pinturas San Pedro",
-  category: "Servicios de Pintura",
+  category: "Productos de Pintura",
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: "Pinturas San Pedro - Servicios Profesionales",
+    title: "Pinturas San Pedro - Productos Premium de Pintura | Vinilo Acrílico, Impermeabilizante",
     description:
-      "Servicios profesionales de pintura residencial y comercial. Transformamos espacios con calidad artesanal y atención al detalle. Más de 15 años de experiencia.",
-    url: siteUrl,
+      "Venta de productos de pintura premium: Vinilo Acrílico T1 Superlavable, Impermeabilizante, Vinilo Coraza Hidrofugado Certificado. También servicios profesionales de pintura residencial y comercial. Calidad certificada, más de 15 años de experiencia.",
+    url: '/',
     siteName: "Pinturas San Pedro",
     images: [
       {
-        url: `${siteUrl}/imagen-metadata.jpg`,
+        url: '/imagen-metadata.jpg',
         width: 1200,
         height: 630,
-        alt: 'Pinturas San Pedro - Creamos Color',
+        alt: 'Pinturas San Pedro - Productos Premium de Pintura',
         type: 'image/jpeg',
-        secureUrl: `${siteUrl}/imagen-metadata.jpg`,
       },
     ],
     locale: 'es_CO',
@@ -67,10 +71,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Pinturas San Pedro - Servicios Profesionales",
+    title: "Pinturas San Pedro - Productos Premium de Pintura",
     description:
-      "Servicios profesionales de pintura residencial y comercial. Transformamos espacios con calidad artesanal.",
-    images: [`${siteUrl}/imagen-metadata.jpg`],
+      "Venta de productos de pintura premium: Vinilo Acrílico Superlavable, Impermeabilizante, Vinilo Coraza Certificado. También servicios profesionales de pintura. Calidad certificada.",
+    images: ['/imagen-metadata.jpg'],
     creator: '@pinturassanpedro',
   },
   robots: {
@@ -96,11 +100,6 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
   other: {
     'theme-color': '#0D47A1',
-    // Meta tags adicionales para WhatsApp
-    'og:image:width': '1200',
-    'og:image:height': '630',
-    'og:image:type': 'image/jpeg',
-    'og:image:secure_url': `${siteUrl}/imagen-metadata.jpg`,
   },
 }
 
