@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import React, { useState, useMemo } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { CirclePattern } from "@/components/ui/circle-pattern"
 import { useInView } from "@/lib/useInView"
@@ -183,7 +183,7 @@ export function ColorPalette() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div 
-          ref={ref}
+          ref={ref as React.RefObject<HTMLDivElement>}
           className={cn(
             "text-center mb-12 md:mb-16 transition-all duration-1000",
             isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
