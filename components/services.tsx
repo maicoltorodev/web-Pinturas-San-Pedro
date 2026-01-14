@@ -136,6 +136,34 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
   )
 }
 
+// Componente helper para texto con colores por letra (solo usado en Services)
+function ColoredText({ text }: { text: string }) {
+  const colors = ["#a855f7", "#ec4899", "#3b82f6", "#eab308"];
+  
+  return (
+    <span className="block">
+      {text.split("").map((letter, index) => {
+        const colorIndex = index % colors.length;
+        return (
+          <span
+            key={index}
+            style={{
+              background: `linear-gradient(to right, ${colors[colorIndex]}, ${colors[colorIndex]})`,
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              color: "transparent",
+              display: "inline-block",
+            }}
+          >
+            {letter === " " ? "\u00A0" : letter}
+          </span>
+        );
+      })}
+    </span>
+  );
+}
+
 export function Services() {
   return (
     <section id="services" className="relative py-20 md:py-32 lg:py-40 overflow-hidden">
@@ -146,11 +174,7 @@ export function Services() {
         <SectionHeader
           badge={{ icon: Sparkles, text: "Nuestros Servicios" }}
           title="Soluciones"
-          subtitle={
-            <span className="block gradient-text">
-              Premium
-            </span>
-          }
+          subtitle={<ColoredText text="Premium" />}
           description="Servicios integrales de pintura adaptados a tus necesidades, con la más alta calidad y atención al detalle"
           className="text-foreground"
         />
