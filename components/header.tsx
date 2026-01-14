@@ -85,9 +85,10 @@ export function Header() {
               alt="Pinturas San Pedro"
               width={280}
               height={100}
-              className="object-contain h-16 max-w-[180px] md:max-w-[280px] transition-transform duration-300 hover:scale-105"
+              className="object-contain h-16 w-auto max-w-[180px] md:max-w-[280px] transition-transform duration-300 hover:scale-105"
               priority
               sizes="(max-width: 768px) 180px, (max-width: 1024px) 220px, 280px"
+              style={{ objectFit: 'contain' }}
             />
           </a>
 
