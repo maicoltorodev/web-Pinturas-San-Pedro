@@ -628,17 +628,29 @@ function ProductGrid({ products }: { products: Product[] }) {
 function ProductCardWrapper({ product }: { product: Product }) {
   const [isVisible, setIsVisible] = useState(false)
   const cardRef = useRef<HTMLDivElement>(null)
+  const observerRef = useRef<IntersectionObserver | null>(null)
+  const hasAnimatedRef = useRef(false)
 
   useEffect(() => {
     const card = cardRef.current
-    if (!card) return
+    if (!card || hasAnimatedRef.current) return
+
+    // Limpiar observer anterior si existe
+    if (observerRef.current) {
+      observerRef.current.disconnect()
+      observerRef.current = null
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !hasAnimatedRef.current) {
+          hasAnimatedRef.current = true
           setIsVisible(true)
           // Desconectar después de activar para liberar memoria
-          observer.disconnect()
+          if (observerRef.current) {
+            observerRef.current.disconnect()
+            observerRef.current = null
+          }
         }
       },
       {
@@ -647,10 +659,15 @@ function ProductCardWrapper({ product }: { product: Product }) {
       }
     )
 
+    observerRef.current = observer
     observer.observe(card)
 
     return () => {
-      observer.disconnect()
+      if (observerRef.current) {
+        observerRef.current.disconnect()
+        observerRef.current = null
+      }
+      hasAnimatedRef.current = false
     }
   }, [])
 

@@ -37,45 +37,40 @@ export function useInView<T extends HTMLElement = HTMLElement>(options: UseInVie
     const element = ref.current
     if (!element) return
 
-    // Solo crear observer si no existe o fue desconectado
-    if (!observerRef.current) {
-      observerRef.current = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setIsInView(true)
-            if (optionsRef.current.triggerOnce && observerRef.current) {
-              observerRef.current.unobserve(element)
-            }
-          } else if (!optionsRef.current.triggerOnce) {
-            setIsInView(false)
-          }
-        },
-        {
-          threshold: optionsRef.current.threshold,
-          rootMargin: optionsRef.current.rootMargin,
-        }
-      )
+    // Limpiar observer anterior si existe antes de crear uno nuevo
+    if (observerRef.current) {
+      observerRef.current.disconnect()
+      observerRef.current = null
     }
 
-    const observer = observerRef.current
+    // Crear nuevo observer con las opciones actuales
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true)
+          if (optionsRef.current.triggerOnce && observerRef.current) {
+            observerRef.current.unobserve(element)
+          }
+        } else if (!optionsRef.current.triggerOnce) {
+          setIsInView(false)
+        }
+      },
+      {
+        threshold: optionsRef.current.threshold,
+        rootMargin: optionsRef.current.rootMargin,
+      }
+    )
+
+    observerRef.current = observer
     observer.observe(element)
 
-    return () => {
-      if (observer && element) {
-        observer.unobserve(element)
-      }
-    }
-  }, []) // Sin dependencias - el observer se maneja internamente
-
-  // Cleanup final al desmontar
-  useEffect(() => {
     return () => {
       if (observerRef.current) {
         observerRef.current.disconnect()
         observerRef.current = null
       }
     }
-  }, [])
+  }, [threshold, rootMargin, triggerOnce]) // Incluir dependencias para recrear cuando cambien
 
   return { ref, isInView }
 }

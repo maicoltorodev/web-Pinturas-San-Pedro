@@ -21,17 +21,29 @@ export function LazySection({
 }: LazySectionProps) {
   const [shouldLoad, setShouldLoad] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
+  const observerRef = useRef<IntersectionObserver | null>(null)
+  const hasLoadedRef = useRef(false)
 
   useEffect(() => {
     const container = containerRef.current
-    if (!container || shouldLoad) return
+    if (!container || shouldLoad || hasLoadedRef.current) return
+
+    // Limpiar observer anterior si existe
+    if (observerRef.current) {
+      observerRef.current.disconnect()
+      observerRef.current = null
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !hasLoadedRef.current) {
+          hasLoadedRef.current = true
           setShouldLoad(true)
           // Desconectar después de cargar para liberar memoria
-          observer.disconnect()
+          if (observerRef.current) {
+            observerRef.current.disconnect()
+            observerRef.current = null
+          }
         }
       },
       {
@@ -40,10 +52,15 @@ export function LazySection({
       }
     )
 
+    observerRef.current = observer
     observer.observe(container)
 
     return () => {
-      observer.disconnect()
+      if (observerRef.current) {
+        observerRef.current.disconnect()
+        observerRef.current = null
+      }
+      hasLoadedRef.current = false
     }
   }, [shouldLoad, rootMargin, threshold])
 

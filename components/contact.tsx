@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo, useCallback } from "react"
+import { useState, useMemo, useCallback, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -43,16 +43,35 @@ export function Contact() {
     message: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   const handleSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
+    
+    // Limpiar timeout anterior si existe
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+      timeoutRef.current = null
+    }
+    
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    // Removed console.log for production
-    setIsSubmitting(false)
-    // Reset form
-    setFormData({ name: "", email: "", phone: "", message: "" })
+    timeoutRef.current = setTimeout(() => {
+      setIsSubmitting(false)
+      // Reset form
+      setFormData({ name: "", email: "", phone: "", message: "" })
+      timeoutRef.current = null
+    }, 1000)
+  }, [])
+
+  // Cleanup de timeout al desmontar
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+        timeoutRef.current = null
+      }
+    }
   }, [])
 
   // Handler genérico memoizado para inputs
