@@ -138,7 +138,7 @@ const products: Product[] = [
     description: "Protección y decoración de superficies de metal y madera.",
     features: ["Protección superior", "Decoración", "Durabilidad"],
     icon: Sparkles,
-    color: "from-yellow-500 to-yellow-600",
+    color: "from-blue-500 to-blue-600",
     image: "/productos/esmalte-especial.png",
     uses: [
       "Rejas, puertas, ventanas",
@@ -178,7 +178,7 @@ const products: Product[] = [
     description: "Pintar y proteger superficies de metal y madera.",
     features: ["Protección", "Decoración", "Versatilidad"],
     icon: Sparkles,
-    color: "from-yellow-400 to-yellow-500",
+    color: "from-blue-400 to-blue-500",
     image: "/productos/esmalte-tipo-1.png",
     uses: [
       "Rejas, puertas, ventanas",
