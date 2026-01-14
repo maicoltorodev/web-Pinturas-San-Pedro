@@ -190,15 +190,13 @@
   span.gradient-text {
     background: linear-gradient(to right, 
       #a855f7 0%, 
-      #a855f7 20%, 
-      #ec4899 20%, 
-      #ec4899 40%, 
-      #3b82f6 40%, 
-      #3b82f6 60%, 
-      #eab308 60%, 
-      #eab308 80%,
-      #fbbf24 80%,
-      #fbbf24 100%) !important;
+      #a855f7 25%, 
+      #ec4899 25%, 
+      #ec4899 50%, 
+      #3b82f6 50%, 
+      #3b82f6 75%, 
+      #eab308 75%, 
+      #eab308 100%) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
     background-clip: text !important;
