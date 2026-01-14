@@ -312,7 +312,12 @@ export function Testimonials() {
             className="testimonials-swiper"
             onInit={(swiper) => {
               // Actualizar navegación después de la inicialización
-              if (swiper.params.navigation && prevButtonRef.current && nextButtonRef.current) {
+              if (
+                swiper.params.navigation && 
+                typeof swiper.params.navigation === 'object' &&
+                prevButtonRef.current && 
+                nextButtonRef.current
+              ) {
                 swiper.params.navigation.prevEl = prevButtonRef.current
                 swiper.params.navigation.nextEl = nextButtonRef.current
                 swiper.navigation.init()
