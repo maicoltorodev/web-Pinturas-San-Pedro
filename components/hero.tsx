@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { CirclePattern } from "@/components/ui/circle-pattern"
 import { ArrowRight, Sparkles } from "lucide-react"
@@ -9,9 +9,33 @@ import Image from "next/image"
 
 export function Hero() {
   const [isMounted, setIsMounted] = useState(false)
+  const [shouldAnimate, setShouldAnimate] = useState(false)
+  const logoRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     setIsMounted(true)
+  }, [])
+
+  // Activar animación solo cuando el logo está visible
+  useEffect(() => {
+    const element = logoRef.current
+    if (!element) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShouldAnimate(entry.isIntersecting)
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "50px",
+      }
+    )
+
+    observer.observe(element)
+
+    return () => {
+      observer.disconnect()
+    }
   }, [])
 
   return (
@@ -43,16 +67,17 @@ export function Hero() {
             {/* Logo - Optimized for mobile */}
             <div className="flex justify-center mb-6">
               <div 
+                ref={logoRef}
                 className={cn(
                   "relative w-64 h-32 sm:w-80 sm:h-40 md:w-96 md:h-48 lg:w-[500px] lg:h-[250px] aspect-[2/1]",
-                  isMounted && "animate-float"
+                  shouldAnimate && "animate-float"
                 )}
                 style={{ 
                   minWidth: '256px',
                   minHeight: '128px',
                   maxWidth: '500px',
                   maxHeight: '250px',
-                  willChange: isMounted ? 'transform' : 'auto'
+                  willChange: shouldAnimate ? 'transform' : 'auto'
                 }}
               >
                 {/* Simplified: Single glow effect instead of multiple layers */}

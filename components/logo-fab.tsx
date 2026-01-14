@@ -11,19 +11,35 @@ export function LogoFAB() {
   const whatsappUrl = `https://wa.me/57${phoneNumber}?text=${encodeURIComponent(message)}`
 
   useEffect(() => {
-    let ticking = false
+    let rafId: number | null = null
+    let lastScrollY = window.scrollY
+    
     const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setIsVisible(window.scrollY > 300)
-          ticking = false
-        })
-        ticking = true
+      // Cancelar RAF anterior si existe
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId)
       }
+      
+      rafId = requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY
+        // Solo actualizar estado si hay cambio significativo (más de 10px)
+        if (Math.abs(currentScrollY - lastScrollY) > 10) {
+          setIsVisible(currentScrollY > 300)
+          lastScrollY = currentScrollY
+        }
+        rafId = null
+      })
     }
+    
     window.addEventListener("scroll", handleScroll, { passive: true })
     handleScroll() // Check initial state
-    return () => window.removeEventListener("scroll", handleScroll)
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId)
+      }
+    }
   }, [])
 
   return (

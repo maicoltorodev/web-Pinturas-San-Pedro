@@ -17,7 +17,7 @@ import {
   LucideIcon
 } from "lucide-react"
 import Image from "next/image"
-import { useState } from "react"
+import { useState, useMemo, useCallback, useEffect, useRef } from "react"
 
 // Types
 export interface ProductPresentation {
@@ -361,14 +361,17 @@ function ProductCard({ product }: { product: Product }) {
   const Icon = product.icon
   const [isExpanded, setIsExpanded] = useState(false)
 
-  const formatPrice = (price: string | string[]): string => {
+  const formatPrice = useCallback((price: string | string[]): string => {
     if (Array.isArray(price)) {
       return price.join(" / ")
     }
     return price
-  }
+  }, [])
 
-  const hasAdditionalInfo = product.uses || product.benefits || product.application
+  const hasAdditionalInfo = useMemo(() => 
+    !!(product.uses || product.benefits || product.application),
+    [product.uses, product.benefits, product.application]
+  )
 
   return (
     <Card className={cn(
@@ -610,16 +613,76 @@ function FilterBar({
   )
 }
 
+// Componente optimizado para grid de productos con animaciones controladas
+function ProductGrid({ products }: { products: Product[] }) {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      {products.map((product) => (
+        <ProductCardWrapper key={product.name} product={product} />
+      ))}
+    </div>
+  )
+}
+
+// Wrapper que activa animación solo cuando el producto está visible
+function ProductCardWrapper({ product }: { product: Product }) {
+  const [isVisible, setIsVisible] = useState(false)
+  const cardRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const card = cardRef.current
+    if (!card) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          // Desconectar después de activar para liberar memoria
+          observer.disconnect()
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "50px", // Activar un poco antes de que sea completamente visible
+      }
+    )
+
+    observer.observe(card)
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
+
+  return (
+    <div 
+      ref={cardRef}
+      className={cn(
+        "transition-opacity duration-500",
+        isVisible ? "opacity-100 animate-fade-in" : "opacity-0"
+      )}
+    >
+      <ProductCard product={product} />
+    </div>
+  )
+}
+
 export function Products() {
   const [selectedCategory, setSelectedCategory] = useState<string>("Todos")
   
-  // Obtener todas las categorías únicas
-  const categories = ["Todos", ...Array.from(new Set(products.map(p => p.category)))]
+  // Obtener todas las categorías únicas - memoizado
+  const categories = useMemo(() => 
+    ["Todos", ...Array.from(new Set(products.map(p => p.category)))],
+    []
+  )
   
-  // Filtrar productos según la categoría seleccionada
-  const filteredProducts = selectedCategory === "Todos" 
-    ? products 
-    : products.filter(product => product.category === selectedCategory)
+  // Filtrar productos según la categoría seleccionada - memoizado
+  const filteredProducts = useMemo(() => 
+    selectedCategory === "Todos" 
+      ? products 
+      : products.filter(product => product.category === selectedCategory),
+    [selectedCategory]
+  )
 
   return (
     <section id="products" className="relative py-20 md:py-32 lg:py-40 overflow-hidden">
@@ -639,17 +702,7 @@ export function Products() {
           onCategoryChange={setSelectedCategory}
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {filteredProducts.map((product, index) => (
-            <div 
-              key={product.name}
-              className="animate-fade-in"
-              style={{ animationDelay: `${index * 50}ms` }}
-            >
-              <ProductCard product={product} />
-            </div>
-          ))}
-        </div>
+        <ProductGrid products={filteredProducts} />
       </div>
     </section>
   )

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useMemo, useCallback } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -9,6 +9,31 @@ import { SectionHeader } from "@/components/ui/section-header"
 import { SectionBackground } from "@/components/ui/section-background"
 import { Mail, Phone, MapPin, Send, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
+
+// Datos estáticos fuera del componente para evitar recreación
+const contactInfo = [
+  {
+    icon: Phone,
+    title: "Teléfono",
+    content: "+57 322 3716811",
+    href: "tel:+573223716811",
+    color: "from-blue-500 to-blue-600",
+  },
+  {
+    icon: Mail,
+    title: "Correo",
+    content: "pinturassanpedro@hotmail.com",
+    href: "mailto:pinturassanpedro@hotmail.com",
+    color: "from-yellow-500 to-yellow-600",
+  },
+  {
+    icon: MapPin,
+    title: "Ubicación",
+    content: "Calle 132D N 145A-02, Bogotá",
+    href: null,
+    color: "from-purple-500 to-purple-600",
+  },
+] as const
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -19,40 +44,22 @@ export function Contact() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000))
-    console.log("Form submitted:", formData)
+    // Removed console.log for production
     setIsSubmitting(false)
     // Reset form
     setFormData({ name: "", email: "", phone: "", message: "" })
-  }
+  }, [])
 
-  const contactInfo = [
-    {
-      icon: Phone,
-      title: "Teléfono",
-      content: "+57 322 3716811",
-      href: "tel:+573223716811",
-      color: "from-blue-500 to-blue-600",
-    },
-    {
-      icon: Mail,
-      title: "Correo",
-      content: "pinturassanpedro@hotmail.com",
-      href: "mailto:pinturassanpedro@hotmail.com",
-      color: "from-yellow-500 to-yellow-600",
-    },
-    {
-      icon: MapPin,
-      title: "Ubicación",
-      content: "Calle 132D N 145A-02, Bogotá",
-      href: null,
-      color: "from-purple-500 to-purple-600",
-    },
-  ]
+  // Handler genérico memoizado para inputs
+  const handleInputChange = useCallback((field: keyof typeof formData) => 
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setFormData(prev => ({ ...prev, [field]: e.target.value }))
+    }, [])
 
   return (
     <section id="contact" className="relative py-20 md:py-32 lg:py-40 overflow-hidden">
@@ -81,7 +88,7 @@ export function Contact() {
                         id="name"
                         placeholder="Juan Pérez"
                         value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        onChange={handleInputChange('name')}
                         required
                         className="h-14 rounded-xl border-2 focus:border-secondary transition-colors"
                       />
@@ -95,7 +102,7 @@ export function Contact() {
                         type="email"
                         placeholder="juan@ejemplo.com"
                         value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        onChange={handleInputChange('email')}
                         required
                         className="h-14 rounded-xl border-2 focus:border-secondary transition-colors"
                       />
@@ -110,7 +117,7 @@ export function Contact() {
                       type="tel"
                       placeholder="(555) 123-4567"
                       value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      onChange={handleInputChange('phone')}
                       required
                       className="h-14 rounded-xl border-2 focus:border-secondary transition-colors"
                     />
@@ -124,7 +131,7 @@ export function Contact() {
                       placeholder="Cuéntanos sobre tu proyecto de pintura, qué espacios quieres transformar, tus preferencias de color..."
                       rows={6}
                       value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      onChange={handleInputChange('message')}
                       required
                       className="min-h-40 rounded-xl border-2 focus:border-secondary transition-colors resize-none"
                     />

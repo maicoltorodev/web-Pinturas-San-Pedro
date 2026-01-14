@@ -42,18 +42,34 @@ export function Header() {
   }, [])
 
   useEffect(() => {
-    let ticking = false
+    let rafId: number | null = null
+    let lastScrollY = window.scrollY
+    
     const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setIsScrolled(window.scrollY > 20)
-          ticking = false
-        })
-        ticking = true
+      // Cancelar RAF anterior si existe
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId)
+      }
+      
+      rafId = requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY
+        // Solo actualizar estado si hay cambio significativo (más de 5px)
+        if (Math.abs(currentScrollY - lastScrollY) > 5) {
+          setIsScrolled(currentScrollY > 20)
+          lastScrollY = currentScrollY
+        }
+        rafId = null
+      })
+    }
+    
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId)
       }
     }
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   return (

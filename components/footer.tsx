@@ -1,6 +1,5 @@
 "use client"
 
-import { useState, useEffect } from "react"
 import Image from "next/image"
 import { Mail, Phone, MapPin, ArrowRight, Facebook, Instagram } from "lucide-react"
 
@@ -18,22 +17,20 @@ function TikTokIcon({ className }: { className?: string }) {
   )
 }
 
-export function Footer() {
-  const [currentYear, setCurrentYear] = useState(2024)
-  
-  useEffect(() => {
-    setCurrentYear(new Date().getFullYear())
-  }, [])
+// Datos estáticos fuera del componente
+const quickLinks = [
+  { href: "/#services", label: "Servicios" },
+  { href: "/#process", label: "Proceso" },
+  { href: "/#products", label: "Productos" },
+  { href: "/#color-palette", label: "Colores" },
+  { href: "/#testimonials", label: "Testimonios" },
+  { href: "/#location", label: "Ubicación" },
+  { href: "/#contact", label: "Contacto" },
+] as const
 
-  const quickLinks = [
-    { href: "/#services", label: "Servicios" },
-    { href: "/#process", label: "Proceso" },
-    { href: "/#products", label: "Productos" },
-    { href: "/#color-palette", label: "Colores" },
-    { href: "/#testimonials", label: "Testimonios" },
-    { href: "/#location", label: "Ubicación" },
-    { href: "/#contact", label: "Contacto" },
-  ]
+export function Footer() {
+  // Calcular año directamente sin estado innecesario
+  const currentYear = new Date().getFullYear()
 
   return (
     <footer className="relative bg-primary text-primary-foreground overflow-hidden">

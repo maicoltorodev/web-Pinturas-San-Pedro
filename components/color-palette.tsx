@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useMemo } from "react"
+import React, { useState, useMemo, useRef, useEffect } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { CirclePattern } from "@/components/ui/circle-pattern"
 import { SectionHeader } from "@/components/ui/section-header"
@@ -129,6 +129,7 @@ export function ColorPalette() {
   const [activeTab, setActiveTab] = useState<string | null>(null) // null = "Todos"
   const [searchQuery, setSearchQuery] = useState("")
   const [copiedColor, setCopiedColor] = useState<string | null>(null)
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   // Filtrar colores según búsqueda y pestaña activa
   const filteredCategories = useMemo(() => {
@@ -155,12 +156,30 @@ export function ColorPalette() {
     return categories
   }, [activeTab, searchQuery])
 
+  // Cleanup de timeout al desmontar
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+        timeoutRef.current = null
+      }
+    }
+  }, [])
+
   // Función para copiar código de color
   const copyToClipboard = async (text: string, colorName: string) => {
     try {
       await navigator.clipboard.writeText(text)
       setCopiedColor(colorName)
-      setTimeout(() => setCopiedColor(null), 2000)
+      // Limpiar timeout anterior si existe
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+      // Crear nuevo timeout y guardar referencia
+      timeoutRef.current = setTimeout(() => {
+        setCopiedColor(null)
+        timeoutRef.current = null
+      }, 2000)
     } catch (err) {
       console.error("Error al copiar:", err)
     }

@@ -99,7 +99,7 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
       colors.hoverShadow
     )}>
       <div className={cn(
-        "absolute inset-0 bg-gradient-to-br will-change-opacity",
+        "absolute inset-0 bg-gradient-to-br md:group-hover:will-change-opacity",
         colors.bgGradient,
         "opacity-50 md:group-hover:opacity-70 transition-opacity duration-300"
       )} />
@@ -107,13 +107,13 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
       <CardContent className="p-6 md:p-8 relative z-10 flex flex-col items-center text-center">
         <div className="relative mb-6">
           <div className={cn(
-            "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full will-change-opacity -z-10",
+            "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full md:group-hover:will-change-opacity -z-10",
             `bg-gradient-to-br ${colors.iconBg} blur-xl`,
             "opacity-0 md:group-hover:opacity-30 transition-opacity duration-300"
           )} />
           
           <div className={cn(
-            "flex items-center justify-center w-16 h-16 rounded-2xl will-change-transform relative z-10",
+            "flex items-center justify-center w-16 h-16 rounded-2xl md:group-hover:will-change-transform relative z-10",
             `bg-gradient-to-br ${colors.iconBg}`,
             "shadow-lg transition-[transform,box-shadow] duration-300",
             "md:group-hover:scale-110 md:group-hover:shadow-xl"

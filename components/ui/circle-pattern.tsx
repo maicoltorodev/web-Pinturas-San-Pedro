@@ -19,7 +19,6 @@ export function CirclePattern({ className, variant = "default" }: CirclePatternP
     <div
       className={cn("absolute inset-0 overflow-hidden pointer-events-none", className)}
       aria-hidden="true"
-      style={{ willChange: 'transform' }}
     >
       {/* Circle 1 - Top Left */}
       <div

@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect, useMemo } from "react"
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -216,14 +216,29 @@ export function Testimonials() {
   const nextButtonRef = useRef<HTMLButtonElement>(null)
   const [activeIndex, setActiveIndex] = useState(0)
 
-  // Preparar testimonios con colores
-  const testimonialsWithColors = testimonials.map((testimonial, index) => {
-    const colorIndex = index % paintColors.length
-    return {
-      ...testimonial,
-      color: paintColors[colorIndex]
+  // Preparar testimonios con colores - memoizado para evitar recálculos
+  const testimonialsWithColors = useMemo(() => {
+    return testimonials.map((testimonial, index) => {
+      const colorIndex = index % paintColors.length
+      return {
+        ...testimonial,
+        color: paintColors[colorIndex]
+      }
+    })
+  }, []) // Array estático, no necesita dependencias
+
+  // Cleanup de Swiper al desmontar
+  useEffect(() => {
+    return () => {
+      if (swiperRef.current) {
+        // Detener autoplay antes de destruir
+        swiperRef.current.autoplay?.stop()
+        // Destruir instancia de Swiper
+        swiperRef.current.destroy(true, true)
+        swiperRef.current = null
+      }
     }
-  })
+  }, [])
 
   return (
     <section id="testimonials" className="relative py-24 md:py-32 lg:py-40 bg-background overflow-hidden">
