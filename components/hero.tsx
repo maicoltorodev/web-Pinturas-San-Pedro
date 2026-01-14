@@ -77,7 +77,11 @@ export function Hero() {
                   minHeight: '128px',
                   maxWidth: '500px',
                   maxHeight: '250px',
-                  willChange: shouldAnimate ? 'transform' : 'auto'
+                  willChange: shouldAnimate ? 'transform' : 'auto',
+                  // GPU acceleration para móvil
+                  transform: 'translateZ(0)',
+                  backfaceVisibility: 'hidden',
+                  WebkitBackfaceVisibility: 'hidden'
                 }}
               >
                 {/* Simplified: Single glow effect instead of multiple layers */}

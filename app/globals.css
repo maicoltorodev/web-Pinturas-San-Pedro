@@ -222,7 +222,7 @@
     box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
   }
   
-  /* Floating animation */
+  /* Floating animation - Desktop version */
   @keyframes float {
     0%, 100% {
       transform: translateY(0px);
@@ -232,13 +232,37 @@
     }
   }
   
+  /* Floating animation - Mobile optimized (lighter movement, faster) */
+  @keyframes float-mobile {
+    0%, 100% {
+      transform: translateY(0px) translateZ(0);
+    }
+    50% {
+      transform: translateY(-12px) translateZ(0);
+    }
+  }
+  
   .animate-float {
     animation: float 3s ease-in-out infinite;
+    /* GPU acceleration */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  /* Mobile optimized float animation */
+  @media (max-width: 768px) {
+    .animate-float {
+      animation: float-mobile 2.5s ease-in-out infinite;
+      /* Optimized for mobile - GPU acceleration */
+      will-change: transform;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+    }
   }
   
   /* Disable heavy effects on mobile for better performance */
   @media (max-width: 768px) {
-    .animate-float,
     .animate-glow-pulse,
     .animate-glow-pulse-subtle,
     .animate-button-glow,
