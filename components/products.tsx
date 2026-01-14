@@ -104,15 +104,27 @@ function ProductCard({ product }: { product: typeof products[0] }) {
 
           {/* Imagen del producto - más pequeña y centrada */}
           <div className="relative w-full h-48 mb-6 flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl overflow-hidden group-hover:bg-gradient-to-br group-hover:from-gray-100 group-hover:to-gray-200 transition-all duration-300">
-            <div className="relative w-40 h-40 group-hover:scale-105 transition-transform duration-300">
+            <div 
+              className="relative w-40 h-40 group-hover:scale-105 transition-transform duration-300"
+              style={{
+                minWidth: '160px',
+                minHeight: '160px',
+                aspectRatio: '1 / 1'
+              }}
+            >
               <Image
                 src={product.image}
                 alt={product.name}
                 fill
                 className="object-contain p-4"
-                sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                sizes="160px"
                 loading="lazy"
                 quality={85}
+                style={{
+                  objectFit: 'contain',
+                  width: '100%',
+                  height: '100%'
+                }}
               />
             </div>
           </div>

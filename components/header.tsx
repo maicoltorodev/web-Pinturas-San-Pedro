@@ -63,6 +63,8 @@ export function Header() {
               style={{ 
                 minWidth: '128px',
                 minHeight: '48px',
+                maxWidth: '192px',
+                maxHeight: '80px',
                 willChange: isMounted ? 'transform, filter' : 'auto'
               }}
             >
@@ -77,7 +79,9 @@ export function Header() {
                 style={{ 
                   objectFit: 'contain',
                   width: '100%',
-                  height: '100%'
+                  height: '100%',
+                  maxWidth: '100%',
+                  maxHeight: '100%'
                 }}
               />
             </div>

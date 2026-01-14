@@ -47,8 +47,20 @@ export function LogoFAB() {
     >
       
       {/* Logo con glow dorado pegado al borde */}
-      <div className="relative w-24 h-24 flex items-center justify-center z-10 aspect-square">
-        <div className="relative w-full h-full aspect-square">
+      <div 
+        className="relative w-24 h-24 flex items-center justify-center z-10 aspect-square"
+        style={{
+          minWidth: '96px',
+          minHeight: '96px'
+        }}
+      >
+        <div 
+          className="relative w-full h-full aspect-square"
+          style={{
+            minWidth: '96px',
+            minHeight: '96px'
+          }}
+        >
           <Image
             src="/logo.png"
             alt="Pinturas San Pedro"
@@ -57,6 +69,9 @@ export function LogoFAB() {
             sizes="96px"
             style={{ 
               filter: 'drop-shadow(0 0 4px rgba(255, 215, 0, 0.8))',
+              objectFit: 'contain',
+              width: '100%',
+              height: '100%'
             }}
           />
           {/* Outline glow pegado al borde */}

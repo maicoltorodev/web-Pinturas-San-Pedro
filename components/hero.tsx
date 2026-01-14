@@ -50,6 +50,8 @@ export function Hero() {
                 style={{ 
                   minWidth: '256px',
                   minHeight: '128px',
+                  maxWidth: '500px',
+                  maxHeight: '250px',
                   willChange: isMounted ? 'transform' : 'auto'
                 }}
               >
@@ -68,7 +70,9 @@ export function Hero() {
                   style={{ 
                     objectFit: 'contain',
                     width: '100%',
-                    height: '100%'
+                    height: '100%',
+                    maxWidth: '100%',
+                    maxHeight: '100%'
                   }}
                 />
               </div>
