@@ -27,6 +27,7 @@ export function Location() {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               className="w-full"
+              title="Mapa de ubicación de Pinturas San Pedro - Calle 132D N 145A-02, Bogotá"
             />
           </div>
         </div>

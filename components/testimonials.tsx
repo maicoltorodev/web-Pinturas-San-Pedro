@@ -112,7 +112,7 @@ function TestimonialCard({ testimonial, isActive }: { testimonial: typeof testim
         <div className="pt-4 border-t border-border/50">
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-secondary" />
-            <span className="text-sm font-semibold text-secondary">
+            <span className="text-sm font-semibold text-foreground">
               {testimonial.project}
             </span>
           </div>
@@ -190,17 +190,22 @@ export function Testimonials() {
               <ChevronLeft className="h-6 w-6" />
             </Button>
             
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
                   className={cn(
-                    "h-2 rounded-full transition-all duration-300",
-                    currentIndex === index ? "bg-secondary w-10 shadow-md" : "bg-border w-2 hover:bg-secondary/50"
+                    "rounded-full transition-all duration-300 min-w-[44px] min-h-[44px] flex items-center justify-center p-2",
+                    currentIndex === index ? "bg-secondary shadow-md" : "bg-transparent hover:bg-secondary/10"
                   )}
                   aria-label={`Ir a testimonio ${index + 1}`}
-                />
+                >
+                  <span className={cn(
+                    "rounded-full transition-all duration-300",
+                    currentIndex === index ? "bg-white h-2 w-10" : "bg-border h-2 w-2"
+                  )} />
+                </button>
               ))}
             </div>
             
