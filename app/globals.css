@@ -271,9 +271,8 @@
       animation: none !important;
     }
     
-    /* Remove heavy blur effects completely on mobile */
-    [class*="blur-2xl"],
-    [class*="blur-xl"] {
+    /* Remove heavy blur effects completely on mobile (except CirclePattern in hero) */
+    [class*="blur-2xl"] {
       display: none !important;
     }
     
