@@ -36,16 +36,16 @@ export function Location() {
                 rootMargin="100px"
                 threshold={0.1}
               >
-                <div className="rounded-2xl overflow-hidden shadow-premium-lg border-4 border-secondary bg-card/10 md:backdrop-blur-sm h-full">
+                <div className="rounded-2xl overflow-hidden shadow-premium-lg border-4 border-secondary bg-card/10 md:backdrop-blur-sm">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.1431777141015!2d-74.11753039999999!3d4.7451628999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f8515d79b05f3%3A0x17e8f9d484745c6b!2sPinturas%20San%20Pedro%20Oficial!5e0!3m2!1ses-419!2sco!4v1768339290494!5m2!1ses-419!2sco"
                     width="100%"
-                    height="100%"
-                    style={{ border: 0, minHeight: '450px' }}
+                    height="450"
+                    style={{ border: 0 }}
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    className="w-full h-full"
+                    className="w-full"
                     title="Mapa de ubicación de Pinturas San Pedro - Calle 132D N 145A-02, Bogotá"
                   />
                 </div>
@@ -68,8 +68,8 @@ export function Location() {
                 rootMargin="100px"
                 threshold={0.1}
               >
-                <div className="rounded-2xl overflow-hidden shadow-premium-lg border-4 border-secondary bg-card/10 md:backdrop-blur-sm h-full relative group">
-                  <div className="relative w-full h-[450px] md:h-full">
+                <div className="rounded-2xl overflow-hidden shadow-premium-lg border-4 border-secondary bg-card/10 md:backdrop-blur-sm relative group">
+                  <div className="relative w-full h-[450px]">
                     <Image
                       src="/fachada.png"
                       alt="Fachada de Pinturas San Pedro - Calle 132D N 145A-02, Bogotá"
