@@ -57,7 +57,7 @@ export function Header() {
           <a href="#hero" className="flex items-center group flex-shrink-0">
             <div 
               className={cn(
-                "relative h-12 w-32 md:h-16 md:w-40 lg:h-20 lg:w-48 transition-transform duration-300 group-hover:scale-105 aspect-[2.67/1]",
+                "relative h-12 w-32 md:h-16 md:w-40 lg:h-20 lg:w-48 transition-transform duration-300 group-hover:scale-105 aspect-[2.67/1] overflow-hidden",
                 isMounted && "animate-glow-pulse-subtle"
               )}
               style={{ 
@@ -65,7 +65,8 @@ export function Header() {
                 minHeight: '48px',
                 maxWidth: '192px',
                 maxHeight: '80px',
-                willChange: isMounted ? 'transform, filter' : 'auto'
+                willChange: isMounted ? 'transform, filter' : 'auto',
+                contain: 'layout style paint'
               }}
             >
               <Image
@@ -81,7 +82,11 @@ export function Header() {
                   width: '100%',
                   height: '100%',
                   maxWidth: '100%',
-                  maxHeight: '100%'
+                  maxHeight: '100%',
+                  display: 'block',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0
                 }}
               />
             </div>
