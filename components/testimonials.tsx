@@ -11,9 +11,8 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Autoplay } from 'swiper/modules'
 import type { Swiper as SwiperType } from 'swiper'
 
-// Importar estilos de Swiper
-import 'swiper/css'
-import 'swiper/css/navigation'
+// Cargar estilos de Swiper dinámicamente cuando el componente está visible
+// Esto evita render blocking CSS en la carga inicial de la página
 
 // Componente del icono de Google
 function GoogleIcon({ className }: { className?: string }) {
@@ -215,6 +214,42 @@ export function Testimonials() {
   const prevButtonRef = useRef<HTMLButtonElement>(null)
   const nextButtonRef = useRef<HTMLButtonElement>(null)
   const [activeIndex, setActiveIndex] = useState(0)
+  const [stylesLoaded, setStylesLoaded] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
+
+  // Cargar estilos de Swiper solo cuando el componente está visible
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section || stylesLoaded) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !stylesLoaded) {
+          // Cargar estilos de Swiper dinámicamente usando link tags
+          // Esto evita render blocking CSS en la carga inicial
+          const link1 = document.createElement('link')
+          link1.rel = 'stylesheet'
+          link1.href = 'https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css'
+          link1.crossOrigin = 'anonymous'
+          document.head.appendChild(link1)
+          
+          setStylesLoaded(true)
+          // Desconectar observer después de cargar
+          observer.disconnect()
+        }
+      },
+      {
+        rootMargin: '200px', // Cargar cuando está a 200px del viewport
+        threshold: 0.01
+      }
+    )
+
+    observer.observe(section)
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [stylesLoaded])
 
   // Preparar testimonios con colores - memoizado para evitar recálculos
   const testimonialsWithColors = useMemo(() => {
@@ -241,7 +276,7 @@ export function Testimonials() {
   }, [])
 
   return (
-    <section id="testimonials" className="relative py-24 md:py-32 lg:py-40 bg-background overflow-hidden">
+    <section ref={sectionRef} id="testimonials" className="relative py-24 md:py-32 lg:py-40 bg-background overflow-hidden">
       {/* Decoración optimizada solo en desktop */}
       <div className="hidden md:block absolute inset-0 opacity-5">
         <CirclePattern variant="subtle" />

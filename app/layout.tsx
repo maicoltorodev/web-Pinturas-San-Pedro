@@ -113,6 +113,9 @@ export default function RootLayout({
         <link rel="preconnect" href="https://maps.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://maps.googleapis.com" />
         <link rel="dns-prefetch" href="https://maps.gstatic.com" />
+        {/* Preconnect to Vercel assets for faster loading */}
+        <link rel="preconnect" href="https://vercel.app" />
+        <link rel="dns-prefetch" href="https://vercel.app" />
       </head>
       <body className={`font-sans antialiased`}>
         {children}
