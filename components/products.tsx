@@ -319,6 +319,7 @@ const products: Product[] = [
 
 function ProductCard({ product }: { product: Product }) {
   const Icon = product.icon
+  const [isExpanded, setIsExpanded] = useState(false)
 
   const formatPrice = (price: string | string[]): string => {
     if (Array.isArray(price)) {
@@ -327,182 +328,213 @@ function ProductCard({ product }: { product: Product }) {
     return price
   }
 
+  const hasAdditionalInfo = product.uses || product.benefits || product.application
+
   return (
-    <Card className="h-full border-2 border-primary-foreground/30 bg-white/95 md:backdrop-blur-sm md:hover:border-secondary md:hover:shadow-premium-lg transition-all duration-300 md:hover:-translate-y-2 group relative overflow-hidden flex flex-col">
-        <div className="absolute inset-0 bg-gradient-to-br from-secondary/0 via-secondary/0 to-secondary/0 md:group-hover:from-secondary/10 md:group-hover:via-secondary/10 md:group-hover:to-secondary/10 transition-all duration-300 pointer-events-none z-10" />
-        
-        <CardContent className="p-6 flex-1 flex flex-col relative z-10">
-          {/* Header con categoría */}
-          <div className="flex items-start justify-between mb-4">
-            <span className="px-4 py-1.5 rounded-full bg-secondary border-2 border-secondary text-xs font-bold text-secondary-foreground uppercase tracking-wider shadow-lg">
+    <Card className={cn(
+      "h-full border-2 bg-white/98 backdrop-blur-sm",
+      "group relative overflow-hidden flex flex-col",
+      "transition-all duration-500 ease-out",
+      "hover:border-secondary/60 hover:shadow-premium-lg",
+      "md:hover:-translate-y-1"
+    )}>
+      {/* Gradient overlay on hover */}
+      <div className={cn(
+        "absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity duration-500",
+        "md:group-hover:opacity-5 pointer-events-none z-0",
+        product.color
+      )} />
+      
+      <CardContent className="p-0 flex-1 flex flex-col relative z-10">
+        {/* Header Section - Image + Category Badge */}
+        <div className="relative h-56 md:h-64 overflow-hidden bg-gradient-to-br from-gray-50 via-gray-50/50 to-white">
+          {/* Background pattern */}
+          <div className="absolute inset-0 opacity-20 md:opacity-30">
+            <div className={cn(
+              "absolute inset-0 bg-gradient-to-br opacity-15 md:opacity-20 transition-opacity duration-500",
+              "md:group-hover:opacity-25",
+              product.color
+            )} />
+          </div>
+          
+          {/* Category Badge - Top Left */}
+          <div className="absolute top-4 left-4 z-20">
+            <span className={cn(
+              "px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg",
+              "bg-white/95 backdrop-blur-sm border-2 border-secondary/20",
+              "text-secondary-foreground"
+            )}>
               {product.category}
             </span>
-            {/* Icono decorativo */}
+          </div>
+
+          {/* Icon - Top Right */}
+          <div className="absolute top-4 right-4 z-20">
             <div className={cn(
-              "w-12 h-12 rounded-xl bg-gradient-to-br flex items-center justify-center shadow-lg group-hover:scale-105 transition-all duration-300",
+              "w-14 h-14 rounded-2xl bg-gradient-to-br flex items-center justify-center",
+              "shadow-xl transition-all duration-500",
+              "md:group-hover:scale-110 md:group-hover:rotate-3",
               product.color
             )}>
-              <Icon className="h-6 w-6 text-white drop-shadow-lg" />
+              <Icon className="h-7 w-7 text-white drop-shadow-lg" />
             </div>
           </div>
 
-          {/* Imagen del producto - más pequeña y centrada */}
-          <div className="relative w-full h-48 mb-6 flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl overflow-hidden group-hover:bg-gradient-to-br group-hover:from-gray-100 group-hover:to-gray-200 transition-all duration-300">
-            <div 
-              className="relative w-40 h-40 group-hover:scale-105 transition-transform duration-300"
-              style={{
-                minWidth: '160px',
-                minHeight: '160px',
-                aspectRatio: '1 / 1'
-              }}
-            >
+          {/* Product Image - Centered */}
+          <div className="absolute inset-0 flex items-center justify-center p-8">
+            <div className="relative w-32 h-32 md:w-36 md:h-36 transition-transform duration-500 md:group-hover:scale-110">
               <Image
                 src={product.image}
                 alt={product.name}
                 fill
-                className="object-contain p-4"
-                sizes="160px"
+                className="object-contain"
+                sizes="144px"
                 loading="lazy"
-                quality={85}
-                style={{
-                  objectFit: 'contain',
-                  width: '100%',
-                  height: '100%'
-                }}
+                quality={90}
               />
             </div>
           </div>
-          {/* Nombre del producto */}
-          <h3 className="text-xl font-black text-foreground mb-3 group-hover:text-secondary transition-colors duration-300 leading-tight">
+        </div>
+
+        {/* Content Section */}
+        <div className="p-6 flex-1 flex flex-col">
+          {/* Product Name */}
+          <h3 className="text-xl md:text-2xl font-black text-foreground mb-2 leading-tight transition-colors duration-300 md:group-hover:text-secondary">
             {product.name}
           </h3>
 
-          {/* Descripción */}
-          <p className="text-sm text-foreground/80 leading-relaxed mb-5 font-medium flex-1">
+          {/* Description */}
+          <p className="text-sm text-foreground/70 leading-relaxed mb-4 line-clamp-2">
             {product.description}
           </p>
 
-          {/* Certificaciones */}
-          {product.certifications && product.certifications.length > 0 && (
-            <div className="mb-5">
-              <div className="flex flex-wrap gap-2">
-                {product.certifications.map((cert, idx) => (
-                  <div key={idx} className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-blue-50 border border-blue-200">
-                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                    <span className="text-xs font-bold text-blue-700">{cert}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Colores disponibles */}
-          {product.colors && product.colors.length > 0 && (
-            <div className="mb-5">
-              <div className="text-xs font-bold text-secondary uppercase tracking-widest mb-2 flex items-center gap-2">
-                <div className="w-4 h-0.5 bg-secondary rounded-full" />
-                <span>Colores</span>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {product.colors.map((color, idx) => (
-                  <span key={idx} className="px-2.5 py-1 rounded-md bg-secondary/10 border border-secondary/30 text-xs font-semibold text-foreground">
-                    {color}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Características */}
-          <div className="pt-5 border-t-2 border-border md:group-hover:border-secondary transition-colors duration-300 mb-5">
-            <div className="text-xs font-bold text-secondary uppercase tracking-widest mb-3 flex items-center gap-2">
-              <div className="w-6 h-1 bg-secondary rounded-full" />
-              <span>Características</span>
-            </div>
-            <ul className="space-y-2">
-              {product.features.map((feature) => (
-                <li key={feature} className="flex items-start gap-2.5 text-xs text-foreground">
-                  <div className="flex-shrink-0 mt-1 w-2 h-2 rounded-full bg-secondary shadow-sm" />
-                  <span className="font-semibold leading-relaxed">{feature}</span>
-                </li>
+          {/* Certifications & Colors - Compact */}
+          {(product.certifications || product.colors) && (
+            <div className="flex flex-wrap gap-2 mb-4">
+              {product.certifications?.map((cert, idx) => (
+                <div key={idx} className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-blue-50/80 border border-blue-200/60 backdrop-blur-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                  <span className="text-[10px] font-bold text-blue-700 uppercase tracking-wide">{cert}</span>
+                </div>
               ))}
-            </ul>
-          </div>
+              {product.colors?.map((color, idx) => (
+                <span key={idx} className="px-2.5 py-1 rounded-md bg-secondary/10 border border-secondary/20 text-[10px] font-semibold text-foreground">
+                  {color}
+                </span>
+              ))}
+            </div>
+          )}
 
-          {/* Presentaciones y Precios */}
+          {/* Key Features - Compact Grid */}
+          {product.features.length > 0 && (
+            <div className="mb-4">
+              <ul className="grid grid-cols-2 gap-2">
+                {product.features.slice(0, 4).map((feature, idx) => (
+                  <li key={idx} className="flex items-start gap-1.5">
+                    <div className="flex-shrink-0 mt-1.5 w-1.5 h-1.5 rounded-full bg-secondary" />
+                    <span className="text-xs font-medium text-foreground/80 leading-tight line-clamp-2">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* Presentaciones y Precios - Highlighted */}
           {product.presentations && product.presentations.length > 0 && (
-            <div className="pt-5 border-t-2 border-border md:group-hover:border-secondary transition-colors duration-300 mb-5">
-              <div className="text-xs font-bold text-secondary uppercase tracking-widest mb-3 flex items-center gap-2">
-                <div className="w-6 h-1 bg-secondary rounded-full" />
-                <span>Presentaciones y Precios</span>
+            <div className="mt-auto pt-4 border-t border-border/50">
+              <div className="mb-3">
+                <span className="text-xs font-bold text-secondary uppercase tracking-wider">Precios</span>
               </div>
               <div className="space-y-2">
                 {product.presentations.map((presentation, idx) => (
-                  <div key={idx} className="flex items-center justify-between py-2 px-3 rounded-lg bg-gray-50 border border-gray-200">
-                    <span className="text-xs font-bold text-foreground">{presentation.size}:</span>
-                    <span className="text-xs font-black text-secondary">{formatPrice(presentation.price)}</span>
+                  <div 
+                    key={idx} 
+                    className={cn(
+                      "flex items-center justify-between py-2.5 px-4 rounded-lg",
+                      "bg-gradient-to-r from-secondary/5 to-secondary/10",
+                      "border border-secondary/20",
+                      "transition-all duration-300",
+                      "md:group-hover:border-secondary/40 md:group-hover:from-secondary/10 md:group-hover:to-secondary/15"
+                    )}
+                  >
+                    <span className="text-sm font-bold text-foreground">{presentation.size}</span>
+                    <span className="text-sm font-black text-secondary">{formatPrice(presentation.price)}</span>
                   </div>
                 ))}
               </div>
             </div>
           )}
 
-          {/* Usos */}
-          {product.uses && product.uses.length > 0 && (
-            <div className="pt-5 border-t-2 border-border md:group-hover:border-secondary transition-colors duration-300 mb-5">
-              <div className="text-xs font-bold text-secondary uppercase tracking-widest mb-3 flex items-center gap-2">
-                <div className="w-6 h-1 bg-secondary rounded-full" />
-                <span>Usos</span>
-              </div>
-              <ul className="space-y-2">
-                {product.uses.map((use, idx) => (
-                  <li key={idx} className="flex items-start gap-2.5 text-xs text-foreground">
-                    <div className="flex-shrink-0 mt-1 w-2 h-2 rounded-full bg-secondary shadow-sm" />
-                    <span className="font-semibold leading-relaxed">{use}</span>
-                  </li>
-                ))}
-              </ul>
+          {/* Additional Info - Expandable */}
+          {hasAdditionalInfo && (
+            <div className="mt-4 pt-4 border-t border-border/50">
+              <button
+                onClick={() => setIsExpanded(!isExpanded)}
+                className="w-full flex items-center justify-between text-xs font-bold text-secondary uppercase tracking-wider hover:text-secondary/80 transition-colors"
+              >
+                <span>Información adicional</span>
+                <span className={cn(
+                  "transition-transform duration-300",
+                  isExpanded && "rotate-180"
+                )}>
+                  ▼
+                </span>
+              </button>
+              
+              {isExpanded && (
+                <div className="mt-4 space-y-4 animate-fade-in">
+                  {/* Usos */}
+                  {product.uses && product.uses.length > 0 && (
+                    <div>
+                      <div className="text-xs font-bold text-foreground/60 uppercase tracking-wider mb-2">Usos</div>
+                      <ul className="space-y-1.5">
+                        {product.uses.map((use, idx) => (
+                          <li key={idx} className="flex items-start gap-2 text-xs text-foreground/70">
+                            <span className="text-secondary mt-1">•</span>
+                            <span>{use}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Beneficios */}
+                  {product.benefits && product.benefits.length > 0 && (
+                    <div>
+                      <div className="text-xs font-bold text-foreground/60 uppercase tracking-wider mb-2">Beneficios</div>
+                      <ul className="space-y-1.5">
+                        {product.benefits.map((benefit, idx) => (
+                          <li key={idx} className="flex items-start gap-2 text-xs text-foreground/70">
+                            <span className="text-secondary mt-1">•</span>
+                            <span>{benefit}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Aplicación */}
+                  {product.application && (
+                    <div>
+                      <div className="text-xs font-bold text-foreground/60 uppercase tracking-wider mb-2">Aplicación</div>
+                      <p className="text-xs text-foreground/70 leading-relaxed">{product.application}</p>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           )}
 
-          {/* Beneficios */}
-          {product.benefits && product.benefits.length > 0 && (
-            <div className="pt-5 border-t-2 border-border md:group-hover:border-secondary transition-colors duration-300 mb-5">
-              <div className="text-xs font-bold text-secondary uppercase tracking-widest mb-3 flex items-center gap-2">
-                <div className="w-6 h-1 bg-secondary rounded-full" />
-                <span>Beneficios</span>
-              </div>
-              <ul className="space-y-2">
-                {product.benefits.map((benefit, idx) => (
-                  <li key={idx} className="flex items-start gap-2.5 text-xs text-foreground">
-                    <div className="flex-shrink-0 mt-1 w-2 h-2 rounded-full bg-secondary shadow-sm" />
-                    <span className="font-semibold leading-relaxed">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          {/* Aplicación */}
-          {product.application && (
-            <div className="pt-5 border-t-2 border-border md:group-hover:border-secondary transition-colors duration-300 mb-5">
-              <div className="text-xs font-bold text-secondary uppercase tracking-widest mb-3 flex items-center gap-2">
-                <div className="w-6 h-1 bg-secondary rounded-full" />
-                <span>Aplicación</span>
-              </div>
-              <p className="text-xs text-foreground font-semibold leading-relaxed">{product.application}</p>
-            </div>
-          )}
-
-          {/* Footer */}
-          <div className="pt-5 border-t border-border/50 mt-auto">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-secondary/20 border-2 border-secondary/40 shadow-sm">
-              <div className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-              <span className="text-xs font-bold text-secondary uppercase tracking-wider">Premium</span>
+          {/* Premium Badge - Bottom */}
+          <div className="mt-4 pt-4 border-t border-border/30">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-secondary/10 border border-secondary/20">
+              <div className="w-1.5 h-1.5 rounded-full bg-secondary" />
+              <span className="text-xs font-bold text-secondary uppercase tracking-wider">Calidad Premium</span>
             </div>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </CardContent>
+    </Card>
   )
 }
 
@@ -516,16 +548,18 @@ function FilterBar({
   onCategoryChange: (category: string) => void 
 }) {
   return (
-    <div className="flex flex-wrap gap-3 justify-center mb-12">
+    <div className="flex flex-wrap gap-2.5 md:gap-3 justify-center mb-12 px-4">
       {categories.map((category) => (
         <button
           key={category}
           onClick={() => onCategoryChange(category)}
           className={cn(
-            "px-6 py-3 rounded-full border-2 font-bold text-sm uppercase tracking-wider transition-all duration-300",
+            "px-5 py-2.5 md:px-6 md:py-3 rounded-full border-2 font-bold text-xs md:text-sm uppercase tracking-wider",
+            "transition-all duration-300 ease-out",
+            "backdrop-blur-sm",
             selectedCategory === category
-              ? "bg-secondary border-secondary text-secondary-foreground shadow-lg scale-105"
-              : "bg-white/80 border-primary-foreground/30 text-foreground hover:border-secondary hover:bg-secondary/10"
+              ? "bg-secondary border-secondary text-secondary-foreground shadow-lg scale-105 md:scale-110"
+              : "bg-white/90 border-primary-foreground/20 text-foreground/80 hover:border-secondary/60 hover:bg-secondary/5 hover:text-foreground hover:scale-105"
           )}
           aria-label={`Filtrar por ${category}`}
         >
@@ -566,8 +600,14 @@ export function Products() {
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {filteredProducts.map((product) => (
-            <ProductCard key={product.name} product={product} />
+          {filteredProducts.map((product, index) => (
+            <div 
+              key={product.name}
+              className="animate-fade-in"
+              style={{ animationDelay: `${index * 50}ms` }}
+            >
+              <ProductCard product={product} />
+            </div>
           ))}
         </div>
       </div>
