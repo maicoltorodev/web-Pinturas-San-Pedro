@@ -90,10 +90,6 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [
-      { url: '/logo.png', type: 'image/png' },
-      { url: '/imagen-metadata.jpg', type: 'image/jpeg', sizes: '1200x630' },
-    ],
     apple: [
       { url: '/logo.png', sizes: '180x180', type: 'image/png' },
     ],
