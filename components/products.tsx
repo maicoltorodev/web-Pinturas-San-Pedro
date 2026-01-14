@@ -95,7 +95,12 @@ const products: Product[] = [
     features: ["Económica", "Buena calidad", "Fácil aplicación"],
     icon: Brush,
     color: "from-gray-500 to-gray-600",
-    image: "/productos/vinilo-tipo-3.png"
+    image: "/productos/vinilo-tipo-3.png",
+    presentations: [
+      { size: "Cuñete", price: "Consultar" },
+      { size: "Medio", price: "Consultar" },
+      { size: "Galón", price: "Consultar" }
+    ]
   },
   
   // ANTICORROSIVO
@@ -106,7 +111,12 @@ const products: Product[] = [
     features: ["Protección contra oxidación", "Mejora adhesión del esmalte", "Secado rápido", "Alta resistencia"],
     icon: Shield,
     color: "from-orange-500 to-orange-600",
-    image: "/productos/impermeabilizante.png", // Placeholder
+    image: "/productos/anticorrosivo.png",
+    presentations: [
+      { size: "Cuñete", price: "Consultar" },
+      { size: "Medio", price: "Consultar" },
+      { size: "Galón", price: "Consultar" }
+    ],
     uses: [
       "Primera mano para superficies metálicas en interiores y exteriores",
       "Ventanas, rejas, puentes, barandas",
@@ -129,7 +139,7 @@ const products: Product[] = [
     features: ["Protección superior", "Decoración", "Durabilidad"],
     icon: Sparkles,
     color: "from-yellow-500 to-yellow-600",
-    image: "/productos/vinilo-tipo-1.png", // Placeholder
+    image: "/productos/esmalte-especial.png",
     uses: [
       "Rejas, puertas, ventanas",
       "Marcos, persianas",
@@ -149,7 +159,7 @@ const products: Product[] = [
     features: ["Protección superior", "Alta calidad", "Excelente acabado"],
     icon: Sparkles,
     color: "from-amber-500 to-amber-600",
-    image: "/productos/vinilo-tipo-1.png", // Placeholder
+    image: "/productos/esmalte-premium.png",
     uses: [
       "Rejas, puertas, ventanas",
       "Marcos, persianas",
@@ -169,7 +179,7 @@ const products: Product[] = [
     features: ["Protección", "Decoración", "Versatilidad"],
     icon: Sparkles,
     color: "from-yellow-400 to-yellow-500",
-    image: "/productos/vinilo-tipo-1.png", // Placeholder
+    image: "/productos/esmalte-tipo-1.png",
     uses: [
       "Rejas, puertas, ventanas",
       "Marcos, persianas",
@@ -190,7 +200,7 @@ const products: Product[] = [
     features: ["Alta resistencia al desgaste", "Secado rápido", "Excelente durabilidad"],
     icon: Car,
     color: "from-red-500 to-red-600",
-    image: "/productos/impermeabilizante.png", // Placeholder
+    image: "/productos/trafico-pesado.png",
     uses: [
       "Estacionamientos",
       "Carreteras",
@@ -211,7 +221,12 @@ const products: Product[] = [
     features: ["Acabado liso", "Alta adherencia", "Fácil aplicación"],
     icon: Layers,
     color: "from-indigo-500 to-indigo-600",
-    image: "/productos/vinilo-tipo-1.png", // Placeholder
+    image: "/productos/estuco-plastico-acrilico.png",
+    presentations: [
+      { size: "Cuñete", price: "Consultar" },
+      { size: "Medio", price: "Consultar" },
+      { size: "Galón", price: "Consultar" }
+    ],
     uses: [
       "Paredes interiores",
       "Superficies de madera en interiores",
@@ -225,7 +240,12 @@ const products: Product[] = [
     features: ["Acabado texturizado", "Decorativo", "Resistente"],
     icon: Layers,
     color: "from-blue-500 to-blue-600",
-    image: "/productos/vinilo-tipo-1.png", // Placeholder
+    image: "/productos/graniplas.png",
+    presentations: [
+      { size: "Cuñete", price: "Consultar" },
+      { size: "Medio", price: "Consultar" },
+      { size: "Galón", price: "Consultar" }
+    ],
     uses: [
       "Interiores y exteriores",
       "Acabados modernos y resistentes"
@@ -238,7 +258,12 @@ const products: Product[] = [
     features: ["Alta adherencia", "Flexibilidad", "Decorativo"],
     icon: Layers,
     color: "from-cyan-500 to-cyan-600",
-    image: "/productos/vinilo-tipo-1.png", // Placeholder
+    image: "/productos/garraplast.png",
+    presentations: [
+      { size: "Cuñete", price: "Consultar" },
+      { size: "Medio", price: "Consultar" },
+      { size: "Galón", price: "Consultar" }
+    ],
     uses: [
       "Protección y embellecimiento de superficies"
     ]
@@ -250,7 +275,12 @@ const products: Product[] = [
     features: ["Nivelación", "Preparación de superficies", "Acabado uniforme"],
     icon: Layers,
     color: "from-slate-500 to-slate-600",
-    image: "/productos/vinilo-tipo-1.png", // Placeholder
+    image: "/productos/pasta acrilica.png",
+    presentations: [
+      { size: "Cuñete", price: "Consultar" },
+      { size: "Medio", price: "Consultar" },
+      { size: "Galón", price: "Consultar" }
+    ],
     benefits: [
       "Garantiza un acabado uniforme y profesional",
       "Mejora la apariencia final de la pintura"
@@ -285,7 +315,10 @@ const products: Product[] = [
     features: ["Diseño ergonómico", "Cubrimiento uniforme"],
     icon: Wrench,
     color: "from-gray-600 to-gray-700",
-    image: "/productos/vinilo-tipo-1.png", // Placeholder
+    image: "/productos/brocha.png",
+    presentations: [
+      { size: "Variedad de tamaños", price: "Consultar" }
+    ],
     uses: [
       "Aplicación en paredes y techos"
     ]
@@ -297,7 +330,10 @@ const products: Product[] = [
     features: ["Precisión", "Control", "Ideal para detalles"],
     icon: Wrench,
     color: "from-gray-600 to-gray-700",
-    image: "/productos/vinilo-tipo-1.png", // Placeholder
+    image: "/productos/brocha.png",
+    presentations: [
+      { size: "Variedad de tamaños", price: "Consultar" }
+    ],
     uses: [
       "Detalles y rincones"
     ]
@@ -309,7 +345,11 @@ const products: Product[] = [
     features: ["Limpieza de herramientas", "Preparación de superficies"],
     icon: Wrench,
     color: "from-gray-600 to-gray-700",
-    image: "/productos/vinilo-tipo-1.png", // Placeholder
+    image: "/productos/brocha.png",
+    presentations: [
+      { size: "Galón", price: "Consultar" },
+      { size: "Medio", price: "Consultar" }
+    ],
     uses: [
       "Limpieza de herramientas",
       "Preparación de superficies"
