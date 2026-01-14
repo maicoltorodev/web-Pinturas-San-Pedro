@@ -49,7 +49,7 @@ const products: Product[] = [
     features: ["Acabado mate lavable", "Con cubrimiento", "Bajo aroma", "Con nivelación"],
     icon: Paintbrush,
     color: "from-green-500 to-green-600",
-    image: "/productos/vinilo-lavable.png",
+    image: "/productos/vinilo-acrilico.png",
     presentations: [
       { size: "Cuñete" },
       { size: "Medio" },
@@ -94,7 +94,7 @@ const products: Product[] = [
     features: ["Económica", "Con calidad", "Fácil aplicación"],
     icon: Brush,
     color: "from-gray-500 to-gray-600",
-    image: "/productos/vinilo-tipo-3.png",
+    image: "/productos/vinilo-tipo-2-certificado.png",
     presentations: [
       { size: "Cuñete" },
       { size: "Medio" },
