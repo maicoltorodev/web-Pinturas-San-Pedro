@@ -15,7 +15,7 @@ export function Location() {
           badge={{ icon: MapPin, text: "Ubicación" }}
           title="Visítanos"
           subtitle="En Nuestra Sede"
-          description="Encuéntranos en nuestra ubicación principal. Estamos aquí para atenderte y ayudarte con todos tus proyectos de pintura."
+          description="Encuéntranos en nuestra ubicación principal. Estamos aquí para atenderte y ayudarte a encontrar los productos de pintura que necesitas."
           className="text-primary-foreground [&_p]:text-primary-foreground/80 mb-12 md:mb-16"
         />
         <div className="max-w-7xl mx-auto">

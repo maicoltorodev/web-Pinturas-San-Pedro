@@ -153,9 +153,9 @@ export function Hero() {
 
             {/* Description */}
             <p className="text-lg sm:text-xl md:text-2xl text-primary-foreground/80 leading-relaxed max-w-3xl mx-auto font-light">
-              Servicios profesionales de pintura residencial y comercial. 
-              <span className="font-semibold text-primary-foreground"> Calidad artesanal</span>, 
-              atención al detalle y compromiso para dar vida a tu visión.
+              Productos de pintura de la más alta calidad para tus proyectos. 
+              <span className="font-semibold text-primary-foreground"> Calidad garantizada</span>, 
+              atención personalizada y asesoría experta para encontrar el producto perfecto.
             </p>
 
             {/* CTA Buttons */}
@@ -167,7 +167,7 @@ export function Hero() {
                 asChild
               >
                 <a 
-                  href="https://wa.me/573223716811?text=Hola%2C%20me%20interesa%20solicitar%20una%20cotizaci%C3%B3n%20gratuita%20para%20servicios%20de%20pintura."
+                  href="https://wa.me/573223716811?text=Hola%2C%20me%20interesa%20solicitar%20una%20cotizaci%C3%B3n%20gratuita%20de%20productos%20de%20pintura."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center"
@@ -193,7 +193,7 @@ export function Hero() {
             <div className="grid grid-cols-3 gap-4 md:gap-8 pt-12 md:pt-16 max-w-2xl mx-auto">
               {[
                 { number: "30+", label: "Años de Experiencia" },
-                { number: "500+", label: "Proyectos Completados" },
+                { number: "500+", label: "Clientes Satisfechos" },
                 { number: "100%", label: "Satisfacción" },
               ].map((stat, index) => (
                 <div key={index} className="text-center">

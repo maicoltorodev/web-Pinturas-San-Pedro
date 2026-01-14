@@ -116,6 +116,20 @@ const products: Product[] = [
     ],
     certifications: ["NTC 1335"]
   },
+  {
+    name: "Vinilo tipo 3",
+    category: "Vinilos",
+    description: "Pintura económica con calidad para interiores. Ideal para proyectos con presupuesto ajustado sin comprometer la calidad.",
+    features: ["Económica", "Con calidad", "Fácil aplicación"],
+    icon: Brush,
+    color: "from-gray-400 to-gray-500",
+    image: "/productos/vinilo-tipo-3.png",
+    presentations: [
+      { size: "Cuñete" },
+      { size: "Medio" },
+      { size: "Galón" }
+    ]
+  },
   
   // ANTICORROSIVO
   {

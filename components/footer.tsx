@@ -75,8 +75,8 @@ export function Footer() {
             </div>
             <p className="text-primary-foreground/80 leading-relaxed text-sm mb-4 max-w-sm">
               <span className="font-bold text-secondary">Profesionales en Color</span> - 
-              Servicios profesionales de pintura con más de 30 años de experiencia. 
-              Transformamos espacios con calidad artesanal y atención al detalle.
+              Productos de pintura de la más alta calidad con más de 30 años de experiencia. 
+              Calidad garantizada y atención personalizada para encontrar el producto perfecto.
             </p>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20 mb-4">
               <span className="text-sm font-black text-primary-foreground uppercase tracking-wider">
@@ -114,7 +114,7 @@ export function Footer() {
                 <TikTokIcon className="h-5 w-5 text-primary-foreground/80 group-hover:text-secondary transition-colors" />
               </a>
               <a
-                href="https://wa.me/573223716811?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20productos%20y%20servicios%20de%20pintura."
+                href="https://wa.me/573223716811?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20productos%20de%20pintura."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-secondary/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
@@ -229,7 +229,7 @@ export function Footer() {
                   <TikTokIcon className="h-4 w-4 text-primary-foreground/60 group-hover:text-secondary transition-colors" />
                 </a>
                 <a
-                  href="https://wa.me/573223716811?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20productos%20y%20servicios%20de%20pintura."
+                  href="https://wa.me/573223716811?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20productos%20de%20pintura."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-8 h-8 rounded-full bg-primary-foreground/10 hover:bg-secondary/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group"

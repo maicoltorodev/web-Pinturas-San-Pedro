@@ -35,7 +35,7 @@ export default function PrivacidadPage() {
                 En Pinturas San Pedro, recopilamos información que usted nos proporciona directamente cuando:
               </p>
               <ul className="list-disc list-inside space-y-2 text-foreground/80 ml-4">
-                <li>Solicita una cotización o consulta sobre nuestros productos y servicios</li>
+                <li>Solicita una cotización o consulta sobre nuestros productos</li>
                 <li>Se comunica con nosotros a través de WhatsApp, correo electrónico o redes sociales</li>
                 <li>Visita nuestras instalaciones físicas</li>
                 <li>Interactúa con nuestro sitio web</li>
@@ -55,8 +55,8 @@ export default function PrivacidadPage() {
               </p>
               <ul className="list-disc list-inside space-y-2 text-foreground/80 ml-4">
                 <li>Procesar y responder a sus consultas y solicitudes de cotización</li>
-                <li>Proporcionar nuestros productos y servicios</li>
-                <li>Mejorar nuestros servicios y experiencia del cliente</li>
+                <li>Proporcionar nuestros productos</li>
+                <li>Mejorar nuestra atención y experiencia del cliente</li>
                 <li>Enviar información sobre productos, promociones y actualizaciones (con su consentimiento)</li>
                 <li>Cumplir con obligaciones legales y regulatorias</li>
               </ul>
@@ -81,7 +81,7 @@ export default function PrivacidadPage() {
                 No vendemos, alquilamos ni compartimos su información personal con terceros, excepto en los siguientes casos:
               </p>
               <ul className="list-disc list-inside space-y-2 text-foreground/80 ml-4">
-                <li>Cuando sea necesario para proporcionar nuestros servicios (por ejemplo, con proveedores de servicios de entrega)</li>
+                <li>Cuando sea necesario para proporcionar nuestros productos (por ejemplo, con proveedores de servicios de entrega)</li>
                 <li>Cuando sea requerido por ley o por orden judicial</li>
                 <li>Con su consentimiento explícito</li>
               </ul>

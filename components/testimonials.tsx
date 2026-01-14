@@ -298,7 +298,7 @@ export function Testimonials() {
           badge={{ icon: Star, text: "Testimonios de Google" }}
           title="Lo Que Dicen"
           subtitle="Nuestros Clientes"
-          description="Miles de clientes satisfechos confían en nosotros para transformar sus espacios. Descubre por qué somos la mejor opción en servicios de pintura profesional."
+          description="Miles de clientes satisfechos confían en nuestros productos de pintura. Descubre por qué somos la mejor opción en productos de calidad."
         />
         
         <div className="flex items-center justify-center gap-4 mt-8 mb-16">

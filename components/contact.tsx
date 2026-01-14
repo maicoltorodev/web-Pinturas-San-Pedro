@@ -140,8 +140,8 @@ export function Contact() {
         <SectionHeader
           badge={{ icon: Sparkles, text: "Contáctanos" }}
           title="Hablemos de"
-          subtitle="Tu Proyecto"
-          description="¿Listo para transformar tu espacio? Contáctanos para una consulta gratuita y descubre cómo podemos hacer realidad tu visión"
+          subtitle="Tus Necesidades"
+          description="¿Buscas productos de pintura de calidad? Contáctanos para una consulta gratuita y encuentra el producto perfecto para tu proyecto"
           className="text-primary-foreground [&_p]:text-primary-foreground/80"
         />
 
@@ -196,11 +196,11 @@ export function Contact() {
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="message" className="block text-sm font-semibold text-foreground">
-                      Detalles del Proyecto
+                      Detalles de tu Consulta
                     </label>
                     <Textarea
                       id="message"
-                      placeholder="Cuéntanos sobre tu proyecto de pintura, qué espacios quieres transformar, tus preferencias de color..."
+                      placeholder="Cuéntanos qué productos de pintura necesitas, para qué los vas a usar, tus preferencias de color..."
                       rows={6}
                       value={formData.message}
                       onChange={handleInputChange('message')}

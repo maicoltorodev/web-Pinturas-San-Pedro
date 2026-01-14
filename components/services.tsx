@@ -18,21 +18,21 @@ const services = [
     icon: Sparkles,
     title: "Consultoría de Color",
     description:
-      "Servicios expertos de combinación de colores y consultoría. Te ayudamos a elegir la paleta perfecta para tu espacio.",
+      "Asesoría experta en combinación de colores. Te ayudamos a elegir la paleta perfecta para tu espacio y encontrar el producto ideal.",
     color: "pink",
   },
   {
     icon: Home,
-    title: "Pintura Residencial",
+    title: "Productos para Interiores",
     description:
-      "Pintura interior y exterior para hogares. Desde habitaciones individuales hasta casas completas, damos vida a tu visión con precisión y cuidado.",
+      "Pinturas especializadas para uso interior. Vinilos acrílicos, esmaltes y productos de acabado para transformar tus espacios interiores.",
     color: "blue",
   },
   {
     icon: Building2,
-    title: "Pintura Comercial",
+    title: "Productos para Exteriores",
     description:
-      "Servicios profesionales de pintura para oficinas, espacios comerciales y propiedades comerciales. Mínima interrupción en tus operaciones.",
+      "Pinturas y productos especializados para fachadas y exteriores. Impermeabilizantes y productos con alta resistencia a la intemperie.",
     color: "yellow",
   },
 ]
@@ -173,10 +173,10 @@ export function Services() {
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeader
-          badge={{ icon: Sparkles, text: "Nuestros Servicios" }}
+          badge={{ icon: Sparkles, text: "Lo Que Ofrecemos" }}
           title="Soluciones"
           subtitle={<ColoredText text="Premium" />}
-          description="Servicios integrales de pintura adaptados a tus necesidades, con la más alta calidad y atención al detalle"
+          description="Productos de pintura de la más alta calidad adaptados a tus necesidades, con atención personalizada y asesoría experta"
           className="text-foreground"
         />
 

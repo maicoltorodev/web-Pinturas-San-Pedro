@@ -7,9 +7,9 @@ import { cn } from "@/lib/utils"
 const steps = [
   {
     number: "01",
-    title: "Consulta y Cotización",
+    title: "Consulta y Asesoría",
     description:
-      "Nos reunimos contigo para entender tu visión, evaluar el espacio y proporcionar una cotización detallada y transparente.",
+      "Nos reunimos contigo para entender tus necesidades, evaluar tu proyecto y recomendarte los productos ideales para tu espacio.",
     icon: MessageSquare,
     color: "from-blue-500 to-blue-600",
   },
@@ -23,25 +23,25 @@ const steps = [
   },
   {
     number: "03",
-    title: "Preparación",
+    title: "Cotización Personalizada",
     description:
-      "Preparación exhaustiva de la superficie incluyendo limpieza, lijado y imprimación para garantizar un acabado impecable.",
+      "Te proporcionamos una cotización detallada y transparente con los productos seleccionados y sus presentaciones disponibles.",
     icon: Wrench,
     color: "from-amber-500 to-amber-600",
   },
   {
     number: "04",
-    title: "Aplicación Profesional",
+    title: "Compra y Entrega",
     description:
-      "Nuestro equipo experto aplica pinturas premium con precisión, asegurando cobertura uniforme y líneas limpias.",
+      "Procesamos tu pedido y coordinamos la entrega de productos premium, asegurando que recibas exactamente lo que necesitas.",
     icon: Paintbrush,
     color: "from-green-500 to-green-600",
   },
   {
     number: "05",
-    title: "Inspección Final",
+    title: "Seguimiento y Soporte",
     description:
-      "Realizamos un recorrido exhaustivo contigo, asegurando que cada detalle cumpla con nuestros altos estándares y tus expectativas.",
+      "Te acompañamos después de la compra, asegurando que tengas toda la información necesaria para obtener los mejores resultados.",
     icon: CheckCircle,
     color: "from-secondary to-secondary/80",
   },
@@ -131,10 +131,10 @@ export function Process() {
     <section id="process" className="relative py-20 md:py-32 lg:py-40 bg-background overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeader
-          badge={{ text: "Nuestro Proceso Profesional" }}
-          title="Cómo Trabajamos"
-          subtitle="De Forma Profesional"
-          description="Un enfoque sistemático y eficiente que garantiza resultados excepcionales en cada proyecto, desde la consulta inicial hasta la entrega final. Cada paso está diseñado para superar tus expectativas."
+          badge={{ text: "Nuestro Proceso" }}
+          title="Cómo Te Ayudamos"
+          subtitle="De Forma Personalizada"
+          description="Un enfoque sistemático y eficiente que garantiza que encuentres los productos perfectos para tu proyecto, desde la consulta inicial hasta la entrega. Cada paso está diseñado para superar tus expectativas."
           className="[&_p]:font-medium"
         />
 

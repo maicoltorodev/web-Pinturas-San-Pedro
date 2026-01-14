@@ -23,9 +23,8 @@ import { cn } from "@/lib/utils"
 // Define navLinks outside component to ensure consistency between server and client
 // This array is static and should never change during runtime
 const navLinks = [
-  { href: "/#services", label: "Servicios" },
-  { href: "/#process", label: "Proceso" },
-  { href: "/#products", label: "Productos" },
+  { href: "/#services", label: "Productos" },
+  { href: "/#products", label: "Catálogo" },
   { href: "/#color-palette", label: "Colores" },
   { href: "/#testimonials", label: "Testimonios" },
   { href: "/#location", label: "Ubicación" },
@@ -161,7 +160,7 @@ export function Header() {
               asChild
             >
               <a 
-                href="https://wa.me/573223716811?text=Hola%2C%20me%20interesa%20solicitar%20una%20cotizaci%C3%B3n%20gratuita%20para%20servicios%20de%20pintura."
+                href="https://wa.me/573223716811?text=Hola%2C%20me%20interesa%20solicitar%20una%20cotizaci%C3%B3n%20gratuita%20de%20productos%20de%20pintura."
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -180,7 +179,7 @@ export function Header() {
               asChild
             >
               <a 
-                href="https://wa.me/573223716811?text=Hola%2C%20me%20interesa%20solicitar%20una%20cotizaci%C3%B3n%20gratuita%20para%20servicios%20de%20pintura."
+                href="https://wa.me/573223716811?text=Hola%2C%20me%20interesa%20solicitar%20una%20cotizaci%C3%B3n%20gratuita%20de%20productos%20de%20pintura."
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -225,7 +224,7 @@ export function Header() {
                   asChild
                 >
                   <a 
-                    href="https://wa.me/573223716811?text=Hola%2C%20me%20interesa%20solicitar%20una%20cotizaci%C3%B3n%20gratuita%20para%20servicios%20de%20pintura."
+                    href="https://wa.me/573223716811?text=Hola%2C%20me%20interesa%20solicitar%20una%20cotizaci%C3%B3n%20gratuita%20de%20productos%20de%20pintura."
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsMenuOpen(false)}

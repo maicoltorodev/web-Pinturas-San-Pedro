@@ -4,7 +4,7 @@ import { FileText, CheckCircle, AlertCircle, Scale } from "lucide-react"
 
 export const metadata = {
   title: "Términos y Condiciones - Pinturas San Pedro",
-  description: "Términos y condiciones de uso de productos y servicios de Pinturas San Pedro",
+  description: "Términos y condiciones de uso de productos de Pinturas San Pedro",
 }
 
 export default function TerminosPage() {
@@ -32,23 +32,23 @@ export default function TerminosPage() {
                 1. Aceptación de los Términos
               </h2>
               <p className="text-foreground/80 leading-relaxed">
-                Al acceder y utilizar los servicios de Pinturas San Pedro, usted acepta estar sujeto a estos términos y condiciones. Si no está de acuerdo con alguna parte de estos términos, no debe utilizar nuestros servicios.
+                Al acceder y utilizar los productos de Pinturas San Pedro, usted acepta estar sujeto a estos términos y condiciones. Si no está de acuerdo con alguna parte de estos términos, no debe utilizar nuestros productos.
               </p>
             </div>
 
             <div className="bg-card border-2 border-border rounded-xl p-6 md:p-8">
               <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-3">
                 <CheckCircle className="h-6 w-6 text-secondary" />
-                2. Productos y Servicios
+                2. Productos
               </h2>
               <p className="text-foreground/80 leading-relaxed mb-4">
                 Pinturas San Pedro se compromete a:
               </p>
               <ul className="list-disc list-inside space-y-2 text-foreground/80 ml-4">
                 <li>Proporcionar productos de calidad certificada</li>
-                <li>Ofrecer servicios profesionales de pintura con más de 30 años de experiencia</li>
+                <li>Ofrecer productos de pintura de calidad con más de 30 años de experiencia</li>
                 <li>Proporcionar información precisa sobre productos y disponibilidad</li>
-                <li>Mantener estándares de calidad en todos nuestros servicios</li>
+                <li>Mantener estándares de calidad en todos nuestros productos</li>
               </ul>
             </div>
 
@@ -86,7 +86,7 @@ export default function TerminosPage() {
                 5. Garantías y Devoluciones
               </h2>
               <p className="text-foreground/80 leading-relaxed mb-4">
-                Ofrecemos garantía en nuestros servicios de pintura según las especificaciones acordadas. Respecto a productos:
+                Respecto a nuestros productos:
               </p>
               <ul className="list-disc list-inside space-y-2 text-foreground/80 ml-4">
                 <li>Los productos deben ser utilizados según las instrucciones del fabricante</li>
@@ -105,7 +105,7 @@ export default function TerminosPage() {
               </p>
               <ul className="list-disc list-inside space-y-2 text-foreground/80 ml-4">
                 <li>Proporcionar información precisa y completa para las cotizaciones</li>
-                <li>Preparar adecuadamente el área de trabajo antes de nuestros servicios</li>
+                <li>Utilizar los productos según las instrucciones del fabricante</li>
                 <li>Realizar pagos según los términos acordados</li>
                 <li>Comunicar cualquier cambio o problema de manera oportuna</li>
               </ul>
@@ -116,7 +116,7 @@ export default function TerminosPage() {
                 7. Limitación de Responsabilidad
               </h2>
               <p className="text-foreground/80 leading-relaxed">
-                Pinturas San Pedro no será responsable por daños indirectos, incidentales o consecuentes que resulten del uso de nuestros productos o servicios, excepto cuando sea requerido por ley. Nuestra responsabilidad se limita al valor del producto o servicio proporcionado.
+                Pinturas San Pedro no será responsable por daños indirectos, incidentales o consecuentes que resulten del uso de nuestros productos, excepto cuando sea requerido por ley. Nuestra responsabilidad se limita al valor del producto proporcionado.
               </p>
             </div>
 
