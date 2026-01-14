@@ -315,7 +315,7 @@ const products: Product[] = [
     features: ["Diseño ergonómico", "Cubrimiento uniforme"],
     icon: Wrench,
     color: "from-gray-600 to-gray-700",
-    image: "/productos/brocha.png",
+    image: "/productos/rodillo.png",
     presentations: [
       { size: "Variedad de tamaños", price: "Consultar" }
     ],
