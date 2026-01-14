@@ -35,11 +35,6 @@ const navLinks = [
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isMounted, setIsMounted] = useState(false)
-
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
 
   useEffect(() => {
     let rafId: number | null = null
@@ -90,21 +85,9 @@ export function Header() {
               alt="Pinturas San Pedro"
               width={280}
               height={100}
-              className={cn(
-                "object-contain transition-transform duration-300 hover:scale-105 md:[filter:drop-shadow(0_0_4px_rgba(255,215,0,0.2))]",
-                "h-16 max-w-[180px] md:max-w-[280px]",
-                isMounted && "animate-glow-pulse-subtle"
-              )}
+              className="object-contain h-16 max-w-[180px] md:max-w-[280px] transition-transform duration-300 hover:scale-105"
               priority
               sizes="(max-width: 768px) 180px, (max-width: 1024px) 220px, 280px"
-              quality={75}
-              style={{ 
-                height: '64px',
-                width: 'auto',
-                maxHeight: '64px',
-                maxWidth: '180px',
-                display: 'block'
-              }}
             />
           </a>
 
