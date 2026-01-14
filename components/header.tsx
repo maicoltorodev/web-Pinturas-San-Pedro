@@ -61,20 +61,20 @@ export function Header() {
               isMounted && "animate-glow-pulse-subtle"
             )}
             style={{ 
-              height: '48px',
-              width: '128px',
-              maxHeight: '80px',
-              maxWidth: '192px'
+              height: '64px',
+              width: '180px',
+              maxHeight: '100px',
+              maxWidth: '280px'
             }}
           >
             <Image
               src="/pintura-amarilla.png"
               alt="Pinturas San Pedro"
-              width={192}
-              height={80}
+              width={280}
+              height={100}
               className="object-contain h-full w-auto md:[filter:drop-shadow(0_0_4px_rgba(255,215,0,0.2))]"
               priority
-              sizes="(max-width: 768px) 128px, (max-width: 1024px) 160px, 192px"
+              sizes="(max-width: 768px) 180px, (max-width: 1024px) 220px, 280px"
               quality={75}
               style={{ 
                 maxWidth: '100%',
