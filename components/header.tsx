@@ -35,6 +35,7 @@ const navLinks = [
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isImageLoaded, setIsImageLoaded] = useState(false)
 
   useEffect(() => {
     let rafId: number | null = null
@@ -81,64 +82,29 @@ export function Header() {
           {/* Logo */}
           <a 
             href="/" 
-            className="flex-shrink-0"
-            style={{
-              height: '64px',
-              width: '180px',
-              maxWidth: '180px',
-              maxHeight: '64px',
-              display: 'block',
-              overflow: 'hidden',
-              position: 'relative',
-              boxSizing: 'border-box'
-            }}
+            className="flex-shrink-0 relative h-16 w-[180px] md:w-[280px] overflow-hidden"
           >
-            <div
-              style={{
-                width: '100%',
-                height: '100%',
-                maxWidth: '100%',
-                maxHeight: '100%',
-                position: 'relative',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                overflow: 'hidden'
-              }}
-            >
-              <Image
-                src="/pintura-amarilla.png"
-                alt="Pinturas San Pedro"
-                width={280}
-                height={100}
-                className="transition-transform duration-300 hover:scale-105"
-                priority
-                sizes="(max-width: 768px) 180px, 280px"
-                style={{ 
-                  objectFit: 'contain', 
-                  width: 'auto',
-                  height: '100%',
-                  maxWidth: '100%',
-                  maxHeight: '100%',
-                  display: 'block'
+            {/* Skeleton mientras carga */}
+            {!isImageLoaded && (
+              <div 
+                className="absolute inset-0 bg-gradient-to-r from-primary-foreground/10 via-primary-foreground/20 to-primary-foreground/10 animate-shimmer"
+                style={{
+                  backgroundSize: '200% 100%',
+                  backgroundPosition: '0% 0%',
+                  animation: 'shimmer 1.5s ease-in-out infinite'
                 }}
               />
-            </div>
-            <style dangerouslySetInnerHTML={{__html: `
-              @media (min-width: 768px) {
-                a[href="/"] {
-                  width: 280px !important;
-                  max-width: 280px !important;
-                }
-              }
-              a[href="/"] img,
-              a[href="/"] picture {
-                max-width: 100% !important;
-                max-height: 100% !important;
-                width: auto !important;
-                height: 100% !important;
-              }
-            `}} />
+            )}
+            <Image
+              src="/pintura-amarilla.png"
+              alt="Pinturas San Pedro"
+              width={280}
+              height={100}
+              className="object-contain h-full w-auto transition-transform duration-300 hover:scale-105"
+              priority
+              sizes="(max-width: 768px) 180px, 280px"
+              onLoad={() => setIsImageLoaded(true)}
+            />
           </a>
 
           {/* Desktop Navigation - Centrada */}
