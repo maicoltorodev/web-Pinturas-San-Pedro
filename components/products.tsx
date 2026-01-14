@@ -101,6 +101,21 @@ const products: Product[] = [
       { size: "Galón" }
     ]
   },
+  {
+    name: "vinilo acrilico tipo 1 certificado",
+    category: "Vinilos",
+    description: "Vinilo acrílico certificado con acabado mate lavable, ideal para interiores. Con desempeño y cubrimiento, bajo aroma y nivelación.",
+    features: ["Acabado mate lavable", "Con cubrimiento", "Bajo aroma", "Con nivelación", "Certificado"],
+    icon: Paintbrush,
+    color: "from-green-600 to-green-700",
+    image: "/productos/vinilo-tipo-1-certificado.png",
+    presentations: [
+      { size: "Cuñete" },
+      { size: "Medio" },
+      { size: "Galón" }
+    ],
+    certifications: ["NTC 1335"]
+  },
   
   // ANTICORROSIVO
   {
