@@ -22,12 +22,15 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     optimizeCss: true,
+    optimizePackageImports: ['lucide-react'],
   },
+  // Optimize for modern browsers - don't transpile modern features
+  transpilePackages: [],
   // Headers for cache optimization
   async headers() {
     return [
       {
-        source: '/:path*',
+        source: '/_next/static/:path*',
         headers: [
           {
             key: 'Cache-Control',
@@ -36,7 +39,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: '/_next/static/:path*',
+        source: '/_next/static/chunks/:path*.css',
         headers: [
           {
             key: 'Cache-Control',

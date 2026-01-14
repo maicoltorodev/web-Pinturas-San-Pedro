@@ -114,6 +114,8 @@ export default function RootLayout({
         {/* Preconnect to Google Maps for faster loading */}
         <link rel="preconnect" href="https://maps.googleapis.com" />
         <link rel="preconnect" href="https://maps.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://maps.googleapis.com" />
+        <link rel="dns-prefetch" href="https://maps.gstatic.com" />
       </head>
       <body className={`font-sans antialiased`}>
         {children}
