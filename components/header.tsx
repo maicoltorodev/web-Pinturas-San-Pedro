@@ -159,7 +159,7 @@ export function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Contactar
+                Contactar Ahora
                 <ArrowRight className="ml-2 h-4 w-4" />
               </a>
             </Button>
@@ -178,7 +178,7 @@ export function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Contactar
+                Contactar Ahora
               </a>
             </Button>
           </div>
