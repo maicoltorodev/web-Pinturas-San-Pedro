@@ -79,18 +79,22 @@ export function Header() {
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center h-16 md:h-20 relative">
           {/* Logo */}
-          <a href="/" className="flex-shrink-0">
-            <div className="relative h-16 w-auto max-w-[180px] md:max-w-[280px] aspect-[280/100]">
-              <Image
-                src="/pintura-amarilla.png"
-                alt="Pinturas San Pedro"
-                fill
-                className="object-contain transition-transform duration-300 hover:scale-105"
-                priority
-                sizes="(max-width: 768px) 180px, (max-width: 1024px) 220px, 280px"
-                style={{ objectFit: 'contain' }}
-              />
-            </div>
+          <a href="/" className="flex-shrink-0 h-16 w-[180px] md:w-[280px] overflow-hidden">
+            <Image
+              src="/pintura-amarilla.png"
+              alt="Pinturas San Pedro"
+              width={280}
+              height={100}
+              className="object-contain transition-transform duration-300 hover:scale-105"
+              priority
+              sizes="(max-width: 768px) 180px, 280px"
+              style={{ 
+                objectFit: 'contain', 
+                width: '100%', 
+                height: '100%',
+                display: 'block'
+              }}
+            />
           </a>
 
           {/* Desktop Navigation - Centrada */}
