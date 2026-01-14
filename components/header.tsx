@@ -6,6 +6,17 @@ import { Menu, X, ArrowRight } from "lucide-react"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 
+// Define navLinks outside component to ensure consistency between server and client
+const navLinks = [
+  { href: "#services", label: "Servicios" },
+  { href: "#process", label: "Proceso" },
+  { href: "#products", label: "Productos" },
+  { href: "#color-palette", label: "Colores" },
+  { href: "#testimonials", label: "Testimonios" },
+  { href: "#location", label: "Ubicación" },
+  { href: "#contact", label: "Contacto" },
+]
+
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
@@ -24,16 +35,6 @@ export function Header() {
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
-
-  const navLinks = [
-    { href: "#services", label: "Servicios" },
-    { href: "#process", label: "Proceso" },
-    { href: "#products", label: "Productos" },
-    { href: "#color-palette", label: "Colores" },
-    { href: "#testimonials", label: "Testimonios" },
-    { href: "#location", label: "Ubicación" },
-    { href: "#contact", label: "Contacto" },
-  ]
 
   return (
     <header
