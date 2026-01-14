@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -10,60 +10,67 @@ import { cn } from "@/lib/utils"
 
 const testimonials = [
   {
-    name: "María González",
+    name: "Arley Orjuela",
     rating: 5,
     date: "Hace 2 semanas",
-    comment: "Excelente servicio profesional. El equipo de Pinturas San Pedro transformó completamente mi casa. Muy puntuales, limpios y con un acabado impecable. ¡Altamente recomendados!",
-    project: "Pintura de casa completa"
+    comment: "Venden buenos accesorios para pintar y decorar el hogar la atención es muy buena y sus precios acordes a la necesidad",
+    project: "Compra de accesorios"
   },
   {
-    name: "Carlos Rodríguez",
+    name: "Isabella Neuque",
     rating: 5,
-    date: "Hace 1 mes",
-    comment: "Quedé muy satisfecho con el trabajo realizado en mi oficina. Los colores elegidos fueron perfectos y el proceso fue muy profesional desde el inicio hasta el final.",
-    project: "Pintura comercial"
+    date: "Hace 4 años",
+    comment: "Exelente calidad y el mejor servicio. Los precios son muy económicos. Y ni he tenido problema con los cambios.",
+    project: "Compra de productos"
   },
   {
-    name: "Ana Martínez",
+    name: "Freddy Prada",
     rating: 5,
-    date: "Hace 3 semanas",
-    comment: "Increíble atención al detalle. Pintaron mi cocina y quedó espectacular. El equipo fue muy respetuoso con mi hogar y siempre mantuvieron todo limpio. Definitivamente los volveré a contratar.",
-    project: "Renovación de cocina"
+    date: "Hace 2 años",
+    comment: "Buen lugar para comprar y buenos precios excelente producto",
+    project: "Compra de productos"
   },
   {
-    name: "Luis Fernández",
+    name: "Chamilo RR",
     rating: 5,
-    date: "Hace 2 meses",
-    comment: "Profesionales de verdad. Hicieron un trabajo excepcional en el exterior de mi casa. La pintura se ve perfecta y resistió muy bien las lluvias. Muy contento con el resultado.",
-    project: "Pintura exterior"
+    date: "Hace un año",
+    comment: "Muy buena atención y muy buen precio",
+    project: "Compra de productos"
   },
   {
-    name: "Laura Sánchez",
+    name: "Gustavo Ramirez",
     rating: 5,
-    date: "Hace 1 semana",
-    comment: "El mejor servicio de pintura que he contratado. Muy organizados, puntuales y el resultado superó mis expectativas. Los colores quedaron exactamente como los imaginé.",
-    project: "Pintura residencial"
+    date: "Hace 4 años",
+    comment: "Muy atentos y los precios son cómodos. Se consigue de todo. Es más barato que Homecenter.",
+    project: "Compra de productos"
   },
   {
-    name: "Roberto Jiménez",
+    name: "Germán Andrés Garzón",
     rating: 5,
-    date: "Hace 3 meses",
-    comment: "Excelente calidad y servicio. Pintaron mi restaurante y quedó hermoso. Los clientes han notado la mejora. Muy profesionales y cumplieron con los tiempos acordados.",
-    project: "Pintura de restaurante"
+    date: "Hace 4 años",
+    comment: "Buenos productos a buen precio, preparan el color que necesite, domicilios. Recomendado",
+    project: "Preparación de colores personalizados"
   },
   {
-    name: "Patricia López",
+    name: "Roberto Alvarado",
     rating: 5,
-    date: "Hace 1 mes",
-    comment: "Muy satisfecha con el trabajo. El equipo fue muy cuidadoso con mis muebles y pertenencias. La pintura quedó perfecta y el proceso fue muy limpio. Recomendado 100%.",
-    project: "Pintura interior"
+    date: "Hace 2 años",
+    comment: "Muy amable la atención excelente precio y la entrega a tiempo",
+    project: "Compra con domicilio"
   },
   {
-    name: "Javier Ramírez",
+    name: "Danieljun Jun",
     rating: 5,
-    date: "Hace 2 semanas",
-    comment: "Profesionales excelentes. Hicieron un trabajo impecable en mi apartamento. Muy puntuales, limpios y con un acabado de primera calidad. Sin duda los mejores.",
-    project: "Pintura de apartamento"
+    date: "Hace 6 años",
+    comment: "Aquí puedes encontrar gran variedad de productos a precios excelentes, lo recomiendo",
+    project: "Compra de productos"
+  },
+  {
+    name: "STUWWY84",
+    rating: 5,
+    date: "Hace 5 años",
+    comment: "Excelente atención y buenos precios, la pintura salió muy buena 👍👍👍",
+    project: "Compra de pintura"
   },
 ]
 
@@ -125,6 +132,18 @@ function TestimonialCard({ testimonial, isActive }: { testimonial: typeof testim
 
 export function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [touchStart, setTouchStart] = useState(0)
+  const [touchEnd, setTouchEnd] = useState(0)
+  const carouselRef = useRef<HTMLDivElement>(null)
+  
+  // Auto-play carousel every 7 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+    }, 7000)
+    
+    return () => clearInterval(interval)
+  }, [])
   
   const getVisibleTestimonials = () => {
     const visible: typeof testimonials = []
@@ -136,6 +155,31 @@ export function Testimonials() {
   
   const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % testimonials.length)
   const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+  
+  // Touch handlers for swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+  
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+  
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+    
+    const distance = touchStart - touchEnd
+    const minSwipeDistance = 50
+    
+    if (distance > minSwipeDistance) {
+      // Swipe left - next slide
+      nextSlide()
+    }
+    if (distance < -minSwipeDistance) {
+      // Swipe right - previous slide
+      prevSlide()
+    }
+  }
 
   return (
     <section id="testimonials" className="relative py-24 md:py-32 lg:py-40 bg-background overflow-hidden">
@@ -169,8 +213,14 @@ export function Testimonials() {
 
         {/* Carrusel */}
         <div className="relative max-w-7xl mx-auto">
-          {/* Contenedor del carrusel */}
-          <div className="relative mb-12 overflow-hidden">
+          {/* Contenedor del carrusel con soporte para swipe */}
+          <div 
+            ref={carouselRef}
+            className="relative mb-12 overflow-hidden"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {getVisibleTestimonials().map((testimonial, index) => (
                 <TestimonialCard key={`${currentIndex}-${index}`} testimonial={testimonial} isActive={index === 1} />
@@ -178,13 +228,13 @@ export function Testimonials() {
             </div>
           </div>
 
-          {/* Controles de navegación */}
+          {/* Controles de navegación - Flechas ocultas en móvil */}
           <div className="flex items-center justify-center gap-6">
             <Button
               onClick={prevSlide}
               variant="outline"
               size="lg"
-              className="rounded-full w-14 h-14 border-2 border-border text-foreground hover:bg-secondary hover:border-secondary hover:text-white transition-all duration-300 shadow-md hover:shadow-lg"
+              className="hidden md:flex rounded-full w-14 h-14 border-2 border-border text-foreground hover:bg-secondary hover:border-secondary hover:text-white transition-all duration-300 shadow-md hover:shadow-lg"
               aria-label="Anterior"
             >
               <ChevronLeft className="h-6 w-6" />
@@ -213,7 +263,7 @@ export function Testimonials() {
               onClick={nextSlide}
               variant="outline"
               size="lg"
-              className="rounded-full w-14 h-14 border-2 border-border text-foreground hover:bg-secondary hover:border-secondary hover:text-white transition-all duration-300 shadow-md hover:shadow-lg"
+              className="hidden md:flex rounded-full w-14 h-14 border-2 border-border text-foreground hover:bg-secondary hover:border-secondary hover:text-white transition-all duration-300 shadow-md hover:shadow-lg"
               aria-label="Siguiente"
             >
               <ChevronRight className="h-6 w-6" />
