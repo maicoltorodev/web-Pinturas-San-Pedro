@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { CirclePattern } from "@/components/ui/circle-pattern"
-import { useInView } from "@/lib/useInView"
+import { SectionHeader } from "@/components/ui/section-header"
 import { cn } from "@/lib/utils"
 import { Palette, Search, Copy, Check, X } from "lucide-react"
 import { Input } from "@/components/ui/input"
@@ -126,11 +126,6 @@ const colorCategories = [
 ]
 
 export function ColorPalette() {
-  const { ref, isInView } = useInView<HTMLDivElement>({ 
-    threshold: 0.1, 
-    rootMargin: "-50px",
-    triggerOnce: true 
-  })
   const [activeTab, setActiveTab] = useState<string | null>(null) // null = "Todos"
   const [searchQuery, setSearchQuery] = useState("")
   const [copiedColor, setCopiedColor] = useState<string | null>(null)
@@ -184,28 +179,13 @@ export function ColorPalette() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <div 
-          ref={ref as React.RefObject<HTMLDivElement>}
-          className={cn(
-            "text-center mb-12 md:mb-16 transition-opacity duration-300",
-            isInView ? "opacity-100" : "opacity-0"
-          )}
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/10 border-2 border-secondary/20 rounded-full mb-6">
-            <Palette className="h-4 w-4 text-secondary" />
-            <span className="text-sm font-semibold text-secondary">Carta de Colores</span>
-          </div>
-          
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-4">
-            Nuestra Carta de Colores
-          </h2>
-          
-          <p className="text-lg md:text-xl text-primary-foreground/80 max-w-3xl mx-auto mb-2">
-            Explora nuestra amplia gama de <span className="font-semibold text-secondary">{totalColors} colores</span> disponibles. 
-            Cada tono está cuidadosamente seleccionado para transformar tus espacios.
-          </p>
-        </div>
+        <SectionHeader
+          badge={{ icon: Palette, text: "Carta de Colores" }}
+          title="Nuestra"
+          subtitle="Carta de Colores"
+          description={`Explora nuestra amplia gama de ${totalColors} colores disponibles. Cada tono está cuidadosamente seleccionado para transformar tus espacios.`}
+          className="text-primary-foreground [&_p]:text-primary-foreground/80"
+        />
 
         {/* Barra de búsqueda */}
         <div className="mb-8">

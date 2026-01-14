@@ -189,13 +189,8 @@
   h2 .gradient-text,
   span.gradient-text {
     background: linear-gradient(to right, 
-      #a855f7 0%, 
-      #a855f7 25%, 
-      #ec4899 25%, 
-      #ec4899 50%, 
-      #3b82f6 50%, 
-      #3b82f6 75%, 
-      #eab308 75%, 
+      #ffd700 0%, 
+      #fbbf24 50%,
       #eab308 100%) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;

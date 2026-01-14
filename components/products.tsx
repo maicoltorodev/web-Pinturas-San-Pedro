@@ -163,7 +163,7 @@ export function Products() {
         <SectionHeader
           badge={{ icon: Palette, text: "Productos" }}
           title="Nuestros"
-          subtitle="Productos Premium"
+          subtitle="Productos"
           description="Ofrecemos una amplia gama de productos de pintura de la más alta calidad. Desde pinturas para interiores hasta productos especializados para cada necesidad."
           className="text-primary-foreground [&_p]:text-primary-foreground/80"
         />
