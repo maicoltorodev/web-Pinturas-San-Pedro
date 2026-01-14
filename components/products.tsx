@@ -359,7 +359,6 @@ const products: Product[] = [
 
 function ProductCard({ product }: { product: Product }) {
   const Icon = product.icon
-  const [isExpanded, setIsExpanded] = useState(false)
 
   const formatPrice = useCallback((price: string | string[]): string => {
     if (Array.isArray(price)) {
@@ -367,11 +366,6 @@ function ProductCard({ product }: { product: Product }) {
     }
     return price
   }, [])
-
-  const hasAdditionalInfo = useMemo(() => 
-    !!(product.uses || product.benefits || product.application),
-    [product.uses, product.benefits, product.application]
-  )
 
   return (
     <Card className={cn(
@@ -508,73 +502,6 @@ function ProductCard({ product }: { product: Product }) {
             </div>
           )}
 
-          {/* Additional Info - Expandable */}
-          {hasAdditionalInfo && (
-            <div className="mt-4 pt-4 border-t border-border/50">
-              <button
-                onClick={() => setIsExpanded(!isExpanded)}
-                className="w-full flex items-center justify-between text-xs font-bold text-secondary uppercase tracking-wider hover:text-secondary/80 transition-colors"
-              >
-                <span>Información adicional</span>
-                <span className={cn(
-                  "transition-transform duration-300",
-                  isExpanded && "rotate-180"
-                )}>
-                  ▼
-                </span>
-              </button>
-              
-              {isExpanded && (
-                <div className="mt-4 space-y-4 animate-fade-in">
-                  {/* Usos */}
-                  {product.uses && product.uses.length > 0 && (
-                    <div>
-                      <div className="text-xs font-bold text-foreground/60 uppercase tracking-wider mb-2">Usos</div>
-                      <ul className="space-y-1.5">
-                        {product.uses.map((use, idx) => (
-                          <li key={idx} className="flex items-start gap-2 text-xs text-foreground/70">
-                            <span className="text-secondary mt-1">•</span>
-                            <span>{use}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {/* Beneficios */}
-                  {product.benefits && product.benefits.length > 0 && (
-                    <div>
-                      <div className="text-xs font-bold text-foreground/60 uppercase tracking-wider mb-2">Beneficios</div>
-                      <ul className="space-y-1.5">
-                        {product.benefits.map((benefit, idx) => (
-                          <li key={idx} className="flex items-start gap-2 text-xs text-foreground/70">
-                            <span className="text-secondary mt-1">•</span>
-                            <span>{benefit}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {/* Aplicación */}
-                  {product.application && (
-                    <div>
-                      <div className="text-xs font-bold text-foreground/60 uppercase tracking-wider mb-2">Aplicación</div>
-                      <p className="text-xs text-foreground/70 leading-relaxed">{product.application}</p>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-          )}
-
-          {/* Premium Badge - Bottom */}
-          <div className="mt-4 pt-4 border-t border-border/30">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-secondary/10 border border-secondary/20">
-              <div className="w-1.5 h-1.5 rounded-full bg-secondary" />
-              <span className="text-xs font-bold text-secondary uppercase tracking-wider">Calidad Premium</span>
-            </div>
-          </div>
         </div>
       </CardContent>
     </Card>
