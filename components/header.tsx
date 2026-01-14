@@ -23,13 +23,13 @@ import { cn } from "@/lib/utils"
 // Define navLinks outside component to ensure consistency between server and client
 // This array is static and should never change during runtime
 const navLinks = [
-  { href: "#services", label: "Servicios" },
-  { href: "#process", label: "Proceso" },
-  { href: "#products", label: "Productos" },
-  { href: "#color-palette", label: "Colores" },
-  { href: "#testimonials", label: "Testimonios" },
-  { href: "#location", label: "Ubicación" },
-  { href: "#contact", label: "Contacto" },
+  { href: "/#services", label: "Servicios" },
+  { href: "/#process", label: "Proceso" },
+  { href: "/#products", label: "Productos" },
+  { href: "/#color-palette", label: "Colores" },
+  { href: "/#testimonials", label: "Testimonios" },
+  { href: "/#location", label: "Ubicación" },
+  { href: "/#contact", label: "Contacto" },
 ] as const
 
 export function Header() {
@@ -69,7 +69,7 @@ export function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <a 
-            href="#hero" 
+            href="/" 
             className={cn(
               "inline-block flex-shrink-0 transition-transform duration-300",
               isMounted && "animate-glow-pulse-subtle"

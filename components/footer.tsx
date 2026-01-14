@@ -4,6 +4,20 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import { Mail, Phone, MapPin, ArrowRight, Facebook, Instagram } from "lucide-react"
 
+// TikTok Icon Component (not available in lucide-react)
+function TikTokIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+    </svg>
+  )
+}
+
 export function Footer() {
   const [currentYear, setCurrentYear] = useState(2024)
   
@@ -12,13 +26,13 @@ export function Footer() {
   }, [])
 
   const quickLinks = [
-    { href: "#services", label: "Servicios" },
-    { href: "#process", label: "Proceso" },
-    { href: "#products", label: "Productos" },
-    { href: "#color-palette", label: "Colores" },
-    { href: "#testimonials", label: "Testimonios" },
-    { href: "#location", label: "Ubicación" },
-    { href: "#contact", label: "Contacto" },
+    { href: "/#services", label: "Servicios" },
+    { href: "/#process", label: "Proceso" },
+    { href: "/#products", label: "Productos" },
+    { href: "/#color-palette", label: "Colores" },
+    { href: "/#testimonials", label: "Testimonios" },
+    { href: "/#location", label: "Ubicación" },
+    { href: "/#contact", label: "Contacto" },
   ]
 
   return (
@@ -92,6 +106,15 @@ export function Footer() {
                 aria-label="Instagram"
               >
                 <Instagram className="h-5 w-5 text-primary-foreground/80 group-hover:text-secondary transition-colors" />
+              </a>
+              <a
+                href="https://www.tiktok.com/@pinturassanpedro"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-secondary/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+                aria-label="TikTok"
+              >
+                <TikTokIcon className="h-5 w-5 text-primary-foreground/80 group-hover:text-secondary transition-colors" />
               </a>
               <a
                 href="https://wa.me/573223716811?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20productos%20y%20servicios%20de%20pintura."
@@ -198,6 +221,15 @@ export function Footer() {
                   aria-label="Instagram"
                 >
                   <Instagram className="h-4 w-4 text-primary-foreground/60 group-hover:text-secondary transition-colors" />
+                </a>
+                <a
+                  href="https://www.tiktok.com/@pinturassanpedro"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full bg-primary-foreground/10 hover:bg-secondary/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+                  aria-label="TikTok"
+                >
+                  <TikTokIcon className="h-4 w-4 text-primary-foreground/60 group-hover:text-secondary transition-colors" />
                 </a>
                 <a
                   href="https://wa.me/573223716811?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20productos%20y%20servicios%20de%20pintura."
