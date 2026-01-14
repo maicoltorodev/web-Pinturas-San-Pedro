@@ -185,11 +185,25 @@
   }
   
   /* Premium gradient text */
-  .gradient-text {
-    background: linear-gradient(to right, #a855f7 0%, #ec4899 33%, #3b82f6 66%, #eab308 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .gradient-text,
+  h2 .gradient-text,
+  span.gradient-text {
+    background: linear-gradient(to right, 
+      #a855f7 0%, 
+      #a855f7 20%, 
+      #ec4899 20%, 
+      #ec4899 40%, 
+      #3b82f6 40%, 
+      #3b82f6 60%, 
+      #eab308 60%, 
+      #eab308 80%,
+      #fbbf24 80%,
+      #fbbf24 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    color: transparent !important;
+    display: inline-block;
   }
   
   /* Premium shadow */
