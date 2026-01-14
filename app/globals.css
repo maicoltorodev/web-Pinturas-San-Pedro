@@ -423,4 +423,27 @@
   .testimonials-swiper .swiper-button-prev {
     display: none;
   }
+  
+  /* Glow optimizado para móvil - usa box-shadow en lugar de blur para mejor rendimiento */
+  @keyframes button-glow-mobile {
+    0%, 100% {
+      box-shadow: 0 0 8px rgba(255, 215, 0, 0.5), 0 0 12px rgba(255, 215, 0, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.7), 0 0 18px rgba(255, 215, 0, 0.4);
+    }
+  }
+  
+  .animate-button-glow-mobile {
+    animation: button-glow-mobile 2s ease-in-out infinite;
+  }
+  
+  /* Optimización: GPU acceleration solo cuando es necesario en móvil */
+  @media (max-width: 768px) {
+    .animate-button-glow-mobile {
+      will-change: box-shadow;
+      backface-visibility: hidden;
+      transform: translateZ(0);
+    }
+  }
 }

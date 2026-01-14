@@ -170,7 +170,7 @@ export function Header() {
             <Button
               variant="secondary"
               size="sm"
-              className="bg-secondary text-secondary-foreground hover:bg-secondary/90 h-9 px-3 text-xs rounded-lg animate-button-glow"
+              className="bg-secondary text-secondary-foreground hover:bg-secondary/90 h-9 px-3 text-xs rounded-lg animate-button-glow-mobile"
               asChild
             >
               <a 
