@@ -82,23 +82,10 @@ export function Header() {
           {/* Logo */}
           <a 
             href="/" 
-            className="flex-shrink-0 relative h-16 w-[180px] md:w-[280px] overflow-hidden"
+            className="flex-shrink-0 relative h-16 w-[180px] md:w-[280px] overflow-hidden block"
           >
-            {/* Skeleton mientras carga - cubre todo el área para prevenir desborde */}
             {!isImageLoaded && (
-              <div 
-                className="absolute inset-0 bg-gradient-to-r from-primary-foreground/20 via-primary-foreground/40 to-primary-foreground/20"
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  maxWidth: '100%',
-                  maxHeight: '100%',
-                  backgroundSize: '200% 100%',
-                  animation: 'shimmer 1.5s ease-in-out infinite',
-                  zIndex: 10,
-                  overflow: 'hidden'
-                }}
-              />
+              <div className="absolute inset-0 bg-gradient-to-r from-primary-foreground/20 via-primary-foreground/40 to-primary-foreground/20 animate-shimmer" />
             )}
             <Image
               src="/pintura-amarilla.png"
