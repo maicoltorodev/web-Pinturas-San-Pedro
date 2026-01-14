@@ -87,9 +87,14 @@ export function Header() {
           <a 
             href="/" 
             className={cn(
-              "inline-block flex-shrink-0 transition-transform duration-300",
+              "inline-flex items-center flex-shrink-0 transition-transform duration-300",
+              "h-full",
               isMounted && "animate-glow-pulse-subtle"
             )}
+            style={{
+              height: '64px',
+              maxHeight: '100px'
+            }}
           >
             <Image
               src="/pintura-amarilla.png"
@@ -104,7 +109,8 @@ export function Header() {
                 height: '64px',
                 width: 'auto',
                 maxHeight: '100px',
-                maxWidth: '280px'
+                maxWidth: '280px',
+                display: 'block'
               }}
             />
           </a>
