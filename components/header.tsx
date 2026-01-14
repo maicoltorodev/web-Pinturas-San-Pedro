@@ -80,16 +80,17 @@ export function Header() {
         <div className="flex items-center h-16 md:h-20 relative">
           {/* Logo */}
           <a href="/" className="flex-shrink-0">
-            <Image
-              src="/pintura-amarilla.png"
-              alt="Pinturas San Pedro"
-              width={280}
-              height={100}
-              className="object-contain h-16 w-auto max-w-[180px] md:max-w-[280px] transition-transform duration-300 hover:scale-105"
-              priority
-              sizes="(max-width: 768px) 180px, (max-width: 1024px) 220px, 280px"
-              style={{ objectFit: 'contain' }}
-            />
+            <div className="relative h-16 w-auto max-w-[180px] md:max-w-[280px] aspect-[280/100]">
+              <Image
+                src="/pintura-amarilla.png"
+                alt="Pinturas San Pedro"
+                fill
+                className="object-contain transition-transform duration-300 hover:scale-105"
+                priority
+                sizes="(max-width: 768px) 180px, (max-width: 1024px) 220px, 280px"
+                style={{ objectFit: 'contain' }}
+              />
+            </div>
           </a>
 
           {/* Desktop Navigation - Centrada */}
