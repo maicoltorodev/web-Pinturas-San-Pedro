@@ -43,13 +43,13 @@ export interface Product {
 const products: Product[] = [
   // VINILOS
   {
-    name: "Vinilo Acrílico – Tipo 1 (Interior)",
+    name: "Vinilo acrílico",
     category: "Vinilos",
-    description: "Vinilo acrílico de acabado mate lavable, ideal para interiores. Excelente desempeño y cubrimiento, bajo aroma y buena nivelación.",
-    features: ["Acabado mate lavable", "Excelente cubrimiento", "Bajo aroma", "Buena nivelación"],
+    description: "Vinilo acrílico con acabado mate lavable, ideal para interiores. Con desempeño y cubrimiento, bajo aroma y nivelación.",
+    features: ["Acabado mate lavable", "Con cubrimiento", "Bajo aroma", "Con nivelación"],
     icon: Paintbrush,
     color: "from-green-500 to-green-600",
-    image: "/productos/vinilo-acrilico.png",
+    image: "/productos/vinilo-lavable.png",
     presentations: [
       { size: "Cuñete" },
       { size: "Medio" },
@@ -59,10 +59,10 @@ const products: Product[] = [
     colors: ["Blanco", "Almendra", "Rojo"]
   },
   {
-    name: "Vinilo – Tipo 2 (Interior)",
+    name: "Vinilo tipo 2 Semilavable",
     category: "Vinilos",
-    description: "Vinilo de acabado mate, ideal para interiores. Buen cubrimiento y rendimiento, bajo aroma.",
-    features: ["Acabado mate", "Buen cubrimiento", "Bajo aroma", "Opción semilavable"],
+    description: "Vinilo con acabado mate, ideal para interiores. Con cubrimiento y rendimiento, bajo aroma.",
+    features: ["Acabado mate", "Con cubrimiento", "Bajo aroma", "Opción semilavable"],
     icon: Paintbrush,
     color: "from-teal-500 to-teal-600",
     image: "/productos/vinilo-semilavable.png",
@@ -76,8 +76,8 @@ const products: Product[] = [
   {
     name: "Vinilo tipo coraza",
     category: "Vinilos",
-    description: "Pintura diluible en agua, acabado satinado, hidrofugable y de alta resistencia. Ideal para fachadas o uso interior con altas exigencias de impermeabilización y lavabilidad.",
-    features: ["Acabado satinado", "Hidrofugable", "Alta resistencia", "Fachadas o uso interior"],
+    description: "Pintura diluible en agua con acabado satinado, hidrofugable y con resistencia. Ideal para fachadas o uso interior con exigencias de impermeabilización y lavabilidad.",
+    features: ["Acabado satinado", "Hidrofugable", "Con resistencia", "Fachadas o uso interior"],
     icon: Paintbrush,
     color: "from-purple-500 to-purple-600",
     image: "/productos/vinilo-hidrofugado.png",
@@ -88,10 +88,10 @@ const products: Product[] = [
     ]
   },
   {
-    name: "Vinilo Tipo 3",
+    name: "vinilo tipo 2 certificado",
     category: "Vinilos",
-    description: "Pintura económica de buena calidad para interiores. Ideal para proyectos con presupuesto ajustado sin comprometer la calidad.",
-    features: ["Económica", "Buena calidad", "Fácil aplicación"],
+    description: "Pintura económica con calidad para interiores. Ideal para proyectos con presupuesto ajustado sin comprometer la calidad.",
+    features: ["Económica", "Con calidad", "Fácil aplicación"],
     icon: Brush,
     color: "from-gray-500 to-gray-600",
     image: "/productos/vinilo-tipo-3.png",
@@ -106,8 +106,8 @@ const products: Product[] = [
   {
     name: "Anticorrosivo",
     category: "Anticorrosivo",
-    description: "Producto diseñado para máxima protección contra la oxidación y el desgaste.",
-    features: ["Protección contra oxidación", "Mejora adhesión del esmalte", "Secado rápido", "Alta resistencia"],
+    description: "Producto diseñado con protección contra la oxidación y el desgaste.",
+    features: ["Protección contra oxidación", "Mejora adhesión del esmalte", "Secado rápido", "Con resistencia"],
     icon: Shield,
     color: "from-orange-500 to-orange-600",
     image: "/productos/anticorrosivo.png",
@@ -125,7 +125,7 @@ const products: Product[] = [
       "Previene la formación de óxido",
       "Mejora la adhesión del esmalte",
       "Fácil aplicación y secado rápido",
-      "Alta resistencia y durabilidad"
+      "Con resistencia y durabilidad"
     ],
     application: "Listo para usar. Aplicable con rodillo o brocha. Se disuelve con thinner o varsol."
   },
@@ -134,8 +134,8 @@ const products: Product[] = [
   {
     name: "Esmalte Especial",
     category: "Esmaltes",
-    description: "Protección y decoración de superficies de metal y madera.",
-    features: ["Protección superior", "Decoración", "Durabilidad"],
+    description: "Con protección y decoración de superficies de metal y madera.",
+    features: ["Con protección", "Decoración", "Durabilidad"],
     icon: Sparkles,
     color: "from-blue-500 to-blue-600",
     image: "/productos/esmalte-especial.png",
@@ -154,8 +154,8 @@ const products: Product[] = [
   {
     name: "Esmalte Premium",
     category: "Esmaltes",
-    description: "Protección superior para superficies de metal y madera.",
-    features: ["Protección superior", "Alta calidad", "Excelente acabado"],
+    description: "Con protección para superficies de metal y madera.",
+    features: ["Con protección", "Con calidad", "Con acabado"],
     icon: Sparkles,
     color: "from-amber-500 to-amber-600",
     image: "/productos/esmalte-premium.png",
@@ -195,8 +195,8 @@ const products: Product[] = [
   {
     name: "Tráfico Pesado",
     category: "Tráfico Pesado",
-    description: "Pintura de alto desempeño para señalización y demarcación de pavimentos.",
-    features: ["Alta resistencia al desgaste", "Secado rápido", "Excelente durabilidad"],
+    description: "Pintura con desempeño para señalización y demarcación de pavimentos.",
+    features: ["Con resistencia al desgaste", "Secado rápido", "Con durabilidad"],
     icon: Car,
     color: "from-red-500 to-red-600",
     image: "/productos/trafico-pesado.png",
@@ -217,7 +217,7 @@ const products: Product[] = [
     name: "Estuco Plástico Acrílico",
     category: "Estucos",
     description: "Producto de acabado liso para paredes.",
-    features: ["Acabado liso", "Alta adherencia", "Fácil aplicación"],
+    features: ["Acabado liso", "Con adherencia", "Fácil aplicación"],
     icon: Layers,
     color: "from-indigo-500 to-indigo-600",
     image: "/productos/estuco-plastico-acrilico.png",
@@ -253,8 +253,8 @@ const products: Product[] = [
   {
     name: "Carraplast",
     category: "Estucos",
-    description: "Revestimiento decorativo de alta adherencia y flexibilidad.",
-    features: ["Alta adherencia", "Flexibilidad", "Decorativo"],
+    description: "Revestimiento decorativo con adherencia y flexibilidad.",
+    features: ["Con adherencia", "Flexibilidad", "Decorativo"],
     icon: Layers,
     color: "from-cyan-500 to-cyan-600",
     image: "/productos/garraplast.png",
@@ -291,7 +291,7 @@ const products: Product[] = [
     name: "Impermeabilizante",
     category: "Impermeabilizante",
     description: "Impermeabilizante para fachadas y techos, protección contra filtraciones y humedad.",
-    features: ["Protección contra filtraciones", "Alta durabilidad", "Resistente a humedad"],
+    features: ["Protección contra filtraciones", "Con durabilidad", "Resistente a humedad"],
     icon: Droplet,
     color: "from-blue-500 to-blue-600",
     image: "/productos/impermeabilizante.png",
@@ -301,7 +301,7 @@ const products: Product[] = [
       { size: "Galón" }
     ],
     benefits: [
-      "Alta durabilidad",
+      "Con durabilidad",
       "Protección frente al clima y la humedad"
     ]
   },
