@@ -210,8 +210,8 @@ export function Footer() {
                 </a>
               </div>
               <div className="flex items-center gap-6 text-xs sm:text-sm text-primary-foreground/60">
-                <a href="#" className="hover:text-secondary transition-colors">Política de Privacidad</a>
-                <a href="#" className="hover:text-secondary transition-colors">Términos de Servicio</a>
+                <a href="/privacidad" className="hover:text-secondary transition-colors">Política de Privacidad</a>
+                <a href="/terminos" className="hover:text-secondary transition-colors">Términos y Condiciones</a>
               </div>
             </div>
           </div>
