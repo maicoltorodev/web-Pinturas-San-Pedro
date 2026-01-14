@@ -1,39 +1,12 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
 import { MapPin } from "lucide-react"
 import { SectionHeader } from "@/components/ui/section-header"
 import { SectionBackground } from "@/components/ui/section-background"
+import { LazySection } from "@/components/lazy-section"
+import Image from "next/image"
 
 export function Location() {
-  const [shouldLoadMap, setShouldLoadMap] = useState(false)
-  const mapContainerRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const container = mapContainerRef.current
-    if (!container) return
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShouldLoadMap(true)
-          // Desconectar después de cargar para liberar memoria
-          observer.disconnect()
-        }
-      },
-      {
-        threshold: 0.1,
-        rootMargin: "100px", // Cargar un poco antes de que sea visible
-      }
-    )
-
-    observer.observe(container)
-
-    return () => {
-      observer.disconnect()
-    }
-  }, [])
-
   return (
     <section id="location" className="relative py-20 md:py-32 lg:py-40 overflow-hidden">
       <SectionBackground variant="primary" />
@@ -45,28 +18,80 @@ export function Location() {
           description="Encuéntranos en nuestra ubicación principal. Estamos aquí para atenderte y ayudarte con todos tus proyectos de pintura."
           className="text-primary-foreground [&_p]:text-primary-foreground/80 mb-12 md:mb-16"
         />
-        <div className="max-w-6xl mx-auto" ref={mapContainerRef}>
-          <div className="rounded-2xl overflow-hidden shadow-premium-lg border-4 border-secondary bg-card/10 md:backdrop-blur-sm">
-            {shouldLoadMap ? (
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.1431777141015!2d-74.11753039999999!3d4.7451628999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f8515d79b05f3%3A0x17e8f9d484745c6b!2sPinturas%20San%20Pedro%20Oficial!5e0!3m2!1ses-419!2sco!4v1768339290494!5m2!1ses-419!2sco"
-                width="100%"
-                height="450"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="w-full"
-                title="Mapa de ubicación de Pinturas San Pedro - Calle 132D N 145A-02, Bogotá"
-              />
-            ) : (
-              <div className="w-full h-[450px] bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="h-12 w-12 text-primary-foreground/40 mx-auto mb-4 animate-pulse" />
-                  <p className="text-primary-foreground/60 font-medium">Cargando mapa...</p>
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+            {/* Mapa */}
+            <div className="order-2 lg:order-1">
+              <LazySection
+                fallback={
+                  <div className="rounded-2xl overflow-hidden shadow-premium-lg border-4 border-secondary bg-card/10 md:backdrop-blur-sm">
+                    <div className="w-full h-[450px] bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center">
+                      <div className="text-center">
+                        <MapPin className="h-12 w-12 text-primary-foreground/40 mx-auto mb-4 animate-pulse" />
+                        <p className="text-primary-foreground/60 font-medium">Cargando mapa...</p>
+                      </div>
+                    </div>
+                  </div>
+                }
+                rootMargin="100px"
+                threshold={0.1}
+              >
+                <div className="rounded-2xl overflow-hidden shadow-premium-lg border-4 border-secondary bg-card/10 md:backdrop-blur-sm h-full">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.1431777141015!2d-74.11753039999999!3d4.7451628999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f8515d79b05f3%3A0x17e8f9d484745c6b!2sPinturas%20San%20Pedro%20Oficial!5e0!3m2!1ses-419!2sco!4v1768339290494!5m2!1ses-419!2sco"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0, minHeight: '450px' }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="w-full h-full"
+                    title="Mapa de ubicación de Pinturas San Pedro - Calle 132D N 145A-02, Bogotá"
+                  />
                 </div>
-              </div>
-            )}
+              </LazySection>
+            </div>
+
+            {/* Imagen de la fachada */}
+            <div className="order-1 lg:order-2">
+              <LazySection
+                fallback={
+                  <div className="rounded-2xl overflow-hidden shadow-premium-lg border-4 border-secondary bg-card/10 md:backdrop-blur-sm">
+                    <div className="w-full h-[450px] bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center">
+                      <div className="text-center">
+                        <MapPin className="h-12 w-12 text-primary-foreground/40 mx-auto mb-4 animate-pulse" />
+                        <p className="text-primary-foreground/60 font-medium">Cargando imagen...</p>
+                      </div>
+                    </div>
+                  </div>
+                }
+                rootMargin="100px"
+                threshold={0.1}
+              >
+                <div className="rounded-2xl overflow-hidden shadow-premium-lg border-4 border-secondary bg-card/10 md:backdrop-blur-sm h-full relative group">
+                  <div className="relative w-full h-[450px] md:h-full">
+                    <Image
+                      src="/fachada.png"
+                      alt="Fachada de Pinturas San Pedro - Calle 132D N 145A-02, Bogotá"
+                      fill
+                      className="object-cover transition-transform duration-500 md:group-hover:scale-105"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      priority={false}
+                      loading="lazy"
+                    />
+                    {/* Overlay con información */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/40 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                      <div className="p-6 text-primary-foreground w-full">
+                        <h3 className="text-xl md:text-2xl font-black mb-2">Nuestra Tienda</h3>
+                        <p className="text-sm md:text-base font-medium opacity-90">
+                          Visítanos en nuestra ubicación física para conocer todos nuestros productos y recibir asesoría personalizada.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </LazySection>
+            </div>
           </div>
         </div>
       </div>

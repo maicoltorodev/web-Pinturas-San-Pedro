@@ -131,26 +131,31 @@ export function ColorPalette() {
   const [copiedColor, setCopiedColor] = useState<string | null>(null)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
-  // Filtrar colores según búsqueda y pestaña activa
+  // Filtrar colores según búsqueda y pestaña activa - optimizado
   const filteredCategories = useMemo(() => {
+    const query = searchQuery.trim().toLowerCase()
+    const hasSearch = query.length > 0
+    
+    // Si hay búsqueda, filtrar primero por búsqueda y luego por tab
+    // Si no hay búsqueda, solo filtrar por tab
     let categories = colorCategories
 
-    // Filtrar por pestaña activa
-    if (activeTab) {
-      categories = categories.filter(cat => cat.name === activeTab)
+    // Filtrar por búsqueda primero (más restrictivo)
+    if (hasSearch) {
+      categories = categories.map(category => {
+        const filteredColors = category.colors.filter(color => {
+          // Búsqueda optimizada: verificar nombre primero (más común)
+          if (color.name.toLowerCase().includes(query)) return true
+          if (color.hex.toLowerCase().includes(query)) return true
+          return color.rgb.includes(query)
+        })
+        return { ...category, colors: filteredColors }
+      }).filter(category => category.colors.length > 0)
     }
 
-    // Filtrar por búsqueda
-    if (searchQuery.trim()) {
-      const query = searchQuery.toLowerCase().trim()
-      categories = categories.map(category => ({
-        ...category,
-        colors: category.colors.filter(color =>
-          color.name.toLowerCase().includes(query) ||
-          color.hex.toLowerCase().includes(query) ||
-          color.rgb.includes(query)
-        )
-      })).filter(category => category.colors.length > 0)
+    // Filtrar por pestaña activa después
+    if (activeTab) {
+      categories = categories.filter(cat => cat.name === activeTab)
     }
 
     return categories

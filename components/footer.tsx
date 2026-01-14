@@ -75,7 +75,7 @@ export function Footer() {
             </div>
             <p className="text-primary-foreground/80 leading-relaxed text-sm mb-4 max-w-sm">
               <span className="font-bold text-secondary">Profesionales en Color</span> - 
-              Servicios profesionales de pintura con más de 15 años de experiencia. 
+              Servicios profesionales de pintura con más de 30 años de experiencia. 
               Transformamos espacios con calidad artesanal y atención al detalle.
             </p>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20 mb-4">

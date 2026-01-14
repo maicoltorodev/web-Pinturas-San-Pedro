@@ -37,6 +37,7 @@ const services = [
   },
 ]
 
+// Color map optimizado - estructura simplificada manteniendo compatibilidad con Tailwind
 const colorMap: Record<string, {
   border: string
   hoverBorder: string

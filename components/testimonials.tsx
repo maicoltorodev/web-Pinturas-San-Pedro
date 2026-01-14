@@ -222,24 +222,35 @@ export function Testimonials() {
     const section = sectionRef.current
     if (!section || stylesLoaded) return
 
+    // Verificar si ya existe el link para evitar duplicados
+    const existingLink = document.querySelector('link[href*="swiper-bundle.min.css"]')
+    if (existingLink) {
+      setStylesLoaded(true)
+      return
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !stylesLoaded) {
-          // Cargar estilos de Swiper dinámicamente usando link tags
-          // Esto evita render blocking CSS en la carga inicial
-          const link1 = document.createElement('link')
-          link1.rel = 'stylesheet'
-          link1.href = 'https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css'
-          link1.crossOrigin = 'anonymous'
-          document.head.appendChild(link1)
+          // Verificar nuevamente antes de crear el link
+          if (!document.querySelector('link[href*="swiper-bundle.min.css"]')) {
+            const link = document.createElement('link')
+            link.rel = 'stylesheet'
+            link.href = 'https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css'
+            link.crossOrigin = 'anonymous'
+            link.media = 'print' // Cargar sin bloquear render
+            link.onload = () => {
+              link.media = 'all'
+            }
+            document.head.appendChild(link)
+          }
           
           setStylesLoaded(true)
-          // Desconectar observer después de cargar
           observer.disconnect()
         }
       },
       {
-        rootMargin: '200px', // Cargar cuando está a 200px del viewport
+        rootMargin: '200px',
         threshold: 0.01
       }
     )

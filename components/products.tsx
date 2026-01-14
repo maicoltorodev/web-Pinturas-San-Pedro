@@ -17,7 +17,7 @@ import {
   LucideIcon
 } from "lucide-react"
 import Image from "next/image"
-import { useState, useMemo, useCallback, useEffect, useRef } from "react"
+import { useState, useMemo, useCallback } from "react"
 
 // Types
 export interface ProductPresentation {
@@ -561,61 +561,11 @@ function ProductGrid({ products }: { products: Product[] }) {
   )
 }
 
-// Wrapper que activa animación solo cuando el producto está visible
+// Wrapper simplificado - la animación se maneja con CSS cuando el componente se renderiza
+// LazySection ya maneja la carga diferida, solo aplicamos animación visual
 function ProductCardWrapper({ product }: { product: Product }) {
-  const [isVisible, setIsVisible] = useState(false)
-  const cardRef = useRef<HTMLDivElement>(null)
-  const observerRef = useRef<IntersectionObserver | null>(null)
-  const hasAnimatedRef = useRef(false)
-
-  useEffect(() => {
-    const card = cardRef.current
-    if (!card || hasAnimatedRef.current) return
-
-    // Limpiar observer anterior si existe
-    if (observerRef.current) {
-      observerRef.current.disconnect()
-      observerRef.current = null
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimatedRef.current) {
-          hasAnimatedRef.current = true
-          setIsVisible(true)
-          // Desconectar después de activar para liberar memoria
-          if (observerRef.current) {
-            observerRef.current.disconnect()
-            observerRef.current = null
-          }
-        }
-      },
-      {
-        threshold: 0.1,
-        rootMargin: "50px", // Activar un poco antes de que sea completamente visible
-      }
-    )
-
-    observerRef.current = observer
-    observer.observe(card)
-
-    return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect()
-        observerRef.current = null
-      }
-      hasAnimatedRef.current = false
-    }
-  }, [])
-
   return (
-    <div 
-      ref={cardRef}
-      className={cn(
-        "transition-opacity duration-500",
-        isVisible ? "opacity-100 animate-fade-in" : "opacity-0"
-      )}
-    >
+    <div className="opacity-0 animate-fade-in">
       <ProductCard product={product} />
     </div>
   )

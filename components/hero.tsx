@@ -192,7 +192,7 @@ export function Hero() {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4 md:gap-8 pt-12 md:pt-16 max-w-2xl mx-auto">
               {[
-                { number: "15+", label: "Años de Experiencia" },
+                { number: "30+", label: "Años de Experiencia" },
                 { number: "500+", label: "Proyectos Completados" },
                 { number: "100%", label: "Satisfacción" },
               ].map((stat, index) => (

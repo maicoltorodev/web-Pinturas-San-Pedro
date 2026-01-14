@@ -46,7 +46,7 @@ export default function TerminosPage() {
               </p>
               <ul className="list-disc list-inside space-y-2 text-foreground/80 ml-4">
                 <li>Proporcionar productos de calidad certificada</li>
-                <li>Ofrecer servicios profesionales de pintura con más de 15 años de experiencia</li>
+                <li>Ofrecer servicios profesionales de pintura con más de 30 años de experiencia</li>
                 <li>Proporcionar información precisa sobre productos, precios y disponibilidad</li>
                 <li>Mantener estándares de calidad en todos nuestros servicios</li>
               </ul>

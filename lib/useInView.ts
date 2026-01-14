@@ -1,58 +1,78 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, useCallback } from "react"
 
 interface UseInViewOptions {
   threshold?: number
   rootMargin?: string
   triggerOnce?: boolean
+  enabled?: boolean
 }
 
+/**
+ * Hook optimizado unificado para detectar visibilidad y animaciones
+ * Consolida useInView y useAnimationOnView en un solo hook eficiente
+ * Evita múltiples instancias de IntersectionObserver
+ */
 export function useInView<T extends HTMLElement = HTMLElement>(options: UseInViewOptions = {}) {
-  const { threshold = 0.5, rootMargin = "0px", triggerOnce = false } = options
+  const { 
+    threshold = 0.1, 
+    rootMargin = "0px", 
+    triggerOnce = false,
+    enabled = true 
+  } = options
+  
   const [isInView, setIsInView] = useState(false)
+  const [shouldAnimate, setShouldAnimate] = useState(false)
   const ref = useRef<T>(null)
   const observerRef = useRef<IntersectionObserver | null>(null)
-  const optionsRef = useRef({ threshold, rootMargin, triggerOnce })
-
-  // Actualizar opciones sin recrear observer si los valores no cambiaron significativamente
+  const hasTriggeredRef = useRef(false)
+  
+  // Memoizar opciones para evitar recreaciones innecesarias
+  const optionsRef = useRef({ threshold, rootMargin, triggerOnce, enabled })
+  
   useEffect(() => {
-    const currentOptions = optionsRef.current
-    const optionsChanged = 
-      currentOptions.threshold !== threshold ||
-      currentOptions.rootMargin !== rootMargin ||
-      currentOptions.triggerOnce !== triggerOnce
+    optionsRef.current = { threshold, rootMargin, triggerOnce, enabled }
+  }, [threshold, rootMargin, triggerOnce, enabled])
 
-    if (optionsChanged) {
-      optionsRef.current = { threshold, rootMargin, triggerOnce }
-      // Solo recrear observer si las opciones críticas cambiaron
-      if (observerRef.current && ref.current) {
-        observerRef.current.disconnect()
-        observerRef.current = null
-      }
+  useEffect(() => {
+    if (!enabled) {
+      setIsInView(false)
+      setShouldAnimate(false)
+      return
     }
-  }, [threshold, rootMargin, triggerOnce])
 
-  useEffect(() => {
     const element = ref.current
     if (!element) return
 
-    // Limpiar observer anterior si existe antes de crear uno nuevo
+    // Si ya se activó y es triggerOnce, no crear observer
+    if (triggerOnce && hasTriggeredRef.current) return
+
+    // Limpiar observer anterior
     if (observerRef.current) {
       observerRef.current.disconnect()
       observerRef.current = null
     }
 
-    // Crear nuevo observer con las opciones actuales
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        const isIntersecting = entry.isIntersecting
+        
+        if (isIntersecting) {
           setIsInView(true)
-          if (optionsRef.current.triggerOnce && observerRef.current) {
-            observerRef.current.unobserve(element)
+          setShouldAnimate(true)
+          
+          if (triggerOnce) {
+            hasTriggeredRef.current = true
+            if (observerRef.current) {
+              observerRef.current.unobserve(element)
+              observerRef.current.disconnect()
+              observerRef.current = null
+            }
           }
-        } else if (!optionsRef.current.triggerOnce) {
+        } else if (!triggerOnce) {
           setIsInView(false)
+          setShouldAnimate(false)
         }
       },
       {
@@ -70,7 +90,7 @@ export function useInView<T extends HTMLElement = HTMLElement>(options: UseInVie
         observerRef.current = null
       }
     }
-  }, [threshold, rootMargin, triggerOnce]) // Incluir dependencias para recrear cuando cambien
+  }, [enabled, threshold, rootMargin, triggerOnce])
 
-  return { ref, isInView }
+  return { ref, isInView, shouldAnimate }
 }

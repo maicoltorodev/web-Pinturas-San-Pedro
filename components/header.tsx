@@ -40,6 +40,7 @@ export function Header() {
   useEffect(() => {
     let rafId: number | null = null
     let lastScrollY = window.scrollY
+    let lastIsScrolled = false
     
     const handleScroll = () => {
       // Cancelar RAF anterior si existe
@@ -49,9 +50,14 @@ export function Header() {
       
       rafId = requestAnimationFrame(() => {
         const currentScrollY = window.scrollY
-        // Solo actualizar estado si hay cambio significativo (más de 5px)
-        if (Math.abs(currentScrollY - lastScrollY) > 5) {
-          setIsScrolled(currentScrollY > 20)
+        // Solo actualizar estado si hay cambio significativo (más de 10px para reducir updates)
+        if (Math.abs(currentScrollY - lastScrollY) > 10) {
+          const newIsScrolled = currentScrollY > 20
+          // Solo actualizar si cambió el estado para evitar re-renders innecesarios
+          if (newIsScrolled !== lastIsScrolled) {
+            setIsScrolled(newIsScrolled)
+            lastIsScrolled = newIsScrolled
+          }
           lastScrollY = currentScrollY
         }
         rafId = null
@@ -66,7 +72,7 @@ export function Header() {
         cancelAnimationFrame(rafId)
       }
     }
-  }, [])
+  }, []) // Sin dependencias para evitar recreación del effect
 
   return (
     <header
