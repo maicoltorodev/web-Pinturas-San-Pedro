@@ -345,7 +345,7 @@ const products: Product[] = [
     features: ["Limpieza de herramientas", "Preparación de superficies"],
     icon: Wrench,
     color: "from-gray-600 to-gray-700",
-    image: "/productos/brocha.png",
+    image: "/productos/disolvente.png",
     presentations: [
       { size: "Galón", price: "Consultar" },
       { size: "Medio", price: "Consultar" }
