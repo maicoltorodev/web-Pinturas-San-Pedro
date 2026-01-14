@@ -88,12 +88,14 @@ export function Header() {
             href="/" 
             className={cn(
               "inline-flex items-center flex-shrink-0 transition-transform duration-300",
-              "h-full",
+              "h-full overflow-hidden",
+              "max-w-[180px] md:max-w-[280px]",
               isMounted && "animate-glow-pulse-subtle"
             )}
             style={{
               height: '64px',
-              maxHeight: '100px'
+              maxHeight: '64px',
+              maxWidth: '180px'
             }}
           >
             <Image
@@ -101,16 +103,17 @@ export function Header() {
               alt="Pinturas San Pedro"
               width={280}
               height={100}
-              className="object-contain transition-transform duration-300 hover:scale-105 md:[filter:drop-shadow(0_0_4px_rgba(255,215,0,0.2))]"
+              className="object-contain transition-transform duration-300 hover:scale-105 md:[filter:drop-shadow(0_0_4px_rgba(255,215,0,0.2))] max-w-[180px] md:max-w-[280px]"
               priority
               sizes="(max-width: 768px) 180px, (max-width: 1024px) 220px, 280px"
               quality={75}
               style={{ 
                 height: '64px',
                 width: 'auto',
-                maxHeight: '100px',
-                maxWidth: '280px',
-                display: 'block'
+                maxHeight: '64px',
+                maxWidth: '180px',
+                display: 'block',
+                objectFit: 'contain'
               }}
             />
           </a>
