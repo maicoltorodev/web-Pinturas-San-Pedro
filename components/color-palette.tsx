@@ -167,7 +167,10 @@ export function ColorPalette() {
   }
 
   // Contar total de colores
-  const totalColors = colorCategories.reduce((sum, cat) => sum + cat.colors.length, 0)
+  const totalColors = useMemo(() => 
+    colorCategories.reduce((sum, cat) => sum + cat.colors.length, 0),
+    []
+  )
 
   return (
     <section id="color-palette" className="relative py-20 md:py-28 lg:py-32 overflow-hidden">
