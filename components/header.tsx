@@ -84,26 +84,17 @@ export function Header() {
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a 
-            href="/" 
-            className={cn(
-              "inline-flex items-center flex-shrink-0 transition-transform duration-300",
-              "h-full overflow-hidden",
-              "max-w-[180px] md:max-w-[280px]",
-              isMounted && "animate-glow-pulse-subtle"
-            )}
-            style={{
-              height: '64px',
-              maxHeight: '64px',
-              maxWidth: '180px'
-            }}
-          >
+          <a href="/" className="flex-shrink-0">
             <Image
               src="/pintura-amarilla.png"
               alt="Pinturas San Pedro"
               width={280}
               height={100}
-              className="object-contain transition-transform duration-300 hover:scale-105 md:[filter:drop-shadow(0_0_4px_rgba(255,215,0,0.2))] max-w-[180px] md:max-w-[280px]"
+              className={cn(
+                "object-contain transition-transform duration-300 hover:scale-105 md:[filter:drop-shadow(0_0_4px_rgba(255,215,0,0.2))]",
+                "h-16 max-w-[180px] md:max-w-[280px]",
+                isMounted && "animate-glow-pulse-subtle"
+              )}
               priority
               sizes="(max-width: 768px) 180px, (max-width: 1024px) 220px, 280px"
               quality={75}
@@ -112,8 +103,7 @@ export function Header() {
                 width: 'auto',
                 maxHeight: '64px',
                 maxWidth: '180px',
-                display: 'block',
-                objectFit: 'contain'
+                display: 'block'
               }}
             />
           </a>
