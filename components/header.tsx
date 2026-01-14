@@ -77,7 +77,7 @@ export function Header() {
       )}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center h-16 md:h-20 relative">
           {/* Logo */}
           <a href="/" className="flex-shrink-0">
             <Image
@@ -107,7 +107,7 @@ export function Header() {
           </div>
 
           {/* Botón Cotizar y Redes Sociales - Derecha */}
-          <div className="hidden md:flex items-center gap-3 flex-shrink-0">
+          <div className="hidden md:flex items-center gap-3 flex-shrink-0 ml-auto">
             {/* Redes Sociales */}
             <div className="flex items-center gap-2">
               <a
@@ -155,8 +155,8 @@ export function Header() {
             </Button>
           </div>
 
-          {/* Mobile: CTA Button and Menu Button */}
-          <div className="flex items-center gap-2 md:hidden">
+          {/* Mobile: CTA Button Centrado */}
+          <div className="flex items-center justify-center md:hidden flex-1 absolute left-1/2 -translate-x-1/2">
             <Button
               variant="secondary"
               size="sm"
@@ -171,18 +171,20 @@ export function Header() {
                 Contactar
               </a>
             </Button>
-            <button
-              className="p-2 -mr-2 rounded-lg hover:bg-primary-foreground/10 transition-colors"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? (
-                <X className="h-6 w-6 text-primary-foreground" />
-              ) : (
-                <Menu className="h-6 w-6 text-primary-foreground" />
-              )}
-            </button>
           </div>
+          
+          {/* Mobile: Menu Button - Derecha */}
+          <button
+            className="p-2 -mr-2 rounded-lg hover:bg-primary-foreground/10 transition-colors md:hidden ml-auto"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? (
+              <X className="h-6 w-6 text-primary-foreground" />
+            ) : (
+              <Menu className="h-6 w-6 text-primary-foreground" />
+            )}
+          </button>
         </div>
 
         {/* Mobile Navigation - Full Screen Overlay */}
