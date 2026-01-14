@@ -171,11 +171,11 @@ export function Contact() {
                           {info.title}
                         </h3>
                         {info.href ? (
-                          <a href={info.href} className="text-muted-foreground hover:text-secondary transition-colors text-sm break-all block">
+                          <a href={info.href} className="text-foreground/80 hover:text-secondary transition-colors text-sm break-all block">
                             {info.content}
                           </a>
                         ) : (
-                          <p className="text-muted-foreground text-sm">{info.content}</p>
+                          <p className="text-foreground/80 text-sm">{info.content}</p>
                         )}
                       </div>
                     </div>
