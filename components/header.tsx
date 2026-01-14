@@ -84,14 +84,19 @@ export function Header() {
             href="/" 
             className="flex-shrink-0 relative h-16 w-[180px] md:w-[280px] overflow-hidden"
           >
-            {/* Skeleton mientras carga */}
+            {/* Skeleton mientras carga - cubre todo el área para prevenir desborde */}
             {!isImageLoaded && (
               <div 
-                className="absolute inset-0 bg-gradient-to-r from-primary-foreground/10 via-primary-foreground/20 to-primary-foreground/10 animate-shimmer"
+                className="absolute inset-0 bg-gradient-to-r from-primary-foreground/20 via-primary-foreground/40 to-primary-foreground/20"
                 style={{
+                  width: '100%',
+                  height: '100%',
+                  maxWidth: '100%',
+                  maxHeight: '100%',
                   backgroundSize: '200% 100%',
-                  backgroundPosition: '0% 0%',
-                  animation: 'shimmer 1.5s ease-in-out infinite'
+                  animation: 'shimmer 1.5s ease-in-out infinite',
+                  zIndex: 10,
+                  overflow: 'hidden'
                 }}
               />
             )}
@@ -100,7 +105,10 @@ export function Header() {
               alt="Pinturas San Pedro"
               width={280}
               height={100}
-              className="object-contain h-full w-auto transition-transform duration-300 hover:scale-105"
+              className={cn(
+                "object-contain h-full w-auto transition-opacity duration-300 hover:scale-105",
+                isImageLoaded ? "opacity-100" : "opacity-0"
+              )}
               priority
               sizes="(max-width: 768px) 180px, 280px"
               onLoad={() => setIsImageLoaded(true)}
