@@ -85,7 +85,7 @@ export function Header() {
             className="flex-shrink-0 relative h-16 w-[180px] md:w-[280px] overflow-hidden block"
           >
             {!isImageLoaded && (
-              <div className="absolute inset-0 bg-gradient-to-r from-primary-foreground/20 via-primary-foreground/40 to-primary-foreground/20 animate-shimmer" />
+              <div className="absolute inset-0 bg-primary" />
             )}
             <Image
               src="/pintura-amarilla.png"
