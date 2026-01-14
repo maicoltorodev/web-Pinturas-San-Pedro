@@ -79,22 +79,66 @@ export function Header() {
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center h-16 md:h-20 relative">
           {/* Logo */}
-          <a href="/" className="flex-shrink-0 h-16 w-[180px] md:w-[280px] overflow-hidden">
-            <Image
-              src="/pintura-amarilla.png"
-              alt="Pinturas San Pedro"
-              width={280}
-              height={100}
-              className="object-contain transition-transform duration-300 hover:scale-105"
-              priority
-              sizes="(max-width: 768px) 180px, 280px"
-              style={{ 
-                objectFit: 'contain', 
-                width: '100%', 
+          <a 
+            href="/" 
+            className="flex-shrink-0"
+            style={{
+              height: '64px',
+              width: '180px',
+              maxWidth: '180px',
+              maxHeight: '64px',
+              display: 'block',
+              overflow: 'hidden',
+              position: 'relative',
+              boxSizing: 'border-box'
+            }}
+          >
+            <div
+              style={{
+                width: '100%',
                 height: '100%',
-                display: 'block'
+                maxWidth: '100%',
+                maxHeight: '100%',
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                overflow: 'hidden'
               }}
-            />
+            >
+              <Image
+                src="/pintura-amarilla.png"
+                alt="Pinturas San Pedro"
+                width={280}
+                height={100}
+                className="transition-transform duration-300 hover:scale-105"
+                priority
+                sizes="(max-width: 768px) 180px, 280px"
+                style={{ 
+                  objectFit: 'contain', 
+                  width: 'auto',
+                  height: '100%',
+                  maxWidth: '100%',
+                  maxHeight: '100%',
+                  display: 'block'
+                }}
+              />
+            </div>
+            <style dangerouslySetInnerHTML={{__html: `
+              @media (min-width: 768px) {
+                a[href="/"] {
+                  width: 280px !important;
+                  max-width: 280px !important;
+                }
+              }
+              a[href="/"] img,
+              a[href="/"] picture {
+                max-width: 100% !important;
+                max-height: 100% !important;
+                width: auto !important;
+                height: 100% !important;
+              }
+            `}} />
           </a>
 
           {/* Desktop Navigation - Centrada */}
