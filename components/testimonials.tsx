@@ -138,12 +138,10 @@ export function Testimonials() {
 
   return (
     <section id="testimonials" className="relative py-24 md:py-32 lg:py-40 bg-background overflow-hidden">
-      {/* Decoración sutil de fondo - Optimized for mobile */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 right-0 w-48 h-48 md:w-96 md:h-96 bg-secondary rounded-full blur-2xl md:blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-40 h-40 md:w-96 md:h-96 bg-secondary rounded-full blur-2xl md:blur-3xl" />
-        {/* Círculo adicional pequeño para móvil */}
-        <div className="md:hidden absolute top-1/2 left-1/2 w-32 h-32 bg-secondary rounded-full blur-xl opacity-30" />
+      {/* Decoración solo en desktop - pesada en móvil */}
+      <div className="hidden md:block absolute inset-0 opacity-5">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-secondary rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

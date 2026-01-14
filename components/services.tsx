@@ -40,7 +40,7 @@ const services = [
 function ServiceCard({ service }: { service: typeof services[0] }) {
   const Icon = service.icon
   return (
-    <Card className="h-full border-2 border-border/50 bg-card/50 backdrop-blur-sm transition-all duration-500 md:hover:border-secondary md:hover:shadow-premium-lg md:hover:-translate-y-2 shadow-premium group">
+    <Card className="h-full border-2 border-border/50 bg-card/50 md:backdrop-blur-sm transition-all duration-500 md:hover:border-secondary md:hover:shadow-premium-lg md:hover:-translate-y-2 shadow-premium group">
       <CardContent className="p-6 md:p-8 relative overflow-hidden">
         <div className={cn(
           "absolute top-0 right-0 w-32 h-32 rounded-full opacity-0 md:group-hover:opacity-10 transition-opacity duration-500",

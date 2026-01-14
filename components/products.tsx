@@ -84,7 +84,7 @@ function ProductCard({ product }: { product: typeof products[0] }) {
   const Icon = product.icon
 
   return (
-    <Card className="h-full border-2 border-primary-foreground/30 bg-white/95 backdrop-blur-sm md:hover:border-secondary md:hover:shadow-premium-lg transition-all duration-500 md:hover:-translate-y-3 group relative overflow-hidden flex flex-col">
+    <Card className="h-full border-2 border-primary-foreground/30 bg-white/95 md:backdrop-blur-sm md:hover:border-secondary md:hover:shadow-premium-lg transition-all duration-500 md:hover:-translate-y-3 group relative overflow-hidden flex flex-col">
         <div className="absolute inset-0 bg-gradient-to-br from-secondary/0 via-secondary/0 to-secondary/0 md:group-hover:from-secondary/10 md:group-hover:via-secondary/15 md:group-hover:to-secondary/10 transition-all duration-500 pointer-events-none z-10" />
         
         <CardContent className="p-6 flex-1 flex flex-col relative z-10">

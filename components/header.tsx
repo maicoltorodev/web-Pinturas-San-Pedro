@@ -34,7 +34,7 @@ export function Header() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         isScrolled
-          ? "bg-primary/95 backdrop-blur-md border-b border-primary-foreground/10 shadow-premium"
+          ? "bg-primary/95 md:backdrop-blur-md border-b border-primary-foreground/10 shadow-premium"
           : "bg-primary border-b border-primary-foreground/5"
       )}
     >
@@ -47,9 +47,8 @@ export function Header() {
                 src="/pintura-amarilla.png"
                 alt="Pinturas San Pedro"
                 fill
-                className="object-contain"
+                className="object-contain md:[filter:drop-shadow(0_0_4px_rgba(255,215,0,0.2))]"
                 priority
-                style={{ filter: 'drop-shadow(0 0 4px rgba(255, 215, 0, 0.2))' }}
               />
             </div>
           </a>
@@ -105,7 +104,7 @@ export function Header() {
 
         {/* Mobile Navigation - Full Screen Overlay */}
         {isMenuOpen && (
-          <div className="fixed inset-0 top-16 md:hidden bg-primary/98 backdrop-blur-md z-40 overflow-y-auto">
+          <div className="fixed inset-0 top-16 md:hidden bg-primary z-40 overflow-y-auto">
             <div className="container mx-auto px-4 sm:px-6 py-8">
               <div className="flex flex-col gap-4">
                 {navLinks.map((link) => (

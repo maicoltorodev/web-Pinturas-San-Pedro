@@ -69,7 +69,7 @@ export function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 max-w-7xl mx-auto">
           {/* Form */}
           <div className="lg:col-span-2">
-            <Card className="border-2 border-primary-foreground/20 bg-card/80 backdrop-blur-sm shadow-premium hover:shadow-premium-lg transition-all duration-500">
+            <Card className="border-2 border-primary-foreground/20 bg-card/80 md:backdrop-blur-sm shadow-premium md:hover:shadow-premium-lg transition-all duration-500">
               <CardContent className="p-6 md:p-8 lg:p-10">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -156,7 +156,7 @@ export function Contact() {
               return (
                 <Card
                   key={info.title}
-                  className="border-2 border-primary-foreground/20 bg-card/80 backdrop-blur-sm md:hover:border-secondary md:hover:shadow-premium-lg transition-all duration-500 md:hover:-translate-y-1 group cursor-pointer"
+                  className="border-2 border-primary-foreground/20 bg-card/80 md:backdrop-blur-sm md:hover:border-secondary md:hover:shadow-premium-lg transition-all duration-500 md:hover:-translate-y-1 group cursor-pointer"
                 >
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">

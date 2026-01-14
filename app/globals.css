@@ -215,7 +215,7 @@
     animation: float 3s ease-in-out infinite;
   }
   
-  /* Disable animations on mobile for better performance */
+  /* Disable heavy effects on mobile for better performance */
   @media (max-width: 768px) {
     .animate-float,
     .animate-glow-pulse,
@@ -226,14 +226,24 @@
       animation: none !important;
     }
     
-    /* Reduce blur effects on mobile */
-    [class*="blur-3xl"] {
-      filter: blur(20px) !important;
+    /* Remove blur effects completely on mobile */
+    [class*="blur-3xl"],
+    [class*="blur-2xl"] {
+      display: none !important;
     }
     
-    /* Reduce backdrop blur on mobile */
+    /* Remove backdrop blur completely on mobile - very heavy */
     [class*="backdrop-blur"] {
-      backdrop-filter: blur(4px) !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+    
+    /* Simplify glass effects on mobile */
+    .glass,
+    .glass-dark {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      background: rgba(0, 0, 0, 0.1) !important;
     }
   }
   

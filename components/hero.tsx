@@ -9,25 +9,27 @@ import Image from "next/image"
 export function Hero() {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Premium Background with Gradient Overlay - Optimized for mobile */}
+      {/* Premium Background - Simplified for mobile */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-[oklch(0.25_0.15_252)]" />
-        <CirclePattern variant="default" />
-        {/* Animated gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60" />
-        {/* Premium light effect - Optimized for mobile */}
-        <div className="absolute top-1/4 left-1/4 w-48 h-48 md:w-96 md:h-96 bg-secondary/25 md:bg-secondary/35 rounded-full blur-2xl md:blur-3xl md:animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-40 h-40 md:w-96 md:h-96 bg-secondary/20 md:bg-secondary/25 rounded-full blur-2xl md:blur-3xl md:animate-pulse md:delay-1000" />
-        {/* Círculo adicional pequeño para móvil */}
-        <div className="md:hidden absolute top-3/4 right-1/3 w-32 h-32 bg-secondary/15 rounded-full blur-xl" />
+        {/* Gradiente base simplificado en móvil */}
+        <div className="absolute inset-0 bg-primary md:bg-gradient-to-br md:from-primary md:via-primary md:to-[oklch(0.25_0.15_252)]" />
+        {/* CirclePattern solo en desktop - pesado en móvil */}
+        <div className="hidden md:block">
+          <CirclePattern variant="default" />
+        </div>
+        {/* Overlay solo en desktop */}
+        <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60" />
+        {/* Círculos solo en desktop - pesados en móvil */}
+        <div className="hidden md:block absolute top-1/4 left-1/4 w-96 h-96 bg-secondary/35 rounded-full blur-3xl animate-pulse" />
+        <div className="hidden md:block absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/25 rounded-full blur-3xl animate-pulse delay-1000" />
       </div>
 
       {/* Content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 md:py-32">
         <div className="max-w-5xl mx-auto">
           <div className="text-center space-y-6 md:space-y-8">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark border border-primary-foreground/20 mb-4">
+            {/* Badge - Sin backdrop-blur en móvil */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-foreground/10 md:glass-dark border border-primary-foreground/20 mb-4">
               <Sparkles className="h-4 w-4 text-secondary" />
               <span className="text-xs sm:text-sm font-semibold text-primary-foreground/90 uppercase tracking-wider">
                 Profesionales en Color
@@ -50,10 +52,9 @@ export function Hero() {
                   src="/logo.png"
                   alt="Pinturas San Pedro"
                   fill
-                  className="object-contain relative z-10"
+                  className="object-contain relative z-10 md:[filter:drop-shadow(0_0_10px_rgba(255,215,0,0.3))]"
                   priority
                   sizes="(max-width: 640px) 256px, (max-width: 768px) 320px, (max-width: 1024px) 384px, 500px"
-                  style={{ filter: 'drop-shadow(0 0 10px rgba(255, 215, 0, 0.3))' }}
                 />
               </div>
             </div>
@@ -87,7 +88,7 @@ export function Hero() {
               <Button
                 size="lg"
                 variant="outline"
-                className="group w-full sm:w-auto h-14 md:h-16 text-base md:text-lg px-8 md:px-10 rounded-xl border-2 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 bg-transparent backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-primary-foreground/50"
+                className="group w-full sm:w-auto h-14 md:h-16 text-base md:text-lg px-8 md:px-10 rounded-xl border-2 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 bg-transparent md:backdrop-blur-sm transition-all duration-300 md:hover:scale-105 md:hover:border-primary-foreground/50"
               >
                 Ver Portafolio
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />

@@ -176,15 +176,15 @@ export function ColorPalette() {
 
   return (
     <section id="color-palette" className="relative py-20 md:py-28 lg:py-32 overflow-hidden">
-      {/* Background igual al hero */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/95 to-primary/90" />
-      <CirclePattern className="absolute inset-0 opacity-30" />
-      
-      {/* Light effects - Optimized for mobile */}
-      <div className="absolute top-1/4 left-1/4 w-48 h-48 md:w-96 md:h-96 bg-secondary/15 md:bg-secondary/20 rounded-full blur-2xl md:blur-3xl md:animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-40 h-40 md:w-96 md:h-96 bg-secondary/15 md:bg-secondary/20 rounded-full blur-2xl md:blur-3xl md:animate-pulse" style={{ animationDelay: '1s' }} />
-      {/* Círculo adicional pequeño para móvil */}
-      <div className="md:hidden absolute top-2/3 left-1/2 w-36 h-36 bg-secondary/12 rounded-full blur-xl" />
+      {/* Background simplificado en móvil */}
+      <div className="absolute inset-0 bg-primary md:bg-gradient-to-br md:from-primary md:via-primary/95 md:to-primary/90" />
+      {/* CirclePattern solo en desktop */}
+      <div className="hidden md:block">
+        <CirclePattern className="absolute inset-0 opacity-30" />
+      </div>
+      {/* Light effects solo en desktop */}
+      <div className="hidden md:block absolute top-1/4 left-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse" />
+      <div className="hidden md:block absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
@@ -242,7 +242,7 @@ export function ColorPalette() {
                 "px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300",
                 activeTab === null
                   ? "bg-secondary text-secondary-foreground shadow-lg scale-105 border-2 border-secondary"
-                  : "bg-white text-foreground hover:bg-white/95 hover:scale-105 border-2 border-white/50 shadow-md backdrop-blur-sm"
+                  : "bg-white text-foreground hover:bg-white/95 hover:scale-105 border-2 border-white/50 shadow-md md:backdrop-blur-sm"
               )}
             >
               Todos ({totalColors})
@@ -255,7 +255,7 @@ export function ColorPalette() {
                   "px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300",
                   activeTab === category.name
                     ? "bg-secondary text-secondary-foreground shadow-lg scale-105 border-2 border-secondary"
-                    : "bg-white text-foreground hover:bg-white/95 hover:scale-105 border-2 border-white/50 shadow-md backdrop-blur-sm"
+                    : "bg-white text-foreground hover:bg-white/95 hover:scale-105 border-2 border-white/50 shadow-md md:backdrop-blur-sm"
                 )}
               >
                 {category.name} ({category.colors.length})
