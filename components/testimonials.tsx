@@ -310,13 +310,9 @@ export function Testimonials() {
             }}
             centeredSlides={false}
             className="testimonials-swiper"
-            navigation={{
-              prevEl: prevButtonRef.current,
-              nextEl: nextButtonRef.current,
-            }}
             onInit={(swiper) => {
               // Actualizar navegación después de la inicialización
-              if (swiper.params.navigation) {
+              if (swiper.params.navigation && prevButtonRef.current && nextButtonRef.current) {
                 swiper.params.navigation.prevEl = prevButtonRef.current
                 swiper.params.navigation.nextEl = nextButtonRef.current
                 swiper.navigation.init()
@@ -387,20 +383,6 @@ export function Testimonials() {
         </div>
       </div>
 
-      <style jsx global>{`
-        .testimonials-swiper {
-          padding: 0;
-          overflow: visible;
-        }
-        .testimonials-swiper .swiper-slide {
-          height: auto;
-          display: flex;
-        }
-        .testimonials-swiper .swiper-button-next,
-        .testimonials-swiper .swiper-button-prev {
-          display: none;
-        }
-      `}</style>
     </section>
   )
 }

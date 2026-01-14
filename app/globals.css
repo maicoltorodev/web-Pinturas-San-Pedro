@@ -360,4 +360,20 @@
   .animate-fade-slide {
     animation: fade-slide 0.5s ease-out forwards;
   }
+  
+  /* Estilos para Swiper carousel de testimonios */
+  .testimonials-swiper {
+    padding: 0;
+    overflow: visible;
+  }
+  
+  .testimonials-swiper .swiper-slide {
+    height: auto;
+    display: flex;
+  }
+  
+  .testimonials-swiper .swiper-button-next,
+  .testimonials-swiper .swiper-button-prev {
+    display: none;
+  }
 }
