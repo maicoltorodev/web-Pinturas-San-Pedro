@@ -367,14 +367,24 @@ function ProductCard({ product }: { product: Product }) {
     return price
   }, [])
 
+  const handleCardClick = useCallback(() => {
+    const message = `Hola, necesito ${product.name}`
+    const whatsappUrl = `https://wa.me/573223716811?text=${encodeURIComponent(message)}`
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
+  }, [product.name])
+
   return (
-    <Card className={cn(
-      "h-full border-2 bg-white/98 backdrop-blur-sm",
-      "group relative overflow-hidden flex flex-col",
-      "transition-all duration-500 ease-out",
-      "hover:border-secondary/60 hover:shadow-premium-lg",
-      "md:hover:-translate-y-1"
-    )}>
+    <Card 
+      onClick={handleCardClick}
+      className={cn(
+        "h-full border-2 bg-white/98 backdrop-blur-sm",
+        "group relative overflow-hidden flex flex-col",
+        "transition-all duration-500 ease-out",
+        "hover:border-secondary/60 hover:shadow-premium-lg",
+        "md:hover:-translate-y-1",
+        "cursor-pointer"
+      )}
+    >
       {/* Gradient overlay on hover */}
       <div className={cn(
         "absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity duration-500",
