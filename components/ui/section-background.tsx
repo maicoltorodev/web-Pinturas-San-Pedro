@@ -18,9 +18,6 @@ export function SectionBackground({ variant = "primary", className }: SectionBac
           </div>
           {/* Overlay de gradiente solo en desktop */}
           <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60" />
-          {/* Círculos solo en desktop - pesados en móvil */}
-          <div className="hidden md:block absolute top-1/4 left-1/4 w-96 h-96 bg-secondary/35 rounded-full blur-xl animate-pulse" />
-          <div className="hidden md:block absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/25 rounded-full blur-xl animate-pulse delay-1000" />
         </>
       ) : (
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-muted/20" />

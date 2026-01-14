@@ -11,9 +11,16 @@ interface UseInViewOptions {
 export function useInView<T extends HTMLElement = HTMLElement>(options: UseInViewOptions = {}) {
   const { threshold = 0.5, rootMargin = "0px", triggerOnce = false } = options
   const [isInView, setIsInView] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
   const ref = useRef<T>(null)
 
   useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (!isMounted) return
+    
     const element = ref.current
     if (!element) return
 
@@ -39,7 +46,7 @@ export function useInView<T extends HTMLElement = HTMLElement>(options: UseInVie
     return () => {
       observer.disconnect()
     }
-  }, [threshold, rootMargin, triggerOnce])
+  }, [threshold, rootMargin, triggerOnce, isMounted])
 
-  return { ref, isInView }
+  return { ref, isInView: isMounted ? isInView : false }
 }

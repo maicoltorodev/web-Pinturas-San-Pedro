@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 
 export function LogoFAB() {
   const [isVisible, setIsVisible] = useState(false)
-  const phoneNumber = "3223716811" // Número de WhatsApp de Pinturas San Pedro
+  const phoneNumber = "3223716811" // Número de WhatsApp de Pinturas San Pedro - Formato: 322 3716811
   const message = "Hola, me interesa conocer más sobre sus servicios de pintura."
   const whatsappUrl = `https://wa.me/57${phoneNumber}?text=${encodeURIComponent(message)}`
 

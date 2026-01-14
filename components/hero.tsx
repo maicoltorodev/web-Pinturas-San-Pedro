@@ -19,9 +19,6 @@ export function Hero() {
         </div>
         {/* Overlay solo en desktop */}
         <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60" />
-        {/* Círculos solo en desktop - pesados en móvil */}
-        <div className="hidden md:block absolute top-1/4 left-1/4 w-96 h-96 bg-secondary/35 rounded-full blur-xl animate-pulse" />
-        <div className="hidden md:block absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/25 rounded-full blur-xl animate-pulse delay-1000" />
       </div>
 
       {/* Content */}
@@ -40,7 +37,7 @@ export function Hero() {
             <div className="flex justify-center mb-6">
               <div className="relative w-64 h-32 sm:w-80 sm:h-40 md:w-96 md:h-48 lg:w-[500px] lg:h-[250px] md:animate-float aspect-[2/1]">
                 {/* Simplified: Single glow effect instead of multiple layers */}
-                <div className="hidden md:block absolute inset-0 md:animate-glow-pulse pointer-events-none" style={{ 
+                <div className="hidden md:block absolute inset-0 pointer-events-none" style={{ 
                   filter: 'drop-shadow(0 0 15px rgba(255, 215, 0, 0.4))',
                   zIndex: 5
                 }} />
@@ -57,11 +54,11 @@ export function Hero() {
 
             {/* Tagline */}
             <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="h-px w-16 bg-secondary/50" />
-              <span className="text-xl sm:text-2xl md:text-3xl font-black text-secondary uppercase tracking-wider">
+              <div className="h-px w-16 bg-primary-foreground" />
+              <span className="text-xl sm:text-2xl md:text-3xl font-black text-primary-foreground uppercase tracking-wider">
                 CREAMOS COLOR!
               </span>
-              <div className="h-px w-16 bg-secondary/50" />
+              <div className="h-px w-16 bg-primary-foreground" />
             </div>
 
             {/* Description */}

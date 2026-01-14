@@ -1,12 +1,18 @@
+"use client"
+
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import { Mail, Phone, MapPin, ArrowRight } from "lucide-react"
 
 export function Footer() {
-  const currentYear = new Date().getFullYear()
+  const [currentYear, setCurrentYear] = useState(2024)
+  
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear())
+  }, [])
 
   const quickLinks = [
     { href: "#services", label: "Servicios" },
-    { href: "#portfolio", label: "Portafolio" },
     { href: "#process", label: "Proceso" },
     { href: "#products", label: "Productos" },
     { href: "#color-palette", label: "Colores" },
@@ -51,7 +57,7 @@ export function Footer() {
               Transformamos espacios con calidad artesanal y atención al detalle.
             </p>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20">
-              <span className="text-sm font-black text-secondary uppercase tracking-wider">
+              <span className="text-sm font-black text-primary-foreground uppercase tracking-wider">
                 CREAMOS COLOR!
               </span>
             </div>
@@ -85,16 +91,7 @@ export function Footer() {
                   href="tel:+573223716811"
                   className="text-primary-foreground/80 hover:text-secondary transition-colors text-sm"
                 >
-                  +57 322 371 6811
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <Phone className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
-                <a
-                  href="tel:+573224579483"
-                  className="text-primary-foreground/80 hover:text-secondary transition-colors text-sm"
-                >
-                  +57 322 457 9483
+                  +57 322 3716811
                 </a>
               </li>
               <li className="flex items-start gap-3">
@@ -119,15 +116,15 @@ export function Footer() {
             <ul className="space-y-2 text-primary-foreground/80 text-sm">
               <li className="flex justify-between">
                 <span>Lunes - Viernes</span>
-                <span className="text-secondary font-semibold">8am - 6pm</span>
+                <span className="text-secondary font-semibold">7am - 6pm</span>
               </li>
               <li className="flex justify-between">
                 <span>Sábado</span>
-                <span className="text-secondary font-semibold">9am - 4pm</span>
+                <span className="text-secondary font-semibold">7am - 5pm</span>
               </li>
               <li className="flex justify-between">
                 <span>Domingo</span>
-                <span className="text-primary-foreground/50">Cerrado</span>
+                <span className="text-secondary font-semibold">8am - 1pm</span>
               </li>
             </ul>
           </div>

@@ -34,7 +34,7 @@ export function Contact() {
     {
       icon: Phone,
       title: "Teléfono",
-      content: "+57 322 371 6811",
+      content: "+57 322 3716811",
       href: "tel:+573223716811",
       color: "from-blue-500 to-blue-600",
     },

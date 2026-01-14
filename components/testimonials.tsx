@@ -5,6 +5,7 @@ import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { SectionHeader } from "@/components/ui/section-header"
+import { CirclePattern } from "@/components/ui/circle-pattern"
 import { cn } from "@/lib/utils"
 
 const testimonials = [
@@ -138,10 +139,9 @@ export function Testimonials() {
 
   return (
     <section id="testimonials" className="relative py-24 md:py-32 lg:py-40 bg-background overflow-hidden">
-      {/* Decoración solo en desktop - pesada en móvil */}
+      {/* Decoración optimizada solo en desktop */}
       <div className="hidden md:block absolute inset-0 opacity-5">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-secondary rounded-full blur-xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary rounded-full blur-xl" />
+        <CirclePattern variant="subtle" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

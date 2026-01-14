@@ -15,10 +15,6 @@ const ColorPalette = dynamic(() => import("@/components/color-palette").then(mod
   loading: () => <div className="h-64" />,
 })
 
-const Portfolio = dynamic(() => import("@/components/portfolio").then(mod => ({ default: mod.Portfolio })), {
-  loading: () => <div className="h-64" />,
-})
-
 const Process = dynamic(() => import("@/components/process").then(mod => ({ default: mod.Process })), {
   loading: () => <div className="h-64" />,
 })
@@ -47,7 +43,6 @@ export default function Home() {
       <Services />
       <Products />
       <ColorPalette />
-      <Portfolio />
       <Process />
       <Location />
       <Testimonials />
