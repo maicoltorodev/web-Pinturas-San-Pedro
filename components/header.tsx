@@ -57,30 +57,24 @@ export function Header() {
           <a 
             href="#hero" 
             className={cn(
-              "flex items-center group flex-shrink-0 transition-transform duration-300 hover:scale-105",
+              "inline-block flex-shrink-0 transition-transform duration-300",
               isMounted && "animate-glow-pulse-subtle"
             )}
-            style={{ 
-              height: '64px',
-              width: '180px',
-              maxHeight: '100px',
-              maxWidth: '280px'
-            }}
           >
             <Image
               src="/pintura-amarilla.png"
               alt="Pinturas San Pedro"
               width={280}
               height={100}
-              className="object-contain h-full w-auto md:[filter:drop-shadow(0_0_4px_rgba(255,215,0,0.2))]"
+              className="object-contain transition-transform duration-300 hover:scale-105 md:[filter:drop-shadow(0_0_4px_rgba(255,215,0,0.2))]"
               priority
               sizes="(max-width: 768px) 180px, (max-width: 1024px) 220px, 280px"
               quality={75}
               style={{ 
-                maxWidth: '100%',
-                maxHeight: '100%',
-                height: 'auto',
-                width: 'auto'
+                height: '64px',
+                width: 'auto',
+                maxHeight: '100px',
+                maxWidth: '280px'
               }}
             />
           </a>
