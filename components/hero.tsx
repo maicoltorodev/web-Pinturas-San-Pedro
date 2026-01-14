@@ -46,6 +46,43 @@ export function Hero() {
         <div className="absolute inset-0 bg-primary md:bg-gradient-to-br md:from-primary md:via-primary md:to-[oklch(0.25_0.15_252)]" />
         {/* CirclePattern optimizado para móvil y desktop */}
         <CirclePattern variant="default" />
+        {/* Círculos adicionales solo en desktop */}
+        <div className="hidden md:block absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+          {/* Circle 4 - Top Right */}
+          <div
+            className="absolute rounded-full blur-xl"
+            style={{
+              top: '20%',
+              right: '18%',
+              width: '13vw',
+              height: '13vw',
+              maxWidth: '360px',
+              maxHeight: '360px',
+              minWidth: '115px',
+              minHeight: '115px',
+              backgroundColor: 'oklch(0.85 0.22 90)',
+              opacity: 0.5,
+              transform: 'translateZ(0)',
+            }}
+          />
+          {/* Circle 5 - Bottom Right */}
+          <div
+            className="absolute rounded-full blur-xl"
+            style={{
+              bottom: '20%',
+              right: '15%',
+              width: '14vw',
+              height: '14vw',
+              maxWidth: '370px',
+              maxHeight: '370px',
+              minWidth: '120px',
+              minHeight: '120px',
+              backgroundColor: 'oklch(0.85 0.22 90)',
+              opacity: 0.5,
+              transform: 'translateZ(0)',
+            }}
+          />
+        </div>
         {/* Overlay solo en desktop */}
         <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60" />
       </div>
