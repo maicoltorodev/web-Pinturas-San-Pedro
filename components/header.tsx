@@ -22,6 +22,7 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
+  const [imageLoaded, setImageLoaded] = useState(false)
 
   useEffect(() => {
     setIsMounted(true)
@@ -58,7 +59,7 @@ export function Header() {
             <div 
               className={cn(
                 "relative h-12 w-32 md:h-16 md:w-40 lg:h-20 lg:w-48 transition-transform duration-300 group-hover:scale-105 aspect-[2.67/1] overflow-hidden",
-                isMounted && "animate-glow-pulse-subtle"
+                isMounted && !imageLoaded && "animate-pulse"
               )}
               style={{ 
                 minWidth: '128px',
@@ -69,14 +70,29 @@ export function Header() {
                 contain: 'layout style paint'
               }}
             >
+              {/* Skeleton Loader */}
+              {!imageLoaded && (
+                <div 
+                  className="absolute inset-0 bg-gradient-to-r from-secondary/20 via-secondary/30 to-secondary/20 animate-pulse"
+                  style={{
+                    backgroundSize: '200% 100%',
+                    animation: 'shimmer 1.5s infinite'
+                  }}
+                />
+              )}
+              
               <Image
                 src="/pintura-amarilla.png"
                 alt="Pinturas San Pedro"
                 fill
-                className="object-contain md:[filter:drop-shadow(0_0_4px_rgba(255,215,0,0.2))]"
+                className={cn(
+                  "object-contain md:[filter:drop-shadow(0_0_4px_rgba(255,215,0,0.2))] transition-opacity duration-300",
+                  imageLoaded ? "opacity-100" : "opacity-0"
+                )}
                 priority
                 sizes="(max-width: 768px) 128px, (max-width: 1024px) 160px, 192px"
                 quality={75}
+                onLoad={() => setImageLoaded(true)}
                 style={{ 
                   objectFit: 'contain',
                   width: '100%',
