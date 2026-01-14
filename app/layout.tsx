@@ -15,7 +15,7 @@ const geist = Geist({
 })
 
 export const metadata: Metadata = {
-  title: "Pinturas San Pedro - Productos Premium de Pintura | Vinilo Acrílico, Impermeabilizante y Más",
+  title: "Pinturas San Pedro",
   description:
     "Venta de productos de pintura premium: Vinilo Acrílico T1 Superlavable, Impermeabilizante, Vinilo Coraza Hidrofugado Certificado, y más. También servicios profesionales de pintura residencial y comercial. Calidad certificada, más de 30 años de experiencia.",
   keywords: [
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: "Pinturas San Pedro - Productos Premium de Pintura | Vinilo Acrílico, Impermeabilizante",
+    title: "Pinturas San Pedro",
     description:
       "Venta de productos de pintura premium: Vinilo Acrílico T1 Superlavable, Impermeabilizante, Vinilo Coraza Hidrofugado Certificado. También servicios profesionales de pintura residencial y comercial. Calidad certificada, más de 30 años de experiencia.",
     url: '/',
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
         url: '/imagen-metadata.jpg',
         width: 1200,
         height: 630,
-        alt: 'Pinturas San Pedro - Productos Premium de Pintura',
+        alt: 'Pinturas San Pedro',
         type: 'image/jpeg',
       },
     ],
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Pinturas San Pedro - Productos Premium de Pintura",
+    title: "Pinturas San Pedro",
     description:
       "Venta de productos de pintura premium: Vinilo Acrílico Superlavable, Impermeabilizante, Vinilo Coraza Certificado. También servicios profesionales de pintura. Calidad certificada.",
     images: ['/imagen-metadata.jpg'],
