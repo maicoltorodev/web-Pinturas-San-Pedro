@@ -37,72 +37,96 @@ const services = [
   },
 ]
 
-const getColorClasses = (color: string) => ({
-  border: color === "purple" ? "border-purple-500/30 md:hover:border-purple-500 md:hover:border-[3px]"
-    : color === "pink" ? "border-pink-500/30 md:hover:border-pink-500 md:hover:border-[3px]"
-    : color === "blue" ? "border-blue-500/30 md:hover:border-blue-500 md:hover:border-[3px]"
-    : "border-yellow-500/30 md:hover:border-yellow-500 md:hover:border-[3px]",
-  borderShadow: color === "purple" ? "md:hover:shadow-[0_0_0_3px_rgba(168,85,247,0.2)]"
-    : color === "pink" ? "md:hover:shadow-[0_0_0_3px_rgba(236,72,153,0.2)]"
-    : color === "blue" ? "md:hover:shadow-[0_0_0_3px_rgba(59,130,246,0.2)]"
-    : "md:hover:shadow-[0_0_0_3px_rgba(234,179,8,0.2)]",
-  bgGradient: color === "purple" ? "from-purple-50/50 via-purple-50/30 to-transparent"
-    : color === "pink" ? "from-pink-50/50 via-pink-50/30 to-transparent"
-    : color === "blue" ? "from-blue-50/50 via-blue-50/30 to-transparent"
-    : "from-yellow-50/50 via-yellow-50/30 to-transparent",
-  iconBg: color === "purple" ? "from-purple-500 to-purple-600"
-    : color === "pink" ? "from-pink-500 to-pink-600"
-    : color === "blue" ? "from-blue-500 to-blue-600"
-    : "from-yellow-500 to-yellow-600",
-  title: color === "purple" ? "text-purple-700"
-    : color === "pink" ? "text-pink-700"
-    : color === "blue" ? "text-blue-700"
-    : "text-yellow-700",
-  accent: color === "purple" ? "bg-purple-500/10"
-    : color === "pink" ? "bg-pink-500/10"
-    : color === "blue" ? "bg-blue-500/10"
-    : "bg-yellow-500/10",
-})
+const colorMap: Record<string, {
+  border: string
+  hoverBorder: string
+  hoverShadow: string
+  bgGradient: string
+  iconBg: string
+  title: string
+  accent: string
+}> = {
+  purple: {
+    border: "border-purple-500/30",
+    hoverBorder: "md:hover:border-purple-500",
+    hoverShadow: "md:hover:shadow-[0_0_0_2px_rgba(168,85,247,0.3),0_4px_12px_rgba(168,85,247,0.15)]",
+    bgGradient: "from-purple-50/50 via-purple-50/30 to-transparent",
+    iconBg: "from-purple-500 to-purple-600",
+    title: "text-purple-700",
+    accent: "bg-purple-500/10",
+  },
+  pink: {
+    border: "border-pink-500/30",
+    hoverBorder: "md:hover:border-pink-500",
+    hoverShadow: "md:hover:shadow-[0_0_0_2px_rgba(236,72,153,0.3),0_4px_12px_rgba(236,72,153,0.15)]",
+    bgGradient: "from-pink-50/50 via-pink-50/30 to-transparent",
+    iconBg: "from-pink-500 to-pink-600",
+    title: "text-pink-700",
+    accent: "bg-pink-500/10",
+  },
+  blue: {
+    border: "border-blue-500/30",
+    hoverBorder: "md:hover:border-blue-500",
+    hoverShadow: "md:hover:shadow-[0_0_0_2px_rgba(59,130,246,0.3),0_4px_12px_rgba(59,130,246,0.15)]",
+    bgGradient: "from-blue-50/50 via-blue-50/30 to-transparent",
+    iconBg: "from-blue-500 to-blue-600",
+    title: "text-blue-700",
+    accent: "bg-blue-500/10",
+  },
+  yellow: {
+    border: "border-yellow-500/30",
+    hoverBorder: "md:hover:border-yellow-500",
+    hoverShadow: "md:hover:shadow-[0_0_0_2px_rgba(234,179,8,0.3),0_4px_12px_rgba(234,179,8,0.15)]",
+    bgGradient: "from-yellow-50/50 via-yellow-50/30 to-transparent",
+    iconBg: "from-yellow-500 to-yellow-600",
+    title: "text-yellow-700",
+    accent: "bg-yellow-500/10",
+  },
+}
 
 function ServiceCard({ service }: { service: typeof services[0] }) {
   const Icon = service.icon
-  const colors = getColorClasses(service.color)
+  const colors = colorMap[service.color] || colorMap.purple
   
   return (
     <Card className={cn(
-      "h-full border-2 bg-card/50 md:backdrop-blur-sm transition-all duration-300",
-      "md:hover:shadow-premium-lg md:hover:-translate-y-1 shadow-premium",
+      "h-full border-2 bg-card/50 md:backdrop-blur-sm",
       "group relative overflow-hidden",
       colors.border,
-      colors.borderShadow
+      colors.hoverBorder,
+      "transition-[border-color,box-shadow] duration-300 ease-out",
+      "shadow-premium",
+      colors.hoverShadow
     )}>
       <div className={cn(
-        "absolute inset-0 bg-gradient-to-br opacity-50 md:group-hover:opacity-70 transition-opacity duration-300",
-        colors.bgGradient
+        "absolute inset-0 bg-gradient-to-br will-change-opacity",
+        colors.bgGradient,
+        "opacity-50 md:group-hover:opacity-70 transition-opacity duration-300"
       )} />
       
-      <CardContent className="p-6 md:p-8 relative z-10">
-        <div className={cn(
-          "absolute top-0 right-0 w-32 h-32 rounded-full opacity-0 md:group-hover:opacity-30 transition-opacity duration-300",
-          `bg-gradient-to-br ${colors.iconBg} blur-xl`
-        )} />
-        
-        <div className={cn(
-          "mb-6 inline-flex items-center justify-center w-16 h-16 rounded-2xl",
-          "transition-all duration-300 shadow-lg md:group-hover:scale-110 md:group-hover:shadow-xl",
-          `bg-gradient-to-br ${colors.iconBg}`
-        )}>
-          <Icon className="h-8 w-8 text-white transition-all duration-300 md:group-hover:scale-110" />
+      <CardContent className="p-6 md:p-8 relative z-10 flex flex-col items-center text-center">
+        <div className="relative mb-6">
+          <div className={cn(
+            "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full will-change-opacity -z-10",
+            `bg-gradient-to-br ${colors.iconBg} blur-xl`,
+            "opacity-0 md:group-hover:opacity-30 transition-opacity duration-300"
+          )} />
+          
+          <div className={cn(
+            "flex items-center justify-center w-16 h-16 rounded-2xl will-change-transform relative z-10",
+            `bg-gradient-to-br ${colors.iconBg}`,
+            "shadow-lg transition-[transform,box-shadow] duration-300",
+            "md:group-hover:scale-110 md:group-hover:shadow-xl"
+          )}>
+            <Icon className="h-8 w-8 text-white transition-transform duration-300 md:group-hover:scale-110" />
+          </div>
         </div>
         
-        <h3 className={cn(
-          "text-xl md:text-2xl font-black mb-3 transition-colors duration-300",
-          colors.title
-        )}>
+        <h3 className={cn("text-xl md:text-2xl font-black mb-3", colors.title)}>
           {service.title}
         </h3>
         
-        <div className={cn("p-4 rounded-xl transition-all duration-300", colors.accent)}>
+        <div className={cn("p-4 rounded-xl w-full", colors.accent)}>
           <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
             {service.description}
           </p>
@@ -122,7 +146,11 @@ export function Services() {
         <SectionHeader
           badge={{ icon: Sparkles, text: "Nuestros Servicios" }}
           title="Soluciones"
-          subtitle="Premium"
+          subtitle={
+            <span className="block gradient-text">
+              Premium
+            </span>
+          }
           description="Servicios integrales de pintura adaptados a tus necesidades, con la más alta calidad y atención al detalle"
           className="text-foreground"
         />

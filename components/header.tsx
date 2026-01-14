@@ -7,6 +7,7 @@ import Image from "next/image"
 import { cn } from "@/lib/utils"
 
 // Define navLinks outside component to ensure consistency between server and client
+// This array is static and should never change during runtime
 const navLinks = [
   { href: "#services", label: "Servicios" },
   { href: "#process", label: "Proceso" },
@@ -15,7 +16,7 @@ const navLinks = [
   { href: "#testimonials", label: "Testimonios" },
   { href: "#location", label: "Ubicación" },
   { href: "#contact", label: "Contacto" },
-]
+] as const
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -64,9 +65,9 @@ export function Header() {
 
           {/* Desktop Navigation - Centrada */}
           <div className="hidden md:flex items-center gap-2 lg:gap-4 absolute left-1/2 -translate-x-1/2">
-            {navLinks.map((link) => (
+            {navLinks.map((link, index) => (
               <a
-                key={link.href}
+                key={`${link.href}-${index}`}
                 href={link.href}
                 className="px-4 py-2 text-sm font-medium text-primary-foreground/90 hover:text-secondary rounded-lg hover:bg-primary-foreground/5 transition-all duration-300 relative group"
               >
@@ -82,9 +83,16 @@ export function Header() {
               variant="secondary"
               size="default"
               className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 animate-button-glow"
+              asChild
             >
-              Cotizar
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <a 
+                href="https://wa.me/573223716811?text=Hola%2C%20me%20interesa%20solicitar%20una%20cotizaci%C3%B3n%20gratuita%20para%20servicios%20de%20pintura."
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Cotizar
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
             </Button>
           </div>
 
@@ -94,8 +102,15 @@ export function Header() {
               variant="secondary"
               size="sm"
               className="bg-secondary text-secondary-foreground hover:bg-secondary/90 h-9 px-3 text-xs rounded-lg animate-button-glow"
+              asChild
             >
-              Cotizar
+              <a 
+                href="https://wa.me/573223716811?text=Hola%2C%20me%20interesa%20solicitar%20una%20cotizaci%C3%B3n%20gratuita%20para%20servicios%20de%20pintura."
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Cotizar
+              </a>
             </Button>
             <button
               className="p-2 -mr-2 rounded-lg hover:bg-primary-foreground/10 transition-colors"
@@ -116,9 +131,9 @@ export function Header() {
           <div className="fixed inset-0 top-16 md:hidden bg-primary z-40 overflow-y-auto">
             <div className="container mx-auto px-4 sm:px-6 py-8">
               <div className="flex flex-col gap-4">
-                {navLinks.map((link) => (
+                {navLinks.map((link, index) => (
                   <a
-                    key={link.href}
+                    key={`${link.href}-mobile-${index}`}
                     href={link.href}
                     className="text-lg font-medium text-primary-foreground hover:text-secondary transition-colors py-3 px-4 rounded-lg hover:bg-primary-foreground/5"
                     onClick={() => setIsMenuOpen(false)}
@@ -130,10 +145,17 @@ export function Header() {
                   variant="secondary"
                   size="lg"
                   className="bg-secondary text-secondary-foreground hover:bg-secondary/90 w-full mt-4 h-14 text-base rounded-xl animate-button-glow"
-                  onClick={() => setIsMenuOpen(false)}
+                  asChild
                 >
-                  Solicitar Cotización
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <a 
+                    href="https://wa.me/573223716811?text=Hola%2C%20me%20interesa%20solicitar%20una%20cotizaci%C3%B3n%20gratuita%20para%20servicios%20de%20pintura."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Solicitar Cotización
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </a>
                 </Button>
               </div>
             </div>
