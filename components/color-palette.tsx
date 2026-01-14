@@ -180,9 +180,11 @@ export function ColorPalette() {
       <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/95 to-primary/90" />
       <CirclePattern className="absolute inset-0 opacity-30" />
       
-      {/* Light effects */}
-      <div className="hidden md:block absolute top-1/4 left-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+      {/* Light effects - Optimized for mobile */}
+      <div className="absolute top-1/4 left-1/4 w-48 h-48 md:w-96 md:h-96 bg-secondary/15 md:bg-secondary/20 rounded-full blur-2xl md:blur-3xl md:animate-pulse" />
+      <div className="absolute bottom-1/4 right-1/4 w-40 h-40 md:w-96 md:h-96 bg-secondary/15 md:bg-secondary/20 rounded-full blur-2xl md:blur-3xl md:animate-pulse" style={{ animationDelay: '1s' }} />
+      {/* Círculo adicional pequeño para móvil */}
+      <div className="md:hidden absolute top-2/3 left-1/2 w-36 h-36 bg-secondary/12 rounded-full blur-xl" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
