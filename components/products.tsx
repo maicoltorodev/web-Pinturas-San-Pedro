@@ -88,7 +88,7 @@ const products: Product[] = [
     ]
   },
   {
-    name: "vinilo tipo 2 certificado",
+    name: "Vinilo tipo 2 certificado",
     category: "Vinilos",
     description: "Pintura económica con calidad para interiores. Ideal para proyectos con presupuesto ajustado sin comprometer la calidad.",
     features: ["Económica", "Con calidad", "Fácil aplicación"],
@@ -102,7 +102,7 @@ const products: Product[] = [
     ]
   },
   {
-    name: "vinilo acrilico tipo 1 certificado",
+    name: "Vinilo acrílico tipo 1 certificado",
     category: "Vinilos",
     description: "Vinilo acrílico certificado con acabado mate lavable, ideal para interiores. Con desempeño y cubrimiento, bajo aroma y nivelación.",
     features: ["Acabado mate lavable", "Con cubrimiento", "Bajo aroma", "Con nivelación", "Certificado"],
