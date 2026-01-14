@@ -21,6 +21,11 @@ const navLinks = [
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   useEffect(() => {
     let ticking = false
@@ -50,7 +55,17 @@ export function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <a href="#hero" className="flex items-center group flex-shrink-0">
-            <div className="relative h-12 w-32 md:h-16 md:w-40 lg:h-20 lg:w-48 transition-transform duration-300 group-hover:scale-105 animate-glow-pulse-subtle aspect-[2.67/1]">
+            <div 
+              className={cn(
+                "relative h-12 w-32 md:h-16 md:w-40 lg:h-20 lg:w-48 transition-transform duration-300 group-hover:scale-105 aspect-[2.67/1]",
+                isMounted && "animate-glow-pulse-subtle"
+              )}
+              style={{ 
+                minWidth: '128px',
+                minHeight: '48px',
+                willChange: isMounted ? 'transform, filter' : 'auto'
+              }}
+            >
               <Image
                 src="/pintura-amarilla.png"
                 alt="Pinturas San Pedro"
@@ -59,6 +74,11 @@ export function Header() {
                 priority
                 sizes="(max-width: 768px) 128px, (max-width: 1024px) 160px, 192px"
                 quality={75}
+                style={{ 
+                  objectFit: 'contain',
+                  width: '100%',
+                  height: '100%'
+                }}
               />
             </div>
           </a>

@@ -1,5 +1,6 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { CirclePattern } from "@/components/ui/circle-pattern"
 import { ArrowRight, Sparkles } from "lucide-react"
@@ -7,6 +8,12 @@ import { cn } from "@/lib/utils"
 import Image from "next/image"
 
 export function Hero() {
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Premium Background - Simplified for mobile */}
@@ -35,7 +42,17 @@ export function Hero() {
 
             {/* Logo - Optimized for mobile */}
             <div className="flex justify-center mb-6">
-              <div className="relative w-64 h-32 sm:w-80 sm:h-40 md:w-96 md:h-48 lg:w-[500px] lg:h-[250px] animate-float aspect-[2/1]">
+              <div 
+                className={cn(
+                  "relative w-64 h-32 sm:w-80 sm:h-40 md:w-96 md:h-48 lg:w-[500px] lg:h-[250px] aspect-[2/1]",
+                  isMounted && "animate-float"
+                )}
+                style={{ 
+                  minWidth: '256px',
+                  minHeight: '128px',
+                  willChange: isMounted ? 'transform' : 'auto'
+                }}
+              >
                 {/* Simplified: Single glow effect instead of multiple layers */}
                 <div className="hidden md:block absolute inset-0 pointer-events-none" style={{ 
                   filter: 'drop-shadow(0 0 15px rgba(255, 215, 0, 0.4))',
@@ -48,6 +65,11 @@ export function Hero() {
                   className="object-contain relative z-10 md:[filter:drop-shadow(0_0_10px_rgba(255,215,0,0.3))]"
                   priority
                   sizes="(max-width: 640px) 256px, (max-width: 768px) 320px, (max-width: 1024px) 384px, 500px"
+                  style={{ 
+                    objectFit: 'contain',
+                    width: '100%',
+                    height: '100%'
+                  }}
                 />
               </div>
             </div>

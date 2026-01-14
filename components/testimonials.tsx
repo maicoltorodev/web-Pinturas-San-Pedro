@@ -1,12 +1,19 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useRef, useState } from "react"
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { SectionHeader } from "@/components/ui/section-header"
 import { CirclePattern } from "@/components/ui/circle-pattern"
 import { cn } from "@/lib/utils"
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Autoplay } from 'swiper/modules'
+import type { Swiper as SwiperType } from 'swiper'
+
+// Importar estilos de Swiper
+import 'swiper/css'
+import 'swiper/css/navigation'
 
 // Componente del icono de Google
 function GoogleIcon({ className }: { className?: string }) {
@@ -119,20 +126,18 @@ const testimonials = [
 function TestimonialCard({ 
   testimonial, 
   isActive, 
-  color,
-  index
+  color
 }: { 
   testimonial: typeof testimonials[0]; 
   isActive?: boolean;
   color: typeof paintColors[0];
-  index?: number;
 }) {
   return (
     <Card 
       className={cn(
         "h-full border-2 transition-all duration-700 ease-in-out",
         isActive 
-          ? "shadow-premium-lg bg-gradient-to-br from-card animate-fade-in" 
+          ? "shadow-premium-lg bg-gradient-to-br from-card" 
           : "border-border/50 bg-card opacity-90"
       )}
       style={{
@@ -140,7 +145,6 @@ function TestimonialCard({
         background: isActive 
           ? `linear-gradient(to bottom right, var(--card), ${color.hex}08)` 
           : undefined,
-        animationDelay: index !== undefined ? `${index * 100}ms` : undefined,
       }}
     >
       <CardContent className="p-6 md:p-8">
@@ -207,61 +211,19 @@ function TestimonialCard({
 }
 
 export function Testimonials() {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [touchStart, setTouchStart] = useState(0)
-  const [touchEnd, setTouchEnd] = useState(0)
-  const carouselRef = useRef<HTMLDivElement>(null)
-  
-  // Auto-play carousel every 7 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-    }, 7000)
-    
-    return () => clearInterval(interval)
-  }, [])
-  
-  const getVisibleTestimonials = (isMobile: boolean) => {
-    const visible: Array<typeof testimonials[0] & { color: typeof paintColors[0] }> = []
-    const count = isMobile ? 1 : 3
-    
-    for (let i = 0; i < count; i++) {
-      const testimonialIndex = (currentIndex + i) % testimonials.length
-      const testimonial = testimonials[testimonialIndex]
-      const colorIndex = testimonialIndex % paintColors.length
-      const color = paintColors[colorIndex]
-      visible.push({ ...testimonial, color })
+  const swiperRef = useRef<SwiperType | null>(null)
+  const prevButtonRef = useRef<HTMLButtonElement>(null)
+  const nextButtonRef = useRef<HTMLButtonElement>(null)
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  // Preparar testimonios con colores
+  const testimonialsWithColors = testimonials.map((testimonial, index) => {
+    const colorIndex = index % paintColors.length
+    return {
+      ...testimonial,
+      color: paintColors[colorIndex]
     }
-    return visible
-  }
-  
-  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-  const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
-  
-  // Touch handlers for swipe
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStart(e.targetTouches[0].clientX)
-  }
-  
-  const handleTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX)
-  }
-  
-  const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) return
-    
-    const distance = touchStart - touchEnd
-    const minSwipeDistance = 50
-    
-    if (distance > minSwipeDistance) {
-      // Swipe left - next slide
-      nextSlide()
-    }
-    if (distance < -minSwipeDistance) {
-      // Swipe right - previous slide
-      prevSlide()
-    }
-  }
+  })
 
   return (
     <section id="testimonials" className="relative py-24 md:py-32 lg:py-40 bg-background overflow-hidden">
@@ -299,128 +261,146 @@ export function Testimonials() {
           </div>
         </div>
 
-        {/* Carrusel */}
+        {/* Carrusel con Swiper */}
         <div className="relative max-w-7xl mx-auto">
-          {/* Versión Desktop: 3 cards con flechas a los lados */}
-          <div className="hidden md:block relative">
-            <div className="relative overflow-visible">
-              <div className="grid grid-cols-3 gap-8 relative">
-                {getVisibleTestimonials(false).map((testimonial, index) => (
-                  <div 
-                    key={`desktop-${currentIndex}-${index}`} 
-                    className="relative animate-slide-in"
-                    style={{
-                      animationDelay: `${index * 150}ms`,
-                      animationFillMode: 'both',
-                    }}
-                  >
-                    {/* Flecha izquierda */}
-                    {index === 0 && (
-                      <Button
-                        onClick={prevSlide}
-                        variant="outline"
-                        size="lg"
-                        className="absolute -left-6 top-1/2 -translate-y-1/2 z-20 rounded-full w-12 h-12 border-2 border-border text-foreground hover:bg-secondary hover:border-secondary hover:text-white transition-all duration-300 shadow-md hover:shadow-lg bg-white"
-                        aria-label="Anterior"
-                      >
-                        <ChevronLeft className="h-5 w-5" />
-                      </Button>
-                    )}
-                    
-                    <TestimonialCard 
-                      testimonial={testimonial} 
-                      isActive={index === 1}
-                      color={testimonial.color}
-                      index={index}
-                    />
-                    
-                    {/* Flecha derecha */}
-                    {index === 2 && (
-                      <Button
-                        onClick={nextSlide}
-                        variant="outline"
-                        size="lg"
-                        className="absolute -right-6 top-1/2 -translate-y-1/2 z-20 rounded-full w-12 h-12 border-2 border-border text-foreground hover:bg-secondary hover:border-secondary hover:text-white transition-all duration-300 shadow-md hover:shadow-lg bg-white"
-                        aria-label="Siguiente"
-                      >
-                        <ChevronRight className="h-5 w-5" />
-                      </Button>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          {/* Botones de navegación personalizados */}
+          <Button
+            ref={prevButtonRef}
+            variant="outline"
+            size="lg"
+            className="hidden md:flex absolute -left-6 top-1/2 -translate-y-1/2 z-20 rounded-full w-12 h-12 border-2 border-border text-foreground hover:bg-secondary hover:border-secondary hover:text-white transition-all duration-300 shadow-md hover:shadow-lg bg-white"
+            aria-label="Anterior"
+            onClick={() => swiperRef.current?.slidePrev()}
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </Button>
 
-          {/* Versión Móvil: 1 card con flechas arriba/abajo o a los lados */}
-          <div className="md:hidden relative">
-            <div 
-              ref={carouselRef}
-              className="relative overflow-hidden"
-              onTouchStart={handleTouchStart}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={handleTouchEnd}
-            >
-              {/* Contenedor de la card móvil */}
-              <div className="relative">
-                {getVisibleTestimonials(true).map((testimonial, index) => (
-                  <div 
-                    key={`mobile-${currentIndex}-${index}`} 
-                    className="px-2 animate-fade-slide"
-                  >
+          <Button
+            ref={nextButtonRef}
+            variant="outline"
+            size="lg"
+            className="hidden md:flex absolute -right-6 top-1/2 -translate-y-1/2 z-20 rounded-full w-12 h-12 border-2 border-border text-foreground hover:bg-secondary hover:border-secondary hover:text-white transition-all duration-300 shadow-md hover:shadow-lg bg-white"
+            aria-label="Siguiente"
+            onClick={() => swiperRef.current?.slideNext()}
+          >
+            <ChevronRight className="h-5 w-5" />
+          </Button>
+
+          {/* Swiper Carousel */}
+          <Swiper
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper
+            }}
+            modules={[Navigation, Autoplay]}
+            spaceBetween={32}
+            slidesPerView={1}
+            slidesPerGroup={1}
+            autoplay={{
+              delay: 7000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            breakpoints={{
+              768: {
+                slidesPerView: 3,
+                slidesPerGroup: 1,
+                spaceBetween: 32,
+                centeredSlides: false,
+              },
+            }}
+            centeredSlides={false}
+            className="testimonials-swiper"
+            navigation={{
+              prevEl: prevButtonRef.current,
+              nextEl: nextButtonRef.current,
+            }}
+            onInit={(swiper) => {
+              // Actualizar navegación después de la inicialización
+              if (swiper.params.navigation) {
+                swiper.params.navigation.prevEl = prevButtonRef.current
+                swiper.params.navigation.nextEl = nextButtonRef.current
+                swiper.navigation.init()
+                swiper.navigation.update()
+              }
+            }}
+            onSlideChange={(swiper) => {
+              setActiveIndex(swiper.activeIndex)
+            }}
+          >
+            {testimonialsWithColors.map((testimonial, index) => {
+              // Todas las cards visibles están activas para mejor visualización
+              const isActive = true
+              
+              return (
+                <SwiperSlide key={index}>
+                  <div className="h-full">
                     <TestimonialCard 
                       testimonial={testimonial} 
-                      isActive={true}
+                      isActive={isActive}
                       color={testimonial.color}
-                      index={index}
                     />
                   </div>
-                ))}
-              </div>
+                </SwiperSlide>
+              )
+            })}
+          </Swiper>
+
+          {/* Controles móviles */}
+          <div className="md:hidden flex items-center justify-between mt-6 px-4">
+            <Button
+              variant="outline"
+              size="lg"
+              className="flex rounded-full w-12 h-12 border-2 border-border text-foreground hover:bg-secondary hover:border-secondary hover:text-white transition-all duration-300 shadow-md hover:shadow-lg bg-white"
+              aria-label="Anterior"
+              onClick={() => swiperRef.current?.slidePrev()}
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </Button>
+            
+            {/* Indicador de posición móvil */}
+            <div className="flex items-center gap-2">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => swiperRef.current?.slideTo(index)}
+                  className={cn(
+                    "rounded-full transition-all duration-300",
+                    activeIndex === index 
+                      ? "w-8 h-2 bg-secondary" 
+                      : "w-2 h-2 bg-border"
+                  )}
+                  aria-label={`Ir a testimonio ${index + 1}`}
+                />
+              ))}
             </div>
             
-            {/* Controles móviles: Flechas arriba y abajo */}
-            <div className="flex items-center justify-between mt-6 px-4">
-              <Button
-                onClick={prevSlide}
-                variant="outline"
-                size="lg"
-                className="flex rounded-full w-12 h-12 border-2 border-border text-foreground hover:bg-secondary hover:border-secondary hover:text-white transition-all duration-300 shadow-md hover:shadow-lg bg-white"
-                aria-label="Anterior"
-              >
-                <ChevronLeft className="h-5 w-5" />
-              </Button>
-              
-              {/* Indicador de posición móvil */}
-              <div className="flex items-center gap-2">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentIndex(index)}
-                    className={cn(
-                      "rounded-full transition-all duration-300",
-                      currentIndex === index 
-                        ? "w-8 h-2 bg-secondary" 
-                        : "w-2 h-2 bg-border"
-                    )}
-                    aria-label={`Ir a testimonio ${index + 1}`}
-                  />
-                ))}
-              </div>
-              
-              <Button
-                onClick={nextSlide}
-                variant="outline"
-                size="lg"
-                className="flex rounded-full w-12 h-12 border-2 border-border text-foreground hover:bg-secondary hover:border-secondary hover:text-white transition-all duration-300 shadow-md hover:shadow-lg bg-white"
-                aria-label="Siguiente"
-              >
-                <ChevronRight className="h-5 w-5" />
-              </Button>
-            </div>
+            <Button
+              variant="outline"
+              size="lg"
+              className="flex rounded-full w-12 h-12 border-2 border-border text-foreground hover:bg-secondary hover:border-secondary hover:text-white transition-all duration-300 shadow-md hover:shadow-lg bg-white"
+              aria-label="Siguiente"
+              onClick={() => swiperRef.current?.slideNext()}
+            >
+              <ChevronRight className="h-5 w-5" />
+            </Button>
           </div>
         </div>
       </div>
+
+      <style jsx global>{`
+        .testimonials-swiper {
+          padding: 0;
+          overflow: visible;
+        }
+        .testimonials-swiper .swiper-slide {
+          height: auto;
+          display: flex;
+        }
+        .testimonials-swiper .swiper-button-next,
+        .testimonials-swiper .swiper-button-prev {
+          display: none;
+        }
+      `}</style>
     </section>
   )
 }
