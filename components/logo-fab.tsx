@@ -11,10 +11,17 @@ export function LogoFAB() {
   const whatsappUrl = `https://wa.me/57${phoneNumber}?text=${encodeURIComponent(message)}`
 
   useEffect(() => {
+    let ticking = false
     const handleScroll = () => {
-      setIsVisible(window.scrollY > 300)
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsVisible(window.scrollY > 300)
+          ticking = false
+        })
+        ticking = true
+      }
     }
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true })
     handleScroll() // Check initial state
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -40,15 +47,16 @@ export function LogoFAB() {
     >
       
       {/* Logo con glow dorado pegado al borde */}
-      <div className="relative w-24 h-24 flex items-center justify-center z-10">
-        <div className="relative w-full h-full">
+      <div className="relative w-24 h-24 flex items-center justify-center z-10 aspect-square">
+        <div className="relative w-full h-full aspect-square">
           <Image
             src="/logo.png"
             alt="Pinturas San Pedro"
             fill
             className="object-contain transition-transform duration-500 group-hover:scale-110"
+            sizes="96px"
             style={{ 
-              filter: 'drop-shadow(0 0 2px rgba(255, 215, 0, 1)) drop-shadow(0 0 4px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 6px rgba(255, 215, 0, 0.6))',
+              filter: 'drop-shadow(0 0 4px rgba(255, 215, 0, 0.8))',
             }}
           />
           {/* Outline glow pegado al borde */}

@@ -110,6 +110,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={geist.variable}>
+      <head>
+        {/* Preconnect to Google Maps for faster loading */}
+        <link rel="preconnect" href="https://maps.googleapis.com" />
+        <link rel="preconnect" href="https://maps.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body className={`font-sans antialiased`}>
         {children}
         <LogoFAB />

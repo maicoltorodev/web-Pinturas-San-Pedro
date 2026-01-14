@@ -226,9 +226,9 @@
       animation: none !important;
     }
     
-    /* Remove blur effects completely on mobile */
-    [class*="blur-3xl"],
-    [class*="blur-2xl"] {
+    /* Remove heavy blur effects completely on mobile */
+    [class*="blur-2xl"],
+    [class*="blur-xl"] {
       display: none !important;
     }
     
@@ -247,14 +247,14 @@
     }
   }
   
-  /* Glow pulse animation */
+  /* Consolidated glow pulse animation - simplified drop-shadows */
   @keyframes glow-pulse {
     0%, 100% {
-      filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 40px rgba(255, 215, 0, 0.3)) drop-shadow(0 0 60px rgba(255, 215, 0, 0.2));
+      filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4));
       opacity: 0.8;
     }
     50% {
-      filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.7)) drop-shadow(0 0 60px rgba(255, 215, 0, 0.5)) drop-shadow(0 0 90px rgba(255, 215, 0, 0.3));
+      filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.6));
       opacity: 1;
     }
   }
@@ -263,29 +263,19 @@
     animation: glow-pulse 2s ease-in-out infinite;
   }
   
-  /* Glow pulse animation - subtle version for navbar */
-  @keyframes glow-pulse-subtle {
-    0%, 100% {
-      filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.2)) drop-shadow(0 0 12px rgba(255, 215, 0, 0.15));
-      opacity: 0.7;
-    }
-    50% {
-      filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.35)) drop-shadow(0 0 18px rgba(255, 215, 0, 0.25));
-      opacity: 0.9;
-    }
-  }
-  
+  /* Subtle version uses same animation with lower opacity */
   .animate-glow-pulse-subtle {
-    animation: glow-pulse-subtle 2s ease-in-out infinite;
+    animation: glow-pulse 2s ease-in-out infinite;
+    opacity: 0.7;
   }
   
-  /* Glow animation for buttons */
+  /* Simplified button glow animation */
   @keyframes button-glow {
     0%, 100% {
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.4), 0 0 20px rgba(255, 215, 0, 0.3);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
     }
     50% {
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.7), 0 0 30px rgba(255, 215, 0, 0.5), 0 0 40px rgba(255, 215, 0, 0.3);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
     }
   }
   
@@ -293,7 +283,7 @@
     animation: button-glow 2s ease-in-out infinite;
   }
   
-  /* Sunshine plateada animation for portfolio */
+  /* Simplified sunshine animation - removed unused delayed variant */
   @keyframes sunshine {
     0% {
       transform: scale(0.8) translate(-50%, -50%);
@@ -303,21 +293,7 @@
       opacity: 1;
     }
     100% {
-      transform: scale(1.5) translate(-50%, -50%);
-      opacity: 0;
-    }
-  }
-  
-  @keyframes sunshine-delayed {
-    0% {
-      transform: scale(0.6) rotate(0deg);
-      opacity: 0;
-    }
-    50% {
-      opacity: 0.8;
-    }
-    100% {
-      transform: scale(1.8) rotate(45deg);
+      transform: scale(1.4) translate(-50%, -50%);
       opacity: 0;
     }
   }
@@ -326,10 +302,6 @@
     animation: sunshine 1.2s ease-out;
     top: 50%;
     left: 50%;
-  }
-  
-  .animate-sunshine-delayed {
-    animation: sunshine-delayed 1.5s ease-out 0.2s;
   }
   
   .bg-gradient-radial {

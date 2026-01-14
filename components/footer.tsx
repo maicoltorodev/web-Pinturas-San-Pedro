@@ -27,12 +27,13 @@ export function Footer() {
           {/* Brand Section */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
-              <div className="relative h-10 w-10 flex-shrink-0">
+              <div className="relative h-10 w-10 flex-shrink-0 aspect-square">
                 <Image
                   src="/logo.png"
                   alt="Pinturas San Pedro"
                   fill
                   className="object-contain"
+                  sizes="40px"
                 />
               </div>
               <div className="flex flex-col">

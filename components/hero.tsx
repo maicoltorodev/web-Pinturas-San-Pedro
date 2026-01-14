@@ -20,8 +20,8 @@ export function Hero() {
         {/* Overlay solo en desktop */}
         <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60" />
         {/* Círculos solo en desktop - pesados en móvil */}
-        <div className="hidden md:block absolute top-1/4 left-1/4 w-96 h-96 bg-secondary/35 rounded-full blur-3xl animate-pulse" />
-        <div className="hidden md:block absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/25 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="hidden md:block absolute top-1/4 left-1/4 w-96 h-96 bg-secondary/35 rounded-full blur-xl animate-pulse" />
+        <div className="hidden md:block absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/25 rounded-full blur-xl animate-pulse delay-1000" />
       </div>
 
       {/* Content */}
@@ -38,14 +38,10 @@ export function Hero() {
 
             {/* Logo - Optimized for mobile */}
             <div className="flex justify-center mb-6">
-              <div className="relative w-64 h-32 sm:w-80 sm:h-40 md:w-96 md:h-48 lg:w-[500px] lg:h-[250px] md:animate-float">
-                {/* Efecto de luz detrás del logo - Reduced on mobile */}
-                <div className="hidden md:block absolute inset-0 flex items-center justify-center">
-                  <div className="w-full h-full bg-secondary/35 rounded-full blur-3xl md:animate-pulse" style={{ transform: 'scale(1.2)' }} />
-                </div>
-                {/* Efecto de glow pulsante - Reduced on mobile */}
+              <div className="relative w-64 h-32 sm:w-80 sm:h-40 md:w-96 md:h-48 lg:w-[500px] lg:h-[250px] md:animate-float aspect-[2/1]">
+                {/* Simplified: Single glow effect instead of multiple layers */}
                 <div className="hidden md:block absolute inset-0 md:animate-glow-pulse pointer-events-none" style={{ 
-                  filter: 'drop-shadow(0 0 20px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 40px rgba(255, 215, 0, 0.3)) drop-shadow(0 0 60px rgba(255, 215, 0, 0.2))',
+                  filter: 'drop-shadow(0 0 15px rgba(255, 215, 0, 0.4))',
                   zIndex: 5
                 }} />
                 <Image

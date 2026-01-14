@@ -183,8 +183,8 @@ export function ColorPalette() {
         <CirclePattern className="absolute inset-0 opacity-30" />
       </div>
       {/* Light effects solo en desktop */}
-      <div className="hidden md:block absolute top-1/4 left-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse" />
-      <div className="hidden md:block absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+      <div className="hidden md:block absolute top-1/4 left-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-xl animate-pulse" />
+      <div className="hidden md:block absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-xl animate-pulse" style={{ animationDelay: '1s' }} />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
@@ -283,12 +283,12 @@ export function ColorPalette() {
                     return (
                       <Card
                         key={color.name}
-                        className="group cursor-pointer bg-card/80 border-2 border-primary-foreground/20 md:hover:border-secondary/50 transition-all duration-300 md:hover:scale-105 md:hover:shadow-xl overflow-hidden"
+                        className="group cursor-pointer bg-card/80 border-2 border-primary-foreground/20 md:hover:border-secondary/50 transition-all duration-200 md:hover:scale-105 md:hover:shadow-lg overflow-hidden"
                       >
                         <CardContent className="p-0">
                           {/* Color Swatch */}
                           <div
-                            className="w-full h-24 md:h-32 relative md:group-hover:scale-110 transition-transform duration-300"
+                            className="w-full h-24 md:h-32 relative md:group-hover:scale-105 transition-transform duration-200"
                             style={{ backgroundColor: color.hex }}
                             onClick={() => copyToClipboard(color.hex, `${category.name}-${color.name}`)}
                           >

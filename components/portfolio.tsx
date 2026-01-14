@@ -45,25 +45,26 @@ const projects = [
   },
 ]
 
-function PortfolioItem({ project }: { project: typeof projects[0] }) {
+function PortfolioItem({ project, isFirst }: { project: typeof projects[0]; isFirst?: boolean }) {
   return (
     <div className={cn("group", project.featured && "md:col-span-2")}>
-      <Card className="relative overflow-hidden border-2 border-border/50 bg-card group cursor-pointer transition-all duration-500 md:hover:border-secondary md:hover:shadow-premium-lg shadow-premium">
+      <Card className="relative overflow-hidden border-2 border-border/50 bg-card group cursor-pointer transition-all duration-300 md:hover:border-secondary md:hover:shadow-premium-lg shadow-premium">
         <div className={cn("relative overflow-hidden", project.featured ? "aspect-[21/9]" : "aspect-[4/3]")}>
           <Image
             src={project.image || "/placeholder.svg"}
             alt={project.title}
             fill
-            className="object-cover transition-transform duration-700 md:group-hover:scale-105"
+            className="object-cover transition-transform duration-300 md:group-hover:scale-105"
             sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            loading="lazy"
-            quality={85}
+            loading={isFirst ? "eager" : "lazy"}
+            priority={isFirst}
+            quality={75}
           />
-          <div className="absolute inset-0 bg-black/0 md:group-hover:bg-black/20 transition-all duration-500" />
-          <div className="absolute inset-0 border-4 border-secondary/0 md:group-hover:border-secondary/30 transition-all duration-500 rounded-sm" />
+          <div className="absolute inset-0 bg-black/0 md:group-hover:bg-black/20 transition-all duration-300" />
+          <div className="absolute inset-0 border-4 border-secondary/0 md:group-hover:border-secondary/30 transition-all duration-300 rounded-sm" />
           <div className="absolute inset-0 flex items-end p-6 md:p-8 z-10">
-            <div className="w-full transform translate-y-2 md:group-hover:translate-y-0 transition-transform duration-500">
-              <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-2 drop-shadow-2xl opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
+            <div className="w-full transform translate-y-2 md:group-hover:translate-y-0 transition-transform duration-300">
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-2 drop-shadow-2xl opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                 {project.title}
               </h3>
             </div>
@@ -87,8 +88,8 @@ export function Portfolio() {
           className="text-primary-foreground [&_p]:text-primary-foreground/80"
         />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {projects.map((project) => (
-            <PortfolioItem key={project.title} project={project} />
+          {projects.map((project, index) => (
+            <PortfolioItem key={project.title} project={project} isFirst={index === 0} />
           ))}
         </div>
       </div>

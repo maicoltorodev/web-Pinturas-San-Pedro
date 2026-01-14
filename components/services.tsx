@@ -40,19 +40,19 @@ const services = [
 function ServiceCard({ service }: { service: typeof services[0] }) {
   const Icon = service.icon
   return (
-    <Card className="h-full border-2 border-border/50 bg-card/50 md:backdrop-blur-sm transition-all duration-500 md:hover:border-secondary md:hover:shadow-premium-lg md:hover:-translate-y-2 shadow-premium group">
+    <Card className="h-full border-2 border-border/50 bg-card/50 md:backdrop-blur-sm transition-all duration-300 md:hover:border-secondary md:hover:shadow-premium-lg md:hover:-translate-y-1 shadow-premium group">
       <CardContent className="p-6 md:p-8 relative overflow-hidden">
         <div className={cn(
-          "absolute top-0 right-0 w-32 h-32 rounded-full opacity-0 md:group-hover:opacity-10 transition-opacity duration-500",
-          `bg-gradient-to-br ${service.color} blur-3xl`
+          "absolute top-0 right-0 w-32 h-32 rounded-full opacity-0 md:group-hover:opacity-10 transition-opacity duration-300",
+          `bg-gradient-to-br ${service.color} blur-xl`
         )} />
         <div className={cn(
           "mb-6 inline-flex items-center justify-center w-16 h-16 rounded-2xl",
           "bg-gradient-to-br from-secondary/20 to-secondary/10",
           "md:group-hover:from-secondary/30 md:group-hover:to-secondary/20",
-          "transition-all duration-500 md:group-hover:scale-110 md:group-hover:rotate-3"
+          "transition-all duration-300 md:group-hover:scale-105"
         )}>
-          <Icon className="h-8 w-8 text-secondary transition-transform duration-500 md:group-hover:scale-110" />
+          <Icon className="h-8 w-8 text-secondary transition-transform duration-300" />
         </div>
         <h3 className="text-xl md:text-2xl font-black text-card-foreground mb-3 md:group-hover:text-secondary transition-colors duration-300">
           {service.title}

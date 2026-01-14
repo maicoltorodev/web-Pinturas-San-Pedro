@@ -84,8 +84,8 @@ function ProductCard({ product }: { product: typeof products[0] }) {
   const Icon = product.icon
 
   return (
-    <Card className="h-full border-2 border-primary-foreground/30 bg-white/95 md:backdrop-blur-sm md:hover:border-secondary md:hover:shadow-premium-lg transition-all duration-500 md:hover:-translate-y-3 group relative overflow-hidden flex flex-col">
-        <div className="absolute inset-0 bg-gradient-to-br from-secondary/0 via-secondary/0 to-secondary/0 md:group-hover:from-secondary/10 md:group-hover:via-secondary/15 md:group-hover:to-secondary/10 transition-all duration-500 pointer-events-none z-10" />
+    <Card className="h-full border-2 border-primary-foreground/30 bg-white/95 md:backdrop-blur-sm md:hover:border-secondary md:hover:shadow-premium-lg transition-all duration-300 md:hover:-translate-y-2 group relative overflow-hidden flex flex-col">
+        <div className="absolute inset-0 bg-gradient-to-br from-secondary/0 via-secondary/0 to-secondary/0 md:group-hover:from-secondary/10 md:group-hover:via-secondary/10 md:group-hover:to-secondary/10 transition-all duration-300 pointer-events-none z-10" />
         
         <CardContent className="p-6 flex-1 flex flex-col relative z-10">
           {/* Header con categoría */}
@@ -95,7 +95,7 @@ function ProductCard({ product }: { product: typeof products[0] }) {
             </span>
             {/* Icono decorativo */}
             <div className={cn(
-              "w-12 h-12 rounded-xl bg-gradient-to-br flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300",
+              "w-12 h-12 rounded-xl bg-gradient-to-br flex items-center justify-center shadow-lg group-hover:scale-105 transition-all duration-300",
               product.color
             )}>
               <Icon className="h-6 w-6 text-white drop-shadow-lg" />
@@ -103,8 +103,8 @@ function ProductCard({ product }: { product: typeof products[0] }) {
           </div>
 
           {/* Imagen del producto - más pequeña y centrada */}
-          <div className="relative w-full h-48 mb-6 flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl overflow-hidden group-hover:bg-gradient-to-br group-hover:from-gray-100 group-hover:to-gray-200 transition-all duration-500">
-            <div className="relative w-40 h-40 group-hover:scale-110 transition-transform duration-500">
+          <div className="relative w-full h-48 mb-6 flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl overflow-hidden group-hover:bg-gradient-to-br group-hover:from-gray-100 group-hover:to-gray-200 transition-all duration-300">
+            <div className="relative w-40 h-40 group-hover:scale-105 transition-transform duration-300">
               <Image
                 src={product.image}
                 alt={product.name}

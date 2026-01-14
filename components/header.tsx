@@ -11,10 +11,17 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
+    let ticking = false
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 20)
+          ticking = false
+        })
+        ticking = true
+      }
     }
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
@@ -42,13 +49,15 @@ export function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <a href="#hero" className="flex items-center group flex-shrink-0">
-            <div className="relative h-12 w-32 md:h-16 md:w-40 lg:h-20 lg:w-48 transition-transform duration-300 group-hover:scale-105 animate-glow-pulse-subtle">
+            <div className="relative h-12 w-32 md:h-16 md:w-40 lg:h-20 lg:w-48 transition-transform duration-300 group-hover:scale-105 animate-glow-pulse-subtle aspect-[2.67/1]">
               <Image
                 src="/pintura-amarilla.png"
                 alt="Pinturas San Pedro"
                 fill
                 className="object-contain md:[filter:drop-shadow(0_0_4px_rgba(255,215,0,0.2))]"
                 priority
+                sizes="(max-width: 768px) 128px, (max-width: 1024px) 160px, 192px"
+                quality={75}
               />
             </div>
           </a>

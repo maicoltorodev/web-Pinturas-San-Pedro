@@ -80,26 +80,26 @@ function ProcessStep({ step, index }: { step: typeof steps[0]; index: number }) 
 
         {/* Content mejorado */}
         <div className="flex-1 pb-8 md:pb-12">
-          <div className="bg-white rounded-3xl p-8 md:p-10 border-2 border-border/50 shadow-lg transition-all duration-500 md:group-hover:border-secondary md:group-hover:shadow-2xl md:group-hover:-translate-y-1 relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-secondary/0 via-secondary/0 to-secondary/0 md:group-hover:from-secondary/5 md:group-hover:via-secondary/10 md:group-hover:to-secondary/5 transition-all duration-500" />
+          <div className="bg-white rounded-3xl p-8 md:p-10 border-2 border-border/50 shadow-lg transition-all duration-300 md:group-hover:border-secondary md:group-hover:shadow-xl md:group-hover:-translate-y-1 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-secondary/0 via-secondary/0 to-secondary/0 md:group-hover:from-secondary/5 md:group-hover:via-secondary/8 md:group-hover:to-secondary/5 transition-all duration-300" />
             
             <div className="relative z-10">
               <div className="flex items-start justify-between gap-4 mb-4">
-                <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-foreground md:group-hover:text-secondary transition-colors duration-300 leading-tight">
+                <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-foreground md:group-hover:text-secondary transition-colors duration-200 leading-tight">
                   {step.title}
                 </h3>
-                <CheckCircle2 className="h-8 w-8 text-secondary transition-all duration-300 flex-shrink-0 opacity-0 md:group-hover:opacity-100 md:group-hover:scale-110 md:group-hover:rotate-12" />
+                <CheckCircle2 className="h-8 w-8 text-secondary transition-all duration-200 flex-shrink-0 opacity-0 md:group-hover:opacity-100 md:group-hover:scale-105" />
               </div>
               
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6 font-medium">
                 {step.description}
               </p>
               
-              <div className="flex items-center justify-between pt-6 border-t-2 border-border/50 md:group-hover:border-secondary/50 transition-colors duration-300">
-                <div className="flex items-center gap-3 text-secondary opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+              <div className="flex items-center justify-between pt-6 border-t-2 border-border/50 md:group-hover:border-secondary/50 transition-colors duration-200">
+                <div className="flex items-center gap-3 text-secondary opacity-0 md:group-hover:opacity-100 transition-opacity duration-200">
                   {index < steps.length - 1 ? (
                     <>
-                      <ArrowRight className="h-5 w-5 md:group-hover:translate-x-2 transition-transform duration-300" />
+                      <ArrowRight className="h-5 w-5 md:group-hover:translate-x-1 transition-transform duration-200" />
                       <span className="text-sm font-bold uppercase tracking-wider">Siguiente paso</span>
                     </>
                   ) : (
