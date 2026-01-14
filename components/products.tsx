@@ -74,10 +74,10 @@ const products: Product[] = [
     certifications: ["NTC 1335 (algunas referencias)"]
   },
   {
-    name: "Vinilo – Fachadas",
+    name: "Vinilo tipo coraza",
     category: "Vinilos",
-    description: "Pintura diluible en agua, acabado satinado, hidrofugable y de alta resistencia. Especial para fachadas con altas exigencias de impermeabilización y lavabilidad.",
-    features: ["Acabado satinado", "Hidrofugable", "Alta resistencia", "Especial para fachadas"],
+    description: "Pintura diluible en agua, acabado satinado, hidrofugable y de alta resistencia. Ideal para fachadas o uso interior con altas exigencias de impermeabilización y lavabilidad.",
+    features: ["Acabado satinado", "Hidrofugable", "Alta resistencia", "Fachadas o uso interior"],
     icon: Paintbrush,
     color: "from-purple-500 to-purple-600",
     image: "/productos/vinilo-hidrofugado.png",
