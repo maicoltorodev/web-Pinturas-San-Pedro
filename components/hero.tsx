@@ -35,7 +35,7 @@ export function Hero() {
 
             {/* Logo - Optimized for mobile */}
             <div className="flex justify-center mb-6">
-              <div className="relative w-64 h-32 sm:w-80 sm:h-40 md:w-96 md:h-48 lg:w-[500px] lg:h-[250px] md:animate-float aspect-[2/1]">
+              <div className="relative w-64 h-32 sm:w-80 sm:h-40 md:w-96 md:h-48 lg:w-[500px] lg:h-[250px] animate-float aspect-[2/1]">
                 {/* Simplified: Single glow effect instead of multiple layers */}
                 <div className="hidden md:block absolute inset-0 pointer-events-none" style={{ 
                   filter: 'drop-shadow(0 0 15px rgba(255, 215, 0, 0.4))',
