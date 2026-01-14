@@ -22,7 +22,6 @@ import { useState, useMemo, useCallback } from "react"
 // Types
 export interface ProductPresentation {
   size: string
-  price: string | string[]
 }
 
 export interface Product {
@@ -52,9 +51,9 @@ const products: Product[] = [
     color: "from-green-500 to-green-600",
     image: "/productos/vinilo-acrilico.png",
     presentations: [
-      { size: "Cuñete", price: "$180.000 – $215.000" },
-      { size: "Medio", price: "$96.000 – $110.000" },
-      { size: "Galón", price: "$48.000 – $55.000" }
+      { size: "Cuñete" },
+      { size: "Medio" },
+      { size: "Galón" }
     ],
     certifications: ["NTC 1335 (algunas referencias)"],
     colors: ["Blanco", "Almendra", "Rojo"]
@@ -68,24 +67,24 @@ const products: Product[] = [
     color: "from-teal-500 to-teal-600",
     image: "/productos/vinilo-semilavable.png",
     presentations: [
-      { size: "Cuñete", price: ["$160.000", "$115.000"] },
-      { size: "Medio", price: ["$88.000", "$65.000"] },
-      { size: "Galón", price: ["$40.000", "$33.000"] }
+      { size: "Cuñete" },
+      { size: "Medio" },
+      { size: "Galón" }
     ],
     certifications: ["NTC 1335 (algunas referencias)"]
   },
   {
-    name: "Vinilo Tipo 1 – Fachadas",
+    name: "Vinilo – Fachadas",
     category: "Vinilos",
-    description: "Pintura tipo 1 diluible en agua, acabado semimate, hidrofugable y de alta resistencia. Especial para fachadas con altas exigencias de impermeabilización y lavabilidad.",
-    features: ["Acabado semimate", "Hidrofugable", "Alta resistencia", "Especial para fachadas"],
+    description: "Pintura diluible en agua, acabado satinado, hidrofugable y de alta resistencia. Especial para fachadas con altas exigencias de impermeabilización y lavabilidad.",
+    features: ["Acabado satinado", "Hidrofugable", "Alta resistencia", "Especial para fachadas"],
     icon: Paintbrush,
     color: "from-purple-500 to-purple-600",
     image: "/productos/vinilo-hidrofugado.png",
     presentations: [
-      { size: "Cuñete", price: "$300.000" },
-      { size: "Medio", price: "$160.000" },
-      { size: "Galón", price: "$70.000" }
+      { size: "Cuñete" },
+      { size: "Medio" },
+      { size: "Galón" }
     ]
   },
   {
@@ -97,9 +96,9 @@ const products: Product[] = [
     color: "from-gray-500 to-gray-600",
     image: "/productos/vinilo-tipo-3.png",
     presentations: [
-      { size: "Cuñete", price: "Consultar" },
-      { size: "Medio", price: "Consultar" },
-      { size: "Galón", price: "Consultar" }
+      { size: "Cuñete" },
+      { size: "Medio" },
+      { size: "Galón" }
     ]
   },
   
@@ -113,9 +112,9 @@ const products: Product[] = [
     color: "from-orange-500 to-orange-600",
     image: "/productos/anticorrosivo.png",
     presentations: [
-      { size: "Cuñete", price: "Consultar" },
-      { size: "Medio", price: "Consultar" },
-      { size: "Galón", price: "Consultar" }
+      { size: "Cuñete" },
+      { size: "Medio" },
+      { size: "Galón" }
     ],
     uses: [
       "Primera mano para superficies metálicas en interiores y exteriores",
@@ -146,10 +145,10 @@ const products: Product[] = [
       "Tuberías, zócalos"
     ],
     presentations: [
-      { size: "Cuñete", price: "Consultar" },
-      { size: "Galón", price: "Consultar" },
-      { size: "1/4", price: "Consultar" },
-      { size: "1/8", price: "Consultar" }
+      { size: "Cuñete" },
+      { size: "Galón" },
+      { size: "1/4" },
+      { size: "1/8" }
     ]
   },
   {
@@ -166,10 +165,10 @@ const products: Product[] = [
       "Tuberías, zócalos"
     ],
     presentations: [
-      { size: "Cuñete", price: "Consultar" },
-      { size: "Galón", price: "Consultar" },
-      { size: "1/4", price: "Consultar" },
-      { size: "1/8", price: "Consultar" }
+      { size: "Cuñete" },
+      { size: "Galón" },
+      { size: "1/4" },
+      { size: "1/8" }
     ]
   },
   {
@@ -186,9 +185,9 @@ const products: Product[] = [
       "Tuberías, zócalos"
     ],
     presentations: [
-      { size: "Cuñete", price: "Consultar" },
-      { size: "Medio", price: "Consultar" },
-      { size: "1/4", price: "Consultar" }
+      { size: "Cuñete" },
+      { size: "Medio" },
+      { size: "1/4" }
     ]
   },
   
@@ -207,9 +206,9 @@ const products: Product[] = [
       "Zonas industriales"
     ],
     presentations: [
-      { size: "Cuñete", price: "Consultar" },
-      { size: "Galón", price: "Consultar" },
-      { size: "Medio Cuñete", price: "Consultar" }
+      { size: "Cuñete" },
+      { size: "Galón" },
+      { size: "Medio Cuñete" }
     ]
   },
   
@@ -223,9 +222,9 @@ const products: Product[] = [
     color: "from-indigo-500 to-indigo-600",
     image: "/productos/estuco-plastico-acrilico.png",
     presentations: [
-      { size: "Cuñete", price: "Consultar" },
-      { size: "Medio", price: "Consultar" },
-      { size: "Galón", price: "Consultar" }
+      { size: "Cuñete" },
+      { size: "Medio" },
+      { size: "Galón" }
     ],
     uses: [
       "Paredes interiores",
@@ -242,9 +241,9 @@ const products: Product[] = [
     color: "from-blue-500 to-blue-600",
     image: "/productos/graniplas.png",
     presentations: [
-      { size: "Cuñete", price: "Consultar" },
-      { size: "Medio", price: "Consultar" },
-      { size: "Galón", price: "Consultar" }
+      { size: "Cuñete" },
+      { size: "Medio" },
+      { size: "Galón" }
     ],
     uses: [
       "Interiores y exteriores",
@@ -260,9 +259,9 @@ const products: Product[] = [
     color: "from-cyan-500 to-cyan-600",
     image: "/productos/garraplast.png",
     presentations: [
-      { size: "Cuñete", price: "Consultar" },
-      { size: "Medio", price: "Consultar" },
-      { size: "Galón", price: "Consultar" }
+      { size: "Cuñete" },
+      { size: "Medio" },
+      { size: "Galón" }
     ],
     uses: [
       "Protección y embellecimiento de superficies"
@@ -277,9 +276,9 @@ const products: Product[] = [
     color: "from-slate-500 to-slate-600",
     image: "/productos/pasta acrilica.png",
     presentations: [
-      { size: "Cuñete", price: "Consultar" },
-      { size: "Medio", price: "Consultar" },
-      { size: "Galón", price: "Consultar" }
+      { size: "Cuñete" },
+      { size: "Medio" },
+      { size: "Galón" }
     ],
     benefits: [
       "Garantiza un acabado uniforme y profesional",
@@ -297,9 +296,9 @@ const products: Product[] = [
     color: "from-blue-500 to-blue-600",
     image: "/productos/impermeabilizante.png",
     presentations: [
-      { size: "Cuñete", price: "$280.000" },
-      { size: "Medio", price: "$150.000" },
-      { size: "Galón", price: "$65.000" }
+      { size: "Cuñete" },
+      { size: "Medio" },
+      { size: "Galón" }
     ],
     benefits: [
       "Alta durabilidad",
@@ -317,7 +316,7 @@ const products: Product[] = [
     color: "from-gray-600 to-gray-700",
     image: "/productos/rodillo.png",
     presentations: [
-      { size: "Variedad de tamaños", price: "Consultar" }
+      { size: "Variedad de tamaños" }
     ],
     uses: [
       "Aplicación en paredes y techos"
@@ -332,7 +331,7 @@ const products: Product[] = [
     color: "from-gray-600 to-gray-700",
     image: "/productos/brocha.png",
     presentations: [
-      { size: "Variedad de tamaños", price: "Consultar" }
+      { size: "Variedad de tamaños" }
     ],
     uses: [
       "Detalles y rincones"
@@ -347,8 +346,8 @@ const products: Product[] = [
     color: "from-gray-600 to-gray-700",
     image: "/productos/disolvente.png",
     presentations: [
-      { size: "Galón", price: "Consultar" },
-      { size: "Medio", price: "Consultar" }
+      { size: "Galón" },
+      { size: "Medio" }
     ],
     uses: [
       "Limpieza de herramientas",
@@ -359,13 +358,6 @@ const products: Product[] = [
 
 function ProductCard({ product }: { product: Product }) {
   const Icon = product.icon
-
-  const formatPrice = useCallback((price: string | string[]): string => {
-    if (Array.isArray(price)) {
-      return price.join(" / ")
-    }
-    return price
-  }, [])
 
   const handleCardClick = useCallback(() => {
     const message = `Hola, necesito ${product.name}`
@@ -486,18 +478,18 @@ function ProductCard({ product }: { product: Product }) {
             </div>
           )}
 
-          {/* Presentaciones y Precios - Highlighted */}
+          {/* Presentaciones - Highlighted */}
           {product.presentations && product.presentations.length > 0 && (
             <div className="mt-auto pt-4 border-t border-border/50">
               <div className="mb-3">
-                <span className="text-xs font-bold text-secondary uppercase tracking-wider">Precios</span>
+                <span className="text-xs font-bold text-secondary uppercase tracking-wider">Presentaciones Disponibles</span>
               </div>
               <div className="space-y-2">
                 {product.presentations.map((presentation, idx) => (
                   <div 
                     key={idx} 
                     className={cn(
-                      "flex items-center justify-between py-2.5 px-4 rounded-lg",
+                      "flex items-center justify-center py-2.5 px-4 rounded-lg",
                       "bg-gradient-to-r from-secondary/5 to-secondary/10",
                       "border border-secondary/20",
                       "transition-all duration-300",
@@ -505,7 +497,6 @@ function ProductCard({ product }: { product: Product }) {
                     )}
                   >
                     <span className="text-sm font-bold text-foreground">{presentation.size}</span>
-                    <span className="text-sm font-black text-secondary">{formatPrice(presentation.price)}</span>
                   </div>
                 ))}
               </div>

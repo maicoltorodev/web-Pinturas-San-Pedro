@@ -47,7 +47,7 @@ export default function TerminosPage() {
               <ul className="list-disc list-inside space-y-2 text-foreground/80 ml-4">
                 <li>Proporcionar productos de calidad certificada</li>
                 <li>Ofrecer servicios profesionales de pintura con más de 30 años de experiencia</li>
-                <li>Proporcionar información precisa sobre productos, precios y disponibilidad</li>
+                <li>Proporcionar información precisa sobre productos y disponibilidad</li>
                 <li>Mantener estándares de calidad en todos nuestros servicios</li>
               </ul>
             </div>
@@ -55,10 +55,10 @@ export default function TerminosPage() {
             <div className="bg-card border-2 border-border rounded-xl p-6 md:p-8">
               <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-3">
                 <AlertCircle className="h-6 w-6 text-secondary" />
-                3. Precios y Pagos
+                3. Cotizaciones y Pagos
               </h2>
               <p className="text-foreground/80 leading-relaxed mb-4">
-                Los precios de nuestros productos y servicios están sujetos a cambios sin previo aviso. Los precios finales se confirmarán al momento de la cotización formal. Aceptamos los siguientes métodos de pago:
+                Todas las cotizaciones son personalizadas según las necesidades del proyecto. Los valores finales se confirmarán al momento de la cotización formal. Aceptamos los siguientes métodos de pago:
               </p>
               <ul className="list-disc list-inside space-y-2 text-foreground/80 ml-4">
                 <li>Efectivo</li>
