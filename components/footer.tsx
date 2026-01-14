@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import { Mail, Phone, MapPin, ArrowRight } from "lucide-react"
+import { Mail, Phone, MapPin, ArrowRight, Facebook, Instagram } from "lucide-react"
 
 export function Footer() {
   const [currentYear, setCurrentYear] = useState(2024)
@@ -67,10 +67,41 @@ export function Footer() {
               Servicios profesionales de pintura con más de 15 años de experiencia. 
               Transformamos espacios con calidad artesanal y atención al detalle.
             </p>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20 mb-4">
               <span className="text-sm font-black text-primary-foreground uppercase tracking-wider">
                 CREAMOS COLOR!
               </span>
+            </div>
+            
+            {/* Redes Sociales */}
+            <div className="flex items-center gap-3">
+              <a
+                href="https://www.facebook.com/pinturassanpedro"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-secondary/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+                aria-label="Facebook"
+              >
+                <Facebook className="h-5 w-5 text-primary-foreground/80 group-hover:text-secondary transition-colors" />
+              </a>
+              <a
+                href="https://www.instagram.com/pinturassanpedro"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-secondary/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+                aria-label="Instagram"
+              >
+                <Instagram className="h-5 w-5 text-primary-foreground/80 group-hover:text-secondary transition-colors" />
+              </a>
+              <a
+                href="https://wa.me/573223716811?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20productos%20y%20servicios%20de%20pintura."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-secondary/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+                aria-label="WhatsApp"
+              >
+                <Phone className="h-5 w-5 text-primary-foreground/80 group-hover:text-secondary transition-colors" />
+              </a>
             </div>
           </div>
 
@@ -147,9 +178,41 @@ export function Footer() {
             <p className="text-primary-foreground/60 text-xs sm:text-sm">
               &copy; 2015-{currentYear} Pinturas San Pedro. Todos los derechos reservados.
             </p>
-            <div className="flex items-center gap-6 text-xs sm:text-sm text-primary-foreground/60">
-              <a href="#" className="hover:text-secondary transition-colors">Política de Privacidad</a>
-              <a href="#" className="hover:text-secondary transition-colors">Términos de Servicio</a>
+            <div className="flex items-center gap-4">
+              {/* Redes Sociales en el footer inferior */}
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://www.facebook.com/pinturassanpedro"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full bg-primary-foreground/10 hover:bg-secondary/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="h-4 w-4 text-primary-foreground/60 group-hover:text-secondary transition-colors" />
+                </a>
+                <a
+                  href="https://www.instagram.com/pinturassanpedro"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full bg-primary-foreground/10 hover:bg-secondary/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="h-4 w-4 text-primary-foreground/60 group-hover:text-secondary transition-colors" />
+                </a>
+                <a
+                  href="https://wa.me/573223716811?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20productos%20y%20servicios%20de%20pintura."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full bg-primary-foreground/10 hover:bg-secondary/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+                  aria-label="WhatsApp"
+                >
+                  <Phone className="h-4 w-4 text-primary-foreground/60 group-hover:text-secondary transition-colors" />
+                </a>
+              </div>
+              <div className="flex items-center gap-6 text-xs sm:text-sm text-primary-foreground/60">
+                <a href="#" className="hover:text-secondary transition-colors">Política de Privacidad</a>
+                <a href="#" className="hover:text-secondary transition-colors">Términos de Servicio</a>
+              </div>
             </div>
           </div>
         </div>

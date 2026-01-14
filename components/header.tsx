@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Menu, X, ArrowRight } from "lucide-react"
+import { Menu, X, ArrowRight, Facebook, Instagram } from "lucide-react"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 
@@ -101,8 +101,29 @@ export function Header() {
             ))}
           </div>
 
-          {/* Botón Cotizar - Derecha */}
-          <div className="hidden md:flex items-center flex-shrink-0">
+          {/* Botón Cotizar y Redes Sociales - Derecha */}
+          <div className="hidden md:flex items-center gap-3 flex-shrink-0">
+            {/* Redes Sociales */}
+            <div className="flex items-center gap-2">
+              <a
+                href="https://www.facebook.com/pinturassanpedro"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-primary-foreground/10 hover:bg-secondary/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+                aria-label="Facebook"
+              >
+                <Facebook className="h-4 w-4 text-primary-foreground/90 group-hover:text-secondary transition-colors" />
+              </a>
+              <a
+                href="https://www.instagram.com/pinturassanpedro"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-primary-foreground/10 hover:bg-secondary/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+                aria-label="Instagram"
+              >
+                <Instagram className="h-4 w-4 text-primary-foreground/90 group-hover:text-secondary transition-colors" />
+              </a>
+            </div>
             <Button
               variant="secondary"
               size="default"
