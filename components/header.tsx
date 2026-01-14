@@ -172,7 +172,7 @@ export function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Cotizar
+                Contactar
                 <ArrowRight className="ml-2 h-4 w-4" />
               </a>
             </Button>
@@ -191,7 +191,7 @@ export function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Cotizar
+                Contactar
               </a>
             </Button>
             <button
