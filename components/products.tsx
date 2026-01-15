@@ -489,7 +489,7 @@ const products: Product[] = [
     features: ["Protección precisa", "Líneas limpias", "Fácil remoción"],
     icon: Wrench,
     color: "from-gray-600 to-gray-700",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=400&h=400&fit=crop",
     presentations: [
       { size: "Variedad de anchos" }
     ],
@@ -506,7 +506,7 @@ const products: Product[] = [
     features: ["Protección completa", "Resistentes", "Reutilizables"],
     icon: Wrench,
     color: "from-gray-500 to-gray-600",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop",
     presentations: [
       { size: "Variedad de tamaños" }
     ],
@@ -540,7 +540,7 @@ const products: Product[] = [
     features: ["Resistente", "Con asa", "Fácil manejo"],
     icon: Wrench,
     color: "from-gray-500 to-gray-600",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=400&h=400&fit=crop",
     presentations: [
       { size: "Variedad de capacidades" }
     ],
@@ -557,7 +557,7 @@ const products: Product[] = [
     features: ["Mezcla de colores", "Precisión", "Fácil limpieza"],
     icon: Wrench,
     color: "from-gray-600 to-gray-700",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=400&h=400&fit=crop",
     presentations: [
       { size: "Paleta estándar" }
     ],

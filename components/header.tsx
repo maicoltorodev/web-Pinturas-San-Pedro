@@ -23,8 +23,8 @@ import { cn } from "@/lib/utils"
 // Define navLinks outside component to ensure consistency between server and client
 // This array is static and should never change during runtime
 const navLinks = [
-  { href: "/#services", label: "Productos" },
-  { href: "/#products", label: "Catálogo" },
+  { href: "/#services", label: "Soluciones" },
+  { href: "/#products", label: "Productos" },
   { href: "/#color-palette", label: "Colores" },
   { href: "/#testimonials", label: "Testimonios" },
   { href: "/#location", label: "Ubicación" },
