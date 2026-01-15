@@ -226,7 +226,7 @@ const products: Product[] = [
     features: ["A base de agua", "Ecológico", "Con protección", "Fácil aplicación"],
     icon: Sparkles,
     color: "from-emerald-500 to-emerald-600",
-    image: "/productos/disolvente.png",
+    image: "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=400&h=400&fit=crop",
     uses: [
       "Rejas, puertas, ventanas",
       "Marcos, persianas",
@@ -356,33 +356,138 @@ const products: Product[] = [
   
   // HERRAMIENTAS
   {
-    name: "Rodillos",
+    name: "Brochas básicas",
     category: "Herramientas",
-    description: "Diseño ergonómico para cubrimiento uniforme en paredes y techos.",
-    features: ["Diseño ergonómico", "Cubrimiento uniforme"],
-    icon: Wrench,
-    color: "from-gray-600 to-gray-700",
-    image: "/productos/rodillo.png",
-    presentations: [
-      { size: "Variedad de tamaños" }
-    ],
-    uses: [
-      "Aplicación en paredes y techos"
-    ]
-  },
-  {
-    name: "Brochas",
-    category: "Herramientas",
-    description: "Precisión y control para detalles y rincones.",
-    features: ["Precisión", "Control", "Ideal para detalles"],
+    description: "Brochas de uso general para aplicación profesional de pintura. Disponibles en diferentes tamaños y tipos de cerdas.",
+    features: ["Uso general", "Variedad de tamaños", "Diferentes tipos de cerdas"],
     icon: Wrench,
     color: "from-gray-600 to-gray-700",
     image: "/productos/brocha.png",
     presentations: [
+      { size: "Brocha plana 2\"" },
+      { size: "Brocha plana 3\"" },
+      { size: "Brocha angular 2\"" },
+      { size: "Brocha angular 3\"" },
+      { size: "Brocha 1½\"" },
+      { size: "Brocha 1\"" }
+    ],
+    uses: [
+      "Aplicación general",
+      "Paredes y grandes superficies",
+      "Esquinas y bordes",
+      "Detalles y acabados finos"
+    ]
+  },
+  {
+    name: "Brochas por material",
+    category: "Herramientas",
+    description: "Brochas especializadas según el tipo de cerdas: sintéticas, naturales o mezcla, cada una optimizada para diferentes tipos de pintura.",
+    features: ["Cerdas sintéticas", "Cerdas naturales", "Mezcla natural + sintética"],
+    icon: Wrench,
+    color: "from-gray-500 to-gray-600",
+    image: "/productos/brocha.png",
+    presentations: [
+      { size: "Brocha cerdas sintéticas" },
+      { size: "Brocha cerdas naturales" },
+      { size: "Brocha mezcla cerdas" }
+    ],
+    uses: [
+      "Diferentes tipos de pintura",
+      "Aplicación especializada"
+    ]
+  },
+  {
+    name: "Rodillos por superficie",
+    category: "Herramientas",
+    description: "Rodillos especializados según el tipo de superficie: pelo corto para muros lisos, medio para multiusos y largo para superficies rugosas.",
+    features: ["Pelo corto (6-8 mm)", "Pelo medio (10-12 mm)", "Pelo largo (15-18 mm)"],
+    icon: Wrench,
+    color: "from-gray-600 to-gray-700",
+    image: "/productos/rodillo.png",
+    presentations: [
+      { size: "Rodillo pelo corto" },
+      { size: "Rodillo pelo medio" },
+      { size: "Rodillo pelo largo" }
+    ],
+    uses: [
+      "Muros lisos",
+      "Multiusos",
+      "Superficies rugosas"
+    ]
+  },
+  {
+    name: "Rodillos por tamaño",
+    category: "Herramientas",
+    description: "Rodillos en diferentes tamaños para cubrir desde detalles y esquinas hasta áreas grandes de manera eficiente.",
+    features: ["Rodillo 4\"", "Rodillo 7\"", "Rodillo 9\""],
+    icon: Wrench,
+    color: "from-gray-500 to-gray-600",
+    image: "/productos/rodillo.png",
+    presentations: [
+      { size: "Rodillo 4\"" },
+      { size: "Rodillo 7\"" },
+      { size: "Rodillo 9\"" }
+    ],
+    uses: [
+      "Detalles y esquinas",
+      "Estándar de pared",
+      "Áreas grandes"
+    ]
+  },
+  {
+    name: "Accesorios de rodillos",
+    category: "Herramientas",
+    description: "Recambios y accesorios complementarios para rodillos: recambios en diferentes largos, bandejas de pintura y rejillas.",
+    features: ["Recambios para rodillos", "Bandeja de pintura", "Rejilla para bandeja"],
+    icon: Wrench,
+    color: "from-gray-400 to-gray-500",
+    image: "/productos/rodillo.png",
+    presentations: [
+      { size: "Recambios rodillo" },
+      { size: "Bandeja plástica" },
+      { size: "Rejilla bandeja" }
+    ],
+    uses: [
+      "Mantenimiento de rodillos",
+      "Aplicación eficiente"
+    ]
+  },
+  {
+    name: "Accesorios útiles",
+    category: "Herramientas",
+    description: "Accesorios esenciales para un trabajo profesional: cinta de enmascarar, lonas protectoras, extensiones para rodillo, cubetas y paletas mezcladoras.",
+    features: ["Cinta de enmascarar", "Lonas protectoras", "Extensión para rodillo", "Cubeta de pintura", "Paletas mezcladoras"],
+    icon: Wrench,
+    color: "from-gray-600 to-gray-700",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=400&fit=crop",
+    presentations: [
+      { size: "Cinta de enmascarar" },
+      { size: "Lonas / plásticos" },
+      { size: "Extensión rodillo" },
+      { size: "Cubeta pintura" },
+      { size: "Paletas mezcladoras" }
+    ],
+    uses: [
+      "Protección de superficies",
+      "Aplicación profesional",
+      "Mezcla de colores"
+    ]
+  },
+  {
+    name: "Cartón corrugado",
+    category: "Herramientas",
+    description: "Cartón corrugado para protección de superficies durante trabajos de pintura. Ideal para cubrir pisos, muebles y áreas que requieren protección.",
+    features: ["Protección de superficies", "Resistente", "Fácil de usar"],
+    icon: Wrench,
+    color: "from-gray-500 to-gray-600",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop",
+    presentations: [
       { size: "Variedad de tamaños" }
     ],
     uses: [
-      "Detalles y rincones"
+      "Protección de pisos",
+      "Cubrir muebles",
+      "Protección durante pintura"
     ]
   },
   {
@@ -392,7 +497,7 @@ const products: Product[] = [
     features: ["Limpieza de herramientas", "Preparación de superficies"],
     icon: Wrench,
     color: "from-gray-600 to-gray-700",
-    image: "/productos/disolvente.png",
+    image: "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=400&h=400&fit=crop",
     presentations: [
       { size: "Galón" },
       { size: "Medio" }
