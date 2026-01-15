@@ -435,42 +435,136 @@ const products: Product[] = [
     ]
   },
   {
-    name: "Accesorios de rodillos",
+    name: "Recambios para rodillos",
     category: "Herramientas",
-    description: "Recambios y accesorios complementarios para rodillos: recambios en diferentes largos, bandejas de pintura y rejillas.",
-    features: ["Recambios para rodillos", "Bandeja de pintura", "Rejilla para bandeja"],
+    description: "Recambios para rodillos en diferentes largos de pelo. Ideal para mantener tus rodillos en perfecto estado y continuar trabajando sin interrupciones.",
+    features: ["Recambios disponibles", "Diferentes largos", "Fácil instalación"],
     icon: Wrench,
     color: "from-gray-400 to-gray-500",
     image: "/productos/rodillo.png",
     presentations: [
-      { size: "Recambios rodillo" },
-      { size: "Bandeja plástica" },
-      { size: "Rejilla bandeja" }
+      { size: "Variedad de tamaños" }
     ],
     uses: [
       "Mantenimiento de rodillos",
+      "Reemplazo de recubrimiento"
+    ]
+  },
+  {
+    name: "Bandeja de pintura",
+    category: "Herramientas",
+    description: "Bandeja de pintura plástica resistente para cargar rodillos de manera eficiente. Diseño práctico para facilitar la aplicación uniforme.",
+    features: ["Plástica resistente", "Fácil limpieza", "Diseño práctico"],
+    icon: Wrench,
+    color: "from-gray-500 to-gray-600",
+    image: "/productos/rodillo.png",
+    presentations: [
+      { size: "Bandeja estándar" }
+    ],
+    uses: [
+      "Carga de rodillos",
+      "Aplicación uniforme"
+    ]
+  },
+  {
+    name: "Rejilla para bandeja",
+    category: "Herramientas",
+    description: "Rejilla para bandeja que permite eliminar el exceso de pintura del rodillo. Mejora la aplicación y reduce el desperdicio de pintura.",
+    features: ["Elimina exceso", "Reduce desperdicio", "Mejora aplicación"],
+    icon: Wrench,
+    color: "from-gray-400 to-gray-500",
+    image: "/productos/rodillo.png",
+    presentations: [
+      { size: "Rejilla estándar" }
+    ],
+    uses: [
+      "Control de pintura",
       "Aplicación eficiente"
     ]
   },
   {
-    name: "Accesorios útiles",
+    name: "Cinta de enmascarar",
     category: "Herramientas",
-    description: "Accesorios esenciales para un trabajo profesional: cinta de enmascarar, lonas protectoras, extensiones para rodillo, cubetas y paletas mezcladoras.",
-    features: ["Cinta de enmascarar", "Lonas protectoras", "Extensión para rodillo", "Cubeta de pintura", "Paletas mezcladoras"],
+    description: "Cinta de enmascarar para proteger áreas que no deseas pintar. Permite líneas limpias y precisas en tus trabajos de pintura.",
+    features: ["Protección precisa", "Líneas limpias", "Fácil remoción"],
     icon: Wrench,
     color: "from-gray-600 to-gray-700",
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=400&fit=crop",
     presentations: [
-      { size: "Cinta de enmascarar" },
-      { size: "Lonas / plásticos" },
-      { size: "Extensión rodillo" },
-      { size: "Cubeta pintura" },
-      { size: "Paletas mezcladoras" }
+      { size: "Variedad de anchos" }
     ],
     uses: [
-      "Protección de superficies",
-      "Aplicación profesional",
-      "Mezcla de colores"
+      "Protección de áreas",
+      "Líneas precisas",
+      "Bordes limpios"
+    ]
+  },
+  {
+    name: "Lonas y plásticos protectores",
+    category: "Herramientas",
+    description: "Lonas y plásticos protectores para cubrir muebles, pisos y superficies durante trabajos de pintura. Protección esencial para mantener limpio tu espacio.",
+    features: ["Protección completa", "Resistentes", "Reutilizables"],
+    icon: Wrench,
+    color: "from-gray-500 to-gray-600",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=400&fit=crop",
+    presentations: [
+      { size: "Variedad de tamaños" }
+    ],
+    uses: [
+      "Protección de muebles",
+      "Cubrir pisos",
+      "Protección de superficies"
+    ]
+  },
+  {
+    name: "Extensión para rodillo",
+    category: "Herramientas",
+    description: "Varilla extensora para rodillos que permite alcanzar áreas altas sin necesidad de escaleras. Ideal para techos y paredes altas.",
+    features: ["Alcance extendido", "Ajustable", "Fácil de usar"],
+    icon: Wrench,
+    color: "from-gray-600 to-gray-700",
+    image: "/productos/rodillo.png",
+    presentations: [
+      { size: "Extensión estándar" }
+    ],
+    uses: [
+      "Áreas altas",
+      "Techos",
+      "Paredes altas"
+    ]
+  },
+  {
+    name: "Cubeta de pintura",
+    category: "Herramientas",
+    description: "Cubeta de pintura resistente para almacenar y transportar pintura durante tus trabajos. Diseño práctico con asa para fácil manejo.",
+    features: ["Resistente", "Con asa", "Fácil manejo"],
+    icon: Wrench,
+    color: "from-gray-500 to-gray-600",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=400&fit=crop",
+    presentations: [
+      { size: "Variedad de capacidades" }
+    ],
+    uses: [
+      "Almacenamiento",
+      "Transporte",
+      "Mezcla de pintura"
+    ]
+  },
+  {
+    name: "Paletas mezcladoras",
+    category: "Herramientas",
+    description: "Paletas mezcladoras para combinar colores y preparar tus pinturas. Herramienta esencial para personalizar colores y lograr el tono perfecto.",
+    features: ["Mezcla de colores", "Precisión", "Fácil limpieza"],
+    icon: Wrench,
+    color: "from-gray-600 to-gray-700",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=400&fit=crop",
+    presentations: [
+      { size: "Paleta estándar" }
+    ],
+    uses: [
+      "Mezcla de colores",
+      "Personalización",
+      "Preparación de pintura"
     ]
   },
   {
@@ -480,7 +574,7 @@ const products: Product[] = [
     features: ["Protección de superficies", "Resistente", "Fácil de usar"],
     icon: Wrench,
     color: "from-gray-500 to-gray-600",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop",
+    image: "/productos/carton-corrugado.jpg",
     presentations: [
       { size: "Variedad de tamaños" }
     ],
