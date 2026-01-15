@@ -219,6 +219,25 @@ const products: Product[] = [
       { size: "1/4" }
     ]
   },
+  {
+    name: "Esmalte a base agua",
+    category: "Esmaltes",
+    description: "Esmalte ecológico a base de agua para protección y decoración de superficies de metal y madera.",
+    features: ["A base de agua", "Ecológico", "Con protección", "Fácil aplicación"],
+    icon: Sparkles,
+    color: "from-emerald-500 to-emerald-600",
+    image: "/productos/disolvente.png",
+    uses: [
+      "Rejas, puertas, ventanas",
+      "Marcos, persianas",
+      "Tuberías, zócalos"
+    ],
+    presentations: [
+      { size: "Cuñete" },
+      { size: "Medio" },
+      { size: "Galón" }
+    ]
+  },
   
   // TRÁFICO PESADO
   {
@@ -319,8 +338,8 @@ const products: Product[] = [
   {
     name: "Impermeabilizante",
     category: "Impermeabilizante",
-    description: "Impermeabilizante para fachadas y techos, protección contra filtraciones y humedad.",
-    features: ["Protección contra filtraciones", "Con durabilidad", "Resistente a humedad"],
+    description: "Protege tu inversión con impermeabilizantes de alto rendimiento. Soluciones profesionales para evitar filtraciones, humedades y deterioro en techos, terrazas, muros y fachadas. Diseñados para resistir condiciones climáticas extremas y alargar la vida útil de cualquier superficie.",
+    features: ["Protección contra filtraciones", "Alto rendimiento", "Resistente a condiciones extremas", "Alarga vida útil"],
     icon: Droplet,
     color: "from-blue-500 to-blue-600",
     image: "/productos/impermeabilizante.png",
