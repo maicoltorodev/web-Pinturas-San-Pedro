@@ -226,7 +226,7 @@ const products: Product[] = [
     features: ["A base de agua", "Ecológico", "Con protección", "Fácil aplicación"],
     icon: Sparkles,
     color: "from-emerald-500 to-emerald-600",
-    image: "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=400&h=400&fit=crop",
+    image: "/productos/esmalte-base-agua.png",
     uses: [
       "Rejas, puertas, ventanas",
       "Marcos, persianas",
@@ -385,7 +385,7 @@ const products: Product[] = [
     features: ["Cerdas sintéticas", "Cerdas naturales", "Mezcla natural + sintética"],
     icon: Wrench,
     color: "from-gray-500 to-gray-600",
-    image: "/productos/brocha.png",
+    image: "/productos/brochas-material.png",
     presentations: [
       { size: "Brocha cerdas sintéticas" },
       { size: "Brocha cerdas naturales" },
@@ -441,7 +441,7 @@ const products: Product[] = [
     features: ["Recambios disponibles", "Diferentes largos", "Fácil instalación"],
     icon: Wrench,
     color: "from-gray-400 to-gray-500",
-    image: "/productos/rodillo.png",
+    image: "/productos/recambio-rodillo.png",
     presentations: [
       { size: "Variedad de tamaños" }
     ],
@@ -457,7 +457,7 @@ const products: Product[] = [
     features: ["Plástica resistente", "Fácil limpieza", "Diseño práctico"],
     icon: Wrench,
     color: "from-gray-500 to-gray-600",
-    image: "/productos/rodillo.png",
+    image: "/productos/bandeja-pintura.png",
     presentations: [
       { size: "Bandeja estándar" }
     ],
@@ -473,7 +473,7 @@ const products: Product[] = [
     features: ["Elimina exceso", "Reduce desperdicio", "Mejora aplicación"],
     icon: Wrench,
     color: "from-gray-400 to-gray-500",
-    image: "/productos/rodillo.png",
+    image: "/productos/rejilla-pintura.png",
     presentations: [
       { size: "Rejilla estándar" }
     ],
@@ -489,7 +489,7 @@ const products: Product[] = [
     features: ["Protección precisa", "Líneas limpias", "Fácil remoción"],
     icon: Wrench,
     color: "from-gray-600 to-gray-700",
-    image: "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=400&h=400&fit=crop",
+    image: "/productos/cinta-enmascarar.png",
     presentations: [
       { size: "Variedad de anchos" }
     ],
@@ -506,7 +506,7 @@ const products: Product[] = [
     features: ["Protección completa", "Resistentes", "Reutilizables"],
     icon: Wrench,
     color: "from-gray-500 to-gray-600",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop",
+    image: "/productos/plastico-protector.png",
     presentations: [
       { size: "Variedad de tamaños" }
     ],
@@ -523,7 +523,7 @@ const products: Product[] = [
     features: ["Alcance extendido", "Ajustable", "Fácil de usar"],
     icon: Wrench,
     color: "from-gray-600 to-gray-700",
-    image: "/productos/rodillo.png",
+    image: "/productos/extension-rodillo.png",
     presentations: [
       { size: "Extensión estándar" }
     ],
@@ -540,7 +540,7 @@ const products: Product[] = [
     features: ["Resistente", "Con asa", "Fácil manejo"],
     icon: Wrench,
     color: "from-gray-500 to-gray-600",
-    image: "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=400&h=400&fit=crop",
+    image: "/productos/cubeta-pintura.png",
     presentations: [
       { size: "Variedad de capacidades" }
     ],
@@ -551,30 +551,13 @@ const products: Product[] = [
     ]
   },
   {
-    name: "Paletas mezcladoras",
-    category: "Herramientas",
-    description: "Paletas mezcladoras para combinar colores y preparar tus pinturas. Herramienta esencial para personalizar colores y lograr el tono perfecto.",
-    features: ["Mezcla de colores", "Precisión", "Fácil limpieza"],
-    icon: Wrench,
-    color: "from-gray-600 to-gray-700",
-    image: "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=400&h=400&fit=crop",
-    presentations: [
-      { size: "Paleta estándar" }
-    ],
-    uses: [
-      "Mezcla de colores",
-      "Personalización",
-      "Preparación de pintura"
-    ]
-  },
-  {
     name: "Cartón corrugado",
     category: "Herramientas",
     description: "Cartón corrugado para protección de superficies durante trabajos de pintura. Ideal para cubrir pisos, muebles y áreas que requieren protección.",
     features: ["Protección de superficies", "Resistente", "Fácil de usar"],
     icon: Wrench,
     color: "from-gray-500 to-gray-600",
-    image: "/productos/carton-corrugado.jpg",
+    image: "/productos/carton-corrugado-Photoroom.png",
     presentations: [
       { size: "Variedad de tamaños" }
     ],
@@ -591,7 +574,7 @@ const products: Product[] = [
     features: ["Limpieza de herramientas", "Preparación de superficies"],
     icon: Wrench,
     color: "from-gray-600 to-gray-700",
-    image: "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=400&h=400&fit=crop",
+    image: "/productos/disolvente.png",
     presentations: [
       { size: "Galón" },
       { size: "Medio" }
