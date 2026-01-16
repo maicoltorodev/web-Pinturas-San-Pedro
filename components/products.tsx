@@ -207,7 +207,7 @@ const products: Product[] = [
     features: ["Protección", "Decoración", "Versatilidad"],
     icon: Sparkles,
     color: "from-blue-400 to-blue-500",
-    image: "/productos/esmalte-tipo-1.jpeg",
+    image: "/productos/esmalte-tipo-1.png",
     uses: [
       "Rejas, puertas, ventanas",
       "Marcos, persianas",
@@ -268,7 +268,7 @@ const products: Product[] = [
     features: ["Acabado liso", "Con adherencia", "Fácil aplicación"],
     icon: Layers,
     color: "from-indigo-500 to-indigo-600",
-    image: "/productos/estuco-plastico-acrilico.jpeg",
+    image: "/productos/estuco-plastico-acrilico.png",
     presentations: [
       { size: "Cuñete" },
       { size: "Medio" },
@@ -342,7 +342,7 @@ const products: Product[] = [
     features: ["Protección contra filtraciones", "Alto rendimiento", "Resistente a condiciones extremas", "Alarga vida útil"],
     icon: Droplet,
     color: "from-blue-500 to-blue-600",
-    image: "/productos/Impermeabilizante Uretanico.jpeg",
+    image: "/productos/Impermeabilizante_Uretanico.png",
     presentations: [
       { size: "Cuñete" },
       { size: "Medio" },
@@ -651,13 +651,28 @@ function ProductCard({ product }: { product: Product }) {
 
           {/* Product Image - Centered */}
           <div className="absolute inset-0 flex items-center justify-center p-8">
-            <div className="relative w-32 h-32 md:w-36 md:h-36 transition-transform duration-500 md:group-hover:scale-110">
+            <div className={cn(
+              "relative transition-transform duration-500 md:group-hover:scale-110",
+              // Tamaño mayor para productos específicos
+              (product.name === "Impermeabilizante" || 
+               product.name === "Estuco Plástico Acrílico" || 
+               product.name === "Esmalte Tipo 1" || 
+               product.name === "Esmalte a base agua" || 
+               product.name === "Anticorrosivo")
+                ? "w-40 h-40 md:w-44 md:h-44"
+                : "w-32 h-32 md:w-36 md:h-36"
+            )}>
               <Image
                 src={product.image}
                 alt={product.name}
                 fill
                 className="object-contain"
-                sizes="144px"
+                sizes={(product.name === "Impermeabilizante" || 
+                        product.name === "Estuco Plástico Acrílico" || 
+                        product.name === "Esmalte Tipo 1" || 
+                        product.name === "Esmalte a base agua" || 
+                        product.name === "Anticorrosivo")
+                        ? "176px" : "144px"}
                 loading="lazy"
                 quality={90}
               />
