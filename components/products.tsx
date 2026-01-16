@@ -207,7 +207,7 @@ const products: Product[] = [
     features: ["Protección", "Decoración", "Versatilidad"],
     icon: Sparkles,
     color: "from-blue-400 to-blue-500",
-    image: "/productos/esmalte-tipo-1.png",
+    image: "/productos/esmalte-tipo-1.jpeg",
     uses: [
       "Rejas, puertas, ventanas",
       "Marcos, persianas",
@@ -268,7 +268,7 @@ const products: Product[] = [
     features: ["Acabado liso", "Con adherencia", "Fácil aplicación"],
     icon: Layers,
     color: "from-indigo-500 to-indigo-600",
-    image: "/productos/estuco-plastico-acrilico.png",
+    image: "/productos/estuco-plastico-acrilico.jpeg",
     presentations: [
       { size: "Cuñete" },
       { size: "Medio" },
@@ -342,7 +342,7 @@ const products: Product[] = [
     features: ["Protección contra filtraciones", "Alto rendimiento", "Resistente a condiciones extremas", "Alarga vida útil"],
     icon: Droplet,
     color: "from-blue-500 to-blue-600",
-    image: "/productos/impermeabilizante.png",
+    image: "/productos/Impermeabilizante Uretanico.jpeg",
     presentations: [
       { size: "Cuñete" },
       { size: "Medio" },
