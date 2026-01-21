@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useState, useEffect, useMemo } from "react"
+import { useRef, useState, useEffect, useMemo, memo } from "react"
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -125,7 +125,7 @@ const testimonials = [
   },
 ]
 
-function TestimonialCard({ 
+const TestimonialCard = memo(function TestimonialCard({ 
   testimonial, 
   isActive, 
   color
@@ -210,14 +210,13 @@ function TestimonialCard({
       </CardContent>
     </Card>
   )
-}
+})
 
 export function Testimonials() {
   const swiperRef = useRef<SwiperType | null>(null)
   const prevButtonRef = useRef<HTMLButtonElement>(null)
   const nextButtonRef = useRef<HTMLButtonElement>(null)
   const [activeIndex, setActiveIndex] = useState(0)
-  const sectionRef = useRef<HTMLElement>(null)
 
   // Preparar testimonios con colores - memoizado para evitar recálculos
   const testimonialsWithColors = useMemo(() => {
@@ -346,22 +345,17 @@ export function Testimonials() {
               setActiveIndex(swiper.activeIndex)
             }}
           >
-            {testimonialsWithColors.map((testimonial, index) => {
-              // Todas las cards visibles están activas para mejor visualización
-              const isActive = true
-              
-              return (
-                <SwiperSlide key={index}>
-                  <div className="h-full">
-                    <TestimonialCard 
-                      testimonial={testimonial} 
-                      isActive={isActive}
-                      color={testimonial.color}
-                    />
-                  </div>
-                </SwiperSlide>
-              )
-            })}
+            {testimonialsWithColors.map((testimonial, index) => (
+              <SwiperSlide key={index}>
+                <div className="h-full">
+                  <TestimonialCard 
+                    testimonial={testimonial} 
+                    isActive={true}
+                    color={testimonial.color}
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
           </Swiper>
 
           {/* Controles móviles */}

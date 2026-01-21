@@ -20,6 +20,12 @@ export function useScrollOptimized({
   const lastScrollYRef = useRef(0)
   const isMobile = useIsMobile()
   const lastUpdateTimeRef = useRef(0)
+  const onScrollRef = useRef(onScroll)
+
+  // Mantener onScroll actualizado en el ref para evitar recrear el listener
+  useEffect(() => {
+    onScrollRef.current = onScroll
+  }, [onScroll])
 
   useEffect(() => {
     if (!enabled) return
@@ -50,8 +56,8 @@ export function useScrollOptimized({
           lastScrollYRef.current = currentScrollY
           lastUpdateTimeRef.current = now
           
-          if (onScroll) {
-            onScroll(currentScrollY)
+          if (onScrollRef.current) {
+            onScrollRef.current(currentScrollY)
           }
         }
 
@@ -68,7 +74,7 @@ export function useScrollOptimized({
         rafIdRef.current = null
       }
     }
-  }, [threshold, onScroll, enabled, isMobile])
+  }, [threshold, enabled, isMobile])
 
   return {
     isMobile,

@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState, useCallback } from "react"
+import { useEffect, useRef, useState } from "react"
 
 interface UseInViewOptions {
   threshold?: number
@@ -27,13 +27,6 @@ export function useInView<T extends HTMLElement = HTMLElement>(options: UseInVie
   const ref = useRef<T>(null)
   const observerRef = useRef<IntersectionObserver | null>(null)
   const hasTriggeredRef = useRef(false)
-  
-  // Memoizar opciones para evitar recreaciones innecesarias
-  const optionsRef = useRef({ threshold, rootMargin, triggerOnce, enabled })
-  
-  useEffect(() => {
-    optionsRef.current = { threshold, rootMargin, triggerOnce, enabled }
-  }, [threshold, rootMargin, triggerOnce, enabled])
 
   useEffect(() => {
     if (!enabled) {
@@ -76,8 +69,8 @@ export function useInView<T extends HTMLElement = HTMLElement>(options: UseInVie
         }
       },
       {
-        threshold: optionsRef.current.threshold,
-        rootMargin: optionsRef.current.rootMargin,
+        threshold,
+        rootMargin,
       }
     )
 

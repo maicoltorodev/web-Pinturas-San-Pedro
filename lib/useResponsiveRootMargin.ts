@@ -1,6 +1,5 @@
 "use client"
 
-import { useMemo } from 'react'
 import { useIsMobile } from './useIsMobile'
 
 /**
@@ -9,11 +8,5 @@ import { useIsMobile } from './useIsMobile'
  */
 export function useResponsiveRootMargin(defaultMobile = "300px", defaultDesktop = "800px") {
   const isMobile = useIsMobile()
-  
-  const rootMargin = useMemo(
-    () => isMobile ? defaultMobile : defaultDesktop,
-    [isMobile, defaultMobile, defaultDesktop]
-  )
-
-  return rootMargin
+  return isMobile ? defaultMobile : defaultDesktop
 }

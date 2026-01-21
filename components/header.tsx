@@ -1,23 +1,11 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useCallback } from "react"
 import { Button } from "@/components/ui/button"
 import { Menu, X, ArrowRight, Facebook, Instagram } from "lucide-react"
-import { useIsMobile } from "@/lib/useIsMobile"
+import { useScrollOptimized } from "@/lib/useScrollOptimized"
+import { TikTokIcon } from "@/components/ui/tiktok-icon"
 
-// TikTok Icon Component (not available in lucide-react)
-function TikTokIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className={className}
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
-    </svg>
-  )
-}
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { blurDataURL } from "@/lib/image-utils"
@@ -37,59 +25,17 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isImageLoaded, setIsImageLoaded] = useState(false)
-  const isMobile = useIsMobile()
+  
+  const handleScroll = useCallback((scrollY: number) => {
+    const newIsScrolled = scrollY > 20
+    setIsScrolled(prev => prev !== newIsScrolled ? newIsScrolled : prev)
+  }, [])
 
-  useEffect(() => {
-    let rafId: number | null = null
-    let lastScrollY = window.scrollY
-    let lastIsScrolled = false
-    let lastUpdateTime = 0
-    
-    // Threshold mayor en móvil para reducir frecuencia de updates
-    const scrollThreshold = isMobile ? 25 : 10
-    // Throttling más agresivo en móvil: 50ms vs 16ms
-    const throttleDelay = isMobile ? 50 : 16
-    
-    const handleScroll = () => {
-      // Cancelar RAF anterior si existe
-      if (rafId !== null) {
-        cancelAnimationFrame(rafId)
-      }
-      
-      rafId = requestAnimationFrame(() => {
-        const now = Date.now()
-        const currentScrollY = window.scrollY
-        
-        // Throttling basado en tiempo
-        if (now - lastUpdateTime < throttleDelay) {
-          rafId = null
-          return
-        }
-        
-        // Solo actualizar estado si hay cambio significativo
-        if (Math.abs(currentScrollY - lastScrollY) > scrollThreshold) {
-          const newIsScrolled = currentScrollY > 20
-          // Solo actualizar si cambió el estado para evitar re-renders innecesarios
-          if (newIsScrolled !== lastIsScrolled) {
-            setIsScrolled(newIsScrolled)
-            lastIsScrolled = newIsScrolled
-          }
-          lastScrollY = currentScrollY
-          lastUpdateTime = now
-        }
-        rafId = null
-      })
-    }
-    
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-      if (rafId !== null) {
-        cancelAnimationFrame(rafId)
-      }
-    }
-  }, [isMobile]) // Incluir isMobile en dependencias
+  useScrollOptimized({
+    threshold: 10,
+    onScroll: handleScroll,
+    enabled: true,
+  })
 
   return (
     <header

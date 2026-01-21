@@ -1,5 +1,6 @@
 "use client"
 
+import { memo } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { SectionHeader } from "@/components/ui/section-header"
 import { SectionBackground } from "@/components/ui/section-background"
@@ -85,7 +86,7 @@ const colorMap: Record<string, {
   },
 }
 
-function ServiceCard({ service }: { service: typeof services[0] }) {
+const ServiceCard = memo(function ServiceCard({ service }: { service: typeof services[0] }) {
   const Icon = service.icon
   const colors = colorMap[service.color] || colorMap.purple
   
@@ -135,7 +136,7 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
       </CardContent>
     </Card>
   )
-}
+})
 
 // Componente optimizado para texto con gradiente - usa CSS gradient en lugar de renderizar letras
 // Mucho más eficiente que renderizar cada letra individualmente

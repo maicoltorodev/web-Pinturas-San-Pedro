@@ -60,7 +60,7 @@ export function LazySection({
         observerRef.current.disconnect()
         observerRef.current = null
       }
-      hasLoadedRef.current = false
+      // No resetear hasLoadedRef aquí - una vez cargado, debe mantenerse
     }
   }, [shouldLoad, rootMargin, threshold])
 

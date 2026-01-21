@@ -10,9 +10,16 @@ export function generateBlurDataURL(width: number = 10, height: number = 10): st
     </svg>
   `.trim()
 
-  // Convertir a base64
-  const base64 = Buffer.from(svg).toString('base64')
-  return `data:image/svg+xml;base64,${base64}`
+  // Convertir a base64 - compatible con navegador y Node.js
+  if (typeof window !== 'undefined') {
+    // Navegador: usar btoa
+    const base64 = btoa(unescape(encodeURIComponent(svg)))
+    return `data:image/svg+xml;base64,${base64}`
+  } else {
+    // Node.js: usar Buffer
+    const base64 = Buffer.from(svg).toString('base64')
+    return `data:image/svg+xml;base64,${base64}`
+  }
 }
 
 /**

@@ -4,23 +4,16 @@ import { Card, CardContent } from "@/components/ui/card"
 import { SectionHeader } from "@/components/ui/section-header"
 import { SectionBackground } from "@/components/ui/section-background"
 import { cn } from "@/lib/utils"
-// Import individual icons used in ProductCard if needed, or just let ProductCard access them from the product object if they are passed as components (which they are in data).
-// However, ProductCard uses `const Icon = product.icon`. The product object has the icon *component* itself.
-// But wait, in `lib/data/products.ts`, I imported the icons and assigned them to the `icon` property.
-// So `product.icon` IS the component. I don't need to import them here for usage in the *array*, because the array is gone.
-// I DO need imports for `Palette` (used in SectionHeader) and `ChevronDown` (for the button).
-// Also `Button`.
 import { Palette, ChevronDown } from "lucide-react"
 import Image from "next/image"
 import { blurDataURL } from "@/lib/image-utils"
-import { useState, useMemo, useCallback } from "react"
+import { useState, useMemo, useCallback, memo } from "react"
 import { products, type Product } from "@/lib/data/products"
 import { Button } from "@/components/ui/button"
 import { useIsMobile } from "@/lib/useIsMobile"
 
-function ProductCard({ product, priority = false }: { product: Product; priority?: boolean }) {
+const ProductCard = memo(function ProductCard({ product, priority = false, isMobile = false }: { product: Product; priority?: boolean; isMobile?: boolean }) {
   const Icon = product.icon
-  const isMobile = useIsMobile()
 
   const handleCardClick = useCallback(() => {
     const message = `Hola, necesito ${product.name}`
@@ -190,7 +183,7 @@ function ProductCard({ product, priority = false }: { product: Product; priority
       </CardContent>
     </Card>
   )
-}
+})
 
 function FilterBar({
   categories,
@@ -225,11 +218,11 @@ function FilterBar({
 }
 
 // Componente simplificado para grid de productos
-function ProductGrid({ products }: { products: Product[] }) {
+function ProductGrid({ products, isMobile }: { products: Product[]; isMobile: boolean }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
       {products.map((product, index) => (
-        <ProductCard key={product.name} product={product} priority={index < 6} />
+        <ProductCard key={product.name} product={product} priority={index < 6} isMobile={isMobile} />
       ))}
     </div>
   )
@@ -238,6 +231,7 @@ function ProductGrid({ products }: { products: Product[] }) {
 export function Products() {
   const [selectedCategory, setSelectedCategory] = useState<string>("Todos")
   const [visibleCount, setVisibleCount] = useState(6)
+  const isMobile = useIsMobile()
 
   // Obtener todas las categorías únicas - memoizado
   const categories = useMemo(() =>
@@ -283,7 +277,7 @@ export function Products() {
           onCategoryChange={handleCategoryChange}
         />
 
-        <ProductGrid products={visibleProducts} />
+        <ProductGrid products={visibleProducts} isMobile={isMobile} />
 
         {hasMore && (
           <div className="mt-12 flex justify-center">

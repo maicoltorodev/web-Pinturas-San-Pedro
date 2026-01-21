@@ -1,64 +1,31 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useCallback, useEffect } from "react"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { blurDataURL } from "@/lib/image-utils"
-import { useIsMobile } from "@/lib/useIsMobile"
+import { useScrollOptimized } from "@/lib/useScrollOptimized"
 
 export function LogoFAB() {
   const [isVisible, setIsVisible] = useState(false)
-  const phoneNumber = "3223716811" // Número de WhatsApp de Pinturas San Pedro - Formato: 322 3716811
+  const phoneNumber = "3223716811"
   const message = "Hola, me interesa conocer más sobre sus productos de pintura."
   const whatsappUrl = `https://wa.me/57${phoneNumber}?text=${encodeURIComponent(message)}`
-  const isMobile = useIsMobile()
 
+  const handleScroll = useCallback((scrollY: number) => {
+    setIsVisible(scrollY > 300)
+  }, [])
+
+  useScrollOptimized({
+    threshold: 10,
+    onScroll: handleScroll,
+    enabled: true,
+  })
+
+  // Check initial state
   useEffect(() => {
-    let rafId: number | null = null
-    let lastScrollY = window.scrollY
-    let lastUpdateTime = 0
-    
-    // Threshold mayor en móvil para reducir frecuencia de updates
-    const scrollThreshold = isMobile ? 30 : 10
-    // Throttling más agresivo en móvil: 50ms vs 16ms
-    const throttleDelay = isMobile ? 50 : 16
-    
-    const handleScroll = () => {
-      // Cancelar RAF anterior si existe
-      if (rafId !== null) {
-        cancelAnimationFrame(rafId)
-      }
-      
-      rafId = requestAnimationFrame(() => {
-        const now = Date.now()
-        const currentScrollY = window.scrollY
-        
-        // Throttling basado en tiempo
-        if (now - lastUpdateTime < throttleDelay) {
-          rafId = null
-          return
-        }
-        
-        // Solo actualizar estado si hay cambio significativo
-        if (Math.abs(currentScrollY - lastScrollY) > scrollThreshold) {
-          setIsVisible(currentScrollY > 300)
-          lastScrollY = currentScrollY
-          lastUpdateTime = now
-        }
-        rafId = null
-      })
-    }
-    
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    handleScroll() // Check initial state
-    
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-      if (rafId !== null) {
-        cancelAnimationFrame(rafId)
-      }
-    }
-  }, [isMobile])
+    setIsVisible(window.scrollY > 300)
+  }, [])
 
   return (
     <a
