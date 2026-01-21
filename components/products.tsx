@@ -640,7 +640,7 @@ const products: Product[] = [
 
   // BROCHAS
   {
-    name: "Brocha Cerda Popular (Superka)",
+    name: "Brocha Cerda Popular",
     category: "Brochas",
     description: "Es una brocha versátil y económica diseñada para aplicar toda clase de pinturas en trabajos generales.",
     features: ["Versátil", "Económica", "Para trabajos generales"],
