@@ -1,0 +1,792 @@
+import {
+    Paintbrush,
+    Palette,
+    Droplet,
+    Brush,
+    Shield,
+    Sparkles,
+    Car,
+    Layers,
+    Wrench,
+    LucideIcon
+} from "lucide-react"
+
+// Types
+export interface ProductPresentation {
+    size: string
+}
+
+export interface Product {
+    name: string
+    category: string
+    description: string
+    features: string[]
+    icon: LucideIcon
+    color: string
+    image: string
+    presentations?: ProductPresentation[]
+    certifications?: string[]
+    uses?: string[]
+    benefits?: string[]
+    application?: string
+    colors?: string[]
+}
+
+export const products: Product[] = [
+    // VINILOS
+    {
+        name: "Vinilo acrílico",
+        category: "Vinilos",
+        description: "Vinilo acrílico con acabado mate lavable, ideal para interiores. Con desempeño y cubrimiento, bajo aroma y nivelación.",
+        features: ["Acabado mate lavable", "Con cubrimiento", "Bajo aroma", "Con nivelación"],
+        icon: Paintbrush,
+        color: "from-green-500 to-green-600",
+        image: "/productos/vinilo-acrilico.webp",
+        presentations: [
+            { size: "Cuñete" },
+            { size: "Medio" },
+            { size: "Galón" }
+        ],
+        certifications: ["NTC 1335 (algunas referencias)"],
+        colors: ["Blanco", "Almendra", "Rojo"]
+    },
+    {
+        name: "Vinilo tipo 2 Semilavable",
+        category: "Vinilos",
+        description: "Vinilo con acabado mate, ideal para interiores. Con cubrimiento y rendimiento, bajo aroma.",
+        features: ["Acabado mate", "Con cubrimiento", "Bajo aroma", "Opción semilavable"],
+        icon: Paintbrush,
+        color: "from-teal-500 to-teal-600",
+        image: "/productos/vinilo-semilavable.webp",
+        presentations: [
+            { size: "Cuñete" },
+            { size: "Medio" },
+            { size: "Galón" }
+        ],
+        certifications: ["NTC 1335 (algunas referencias)"]
+    },
+    {
+        name: "Vinilo tipo coraza",
+        category: "Vinilos",
+        description: "Pintura diluible en agua con acabado satinado, hidrofugable y con resistencia. Ideal para fachadas o uso interior con exigencias de impermeabilización y lavabilidad.",
+        features: ["Acabado satinado", "Hidrofugable", "Con resistencia", "Fachadas o uso interior"],
+        icon: Paintbrush,
+        color: "from-purple-500 to-purple-600",
+        image: "/productos/vinilo-hidrofugado.webp",
+        presentations: [
+            { size: "Cuñete" },
+            { size: "Medio" },
+            { size: "Galón" }
+        ]
+    },
+    {
+        name: "Vinilo tipo 2 certificado",
+        category: "Vinilos",
+        description: "Pintura económica con calidad para interiores. Ideal para proyectos con presupuesto ajustado sin comprometer la calidad.",
+        features: ["Económica", "Con calidad", "Fácil aplicación"],
+        icon: Brush,
+        color: "from-gray-500 to-gray-600",
+        image: "/productos/vinilo-tipo-2-certificado.webp",
+        presentations: [
+            { size: "Cuñete" },
+            { size: "Medio" },
+            { size: "Galón" }
+        ]
+    },
+    {
+        name: "Vinilo acrílico tipo 1 certificado",
+        category: "Vinilos",
+        description: "Vinilo acrílico certificado con acabado mate lavable, ideal para interiores. Con desempeño y cubrimiento, bajo aroma y nivelación.",
+        features: ["Acabado mate lavable", "Con cubrimiento", "Bajo aroma", "Con nivelación", "Certificado"],
+        icon: Paintbrush,
+        color: "from-green-600 to-green-700",
+        image: "/productos/vinilo-tipo-1-certificado.webp",
+        presentations: [
+            { size: "Cuñete" },
+            { size: "Medio" },
+            { size: "Galón" }
+        ],
+        certifications: ["NTC 1335"]
+    },
+    {
+        name: "Vinilo tipo 3",
+        category: "Vinilos",
+        description: "Pintura económica con calidad para interiores. Ideal para proyectos con presupuesto ajustado sin comprometer la calidad.",
+        features: ["Económica", "Con calidad", "Fácil aplicación"],
+        icon: Brush,
+        color: "from-gray-400 to-gray-500",
+        image: "/productos/vinilo-tipo-3.webp",
+        presentations: [
+            { size: "Cuñete" },
+            { size: "Medio" },
+            { size: "Galón" }
+        ]
+    },
+
+    // ANTICORROSIVO
+    {
+        name: "Anticorrosivo",
+        category: "Anticorrosivo",
+        description: "Producto diseñado con protección contra la oxidación y el desgaste.",
+        features: ["Protección contra oxidación", "Mejora adhesión del esmalte", "Secado rápido", "Con resistencia"],
+        icon: Shield,
+        color: "from-orange-500 to-orange-600",
+        image: "/productos/anticorrosivo.webp",
+        presentations: [
+            { size: "Cuñete" },
+            { size: "Medio" },
+            { size: "Galón" }
+        ],
+        uses: [
+            "Primera mano para superficies metálicas en interiores y exteriores",
+            "Ventanas, rejas, puentes, barandas",
+            "Estructuras metálicas con exposición ambiental moderada"
+        ],
+        benefits: [
+            "Previene la formación de óxido",
+            "Mejora la adhesión del esmalte",
+            "Fácil aplicación y secado rápido",
+            "Con resistencia y durabilidad"
+        ],
+        application: "Listo para usar. Aplicable con rodillo o brocha. Se disuelve con thinner o varsol."
+    },
+
+    // ESMALTES
+    {
+        name: "Esmalte Especial",
+        category: "Esmaltes",
+        description: "Con protección y decoración de superficies de metal y madera.",
+        features: ["Con protección", "Decoración", "Durabilidad"],
+        icon: Sparkles,
+        color: "from-blue-500 to-blue-600",
+        image: "/productos/esmalte-especial.webp",
+        uses: [
+            "Rejas, puertas, ventanas",
+            "Marcos, persianas",
+            "Tuberías, zócalos"
+        ],
+        presentations: [
+            { size: "Cuñete" },
+            { size: "Galón" },
+            { size: "1/4" },
+            { size: "1/8" }
+        ]
+    },
+    {
+        name: "Esmalte Premium",
+        category: "Esmaltes",
+        description: "Con protección para superficies de metal y madera.",
+        features: ["Con protección", "Con calidad", "Con acabado"],
+        icon: Sparkles,
+        color: "from-amber-500 to-amber-600",
+        image: "/productos/esmalte-premium.webp",
+        uses: [
+            "Rejas, puertas, ventanas",
+            "Marcos, persianas",
+            "Tuberías, zócalos"
+        ],
+        presentations: [
+            { size: "Cuñete" },
+            { size: "Galón" },
+            { size: "1/4" },
+            { size: "1/8" }
+        ]
+    },
+    {
+        name: "Esmalte Tipo 1",
+        category: "Esmaltes",
+        description: "Pintar y proteger superficies de metal y madera.",
+        features: ["Protección", "Decoración", "Versatilidad"],
+        icon: Sparkles,
+        color: "from-blue-400 to-blue-500",
+        image: "/productos/esmalte-tipo-1.webp",
+        uses: [
+            "Rejas, puertas, ventanas",
+            "Marcos, persianas",
+            "Tuberías, zócalos"
+        ],
+        presentations: [
+            { size: "Cuñete" },
+            { size: "Medio" },
+            { size: "1/4" }
+        ]
+    },
+    {
+        name: "Esmalte a base agua",
+        category: "Esmaltes",
+        description: "Esmalte ecológico a base de agua para protección y decoración de superficies de metal y madera.",
+        features: ["A base de agua", "Ecológico", "Con protección", "Fácil aplicación"],
+        icon: Sparkles,
+        color: "from-emerald-500 to-emerald-600",
+        image: "/productos/esmalte-base-agua.webp",
+        uses: [
+            "Rejas, puertas, ventanas",
+            "Marcos, persianas",
+            "Tuberías, zócalos"
+        ],
+        presentations: [
+            { size: "Cuñete" },
+            { size: "Medio" },
+            { size: "Galón" }
+        ]
+    },
+
+    // TRÁFICO PESADO
+    {
+        name: "Tráfico Pesado",
+        category: "Tráfico Pesado",
+        description: "Pintura con desempeño para señalización y demarcación de pavimentos.",
+        features: ["Con resistencia al desgaste", "Secado rápido", "Con durabilidad"],
+        icon: Car,
+        color: "from-red-500 to-red-600",
+        image: "/productos/trafico-pesado.webp",
+        uses: [
+            "Estacionamientos",
+            "Carreteras",
+            "Zonas industriales"
+        ],
+        presentations: [
+            { size: "Cuñete" },
+            { size: "Galón" },
+            { size: "Medio Cuñete" }
+        ]
+    },
+
+    // ESTUCOS Y REVESTIMIENTOS
+    {
+        name: "Estuco Plástico Acrílico",
+        category: "Estucos",
+        description: "Producto de acabado liso para paredes.",
+        features: ["Acabado liso", "Con adherencia", "Fácil aplicación"],
+        icon: Layers,
+        color: "from-indigo-500 to-indigo-600",
+        image: "/productos/estuco-plastico-acrilico.webp",
+        presentations: [
+            { size: "Cuñete" },
+            { size: "Medio" },
+            { size: "Galón" }
+        ],
+        uses: [
+            "Paredes interiores",
+            "Superficies de madera en interiores",
+            "Aplicación sobre pañetes antes de vinilo o esmalte"
+        ]
+    },
+    {
+        name: "Graniplas",
+        category: "Estucos",
+        description: "Revestimiento para acabados texturizados decorativos.",
+        features: ["Acabado texturizado", "Decorativo", "Resistente"],
+        icon: Layers,
+        color: "from-blue-500 to-blue-600",
+        image: "/productos/graniplas.webp",
+        presentations: [
+            { size: "Cuñete" },
+            { size: "Medio" },
+            { size: "Galón" }
+        ],
+        uses: [
+            "Interiores y exteriores",
+            "Acabados modernos y resistentes"
+        ]
+    },
+    {
+        name: "Carraplast",
+        category: "Estucos",
+        description: "Revestimiento decorativo con adherencia y flexibilidad.",
+        features: ["Con adherencia", "Flexibilidad", "Decorativo"],
+        icon: Layers,
+        color: "from-cyan-500 to-cyan-600",
+        image: "/productos/garraplast.webp",
+        presentations: [
+            { size: "Cuñete" },
+            { size: "Medio" },
+            { size: "Galón" }
+        ],
+        uses: [
+            "Protección y embellecimiento de superficies"
+        ]
+    },
+    {
+        name: "Pasta Acrílica",
+        category: "Estucos",
+        description: "Producto para nivelar y preparar superficies antes de pintar.",
+        features: ["Nivelación", "Preparación de superficies", "Acabado uniforme"],
+        icon: Layers,
+        color: "from-slate-500 to-slate-600",
+        image: "/productos/pasta acrilica.webp",
+        presentations: [
+            { size: "Cuñete" },
+            { size: "Medio" },
+            { size: "Galón" }
+        ],
+        benefits: [
+            "Garantiza un acabado uniforme y profesional",
+            "Mejora la apariencia final de la pintura"
+        ]
+    },
+
+    // IMPERMEABILIZANTE
+    {
+        name: "Impermeabilizante",
+        category: "Impermeabilizante",
+        description: "Protege tu inversión con impermeabilizantes de alto rendimiento. Soluciones profesionales para evitar filtraciones, humedades y deterioro en techos, terrazas, muros y fachadas. Diseñados para resistir condiciones climáticas extremas y alargar la vida útil de cualquier superficie.",
+        features: ["Protección contra filtraciones", "Alto rendimiento", "Resistente a condiciones extremas", "Alarga vida útil"],
+        icon: Droplet,
+        color: "from-blue-500 to-blue-600",
+        image: "/productos/Impermeabilizante_Uretanico.webp",
+        presentations: [
+            { size: "Cuñete" },
+            { size: "Medio" },
+            { size: "Galón" }
+        ],
+        benefits: [
+            "Con durabilidad",
+            "Protección frente al clima y la humedad"
+        ]
+    },
+
+    // HERRAMIENTAS
+
+    {
+        name: "Recambios para rodillos",
+        category: "Herramientas",
+        description: "Recambios para rodillos en diferentes largos de pelo. Ideal para mantener tus rodillos en perfecto estado y continuar trabajando sin interrupciones.",
+        features: ["Recambios disponibles", "Diferentes largos", "Fácil instalación"],
+        icon: Wrench,
+        color: "from-gray-400 to-gray-500",
+        image: "/productos/recambio-rodillo.webp",
+        presentations: [
+            { size: "Variedad de tamaños" }
+        ],
+        uses: [
+            "Mantenimiento de rodillos",
+            "Reemplazo de recubrimiento"
+        ]
+    },
+    {
+        name: "Bandejas",
+        category: "Herramientas",
+        description: "Recipiente estructurado para verter la pintura, permitiendo una carga controlada del rodillo y eliminando el exceso mediante su zona de descarga.",
+        features: ["Carga controlada", "Zona de descarga", "Estructurado"],
+        icon: Wrench,
+        color: "from-gray-500 to-gray-600",
+        image: "/productos/bandeja-pintura.webp",
+        presentations: [
+            { size: "Estándar" }
+        ],
+        uses: [
+            "Verter pintura",
+            "Carga de rodillos",
+            "Eliminar exceso"
+        ]
+    },
+    {
+        name: "Rejilla para bandeja",
+        category: "Herramientas",
+        description: "Rejilla para bandeja que permite eliminar el exceso de pintura del rodillo. Mejora la aplicación y reduce el desperdicio de pintura.",
+        features: ["Elimina exceso", "Reduce desperdicio", "Mejora aplicación"],
+        icon: Wrench,
+        color: "from-gray-400 to-gray-500",
+        image: "/productos/rejilla-pintura.webp",
+        presentations: [
+            { size: "Rejilla estándar" }
+        ],
+        uses: [
+            "Control de pintura",
+            "Aplicación eficiente"
+        ]
+    },
+    {
+        name: "Cinta de Enmascarar Cellux / Estándar",
+        category: "Herramientas",
+        description: "Para trabajos de precisión y multipropósito, destacada por ser fácil de remover sin transferir pegante a la superficie.",
+        features: ["Precisión", "Multipropósito", "Fácil de remover", "No deja pegante"],
+        icon: Wrench,
+        color: "from-gray-600 to-gray-700",
+        image: "/productos/cinta-enmascarar.webp",
+        presentations: [
+            { size: "24 mm x 40 yd" },
+            { size: "40 mm x 40 mts" }
+        ],
+        uses: [
+            "Trabajos de precisión",
+            "Protección de superficies",
+            "Líneas limpias"
+        ]
+    },
+    {
+        name: "Lonas y plásticos protectores",
+        category: "Herramientas",
+        description: "Lonas y plásticos protectores para cubrir muebles, pisos y superficies durante trabajos de pintura. Protección esencial para mantener limpio tu espacio.",
+        features: ["Protección completa", "Resistentes", "Reutilizables"],
+        icon: Wrench,
+        color: "from-gray-500 to-gray-600",
+        image: "/productos/plastico-protector.webp",
+        presentations: [
+            { size: "Variedad de tamaños" }
+        ],
+        uses: [
+            "Protección de muebles",
+            "Cubrir pisos",
+            "Protección de superficies"
+        ]
+    },
+    {
+        name: "Extensión para rodillo",
+        category: "Herramientas",
+        description: "Varilla extensora para rodillos que permite alcanzar áreas altas sin necesidad de escaleras. Ideal para techos y paredes altas.",
+        features: ["Alcance extendido", "Ajustable", "Fácil de usar"],
+        icon: Wrench,
+        color: "from-gray-600 to-gray-700",
+        image: "/productos/extension-rodillo.webp",
+        presentations: [
+            { size: "Extensión estándar" }
+        ],
+        uses: [
+            "Áreas altas",
+            "Techos",
+            "Paredes altas"
+        ]
+    },
+    {
+        name: "Cubeta de pintura",
+        category: "Herramientas",
+        description: "Cubeta de pintura resistente para almacenar y transportar pintura durante tus trabajos. Diseño práctico con asa para fácil manejo.",
+        features: ["Resistente", "Con asa", "Fácil manejo"],
+        icon: Wrench,
+        color: "from-gray-500 to-gray-600",
+        image: "/productos/cubeta-pintura.webp",
+        presentations: [
+            { size: "Variedad de capacidades" }
+        ],
+        uses: [
+            "Almacenamiento",
+            "Transporte",
+            "Mezcla de pintura"
+        ]
+    },
+    {
+        name: "Cartón corrugado",
+        category: "Herramientas",
+        description: "Cartón corrugado para protección de superficies durante trabajos de pintura. Ideal para cubrir pisos, muebles y áreas que requieren protección.",
+        features: ["Protección de superficies", "Resistente", "Fácil de usar"],
+        icon: Wrench,
+        color: "from-gray-500 to-gray-600",
+        image: "/productos/carton-corrugado-Photoroom.webp",
+        presentations: [
+            { size: "Variedad de tamaños" }
+        ],
+        uses: [
+            "Protección de pisos",
+            "Cubrir muebles",
+            "Protección durante pintura"
+        ]
+    },
+    {
+        name: "Disolventes",
+        category: "Herramientas",
+        description: "Limpieza de herramientas y preparación de superficies para un acabado óptimo.",
+        features: ["Limpieza de herramientas", "Preparación de superficies"],
+        icon: Wrench,
+        color: "from-gray-600 to-gray-700",
+        image: "/productos/disolvente.webp",
+        presentations: [
+            { size: "Galón" },
+            { size: "Medio" }
+        ],
+        uses: [
+            "Limpieza de herramientas",
+            "Preparación de superficies"
+        ]
+    },
+
+    // RODILLOS
+    {
+        name: "Rodillo Popular 9\"",
+        category: "Rodillos",
+        description: "Fabricado con sistema de termo fusión (sin costuras) para evitar que se suelte la felpa. Ofrece un óptimo rendimiento en la aplicación de pinturas a base de agua y vinilos.",
+        features: ["Sistema termo fusión", "Sin costuras", "Para base agua y vinilos"],
+        icon: Paintbrush,
+        color: "from-blue-400 to-blue-500",
+        image: "/productos/rodillo-popular-9''.webp",
+        presentations: [{ size: "9\"" }]
+    },
+    {
+        name: "Rodillo Felpa Semiprofesional 9\"",
+        category: "Rodillos",
+        description: "Posee sistema de termo fusión y no tiene costuras. Está diseñado para ofrecer un acabado de calidad superior en superficies que requieran pinturas a base de agua o vinilos.",
+        features: ["Termo fusión", "Sin costuras", "Acabado superior", "Para base agua"],
+        icon: Paintbrush,
+        color: "from-blue-500 to-blue-600",
+        image: "/productos/rodillo-felpa-semiprofesional-9''.webp",
+        presentations: [{ size: "9\"" }]
+    },
+    {
+        name: "Rodillo Profesional 9\" Anillo",
+        category: "Rodillos",
+        description: "Elaborado con felpa industrial de alta densidad y sistema de termo fusión. No tiene costuras y no deja huella al pintar. Especial para pinturas base agua.",
+        features: ["Felpa industrial alta densidad", "No deja huella", "Termo fusión", "Especial base agua"],
+        icon: Paintbrush,
+        color: "from-indigo-500 to-indigo-600",
+        image: "/productos/rodillo-profesional-9''-anillo.webp",
+        presentations: [{ size: "9\"" }]
+    },
+    {
+        name: "Rodillo Hilo Antigota 9\"",
+        category: "Rodillos",
+        description: "Fabricado con hilo de microfibra de última tecnología y termo fusión. Más duradero y ideal para pinturas complejas como epóxicas, de tráfico, esmaltes y vinilos.",
+        features: ["Hilo microfibra", "Antigota", "Mayor durabilidad", "Para epóxicas y esmaltes"],
+        icon: Paintbrush,
+        color: "from-cyan-500 to-cyan-600",
+        image: "/productos/rodillo-hilo-antigota-9''.webp",
+        presentations: [{ size: "9\"" }]
+    },
+    {
+        name: "Rodillo Espuma 9\"",
+        category: "Rodillos",
+        description: "Hecho de espuma de poliuretano de alta calidad. Es la herramienta básica y efectiva para aplicaciones sencillas de pinturas a base de agua.",
+        features: ["Espuma poliuretano", "Alta calidad", "Para aplicaciones sencillas"],
+        icon: Paintbrush,
+        color: "from-yellow-400 to-yellow-500",
+        image: "/productos/rodillo-espuma-9''.webp",
+        presentations: [{ size: "9\"" }]
+    },
+    {
+        name: "Rodillo Teja de Felpa Industrial",
+        category: "Rodillos",
+        description: "Su estructura es ergonómica y está diseñada específicamente para adaptarse a la ondulación de las tejas tipo Eternit, facilitando el cubrimiento uniforme.",
+        features: ["Estructura ergonómica", "Para tejas onduladas", "Cubrimiento uniforme"],
+        icon: Paintbrush,
+        color: "from-orange-400 to-orange-500",
+        image: "/productos/rodillo-teja-felpa-industrial.webp",
+        presentations: [{ size: "Estándar" }]
+    },
+    {
+        name: "Mini Rodillos Hilo Antigota",
+        category: "Rodillos",
+        description: "Versiones pequeñas con tecnología de microfibra y termo fusión. Ideales para marcos, esquinas y áreas de difícil acceso.",
+        features: ["Microfibra", "Termo fusión", "Para áreas difíciles", "Epóxicas y esmaltes"],
+        icon: Paintbrush,
+        color: "from-cyan-400 to-cyan-500",
+        image: "/productos/rodillo-mini-hilo-antigota.webp",
+        presentations: [
+            { size: "1\"" }, { size: "2\"" }, { size: "3\"" },
+            { size: "4\"" }, { size: "5\"" }, { size: "6\"" }
+        ]
+    },
+    {
+        name: "Rodillo Junior",
+        category: "Rodillos",
+        description: "Versiones compactas del rodillo de felpa industrial con termo fusión. Sin costuras, para detalles en pinturas base agua.",
+        features: ["Compacto", "Felpa industrial", "Sin costuras", "Para detalles"],
+        icon: Paintbrush,
+        color: "from-green-400 to-green-500",
+        image: "/productos/rodillo-junior.webp",
+        presentations: [
+            { size: "7\"" }, { size: "5\"" }, { size: "3\"" }
+        ]
+    },
+    {
+        name: "Rodillo Texturizador",
+        category: "Rodillos",
+        description: "Rodillo especial con relieve diseñado para crear acabados decorativos, texturas y efectos rústicos en paredes o techos.",
+        features: ["Con relieve", "Acabados decorativos", "Efectos rústicos"],
+        icon: Paintbrush,
+        color: "from-purple-400 to-purple-500",
+        image: "/productos/rodillo-texturizador.webp",
+        presentations: [
+            { size: "9\"" }, { size: "7\"" }, { size: "5\"" }, { size: "3\"" }
+        ]
+    },
+    {
+        name: "Rodillo Epóxico 9\"",
+        category: "Rodillos",
+        description: "Reforzado con termo fusión para resistir los químicos de las pinturas epóxicas, de tráfico y esmaltes, asegurando que la felpa no se desprenda.",
+        features: ["Resistente a químicos", "Para epóxicas y tráfico", "Felpa asegurada"],
+        icon: Paintbrush,
+        color: "from-red-400 to-red-500",
+        image: "/productos/rodillo-epoxico-9''.webp",
+        presentations: [{ size: "9\"" }]
+    },
+    {
+        name: "Rodillo Teja Ovejero",
+        category: "Rodillos",
+        description: "Similar al de felpa industrial pero con material \"ovejero\" para una mayor carga de pintura en superficies irregulares de tejas.",
+        features: ["Material ovejero", "Mayor carga de pintura", "Para superficies irregulares"],
+        icon: Paintbrush,
+        color: "from-amber-400 to-amber-500",
+        image: "/productos/rodillo-teja-ovejero.webp",
+        presentations: [{ size: "Estándar" }]
+    },
+    {
+        name: "Rodillo Felpa Ovejera 9\"",
+        category: "Rodillos",
+        description: "Rodillo de alta capacidad de absorción con sistema de termo fusión, ideal para cubrir grandes áreas con pintura base agua rápidamente.",
+        features: ["Alta absorción", "Termo fusión", "Para grandes áreas"],
+        icon: Paintbrush,
+        color: "from-amber-200 to-amber-300",
+        image: "/productos/rodillo-felpa-ovejera-9''.webp",
+        presentations: [{ size: "9\"" }]
+    },
+
+    // BROCHAS
+    {
+        name: "Brocha Cerda Popular",
+        category: "Brochas",
+        description: "Es una brocha versátil y económica diseñada para aplicar toda clase de pinturas en trabajos generales.",
+        features: ["Versátil", "Económica", "Para trabajos generales"],
+        icon: Brush,
+        color: "from-orange-300 to-orange-400",
+        image: "/productos/brocha-cerda-popular.webp",
+        presentations: [
+            { size: "2 1/2\"" }, { size: "3\"" }, { size: "4\"" }
+        ]
+    },
+    {
+        name: "Brocha Cerda Premium",
+        category: "Brochas",
+        description: "Se distingue por su empaque rojo. Es de calidad superior, con mejor retención de pintura y apta para acabados exigentes con cualquier tipo de pintura.",
+        features: ["Calidad superior", "Mejor retención", "Para acabados exigentes"],
+        icon: Brush,
+        color: "from-red-500 to-red-600",
+        image: "/productos/brocha-cerda-premium.webp",
+        presentations: [
+            { size: "1/2\"" }, { size: "1\"" }, { size: "1 1/2\"" },
+            { size: "2\"" }, { size: "2 1/2\"" }, { size: "3\"" },
+            { size: "4\"" }, { size: "5\"" }
+        ]
+    },
+
+    // OTROS (HERRAMIENTAS Y COMPLEMENTOS)
+    {
+        name: "Mezclador",
+        category: "Herramientas",
+        description: "Herramienta plástica diseñada para batir la pintura y asegurar que los pigmentos y resinas se integren perfectamente.",
+        features: ["Plástico", "Integración de pigmentos", "Fácil uso"],
+        icon: Wrench,
+        color: "from-gray-400 to-gray-500",
+        image: "/productos/mezclador.webp"
+    },
+    {
+        name: "Destapacuñete",
+        category: "Herramientas",
+        description: "Herramienta especializada para abrir las tapas de los cuñetes de pintura de forma rápida, evitando daños y desperdicios.",
+        features: ["Apertura rápida", "Evita daños", "Sin desperdicios"],
+        icon: Wrench,
+        color: "from-gray-500 to-gray-600",
+        image: "/productos/destapacuñete.webp"
+    },
+    {
+        name: "Espátula Plástica",
+        category: "Herramientas",
+        description: "Ligeras y flexibles, diseñadas específicamente para aplicar masilla y resanar agujeros en paredes.",
+        features: ["Ligera", "Flexible", "Para masilla"],
+        icon: Wrench,
+        color: "from-blue-300 to-blue-400",
+        image: "/productos/espatula-plastica.webp",
+        presentations: [
+            { size: "4\"" }, { size: "5\"" }, { size: "6\"" }
+        ]
+    },
+    {
+        name: "Espátula Boreal Acero al Carbón",
+        category: "Herramientas",
+        description: "Herramienta profesional de alta durabilidad para raspar superficies o aplicar materiales más densos.",
+        features: ["Alta durabilidad", "Acero al carbón", "Para raspar"],
+        icon: Wrench,
+        color: "from-gray-600 to-gray-700",
+        image: "/productos/espatula-acero-carbon.webp",
+        presentations: [
+            { size: "4\"" }, { size: "5\"" }
+        ]
+    },
+    {
+        name: "Cepillo de Alambre Todo Uso",
+        category: "Herramientas",
+        description: "Con cerdas de acero, ideal para limpiar superficies oxidadas, remover pintura vieja o limpiar herramientas.",
+        features: ["Cerdas de acero", "Remoción de óxido", "Limpieza profunda"],
+        icon: Wrench,
+        color: "from-red-600 to-red-700",
+        image: "/productos/cepillo-alambre.webp"
+    },
+    {
+        name: "Lija de Agua Negra",
+        category: "Herramientas",
+        description: "Para lijado fino y acabados suaves usando agua como lubricante.",
+        features: ["Lijado fino", "Acabados suaves", "Uso con agua"],
+        icon: Wrench,
+        color: "from-gray-800 to-gray-900",
+        image: "/productos/lija-agua-negra.webp",
+        presentations: [{ size: "Granos 60 a 600" }]
+    },
+    {
+        name: "Lija Roja en Seco",
+        category: "Herramientas",
+        description: "Para desbaste y preparación de superficies de madera o pared sin necesidad de líquidos.",
+        features: ["Lijado en seco", "Desbaste", "Para madera o pared"],
+        icon: Wrench,
+        color: "from-red-400 to-red-500",
+        image: "/productos/lija-rojo-seco.webp",
+        presentations: [{ size: "Granos 60 a 600" }]
+    },
+    {
+        name: "Pasta de Pulir Mercury",
+        category: "Herramientas",
+        description: "Compuesto abrasivo fino para dar brillo y acabado espejo a superficies pintadas.",
+        features: ["Abrasivo fino", "Da brillo", "Acabado espejo"],
+        icon: Sparkles,
+        color: "from-amber-100 to-amber-200",
+        image: "/productos/pasta-pulir.webp",
+        presentations: [{ size: "700 g" }]
+    },
+    {
+        name: "Disco de Desbaste y Pulido",
+        category: "Herramientas",
+        description: "Disco Flap Grano 60, diseñado para esmerilar y pulir metal (hierro) y madera.",
+        features: ["Grano 60", "Esmerilar", "Pulir metal y madera"],
+        icon: Wrench,
+        color: "from-blue-700 to-blue-800",
+        image: "/productos/disco-desbaste-pulido.webp"
+    },
+    {
+        name: "Veteador WI 4+6\"",
+        category: "Herramientas",
+        description: "Veteador mediano con aplicador de caucho. Ideal para crear efectos decorativos que imitan las vetas naturales de la madera.",
+        features: ["Efectos madera", "Aplicador de caucho", "Decorativo"],
+        icon: Palette,
+        color: "from-amber-600 to-amber-700",
+        image: "/productos/veteador-wi.webp",
+        presentations: [{ size: "4+6\"" }]
+    },
+    {
+        name: "Veteador SBWR-2.5\"",
+        category: "Herramientas",
+        description: "Veteador de tamaño mediano con mango de madera. Específicamente diseñado para imitar motivos leñosos naturales.",
+        features: ["Motivos leñosos", "Mango de madera", "Decorativo"],
+        icon: Palette,
+        color: "from-amber-700 to-amber-800",
+        image: "/productos/veteador-sbwr.webp",
+        presentations: [{ size: "2.5\"" }]
+    },
+    {
+        name: "Veteador SB-PY 4\"",
+        category: "Herramientas",
+        description: "Veteador de tamaño mediano con mango de plástico. Recomendado para lograr acabados decorativos tipo madera.",
+        features: ["Acabados tipo madera", "Mango plástico", "Decorativo"],
+        icon: Palette,
+        color: "from-amber-500 to-amber-600",
+        image: "/productos/veteador-sb-py.webp",
+        presentations: [{ size: "4\"" }]
+    },
+    {
+        name: "Veteador SB-PB 5\"",
+        category: "Herramientas",
+        description: "Versión de tamaño grande con mango de madera. Ideal para superficies más amplias donde se requiera imitar el aspecto natural de la madera.",
+        features: ["Superficies amplias", "Aspecto natural", "Tamaño grande"],
+        icon: Palette,
+        color: "from-amber-400 to-amber-500",
+        image: "/productos/veteador-sb-pb.webp",
+        presentations: [{ size: "5\"" }]
+    }
+]

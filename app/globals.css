@@ -256,14 +256,11 @@
     perspective: 1000px;
   }
   
-  /* Mobile optimized float animation */
+  /* Mobile optimized float animation - DISABLED for hyper-speed */
   @media (max-width: 768px) {
     .animate-float {
-      animation: float-mobile 2.5s ease-in-out infinite;
-      /* Optimized for mobile - GPU acceleration */
-      will-change: transform;
-      transform: translateZ(0);
-      backface-visibility: hidden;
+      animation: none !important;
+      transform: none !important;
     }
   }
   
@@ -441,7 +438,9 @@
   }
   
   .animate-button-glow-mobile {
-    animation: button-glow-mobile 2s ease-in-out infinite;
+    /* animation: button-glow-mobile 2s ease-in-out infinite; */
+    animation: none !important; /* Disabled for hyper-speed */
+    box-shadow: none !important;
   }
   
   /* Optimización: GPU acceleration solo cuando es necesario en móvil */
