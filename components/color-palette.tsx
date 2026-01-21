@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useMemo, useRef, useEffect } from "react"
+import { useState, useMemo, useRef, useEffect } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { CirclePattern } from "@/components/ui/circle-pattern"
 import { SectionHeader } from "@/components/ui/section-header"
@@ -273,7 +273,7 @@ export function ColorPalette() {
         {/* Color Categories */}
         {filteredCategories.length > 0 ? (
           <div className="space-y-8 md:space-y-12">
-            {filteredCategories.map((category, categoryIndex) => (
+            {filteredCategories.map((category) => (
               <div
                 key={category.name}
               >
@@ -284,7 +284,7 @@ export function ColorPalette() {
                 )}
                 
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-3 md:gap-4">
-                  {category.colors.map((color, colorIndex) => {
+                  {category.colors.map((color) => {
                     const isCopied = copiedColor === `${category.name}-${color.name}`
                     return (
                       <Card

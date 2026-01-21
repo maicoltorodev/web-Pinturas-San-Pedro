@@ -64,7 +64,7 @@ function ProcessStep({ step, index }: { step: ProcessStep; index: number }) {
               
               <div className="flex items-center justify-between pt-6 border-t-2 border-border/50 md:group-hover:border-secondary/50 transition-colors duration-200">
                 <div className="flex items-center gap-3 text-secondary opacity-0 md:group-hover:opacity-100 transition-opacity duration-200">
-                  {index < steps.length - 1 ? (
+                  {index < processSteps.length - 1 ? (
                     <>
                       <ArrowRight className="h-5 w-5 md:group-hover:translate-x-1 transition-transform duration-200" />
                       <span className="text-sm font-bold uppercase tracking-wider">Siguiente paso</span>

@@ -3,7 +3,8 @@
 import Image from "next/image"
 import { Mail, Phone, MapPin, ArrowRight } from "lucide-react"
 import { blurDataURL } from "@/lib/image-utils"
-import { siteConfig, contactInfo, businessHours, quickLinks, whatsappUrls } from "@/lib/constants/site"
+import { siteConfig, contactInfo, businessHours, whatsappUrls } from "@/lib/constants/site"
+import { quickLinks } from "@/lib/constants/navigation"
 import { SocialLinks } from "@/components/ui/social-link"
 
 export function Footer() {

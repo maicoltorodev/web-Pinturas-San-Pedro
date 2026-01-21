@@ -3,7 +3,7 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { SectionHeader } from "@/components/ui/section-header"
 import { SectionBackground } from "@/components/ui/section-background"
-import { Mail, Phone, Clock, ArrowRight } from "lucide-react"
+import { Mail, Phone, Clock, Instagram } from "lucide-react"
 import { SocialLinks } from "@/components/ui/social-link"
 import { contactInfo, businessHours, whatsappUrls } from "@/lib/constants/site"
 

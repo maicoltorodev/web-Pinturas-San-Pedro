@@ -10,13 +10,8 @@ import { blurDataURL } from "@/lib/image-utils"
 import { siteConfig, whatsappUrls, businessStats } from "@/lib/constants/site"
 
 export function Hero() {
-  const [isMounted, setIsMounted] = useState(false)
   const [shouldAnimate, setShouldAnimate] = useState(false)
   const logoRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
 
   // Activar animación solo cuando el logo está visible
   useEffect(() => {
