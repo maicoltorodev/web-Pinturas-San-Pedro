@@ -4,15 +4,15 @@ import { Card, CardContent } from "@/components/ui/card"
 import { SectionHeader } from "@/components/ui/section-header"
 import { SectionBackground } from "@/components/ui/section-background"
 import { cn } from "@/lib/utils"
-import { 
-  Paintbrush, 
-  Palette, 
-  Droplet, 
-  Brush, 
-  Shield, 
-  Sparkles, 
-  Car, 
-  Layers, 
+import {
+  Paintbrush,
+  Palette,
+  Droplet,
+  Brush,
+  Shield,
+  Sparkles,
+  Car,
+  Layers,
   Wrench,
   LucideIcon
 } from "lucide-react"
@@ -130,7 +130,7 @@ const products: Product[] = [
       { size: "Galón" }
     ]
   },
-  
+
   // ANTICORROSIVO
   {
     name: "Anticorrosivo",
@@ -158,7 +158,7 @@ const products: Product[] = [
     ],
     application: "Listo para usar. Aplicable con rodillo o brocha. Se disuelve con thinner o varsol."
   },
-  
+
   // ESMALTES
   {
     name: "Esmalte Especial",
@@ -238,7 +238,7 @@ const products: Product[] = [
       { size: "Galón" }
     ]
   },
-  
+
   // TRÁFICO PESADO
   {
     name: "Tráfico Pesado",
@@ -259,7 +259,7 @@ const products: Product[] = [
       { size: "Medio Cuñete" }
     ]
   },
-  
+
   // ESTUCOS Y REVESTIMIENTOS
   {
     name: "Estuco Plástico Acrílico",
@@ -333,7 +333,7 @@ const products: Product[] = [
       "Mejora la apariencia final de la pintura"
     ]
   },
-  
+
   // IMPERMEABILIZANTE
   {
     name: "Impermeabilizante",
@@ -353,87 +353,9 @@ const products: Product[] = [
       "Protección frente al clima y la humedad"
     ]
   },
-  
+
   // HERRAMIENTAS
-  {
-    name: "Brochas básicas",
-    category: "Herramientas",
-    description: "Brochas de uso general para aplicación profesional de pintura. Disponibles en diferentes tamaños y tipos de cerdas.",
-    features: ["Uso general", "Variedad de tamaños", "Diferentes tipos de cerdas"],
-    icon: Wrench,
-    color: "from-gray-600 to-gray-700",
-    image: "/productos/brocha.png",
-    presentations: [
-      { size: "Brocha plana 2\"" },
-      { size: "Brocha plana 3\"" },
-      { size: "Brocha angular 2\"" },
-      { size: "Brocha angular 3\"" },
-      { size: "Brocha 1½\"" },
-      { size: "Brocha 1\"" }
-    ],
-    uses: [
-      "Aplicación general",
-      "Paredes y grandes superficies",
-      "Esquinas y bordes",
-      "Detalles y acabados finos"
-    ]
-  },
-  {
-    name: "Brochas por material",
-    category: "Herramientas",
-    description: "Brochas especializadas según el tipo de cerdas: sintéticas, naturales o mezcla, cada una optimizada para diferentes tipos de pintura.",
-    features: ["Cerdas sintéticas", "Cerdas naturales", "Mezcla natural + sintética"],
-    icon: Wrench,
-    color: "from-gray-500 to-gray-600",
-    image: "/productos/brochas-material.png",
-    presentations: [
-      { size: "Brocha cerdas sintéticas" },
-      { size: "Brocha cerdas naturales" },
-      { size: "Brocha mezcla cerdas" }
-    ],
-    uses: [
-      "Diferentes tipos de pintura",
-      "Aplicación especializada"
-    ]
-  },
-  {
-    name: "Rodillos por superficie",
-    category: "Herramientas",
-    description: "Rodillos especializados según el tipo de superficie: pelo corto para muros lisos, medio para multiusos y largo para superficies rugosas.",
-    features: ["Pelo corto (6-8 mm)", "Pelo medio (10-12 mm)", "Pelo largo (15-18 mm)"],
-    icon: Wrench,
-    color: "from-gray-600 to-gray-700",
-    image: "/productos/rodillo.png",
-    presentations: [
-      { size: "Rodillo pelo corto" },
-      { size: "Rodillo pelo medio" },
-      { size: "Rodillo pelo largo" }
-    ],
-    uses: [
-      "Muros lisos",
-      "Multiusos",
-      "Superficies rugosas"
-    ]
-  },
-  {
-    name: "Rodillos por tamaño",
-    category: "Herramientas",
-    description: "Rodillos en diferentes tamaños para cubrir desde detalles y esquinas hasta áreas grandes de manera eficiente.",
-    features: ["Rodillo 4\"", "Rodillo 7\"", "Rodillo 9\""],
-    icon: Wrench,
-    color: "from-gray-500 to-gray-600",
-    image: "/productos/rodillo.png",
-    presentations: [
-      { size: "Rodillo 4\"" },
-      { size: "Rodillo 7\"" },
-      { size: "Rodillo 9\"" }
-    ],
-    uses: [
-      "Detalles y esquinas",
-      "Estándar de pared",
-      "Áreas grandes"
-    ]
-  },
+
   {
     name: "Recambios para rodillos",
     category: "Herramientas",
@@ -657,7 +579,7 @@ const products: Product[] = [
     color: "from-cyan-400 to-cyan-500",
     image: "/productos/rodillo-mini-hilo-antigota.png",
     presentations: [
-      { size: "1\"" }, { size: "2\"" }, { size: "3\"" }, 
+      { size: "1\"" }, { size: "2\"" }, { size: "3\"" },
       { size: "4\"" }, { size: "5\"" }, { size: "6\"" }
     ]
   },
@@ -738,8 +660,8 @@ const products: Product[] = [
     color: "from-red-500 to-red-600",
     image: "/productos/brocha-cerda-premium.png",
     presentations: [
-      { size: "1/2\"" }, { size: "1\"" }, { size: "1 1/2\"" }, 
-      { size: "2\"" }, { size: "2 1/2\"" }, { size: "3\"" }, 
+      { size: "1/2\"" }, { size: "1\"" }, { size: "1 1/2\"" },
+      { size: "2\"" }, { size: "2 1/2\"" }, { size: "3\"" },
       { size: "4\"" }, { size: "5\"" }
     ]
   },
@@ -887,7 +809,7 @@ function ProductCard({ product }: { product: Product }) {
   }, [product.name])
 
   return (
-    <Card 
+    <Card
       onClick={handleCardClick}
       className={cn(
         "h-full border-2 bg-white/98 backdrop-blur-sm",
@@ -904,7 +826,7 @@ function ProductCard({ product }: { product: Product }) {
         "md:group-hover:opacity-5 pointer-events-none z-0",
         product.color
       )} />
-      
+
       <CardContent className="p-0 flex-1 flex flex-col relative z-10">
         {/* Header Section - Image + Category Badge */}
         <div className="relative h-56 md:h-64 overflow-hidden bg-gradient-to-br from-gray-50 via-gray-50/50 to-white">
@@ -916,7 +838,7 @@ function ProductCard({ product }: { product: Product }) {
               product.color
             )} />
           </div>
-          
+
           {/* Category Badge - Top Left */}
           <div className="absolute top-4 left-4 z-20">
             <span className={cn(
@@ -945,11 +867,11 @@ function ProductCard({ product }: { product: Product }) {
             <div className={cn(
               "relative transition-transform duration-500 md:group-hover:scale-110",
               // Tamaño mayor para productos específicos
-              (product.name === "Impermeabilizante" || 
-               product.name === "Estuco Plástico Acrílico" || 
-               product.name === "Esmalte Tipo 1" || 
-               product.name === "Esmalte a base agua" || 
-               product.name === "Anticorrosivo")
+              (product.name === "Impermeabilizante" ||
+                product.name === "Estuco Plástico Acrílico" ||
+                product.name === "Esmalte Tipo 1" ||
+                product.name === "Esmalte a base agua" ||
+                product.name === "Anticorrosivo")
                 ? "w-40 h-40 md:w-44 md:h-44"
                 : "w-32 h-32 md:w-36 md:h-36"
             )}>
@@ -958,12 +880,12 @@ function ProductCard({ product }: { product: Product }) {
                 alt={product.name}
                 fill
                 className="object-contain"
-                sizes={(product.name === "Impermeabilizante" || 
-                        product.name === "Estuco Plástico Acrílico" || 
-                        product.name === "Esmalte Tipo 1" || 
-                        product.name === "Esmalte a base agua" || 
-                        product.name === "Anticorrosivo")
-                        ? "176px" : "144px"}
+                sizes={(product.name === "Impermeabilizante" ||
+                  product.name === "Estuco Plástico Acrílico" ||
+                  product.name === "Esmalte Tipo 1" ||
+                  product.name === "Esmalte a base agua" ||
+                  product.name === "Anticorrosivo")
+                  ? "176px" : "144px"}
                 loading="lazy"
                 quality={90}
               />
@@ -1022,8 +944,8 @@ function ProductCard({ product }: { product: Product }) {
               </div>
               <div className="space-y-2">
                 {product.presentations.map((presentation, idx) => (
-                  <div 
-                    key={idx} 
+                  <div
+                    key={idx}
                     className={cn(
                       "flex items-center justify-center py-2.5 px-4 rounded-lg",
                       "bg-gradient-to-r from-secondary/5 to-secondary/10",
@@ -1045,14 +967,14 @@ function ProductCard({ product }: { product: Product }) {
   )
 }
 
-function FilterBar({ 
-  categories, 
-  selectedCategory, 
-  onCategoryChange 
-}: { 
+function FilterBar({
+  categories,
+  selectedCategory,
+  onCategoryChange
+}: {
   categories: string[]
   selectedCategory: string
-  onCategoryChange: (category: string) => void 
+  onCategoryChange: (category: string) => void
 }) {
   return (
     <div className="flex flex-wrap gap-2.5 md:gap-3 justify-center mb-12 px-4">
@@ -1100,17 +1022,17 @@ function ProductCardWrapper({ product }: { product: Product }) {
 
 export function Products() {
   const [selectedCategory, setSelectedCategory] = useState<string>("Todos")
-  
+
   // Obtener todas las categorías únicas - memoizado
-  const categories = useMemo(() => 
+  const categories = useMemo(() =>
     ["Todos", ...Array.from(new Set(products.map(p => p.category)))],
     []
   )
-  
+
   // Filtrar productos según la categoría seleccionada - memoizado
-  const filteredProducts = useMemo(() => 
-    selectedCategory === "Todos" 
-      ? products 
+  const filteredProducts = useMemo(() =>
+    selectedCategory === "Todos"
+      ? products
       : products.filter(product => product.category === selectedCategory),
     [selectedCategory]
   )
@@ -1127,7 +1049,7 @@ export function Products() {
           className="text-primary-foreground [&_p]:text-primary-foreground/80"
         />
 
-        <FilterBar 
+        <FilterBar
           categories={categories}
           selectedCategory={selectedCategory}
           onCategoryChange={setSelectedCategory}
