@@ -18,7 +18,7 @@ import {
 } from "lucide-react"
 import Image from "next/image"
 import { blurDataURL } from "@/lib/image-utils"
-import { useState, useMemo, useCallback } from "react"
+import { useState, useMemo, useCallback, useEffect, useRef } from "react"
 
 // Types
 export interface ProductPresentation {
@@ -800,7 +800,7 @@ const products: Product[] = [
   }
 ]
 
-function ProductCard({ product }: { product: Product }) {
+function ProductCard({ product, preloadImage = false }: { product: Product; preloadImage?: boolean }) {
   const Icon = product.icon
 
   const handleCardClick = useCallback(() => {
@@ -887,7 +887,7 @@ function ProductCard({ product }: { product: Product }) {
                   product.name === "Esmalte a base agua" ||
                   product.name === "Anticorrosivo")
                   ? "176px" : "144px"}
-                loading="lazy"
+                loading={preloadImage ? "eager" : "lazy"}
                 placeholder="blur"
                 blurDataURL={blurDataURL.product}
                 quality={90}
@@ -1002,23 +1002,74 @@ function FilterBar({
   )
 }
 
-// Componente optimizado para grid de productos con animaciones controladas
+// Componente optimizado para grid de productos - pre-renderiza todo para scroll fluido
 function ProductGrid({ products }: { products: Product[] }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-      {products.map((product) => (
-        <ProductCardWrapper key={product.name} product={product} />
+      {products.map((product, index) => (
+        <ProductCardWrapper key={product.name} product={product} index={index} />
       ))}
     </div>
   )
 }
 
-// Wrapper simplificado - la animación se maneja con CSS cuando el componente se renderiza
-// LazySection ya maneja la carga diferida, solo aplicamos animación visual
-function ProductCardWrapper({ product }: { product: Product }) {
+// Wrapper optimizado - pre-renderiza todas las cards para scroll fluido
+// Las cards se renderizan inmediatamente sin animación para evitar "cuadros" durante scroll rápido
+function ProductCardWrapper({ product, index }: { product: Product; index: number }) {
+  // Detectar móvil para ajustar pre-carga
+  const [isMobile, setIsMobile] = useState(false)
+  const [shouldPreload, setShouldPreload] = useState(false)
+  const cardRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    // Detectar si es móvil
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia('(max-width: 768px)').matches)
+    }
+    checkMobile()
+
+    // Pre-cargar primeras cards: 6 en móvil, 9 en desktop
+    const preloadCount = isMobile ? 6 : 9
+    if (index < preloadCount) {
+      setShouldPreload(true)
+      return
+    }
+  }, [index, isMobile])
+
+  useEffect(() => {
+    // Si ya está marcado para pre-cargar, no hacer nada
+    if (shouldPreload) return
+
+    const card = cardRef.current
+    if (!card) return
+
+    // Pre-cargar imágenes que están cerca del viewport
+    // rootMargin más pequeño en móvil para ahorrar ancho de banda
+    const rootMargin = isMobile ? '300px' : '500px'
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldPreload(true)
+          observer.disconnect()
+        }
+      },
+      {
+        rootMargin, // Pre-cargar cuando está cerca del viewport
+        threshold: 0.01,
+      }
+    )
+
+    observer.observe(card)
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [shouldPreload, isMobile])
+
   return (
-    <div className="opacity-0 animate-fade-in">
-      <ProductCard product={product} />
+    <div ref={cardRef}>
+      <ProductCard product={product} preloadImage={shouldPreload} />
     </div>
   )
 }
