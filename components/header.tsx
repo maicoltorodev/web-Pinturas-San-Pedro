@@ -41,6 +41,14 @@ export function Header() {
     let rafId: number | null = null
     let lastScrollY = window.scrollY
     let lastIsScrolled = false
+    let lastUpdateTime = 0
+    
+    // Detectar móvil una sola vez
+    const isMobile = window.matchMedia('(max-width: 768px)').matches
+    // Threshold mayor en móvil para reducir frecuencia de updates
+    const scrollThreshold = isMobile ? 25 : 10
+    // Throttling más agresivo en móvil: 50ms vs 16ms
+    const throttleDelay = isMobile ? 50 : 16
     
     const handleScroll = () => {
       // Cancelar RAF anterior si existe
@@ -49,9 +57,17 @@ export function Header() {
       }
       
       rafId = requestAnimationFrame(() => {
+        const now = Date.now()
         const currentScrollY = window.scrollY
-        // Solo actualizar estado si hay cambio significativo (más de 10px para reducir updates)
-        if (Math.abs(currentScrollY - lastScrollY) > 10) {
+        
+        // Throttling basado en tiempo
+        if (now - lastUpdateTime < throttleDelay) {
+          rafId = null
+          return
+        }
+        
+        // Solo actualizar estado si hay cambio significativo
+        if (Math.abs(currentScrollY - lastScrollY) > scrollThreshold) {
           const newIsScrolled = currentScrollY > 20
           // Solo actualizar si cambió el estado para evitar re-renders innecesarios
           if (newIsScrolled !== lastIsScrolled) {
@@ -59,6 +75,7 @@ export function Header() {
             lastIsScrolled = newIsScrolled
           }
           lastScrollY = currentScrollY
+          lastUpdateTime = now
         }
         rafId = null
       })
@@ -77,7 +94,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-200 md:duration-500",
         isScrolled
           ? "bg-primary/95 md:backdrop-blur-md border-b border-primary-foreground/10 shadow-premium"
           : "bg-primary border-b border-primary-foreground/5"

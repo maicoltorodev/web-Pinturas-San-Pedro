@@ -113,7 +113,8 @@ export function Hero() {
                   minHeight: '128px',
                   maxWidth: '500px',
                   maxHeight: '250px',
-                  willChange: shouldAnimate ? 'transform' : 'auto',
+                  // will-change solo cuando está animando, se limpia automáticamente
+                  ...(shouldAnimate ? { willChange: 'transform' } : {}),
                   // GPU acceleration para móvil
                   transform: 'translateZ(0)',
                   backfaceVisibility: 'hidden',

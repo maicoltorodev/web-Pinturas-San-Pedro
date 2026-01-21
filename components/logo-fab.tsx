@@ -14,6 +14,14 @@ export function LogoFAB() {
   useEffect(() => {
     let rafId: number | null = null
     let lastScrollY = window.scrollY
+    let lastUpdateTime = 0
+    
+    // Detectar móvil una sola vez
+    const isMobile = window.matchMedia('(max-width: 768px)').matches
+    // Threshold mayor en móvil para reducir frecuencia de updates
+    const scrollThreshold = isMobile ? 30 : 10
+    // Throttling más agresivo en móvil: 50ms vs 16ms
+    const throttleDelay = isMobile ? 50 : 16
     
     const handleScroll = () => {
       // Cancelar RAF anterior si existe
@@ -22,11 +30,20 @@ export function LogoFAB() {
       }
       
       rafId = requestAnimationFrame(() => {
+        const now = Date.now()
         const currentScrollY = window.scrollY
-        // Solo actualizar estado si hay cambio significativo (más de 10px)
-        if (Math.abs(currentScrollY - lastScrollY) > 10) {
+        
+        // Throttling basado en tiempo
+        if (now - lastUpdateTime < throttleDelay) {
+          rafId = null
+          return
+        }
+        
+        // Solo actualizar estado si hay cambio significativo
+        if (Math.abs(currentScrollY - lastScrollY) > scrollThreshold) {
           setIsVisible(currentScrollY > 300)
           lastScrollY = currentScrollY
+          lastUpdateTime = now
         }
         rafId = null
       })
