@@ -56,10 +56,10 @@ export default function Home() {
         <Process />
       </LazySection>
       <LazySection fallback={<div className="h-64" />}>
-        <Location />
+        <Testimonials />
       </LazySection>
       <LazySection fallback={<div className="h-64" />}>
-        <Testimonials />
+        <Location />
       </LazySection>
       <LazySection fallback={<div className="h-64" />}>
         <Contact />
