@@ -942,19 +942,19 @@ function ProductCard({ product }: { product: Product }) {
               <div className="mb-3">
                 <span className="text-xs font-bold text-secondary uppercase tracking-wider">Presentaciones Disponibles</span>
               </div>
-              <div className="space-y-2">
+              <div className="grid grid-cols-2 gap-2">
                 {product.presentations.map((presentation, idx) => (
                   <div
                     key={idx}
                     className={cn(
-                      "flex items-center justify-center py-2.5 px-4 rounded-lg",
+                      "flex items-center justify-center py-2 px-2 rounded-lg",
                       "bg-gradient-to-r from-secondary/5 to-secondary/10",
                       "border border-secondary/20",
                       "transition-all duration-300",
                       "md:group-hover:border-secondary/40 md:group-hover:from-secondary/10 md:group-hover:to-secondary/15"
                     )}
                   >
-                    <span className="text-sm font-bold text-foreground">{presentation.size}</span>
+                    <span className="text-xs font-bold text-foreground text-center line-clamp-1">{presentation.size}</span>
                   </div>
                 ))}
               </div>
