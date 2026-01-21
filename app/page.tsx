@@ -4,13 +4,10 @@ import dynamic from "next/dynamic"
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
 import { LazySection } from "@/components/lazy-section"
+import { Products } from "@/components/products"
 
 // Lazy load components below the fold for better initial load
 const Services = dynamic(() => import("@/components/services").then(mod => ({ default: mod.Services })), {
-  ssr: false,
-})
-
-const Products = dynamic(() => import("@/components/products").then(mod => ({ default: mod.Products })), {
   ssr: false,
 })
 
@@ -46,7 +43,7 @@ export default function Home() {
       <LazySection fallback={<div className="h-64" />}>
         <Services />
       </LazySection>
-      <LazySection fallback={<div className="h-64" />}>
+      <LazySection fallback={<div className="h-64" />} rootMargin="800px">
         <Products />
       </LazySection>
       <LazySection fallback={<div className="h-64" />}>

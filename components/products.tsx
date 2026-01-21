@@ -800,7 +800,7 @@ const products: Product[] = [
   }
 ]
 
-function ProductCard({ product }: { product: Product }) {
+function ProductCard({ product, priority = false }: { product: Product; priority?: boolean }) {
   const Icon = product.icon
 
   const handleCardClick = useCallback(() => {
@@ -887,10 +887,11 @@ function ProductCard({ product }: { product: Product }) {
                   product.name === "Esmalte a base agua" ||
                   product.name === "Anticorrosivo")
                   ? "176px" : "144px"}
-                loading="lazy"
+                loading={priority ? "eager" : "lazy"}
+                fetchPriority={priority ? "high" : "auto"}
                 placeholder="blur"
                 blurDataURL={blurDataURL.product}
-                quality={90}
+                quality={priority ? 90 : 85}
               />
             </div>
           </div>
@@ -1006,8 +1007,8 @@ function FilterBar({
 function ProductGrid({ products }: { products: Product[] }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-      {products.map((product) => (
-        <ProductCard key={product.name} product={product} />
+      {products.map((product, index) => (
+        <ProductCard key={product.name} product={product} priority={index < 6} />
       ))}
     </div>
   )
