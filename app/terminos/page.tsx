@@ -1,23 +1,28 @@
+import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { FileText, CheckCircle, AlertCircle, Scale } from "lucide-react"
+import { siteConfig } from "@/lib/constants/site"
 
-export const metadata = {
-  title: "Términos y Condiciones - Pinturas San Pedro",
-  description: "Términos y condiciones de uso de productos de Pinturas San Pedro",
+export const metadata: Metadata = {
+  title: `Términos y Condiciones - ${siteConfig.name}`,
+  description: "Términos y condiciones de uso",
+  alternates: {
+    canonical: "/terminos",
+  },
 }
 
 export default function TerminosPage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen" role="main">
       <Header />
-      <section className="pt-24 pb-20 md:pt-32 md:pb-28">
+      <section className="pt-24 pb-20 md:pt-32 md:pb-28" aria-labelledby="terms-heading">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           <div className="mb-12 text-center">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-secondary/10 mb-6">
               <FileText className="h-8 w-8 text-secondary" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-black text-foreground mb-4">
+            <h1 id="terms-heading" className="text-4xl md:text-5xl font-black text-foreground mb-4">
               Términos y Condiciones
             </h1>
             <p className="text-foreground/70 text-lg">
@@ -32,23 +37,23 @@ export default function TerminosPage() {
                 1. Aceptación de los Términos
               </h2>
               <p className="text-foreground/80 leading-relaxed">
-                Al acceder y utilizar los productos de Pinturas San Pedro, usted acepta estar sujeto a estos términos y condiciones. Si no está de acuerdo con alguna parte de estos términos, no debe utilizar nuestros productos.
+                Al acceder y utilizar los servicios de Pinturas San Pedro, usted acepta estar sujeto a estos términos y condiciones. Si no está de acuerdo con alguna parte de estos términos, no debe utilizar nuestros servicios.
               </p>
             </div>
 
             <div className="bg-card border-2 border-border rounded-xl p-6 md:p-8">
               <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-3">
                 <CheckCircle className="h-6 w-6 text-secondary" />
-                2. Productos
+                2. Servicios
               </h2>
               <p className="text-foreground/80 leading-relaxed mb-4">
                 Pinturas San Pedro se compromete a:
               </p>
               <ul className="list-disc list-inside space-y-2 text-foreground/80 ml-4">
-                <li>Proporcionar productos de calidad certificada</li>
-                <li>Ofrecer productos de pintura de calidad con más de 30 años de experiencia</li>
-                <li>Proporcionar información precisa sobre productos y disponibilidad</li>
-                <li>Mantener estándares de calidad en todos nuestros productos</li>
+                <li>Proporcionar pinturas de calidad certificada</li>
+                <li>Ofrecer pinturas de calidad con más de 30 años de experiencia</li>
+                <li>Proporcionar información precisa sobre disponibilidad</li>
+                <li>Mantener estándares de calidad en todos nuestros servicios</li>
               </ul>
             </div>
 
@@ -75,7 +80,7 @@ export default function TerminosPage() {
                 Las cotizaciones proporcionadas tienen validez por un período determinado (generalmente 30 días) y están sujetas a:
               </p>
               <ul className="list-disc list-inside space-y-2 text-foreground/80 ml-4">
-                <li>Disponibilidad de productos y materiales</li>
+                <li>Disponibilidad de materiales</li>
                 <li>Condiciones específicas del proyecto</li>
                 <li>Confirmación escrita del cliente</li>
               </ul>
@@ -86,12 +91,12 @@ export default function TerminosPage() {
                 5. Garantías y Devoluciones
               </h2>
               <p className="text-foreground/80 leading-relaxed mb-4">
-                Respecto a nuestros productos:
+                Respecto a nuestras pinturas:
               </p>
               <ul className="list-disc list-inside space-y-2 text-foreground/80 ml-4">
-                <li>Los productos deben ser utilizados según las instrucciones del fabricante</li>
+                <li>Las pinturas deben ser utilizadas según las instrucciones del fabricante</li>
                 <li>Las devoluciones se evaluarán caso por caso</li>
-                <li>Los productos personalizados o mezclados no son elegibles para devolución</li>
+                <li>Las pinturas personalizadas o mezcladas no son elegibles para devolución</li>
                 <li>Se requiere comprobante de compra para cualquier reclamación</li>
               </ul>
             </div>
@@ -105,7 +110,7 @@ export default function TerminosPage() {
               </p>
               <ul className="list-disc list-inside space-y-2 text-foreground/80 ml-4">
                 <li>Proporcionar información precisa y completa para las cotizaciones</li>
-                <li>Utilizar los productos según las instrucciones del fabricante</li>
+                <li>Utilizar las pinturas según las instrucciones del fabricante</li>
                 <li>Realizar pagos según los términos acordados</li>
                 <li>Comunicar cualquier cambio o problema de manera oportuna</li>
               </ul>
@@ -116,7 +121,7 @@ export default function TerminosPage() {
                 7. Limitación de Responsabilidad
               </h2>
               <p className="text-foreground/80 leading-relaxed">
-                Pinturas San Pedro no será responsable por daños indirectos, incidentales o consecuentes que resulten del uso de nuestros productos, excepto cuando sea requerido por ley. Nuestra responsabilidad se limita al valor del producto proporcionado.
+                Pinturas San Pedro no será responsable por daños indirectos, incidentales o consecuentes que resulten del uso de nuestros servicios, excepto cuando sea requerido por ley. Nuestra responsabilidad se limita al valor del servicio proporcionado.
               </p>
             </div>
 

@@ -4,71 +4,69 @@ import dynamic from "next/dynamic"
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
 import { LazySection } from "@/components/lazy-section"
-import { useResponsiveRootMargin } from "@/lib/useResponsiveRootMargin"
+import { Skeleton } from "@/components/ui/skeleton"
 
 // Lazy load components below the fold for better initial load
+// Using loading option for better UX
 const Services = dynamic(() => import("@/components/services").then(mod => ({ default: mod.Services })), {
-  ssr: false,
+  ssr: true, // Enable SSR for better SEO
+  loading: () => <Skeleton className="h-96 w-full" />,
 })
 
 const ColorPalette = dynamic(() => import("@/components/color-palette").then(mod => ({ default: mod.ColorPalette })), {
-  ssr: false,
+  ssr: true,
+  loading: () => <Skeleton className="h-96 w-full" />,
 })
 
 const Process = dynamic(() => import("@/components/process").then(mod => ({ default: mod.Process })), {
-  ssr: false,
+  ssr: true,
+  loading: () => <Skeleton className="h-96 w-full" />,
 })
 
 const Location = dynamic(() => import("@/components/location").then(mod => ({ default: mod.Location })), {
-  ssr: false,
+  ssr: true,
+  loading: () => <Skeleton className="h-96 w-full" />,
 })
 
 const Testimonials = dynamic(() => import("@/components/testimonials").then(mod => ({ default: mod.Testimonials })), {
-  ssr: false,
+  ssr: true,
+  loading: () => <Skeleton className="h-96 w-full" />,
 })
 
 const Contact = dynamic(() => import("@/components/contact").then(mod => ({ default: mod.Contact })), {
-  ssr: false,
+  ssr: true,
+  loading: () => <Skeleton className="h-96 w-full" />,
 })
 
 const Footer = dynamic(() => import("@/components/footer").then(mod => ({ default: mod.Footer })), {
-  ssr: false,
-})
-
-const Products = dynamic(() => import("@/components/products").then(mod => ({ default: mod.Products })), {
-  ssr: false,
+  ssr: true,
+  loading: () => <Skeleton className="h-32 w-full" />,
 })
 
 export default function Home() {
-  // RootMargin responsivo: 300px en móvil, 800px en desktop
-  const productsRootMargin = useResponsiveRootMargin("300px", "800px")
-
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen" role="main">
       <Header />
       <Hero />
-      <LazySection fallback={<div className="h-64" />}>
+      <LazySection fallback={<Skeleton className="h-96 w-full" />}>
         <Services />
       </LazySection>
-      <LazySection fallback={<div className="h-64" />} rootMargin={productsRootMargin}>
-        <Products />
-      </LazySection>
-      <LazySection fallback={<div className="h-64" />}>
+      <LazySection fallback={<Skeleton className="h-96 w-full" />}>
         <ColorPalette />
       </LazySection>
-      <LazySection fallback={<div className="h-64" />}>
+      <LazySection fallback={<Skeleton className="h-96 w-full" />}>
         <Process />
       </LazySection>
-      <LazySection fallback={<div className="h-64" />}>
+      <LazySection fallback={<Skeleton className="h-96 w-full" />}>
         <Testimonials />
       </LazySection>
-      <LazySection fallback={<div className="h-64" />}>
+      <LazySection fallback={<Skeleton className="h-96 w-full" />}>
         <Location />
       </LazySection>
-      <LazySection fallback={<div className="h-64" />}>
+      <LazySection fallback={<Skeleton className="h-96 w-full" />}>
         <Contact />
       </LazySection>
-      <LazySection fallback={<div className="h-32" />}>
+      <LazySection fallback={<Skeleton className="h-32 w-full" />}>
         <Footer />
       </LazySection>
     </main>

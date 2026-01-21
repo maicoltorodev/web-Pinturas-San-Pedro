@@ -3,55 +3,22 @@
 import { CheckCircle2, ArrowRight, MessageSquare, Palette, Wrench, Paintbrush, CheckCircle } from "lucide-react"
 import { SectionHeader } from "@/components/ui/section-header"
 import { cn } from "@/lib/utils"
+import { processSteps } from "@/lib/constants/process"
+import type { ProcessStep } from "@/lib/types"
 
-const steps = [
-  {
-    number: "01",
-    title: "Consulta y Asesoría",
-    description:
-      "Nos reunimos contigo para entender tus necesidades, evaluar tu proyecto y recomendarte los productos ideales para tu espacio.",
-    icon: MessageSquare,
-    color: "from-blue-500 to-blue-600",
-  },
-  {
-    number: "02",
-    title: "Selección de Color",
-    description:
-      "Nuestros expertos te ayudan a elegir los colores y acabados perfectos que complementan tu espacio y estilo.",
-    icon: Palette,
-    color: "from-purple-500 to-purple-600",
-  },
-  {
-    number: "03",
-    title: "Cotización Personalizada",
-    description:
-      "Te proporcionamos una cotización detallada y transparente con los productos seleccionados y sus presentaciones disponibles.",
-    icon: Wrench,
-    color: "from-amber-500 to-amber-600",
-  },
-  {
-    number: "04",
-    title: "Compra y Entrega",
-    description:
-      "Procesamos tu pedido y coordinamos la entrega de productos premium, asegurando que recibas exactamente lo que necesitas.",
-    icon: Paintbrush,
-    color: "from-green-500 to-green-600",
-  },
-  {
-    number: "05",
-    title: "Seguimiento y Soporte",
-    description:
-      "Te acompañamos después de la compra, asegurando que tengas toda la información necesaria para obtener los mejores resultados.",
-    icon: CheckCircle,
-    color: "from-secondary to-secondary/80",
-  },
-]
+const iconMap = {
+  MessageSquare,
+  Palette,
+  Wrench,
+  Paintbrush,
+  CheckCircle,
+}
 
-function ProcessStep({ step, index }: { step: typeof steps[0]; index: number }) {
-  const Icon = step.icon
+function ProcessStep({ step, index }: { step: ProcessStep; index: number }) {
+  const Icon = iconMap[step.icon as keyof typeof iconMap] || MessageSquare
   return (
     <div className="group relative">
-      {index < steps.length - 1 && (
+      {index < processSteps.length - 1 && (
         <div className="absolute left-12 top-24 w-1 h-full hidden md:block">
           <div className="w-full h-full bg-gradient-to-b from-secondary/40 via-secondary/20 to-transparent rounded-full" />
           <div className="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-secondary/60 to-transparent rounded-full animate-pulse" />
@@ -107,7 +74,7 @@ function ProcessStep({ step, index }: { step: typeof steps[0]; index: number }) 
                   )}
                 </div>
                 <div className="flex items-center gap-1">
-                  {steps.map((_, idx) => (
+                  {processSteps.map((_, idx) => (
                     <div
                       key={idx}
                       className={cn(
@@ -134,13 +101,13 @@ export function Process() {
           badge={{ text: "Nuestro Proceso" }}
           title="Cómo Te Ayudamos"
           subtitle="De Forma Personalizada"
-          description="Un enfoque sistemático y eficiente que garantiza que encuentres los productos perfectos para tu proyecto, desde la consulta inicial hasta la entrega. Cada paso está diseñado para superar tus expectativas."
+          description="Un enfoque sistemático y eficiente que garantiza que encuentres las pinturas perfectas para tu proyecto, desde la consulta inicial hasta la entrega. Cada paso está diseñado para superar tus expectativas."
           className="[&_p]:font-medium"
         />
 
         <div className="max-w-5xl mx-auto">
           <div className="space-y-4 md:space-y-6">
-            {steps.map((step, index) => (
+            {processSteps.map((step, index) => (
               <ProcessStep key={index} step={step} index={index} />
             ))}
           </div>

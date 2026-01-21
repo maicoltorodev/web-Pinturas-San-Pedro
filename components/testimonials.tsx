@@ -10,6 +10,8 @@ import { cn } from "@/lib/utils"
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Autoplay } from 'swiper/modules'
 import type { Swiper as SwiperType } from 'swiper'
+import { testimonials as testimonialsData, paintColors, googleReviewsStats } from "@/lib/constants/testimonials"
+import type { Testimonial, PaintColor } from "@/lib/types"
 
 // Importar estilos de Swiper desde el paquete local
 // Next.js optimizará esto automáticamente
@@ -46,93 +48,15 @@ function GoogleIcon({ className }: { className?: string }) {
   )
 }
 
-// Paleta de colores de pintura para las cards de testimonios
-const paintColors = [
-  { name: "Azul Mediterráneo", hex: "#304D9A", light: "#5F8AC7" },
-  { name: "Verde Primaveral", hex: "#4CAF50", light: "#81C784" },
-  { name: "Rojo Vivo", hex: "#D72124", light: "#E57373" },
-  { name: "Amarillo Oro", hex: "#FFD700", light: "#FFE082" },
-  { name: "Naranja Fuerte", hex: "#F97316", light: "#FFB74D" },
-  { name: "Morado", hex: "#6B2C91", light: "#9575CD" },
-  { name: "Oceánico", hex: "#00A6B2", light: "#4DD0E1" },
-  { name: "Verde Pino", hex: "#2D5016", light: "#66BB6A" },
-  { name: "Rojo Carmín", hex: "#ED6C54", light: "#EF9A9A" },
-]
-
-const testimonials = [
-  {
-    name: "Arley Orjuela",
-    rating: 5,
-    date: "Hace 2 semanas",
-    comment: "Venden buenos accesorios para pintar y decorar el hogar la atención es muy buena y sus precios acordes a la necesidad",
-    project: "Compra de accesorios"
-  },
-  {
-    name: "Isabella Neuque",
-    rating: 5,
-    date: "Hace 4 años",
-    comment: "Exelente calidad y el mejor servicio. Los precios son muy económicos. Y ni he tenido problema con los cambios.",
-    project: "Compra de productos"
-  },
-  {
-    name: "Freddy Prada",
-    rating: 5,
-    date: "Hace 2 años",
-    comment: "Buen lugar para comprar y buenos precios excelente producto",
-    project: "Compra de productos"
-  },
-  {
-    name: "Chamilo RR",
-    rating: 5,
-    date: "Hace un año",
-    comment: "Muy buena atención y muy buen precio",
-    project: "Compra de productos"
-  },
-  {
-    name: "Gustavo Ramirez",
-    rating: 5,
-    date: "Hace 4 años",
-    comment: "Muy atentos y los precios son cómodos. Se consigue de todo. Es más barato que Homecenter.",
-    project: "Compra de productos"
-  },
-  {
-    name: "Germán Andrés Garzón",
-    rating: 5,
-    date: "Hace 4 años",
-    comment: "Buenos productos a buen precio, preparan el color que necesite, domicilios. Recomendado",
-    project: "Preparación de colores personalizados"
-  },
-  {
-    name: "Roberto Alvarado",
-    rating: 5,
-    date: "Hace 2 años",
-    comment: "Muy amable la atención excelente precio y la entrega a tiempo",
-    project: "Compra con domicilio"
-  },
-  {
-    name: "Danieljun Jun",
-    rating: 5,
-    date: "Hace 6 años",
-    comment: "Aquí puedes encontrar gran variedad de productos a precios excelentes, lo recomiendo",
-    project: "Compra de productos"
-  },
-  {
-    name: "STUWWY84",
-    rating: 5,
-    date: "Hace 5 años",
-    comment: "Excelente atención y buenos precios, la pintura salió muy buena 👍👍👍",
-    project: "Compra de pintura"
-  },
-]
 
 const TestimonialCard = memo(function TestimonialCard({ 
   testimonial, 
   isActive, 
   color
 }: { 
-  testimonial: typeof testimonials[0]; 
+  testimonial: Testimonial; 
   isActive?: boolean;
-  color: typeof paintColors[0];
+  color: PaintColor;
 }) {
   return (
     <Card 
@@ -220,7 +144,7 @@ export function Testimonials() {
 
   // Preparar testimonios con colores - memoizado para evitar recálculos
   const testimonialsWithColors = useMemo(() => {
-    return testimonials.map((testimonial, index) => {
+    return testimonialsData.map((testimonial, index) => {
       const colorIndex = index % paintColors.length
       return {
         ...testimonial,
@@ -243,7 +167,11 @@ export function Testimonials() {
   }, [])
 
   return (
-    <section id="testimonials" className="relative py-24 md:py-32 lg:py-40 bg-background overflow-hidden">
+    <section
+      id="testimonials"
+      className="relative py-24 md:py-32 lg:py-40 bg-background overflow-hidden"
+      aria-labelledby="testimonials-heading"
+    >
       {/* Decoración optimizada solo en desktop */}
       <div className="hidden md:block absolute inset-0 opacity-5">
         <CirclePattern variant="subtle" />
@@ -254,7 +182,7 @@ export function Testimonials() {
           badge={{ icon: Star, text: "Testimonios de Google" }}
           title="Lo Que Dicen"
           subtitle="Nuestros Clientes"
-          description="Miles de clientes satisfechos confían en nuestros productos de pintura. Descubre por qué somos la mejor opción en productos de calidad."
+          description="Miles de clientes satisfechos confían en nosotros. Descubre por qué somos la mejor opción."
         />
         
         <div className="flex items-center justify-center gap-4 mt-8 mb-16">
@@ -273,8 +201,8 @@ export function Testimonials() {
             ))}
           </div>
           <div className="text-left">
-            <p className="text-2xl font-black text-foreground">4.3</p>
-            <p className="text-sm text-muted-foreground">Basado en 171 reseñas</p>
+            <p className="text-2xl font-black text-foreground">{googleReviewsStats.rating}</p>
+            <p className="text-sm text-muted-foreground">Basado en {googleReviewsStats.totalReviews} reseñas</p>
           </div>
         </div>
 
@@ -372,7 +300,7 @@ export function Testimonials() {
             
             {/* Indicador de posición móvil */}
             <div className="flex items-center gap-2">
-              {testimonials.map((_, index) => (
+              {testimonialsData.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => swiperRef.current?.slideTo(index)}

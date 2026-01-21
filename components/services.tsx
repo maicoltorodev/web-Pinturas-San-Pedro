@@ -4,39 +4,15 @@ import { memo } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { SectionHeader } from "@/components/ui/section-header"
 import { SectionBackground } from "@/components/ui/section-background"
-import { Home, Building2, Brush, Sparkles } from "lucide-react"
+import { Home, Building2, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { services } from "@/lib/constants/services"
 
-const services = [
-  {
-    icon: Brush,
-    title: "Productos",
-    description:
-      "Amplia gama de productos de pintura de la más alta calidad. Desde pinturas para interiores hasta productos especializados para cada necesidad.",
-    color: "purple",
-  },
-  {
-    icon: Sparkles,
-    title: "Consultoría de Color",
-    description:
-      "Asesoría experta en combinación de colores. Te ayudamos a elegir la paleta perfecta para tu espacio y encontrar el producto ideal.",
-    color: "pink",
-  },
-  {
-    icon: Home,
-    title: "Productos para Interiores",
-    description:
-      "Pinturas especializadas para uso interior. Vinilos acrílicos, esmaltes y productos de acabado para transformar tus espacios interiores.",
-    color: "blue",
-  },
-  {
-    icon: Building2,
-    title: "Productos para Exteriores",
-    description:
-      "Pinturas y productos especializados para fachadas y exteriores. Impermeabilizantes y productos con alta resistencia a la intemperie.",
-    color: "yellow",
-  },
-]
+const iconMap = {
+  Sparkles,
+  Home,
+  Building2,
+}
 
 // Color map optimizado - estructura simplificada manteniendo compatibilidad con Tailwind
 const colorMap: Record<string, {
@@ -87,7 +63,7 @@ const colorMap: Record<string, {
 }
 
 const ServiceCard = memo(function ServiceCard({ service }: { service: typeof services[0] }) {
-  const Icon = service.icon
+  const Icon = iconMap[service.icon as keyof typeof iconMap] || Sparkles
   const colors = colorMap[service.color] || colorMap.purple
   
   return (
@@ -161,7 +137,11 @@ function ColoredText({ text }: { text: string }) {
 
 export function Services() {
   return (
-    <section id="services" className="relative py-20 md:py-32 lg:py-40 overflow-hidden">
+    <section
+      id="services"
+      className="relative py-20 md:py-32 lg:py-40 overflow-hidden"
+      aria-labelledby="services-heading"
+    >
       <SectionBackground variant="gradient" />
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.02] z-0" />
       
@@ -170,7 +150,7 @@ export function Services() {
           badge={{ icon: Sparkles, text: "Lo Que Ofrecemos" }}
           title="Soluciones"
           subtitle={<ColoredText text="Premium" />}
-          description="Productos de pintura de la más alta calidad adaptados a tus necesidades, con atención personalizada y asesoría experta"
+          description="Pinturas de la más alta calidad adaptadas a tus necesidades, con atención personalizada y asesoría experta"
           className="text-foreground"
         />
 

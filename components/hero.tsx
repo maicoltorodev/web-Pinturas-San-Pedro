@@ -7,6 +7,7 @@ import { ArrowRight, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
 import { blurDataURL } from "@/lib/image-utils"
+import { siteConfig, whatsappUrls, businessStats } from "@/lib/constants/site"
 
 export function Hero() {
   const [isMounted, setIsMounted] = useState(false)
@@ -40,7 +41,11 @@ export function Hero() {
   }, [])
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      aria-label="Hero section"
+    >
       {/* Premium Background - Simplified for mobile */}
       <div className="absolute inset-0 z-0">
         {/* Gradiente base simplificado en móvil */}
@@ -128,7 +133,7 @@ export function Hero() {
                 }} />
                 <Image
                   src="/logo.webp"
-                  alt="Pinturas San Pedro"
+                  alt={siteConfig.name}
                   fill
                   className="object-contain relative z-10 md:[filter:drop-shadow(0_0_10px_rgba(255,215,0,0.3))]"
                   priority
@@ -151,16 +156,16 @@ export function Hero() {
             <div className="flex items-center justify-center gap-3 mb-6">
               <div className="h-px w-16 bg-primary-foreground" />
               <span className="text-xl sm:text-2xl md:text-3xl font-black text-primary-foreground uppercase tracking-wider">
-                CREAMOS COLOR!
+                {siteConfig.tagline}
               </span>
               <div className="h-px w-16 bg-primary-foreground" />
             </div>
 
             {/* Description */}
             <p className="text-lg sm:text-xl md:text-2xl text-primary-foreground/80 leading-relaxed max-w-3xl mx-auto font-light">
-              Productos de pintura de la más alta calidad para tus proyectos. 
+              {siteConfig.description.split('.')[0]}.
               <span className="font-semibold text-primary-foreground"> Calidad garantizada</span>, 
-              atención personalizada y asesoría experta para encontrar el producto perfecto.
+              atención personalizada y asesoría experta.
             </p>
 
             {/* CTA Buttons */}
@@ -171,8 +176,8 @@ export function Hero() {
                 className="group bg-secondary text-secondary-foreground hover:bg-secondary/90 w-full sm:w-auto h-14 md:h-16 text-base md:text-lg px-8 md:px-10 rounded-xl shadow-premium hover:shadow-premium-lg transition-all duration-300 hover:scale-105 animate-button-glow flex items-center justify-center"
                 asChild
               >
-                <a 
-                  href="https://wa.me/573223716811?text=Hola%2C%20me%20interesa%20solicitar%20una%20cotizaci%C3%B3n%20gratuita%20de%20productos%20de%20pintura."
+                <a
+                  href={whatsappUrls.quote}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center"
@@ -196,11 +201,7 @@ export function Hero() {
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4 md:gap-8 pt-12 md:pt-16 max-w-2xl mx-auto">
-              {[
-                { number: "30+", label: "Años de Experiencia" },
-                { number: "500+", label: "Clientes Satisfechos" },
-                { number: "100%", label: "Satisfacción" },
-              ].map((stat, index) => (
+              {businessStats.map((stat, index) => (
                 <div key={index} className="text-center">
                   <div className="text-2xl md:text-3xl lg:text-4xl font-black text-secondary mb-1">
                     {stat.number}

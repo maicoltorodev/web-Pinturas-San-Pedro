@@ -28,8 +28,6 @@ export function generateBlurDataURL(width: number = 10, height: number = 10): st
 export const blurDataURL = {
   // Para logos y elementos pequeños
   small: generateBlurDataURL(40, 40),
-  // Para imágenes de productos
-  product: generateBlurDataURL(144, 144),
   // Para imágenes grandes (fachada, hero)
   large: generateBlurDataURL(20, 20),
   // Para imágenes cuadradas

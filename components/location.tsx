@@ -6,6 +6,7 @@ import { SectionBackground } from "@/components/ui/section-background"
 import { LazySection } from "@/components/lazy-section"
 import Image from "next/image"
 import { blurDataURL } from "@/lib/image-utils"
+import { contactInfo, siteConfig } from "@/lib/constants/site"
 
 export function Location() {
   return (
@@ -16,7 +17,7 @@ export function Location() {
           badge={{ icon: MapPin, text: "Ubicación" }}
           title="Visítanos"
           subtitle="En Nuestra Sede"
-          description="Encuéntranos en nuestra ubicación principal. Estamos aquí para atenderte y ayudarte a encontrar los productos de pintura que necesitas."
+          description="Encuéntranos en nuestra ubicación principal. Estamos aquí para atenderte."
           className="text-primary-foreground [&_p]:text-primary-foreground/80 mb-12 md:mb-16"
         />
         <div className="max-w-7xl mx-auto">
@@ -47,7 +48,7 @@ export function Location() {
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     className="w-full"
-                    title="Mapa de ubicación de Pinturas San Pedro - Calle 132D N 145A-02, Bogotá"
+                    title={`Mapa de ubicación de ${siteConfig.name} - ${contactInfo.address}`}
                   />
                 </div>
               </LazySection>
@@ -73,7 +74,7 @@ export function Location() {
                   <div className="relative w-full h-[450px]">
                     <Image
                       src="/fachada.webp"
-                      alt="Fachada de Pinturas San Pedro - Calle 132D N 145A-02, Bogotá"
+                      alt={`Fachada de ${siteConfig.name} - ${contactInfo.address}`}
                       fill
                       className="object-cover transition-transform duration-500 md:group-hover:scale-105"
                       sizes="(max-width: 1024px) 100vw, 50vw"
@@ -86,7 +87,7 @@ export function Location() {
                       <div className="p-6 text-primary-foreground w-full">
                         <h3 className="text-xl md:text-2xl font-black mb-2">Nuestra Tienda</h3>
                         <p className="text-sm md:text-base font-medium opacity-90">
-                          Visítanos en nuestra ubicación física para conocer todos nuestros productos y recibir asesoría personalizada.
+                          Visítanos en nuestra ubicación física para recibir asesoría personalizada.
                         </p>
                       </div>
                     </div>

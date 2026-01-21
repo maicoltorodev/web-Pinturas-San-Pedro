@@ -9,7 +9,7 @@ import { useScrollOptimized } from "@/lib/useScrollOptimized"
 export function LogoFAB() {
   const [isVisible, setIsVisible] = useState(false)
   const phoneNumber = "3223716811"
-  const message = "Hola, me interesa conocer más sobre sus productos de pintura."
+  const message = "Hola, me interesa conocer más."
   const whatsappUrl = `https://wa.me/57${phoneNumber}?text=${encodeURIComponent(message)}`
 
   const handleScroll = useCallback((scrollY: number) => {

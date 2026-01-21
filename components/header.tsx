@@ -2,24 +2,15 @@
 
 import { useState, useCallback } from "react"
 import { Button } from "@/components/ui/button"
-import { Menu, X, ArrowRight, Facebook, Instagram } from "lucide-react"
+import { Menu, X, ArrowRight } from "lucide-react"
 import { useScrollOptimized } from "@/lib/useScrollOptimized"
-import { TikTokIcon } from "@/components/ui/tiktok-icon"
+import { SocialLinks } from "@/components/ui/social-link"
+import { navigationLinks, whatsappUrls } from "@/lib/constants/site"
+import { siteConfig } from "@/lib/constants/site"
 
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { blurDataURL } from "@/lib/image-utils"
-
-// Define navLinks outside component to ensure consistency between server and client
-// This array is static and should never change during runtime
-const navLinks = [
-  { href: "/#services", label: "Soluciones" },
-  { href: "/#products", label: "Productos" },
-  { href: "/#color-palette", label: "Colores" },
-  { href: "/#testimonials", label: "Testimonios" },
-  { href: "/#location", label: "Ubicación" },
-  { href: "/#contact", label: "Contacto" },
-] as const
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -45,8 +36,9 @@ export function Header() {
           ? "bg-primary/95 md:backdrop-blur-md border-b border-primary-foreground/10 shadow-premium"
           : "bg-primary border-b border-primary-foreground/5"
       )}
+      role="banner"
     >
-      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Navegación principal">
         <div className="flex items-center h-16 md:h-20 relative">
           {/* Logo */}
           <a 
@@ -58,7 +50,7 @@ export function Header() {
             )}
             <Image
               src="/pintura-amarilla.webp"
-              alt="Pinturas San Pedro"
+              alt={siteConfig.name}
               width={280}
               height={100}
               className={cn(
@@ -76,7 +68,7 @@ export function Header() {
 
           {/* Desktop Navigation - Centrada */}
           <div className="hidden md:flex items-center gap-2 lg:gap-4 absolute left-1/2 -translate-x-1/2">
-            {navLinks.map((link, index) => (
+            {navigationLinks.map((link, index) => (
               <a
                 key={`${link.href}-${index}`}
                 href={link.href}
@@ -91,46 +83,14 @@ export function Header() {
           {/* Botón Cotizar y Redes Sociales - Derecha */}
           <div className="hidden md:flex items-center gap-3 flex-shrink-0 ml-auto">
             {/* Redes Sociales */}
-            <div className="flex items-center gap-2">
-              <a
-                href="https://www.facebook.com/pinturassanpedro"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-primary-foreground/10 hover:bg-secondary/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
-                aria-label="Facebook"
-              >
-                <Facebook className="h-4 w-4 text-primary-foreground/90 group-hover:text-secondary transition-colors" />
-              </a>
-              <a
-                href="https://www.instagram.com/pinturassanpedro"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-primary-foreground/10 hover:bg-secondary/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
-                aria-label="Instagram"
-              >
-                <Instagram className="h-4 w-4 text-primary-foreground/90 group-hover:text-secondary transition-colors" />
-              </a>
-              <a
-                href="https://www.tiktok.com/@pinturassanpedro"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-primary-foreground/10 hover:bg-secondary/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
-                aria-label="TikTok"
-              >
-                <TikTokIcon className="h-4 w-4 text-primary-foreground/90 group-hover:text-secondary transition-colors" />
-              </a>
-            </div>
+            <SocialLinks size="md" />
             <Button
               variant="secondary"
               size="default"
               className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 animate-button-glow"
               asChild
             >
-              <a 
-                href="https://wa.me/573223716811?text=Hola%2C%20me%20interesa%20solicitar%20una%20cotizaci%C3%B3n%20gratuita%20de%20productos%20de%20pintura."
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={whatsappUrls.quote} target="_blank" rel="noopener noreferrer">
                 Contactar Ahora
                 <ArrowRight className="ml-2 h-4 w-4" />
               </a>
@@ -145,11 +105,7 @@ export function Header() {
               className="bg-secondary text-secondary-foreground hover:bg-secondary/90 h-9 px-3 text-xs rounded-lg animate-button-glow-mobile"
               asChild
             >
-              <a 
-                href="https://wa.me/573223716811?text=Hola%2C%20me%20interesa%20solicitar%20una%20cotizaci%C3%B3n%20gratuita%20de%20productos%20de%20pintura."
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={whatsappUrls.quote} target="_blank" rel="noopener noreferrer">
                 Contactar Ahora
               </a>
             </Button>
@@ -159,7 +115,9 @@ export function Header() {
           <button
             className="p-2 -mr-2 rounded-lg hover:bg-primary-foreground/10 transition-colors md:hidden ml-auto"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
+            aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
           >
             {isMenuOpen ? (
               <X className="h-6 w-6 text-primary-foreground" />
@@ -171,10 +129,15 @@ export function Header() {
 
         {/* Mobile Navigation - Full Screen Overlay */}
         {isMenuOpen && (
-          <div className="fixed inset-0 top-16 md:hidden bg-primary z-40 overflow-y-auto">
+          <div
+            id="mobile-navigation"
+            className="fixed inset-0 top-16 md:hidden bg-primary z-40 overflow-y-auto"
+            role="navigation"
+            aria-label="Navegación principal"
+          >
             <div className="container mx-auto px-4 sm:px-6 py-8">
-              <div className="flex flex-col gap-4">
-                {navLinks.map((link, index) => (
+              <nav className="flex flex-col gap-4" aria-label="Enlaces de navegación">
+                {navigationLinks.map((link, index) => (
                   <a
                     key={`${link.href}-mobile-${index}`}
                     href={link.href}
@@ -190,8 +153,8 @@ export function Header() {
                   className="bg-secondary text-secondary-foreground hover:bg-secondary/90 w-full mt-4 h-14 text-base rounded-xl animate-button-glow"
                   asChild
                 >
-                  <a 
-                    href="https://wa.me/573223716811?text=Hola%2C%20me%20interesa%20solicitar%20una%20cotizaci%C3%B3n%20gratuita%20de%20productos%20de%20pintura."
+                  <a
+                    href={whatsappUrls.quote}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsMenuOpen(false)}
@@ -200,7 +163,7 @@ export function Header() {
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </a>
                 </Button>
-              </div>
+              </nav>
             </div>
           </div>
         )}

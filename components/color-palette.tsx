@@ -7,6 +7,7 @@ import { SectionHeader } from "@/components/ui/section-header"
 import { cn } from "@/lib/utils"
 import { Palette, Search, Copy, Check, X } from "lucide-react"
 import { Input } from "@/components/ui/input"
+import { whatsappUrls } from "@/lib/constants/site"
 
 const colorCategories = [
   {
@@ -224,6 +225,7 @@ export function ColorPalette() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-12 pr-4 py-3 bg-white/95 border-2 border-primary-foreground/20 rounded-xl text-foreground placeholder:text-muted-foreground focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition-all"
+              aria-label="Buscar colores"
             />
             {searchQuery && (
               <button
@@ -362,14 +364,14 @@ export function ColorPalette() {
             ¿No encuentras el color que buscas?
           </p>
           <p className="text-base text-primary-foreground/70">
-            <a
-              href="https://wa.me/573223716811?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20colores%20de%20pintura.%20Tengo%20consultas%20sobre%20colores%20personalizados%20y%20mezclas%20especiales."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-secondary hover:text-secondary/80 font-semibold underline underline-offset-2 transition-colors cursor-pointer"
-            >
-              Contáctanos para consultas sobre colores personalizados y mezclas especiales.
-            </a>
+              <a
+                href={whatsappUrls.colors}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-secondary hover:text-secondary/80 font-semibold underline underline-offset-2 transition-colors cursor-pointer"
+              >
+                Contáctanos para consultas sobre colores personalizados y mezclas especiales.
+              </a>
           </p>
           <p className="text-sm text-primary-foreground/60 mt-2">
             💡 <strong>Tip:</strong> Haz clic en cualquier color o código para copiarlo al portapapeles

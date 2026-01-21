@@ -1,23 +1,28 @@
+import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Shield, Lock, Eye, FileText } from "lucide-react"
+import { siteConfig } from "@/lib/constants/site"
 
-export const metadata = {
-  title: "Política de Privacidad - Pinturas San Pedro",
-  description: "Política de privacidad y protección de datos personales de Pinturas San Pedro",
+export const metadata: Metadata = {
+  title: `Política de Privacidad - ${siteConfig.name}`,
+  description: "Política de privacidad y protección de datos personales",
+  alternates: {
+    canonical: "/privacidad",
+  },
 }
 
 export default function PrivacidadPage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen" role="main">
       <Header />
-      <section className="pt-24 pb-20 md:pt-32 md:pb-28">
+      <section className="pt-24 pb-20 md:pt-32 md:pb-28" aria-labelledby="privacy-heading">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           <div className="mb-12 text-center">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-secondary/10 mb-6">
               <Shield className="h-8 w-8 text-secondary" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-black text-foreground mb-4">
+            <h1 id="privacy-heading" className="text-4xl md:text-5xl font-black text-foreground mb-4">
               Política de Privacidad
             </h1>
             <p className="text-foreground/70 text-lg">
@@ -35,7 +40,7 @@ export default function PrivacidadPage() {
                 En Pinturas San Pedro, recopilamos información que usted nos proporciona directamente cuando:
               </p>
               <ul className="list-disc list-inside space-y-2 text-foreground/80 ml-4">
-                <li>Solicita una cotización o consulta sobre nuestros productos</li>
+                <li>Solicita una cotización o consulta</li>
                 <li>Se comunica con nosotros a través de WhatsApp, correo electrónico o redes sociales</li>
                 <li>Visita nuestras instalaciones físicas</li>
                 <li>Interactúa con nuestro sitio web</li>
@@ -55,9 +60,9 @@ export default function PrivacidadPage() {
               </p>
               <ul className="list-disc list-inside space-y-2 text-foreground/80 ml-4">
                 <li>Procesar y responder a sus consultas y solicitudes de cotización</li>
-                <li>Proporcionar nuestros productos</li>
+                <li>Proporcionar nuestros servicios</li>
                 <li>Mejorar nuestra atención y experiencia del cliente</li>
-                <li>Enviar información sobre productos, promociones y actualizaciones (con su consentimiento)</li>
+                <li>Enviar información sobre promociones y actualizaciones (con su consentimiento)</li>
                 <li>Cumplir con obligaciones legales y regulatorias</li>
               </ul>
             </div>
@@ -81,7 +86,7 @@ export default function PrivacidadPage() {
                 No vendemos, alquilamos ni compartimos su información personal con terceros, excepto en los siguientes casos:
               </p>
               <ul className="list-disc list-inside space-y-2 text-foreground/80 ml-4">
-                <li>Cuando sea necesario para proporcionar nuestros productos (por ejemplo, con proveedores de servicios de entrega)</li>
+                <li>Cuando sea necesario para proporcionar nuestros servicios (por ejemplo, con proveedores de servicios de entrega)</li>
                 <li>Cuando sea requerido por ley o por orden judicial</li>
                 <li>Con su consentimiento explícito</li>
               </ul>

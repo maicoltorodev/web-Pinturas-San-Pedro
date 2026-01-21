@@ -1,40 +1,21 @@
 "use client"
 
 import Image from "next/image"
-import { Mail, Phone, MapPin, ArrowRight, Facebook, Instagram } from "lucide-react"
+import { Mail, Phone, MapPin, ArrowRight } from "lucide-react"
 import { blurDataURL } from "@/lib/image-utils"
-
-// TikTok Icon Component (not available in lucide-react)
-function TikTokIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className={className}
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
-    </svg>
-  )
-}
-
-// Datos estáticos fuera del componente
-const quickLinks = [
-  { href: "/#services", label: "Servicios" },
-  { href: "/#process", label: "Proceso" },
-  { href: "/#products", label: "Productos" },
-  { href: "/#color-palette", label: "Colores" },
-  { href: "/#testimonials", label: "Testimonios" },
-  { href: "/#location", label: "Ubicación" },
-  { href: "/#contact", label: "Contacto" },
-] as const
+import { siteConfig, contactInfo, businessHours, quickLinks, whatsappUrls } from "@/lib/constants/site"
+import { SocialLinks } from "@/components/ui/social-link"
 
 export function Footer() {
   // Calcular año directamente sin estado innecesario
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="relative bg-primary text-primary-foreground overflow-hidden">
+    <footer
+      className="relative bg-primary text-primary-foreground overflow-hidden"
+      role="contentinfo"
+      aria-label="Pie de página"
+    >
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_100%,_oklch(0.82_0.18_90)_0%,_transparent_50%)]" />
@@ -54,7 +35,7 @@ export function Footer() {
               >
                 <Image
                   src="/logo.webp"
-                  alt="Pinturas San Pedro"
+                  alt={siteConfig.name}
                   fill
                   className="object-contain"
                   sizes="40px"
@@ -79,54 +60,25 @@ export function Footer() {
             </div>
             <p className="text-primary-foreground/80 leading-relaxed text-sm mb-4 max-w-sm">
               <span className="font-bold text-secondary">Profesionales en Color</span> - 
-              Productos de pintura de la más alta calidad con más de 30 años de experiencia. 
-              Calidad garantizada y atención personalizada para encontrar el producto perfecto.
+              {siteConfig.description}
             </p>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20 mb-4">
               <span className="text-sm font-black text-primary-foreground uppercase tracking-wider">
-                CREAMOS COLOR!
+                {siteConfig.tagline}
               </span>
             </div>
             
             {/* Redes Sociales */}
-            <div className="flex items-center gap-3">
-              <a
-                href="https://www.facebook.com/pinturassanpedro"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-secondary/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
-                aria-label="Facebook"
-              >
-                <Facebook className="h-5 w-5 text-primary-foreground/80 group-hover:text-secondary transition-colors" />
-              </a>
-              <a
-                href="https://www.instagram.com/pinturassanpedro"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-secondary/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
-                aria-label="Instagram"
-              >
-                <Instagram className="h-5 w-5 text-primary-foreground/80 group-hover:text-secondary transition-colors" />
-              </a>
-              <a
-                href="https://www.tiktok.com/@pinturassanpedro"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-secondary/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
-                aria-label="TikTok"
-              >
-                <TikTokIcon className="h-5 w-5 text-primary-foreground/80 group-hover:text-secondary transition-colors" />
-              </a>
-              <a
-                href="https://wa.me/573223716811?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20productos%20de%20pintura."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-secondary/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
-                aria-label="WhatsApp"
-              >
-                <Phone className="h-5 w-5 text-primary-foreground/80 group-hover:text-secondary transition-colors" />
-              </a>
-            </div>
+            <SocialLinks size="md" />
+            <a
+              href={whatsappUrls.contact}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-secondary/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group mt-2"
+              aria-label="WhatsApp"
+            >
+              <Phone className="h-5 w-5 text-primary-foreground/80 group-hover:text-secondary transition-colors" />
+            </a>
           </div>
 
           {/* Quick Links */}
@@ -154,24 +106,24 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <Phone className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
                 <a
-                  href="tel:+573223716811"
+                  href={`tel:${contactInfo.phone}`}
                   className="text-primary-foreground/80 hover:text-secondary transition-colors text-sm"
                 >
-                  +57 322 3716811
+                  {contactInfo.phone}
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
                 <a
-                  href="mailto:pinturassanpedro@hotmail.com"
+                  href={`mailto:${contactInfo.email}`}
                   className="text-primary-foreground/80 hover:text-secondary transition-colors text-sm break-all"
                 >
-                  pinturassanpedro@hotmail.com
+                  {contactInfo.email}
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
-                <span className="text-primary-foreground/80 text-sm">Calle 132D N 145A-02, Bogotá</span>
+                <span className="text-primary-foreground/80 text-sm">{contactInfo.address}</span>
               </li>
             </ul>
           </div>
@@ -182,15 +134,15 @@ export function Footer() {
             <ul className="space-y-2 text-primary-foreground/80 text-sm">
               <li className="flex justify-between">
                 <span>Lunes - Viernes</span>
-                <span className="text-secondary font-semibold">7am - 6pm</span>
+                <span className="text-secondary font-semibold">{businessHours.weekdays}</span>
               </li>
               <li className="flex justify-between">
                 <span>Sábado</span>
-                <span className="text-secondary font-semibold">7am - 5pm</span>
+                <span className="text-secondary font-semibold">{businessHours.saturday}</span>
               </li>
               <li className="flex justify-between">
                 <span>Domingo</span>
-                <span className="text-secondary font-semibold">8am - 1pm</span>
+                <span className="text-secondary font-semibold">{businessHours.sunday}</span>
               </li>
             </ul>
           </div>
@@ -200,48 +152,20 @@ export function Footer() {
         <div className="border-t border-primary-foreground/10 pt-8">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-primary-foreground/60 text-xs sm:text-sm">
-              &copy; 2015-{currentYear} Pinturas San Pedro. Todos los derechos reservados.
+              &copy; 2015-{currentYear} {siteConfig.name}. Todos los derechos reservados.
             </p>
             <div className="flex items-center gap-4">
               {/* Redes Sociales en el footer inferior */}
-              <div className="flex items-center gap-3">
-                <a
-                  href="https://www.facebook.com/pinturassanpedro"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-full bg-primary-foreground/10 hover:bg-secondary/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
-                  aria-label="Facebook"
-                >
-                  <Facebook className="h-4 w-4 text-primary-foreground/60 group-hover:text-secondary transition-colors" />
-                </a>
-                <a
-                  href="https://www.instagram.com/pinturassanpedro"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-full bg-primary-foreground/10 hover:bg-secondary/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
-                  aria-label="Instagram"
-                >
-                  <Instagram className="h-4 w-4 text-primary-foreground/60 group-hover:text-secondary transition-colors" />
-                </a>
-                <a
-                  href="https://www.tiktok.com/@pinturassanpedro"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-full bg-primary-foreground/10 hover:bg-secondary/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
-                  aria-label="TikTok"
-                >
-                  <TikTokIcon className="h-4 w-4 text-primary-foreground/60 group-hover:text-secondary transition-colors" />
-                </a>
-                <a
-                  href="https://wa.me/573223716811?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20productos%20de%20pintura."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-full bg-primary-foreground/10 hover:bg-secondary/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
-                  aria-label="WhatsApp"
-                >
-                  <Phone className="h-4 w-4 text-primary-foreground/60 group-hover:text-secondary transition-colors" />
-                </a>
-              </div>
+              <SocialLinks size="sm" />
+              <a
+                href={whatsappUrls.contact}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full bg-primary-foreground/10 hover:bg-secondary/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+                aria-label="WhatsApp"
+              >
+                <Phone className="h-4 w-4 text-primary-foreground/60 group-hover:text-secondary transition-colors" />
+              </a>
               <div className="flex items-center gap-6 text-xs sm:text-sm text-primary-foreground/60">
                 <a href="/privacidad" className="hover:text-secondary transition-colors">Política de Privacidad</a>
                 <a href="/terminos" className="hover:text-secondary transition-colors">Términos y Condiciones</a>
