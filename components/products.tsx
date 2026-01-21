@@ -16,9 +16,11 @@ import { blurDataURL } from "@/lib/image-utils"
 import { useState, useMemo, useCallback } from "react"
 import { products, type Product } from "@/lib/data/products"
 import { Button } from "@/components/ui/button"
+import { useIsMobile } from "@/lib/useIsMobile"
 
 function ProductCard({ product, priority = false }: { product: Product; priority?: boolean }) {
   const Icon = product.icon
+  const isMobile = useIsMobile()
 
   const handleCardClick = useCallback(() => {
     const message = `Hola, necesito ${product.name}`
@@ -32,7 +34,7 @@ function ProductCard({ product, priority = false }: { product: Product; priority
       className={cn(
         "h-full border-2 bg-white/98 backdrop-blur-sm",
         "group relative overflow-hidden flex flex-col",
-        "transition-all duration-500 ease-out",
+        "transition-all duration-200 md:duration-500 ease-out",
         "hover:border-secondary/60 hover:shadow-premium-lg",
         "md:hover:-translate-y-1",
         "cursor-pointer"
@@ -40,7 +42,7 @@ function ProductCard({ product, priority = false }: { product: Product; priority
     >
       {/* Gradient overlay on hover */}
       <div className={cn(
-        "absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity duration-500",
+        "absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity duration-200 md:duration-500",
         "md:group-hover:opacity-5 pointer-events-none z-0",
         product.color
       )} />
@@ -72,7 +74,7 @@ function ProductCard({ product, priority = false }: { product: Product; priority
           <div className="absolute top-4 right-4 z-20">
             <div className={cn(
               "w-14 h-14 rounded-2xl bg-gradient-to-br flex items-center justify-center",
-              "shadow-xl transition-all duration-500",
+              "shadow-xl transition-all duration-200 md:duration-500",
               "md:group-hover:scale-110 md:group-hover:rotate-3",
               product.color
             )}>
@@ -83,7 +85,7 @@ function ProductCard({ product, priority = false }: { product: Product; priority
           {/* Product Image - Centered */}
           <div className="absolute inset-0 flex items-center justify-center p-8">
             <div className={cn(
-              "relative transition-transform duration-500 md:group-hover:scale-110",
+              "relative transition-transform duration-200 md:duration-500 md:group-hover:scale-110",
               // Tamaño mayor para productos específicos
               (product.name === "Impermeabilizante" ||
                 product.name === "Estuco Plástico Acrílico" ||
@@ -98,17 +100,19 @@ function ProductCard({ product, priority = false }: { product: Product; priority
                 alt={product.name}
                 fill
                 className="object-contain"
-                sizes={(product.name === "Impermeabilizante" ||
-                  product.name === "Estuco Plástico Acrílico" ||
-                  product.name === "Esmalte Tipo 1" ||
-                  product.name === "Esmalte a base agua" ||
-                  product.name === "Anticorrosivo")
-                  ? "176px" : "144px"}
+                sizes={isMobile 
+                  ? "(max-width: 768px) 100vw, 33vw"
+                  : (product.name === "Impermeabilizante" ||
+                    product.name === "Estuco Plástico Acrílico" ||
+                    product.name === "Esmalte Tipo 1" ||
+                    product.name === "Esmalte a base agua" ||
+                    product.name === "Anticorrosivo")
+                    ? "176px" : "144px"}
                 loading={priority ? "eager" : "lazy"}
                 fetchPriority={priority ? "high" : "auto"}
-                placeholder="blur"
-                blurDataURL={blurDataURL.product}
-                quality={priority ? 90 : 85}
+                placeholder={isMobile && !priority ? "empty" : "blur"}
+                blurDataURL={isMobile ? undefined : blurDataURL.product}
+                quality={priority ? 90 : isMobile ? 80 : 85}
               />
             </div>
           </div>
@@ -117,7 +121,7 @@ function ProductCard({ product, priority = false }: { product: Product; priority
         {/* Content Section */}
         <div className="p-6 flex-1 flex flex-col">
           {/* Product Name */}
-          <h3 className="text-xl md:text-2xl font-black text-foreground mb-2 leading-tight transition-colors duration-300 md:group-hover:text-secondary">
+          <h3 className="text-xl md:text-2xl font-black text-foreground mb-2 leading-tight transition-colors duration-200 md:duration-300 md:group-hover:text-secondary">
             {product.name}
           </h3>
 
@@ -171,7 +175,7 @@ function ProductCard({ product, priority = false }: { product: Product; priority
                       "flex items-center justify-center py-2 px-2 rounded-lg",
                       "bg-gradient-to-r from-secondary/5 to-secondary/10",
                       "border border-secondary/20",
-                      "transition-all duration-300",
+                      "transition-all duration-200 md:duration-300",
                       "md:group-hover:border-secondary/40 md:group-hover:from-secondary/10 md:group-hover:to-secondary/15"
                     )}
                   >

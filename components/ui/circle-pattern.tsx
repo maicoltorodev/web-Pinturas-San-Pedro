@@ -11,19 +11,19 @@ export function CirclePattern({ className, variant = "default" }: CirclePatternP
   const opacity = variant === "subtle" ? 0.35 : variant === "bold" ? 0.6 : 0.5
   
   // Optimized: Using CSS divs instead of SVG for better performance
-  // Reduced to 3 circles for optimal rendering
-  // Using percentage-based positioning for responsive scaling
-  // GPU-accelerated with transform and will-change
-  // Mobile optimized: less blur, smaller circles
+  // Mobile: 1 circle with blur-sm for better performance
+  // Desktop: 3 circles with blur-xl
+  // GPU-accelerated with transform
+  // Mobile optimized: reduced blur and fewer circles
   
   return (
     <div
       className={cn("absolute inset-0 overflow-hidden pointer-events-none", className)}
       aria-hidden="true"
     >
-      {/* Circle 1 - Top Left */}
+      {/* Circle 1 - Top Left - Visible on all devices */}
       <div
-        className="absolute rounded-full blur-lg md:blur-xl"
+        className="absolute rounded-full blur-sm md:blur-xl"
         style={{
           top: '10%',
           left: '15%',
@@ -39,9 +39,9 @@ export function CirclePattern({ className, variant = "default" }: CirclePatternP
         }}
       />
       
-      {/* Circle 2 - Center Left */}
+      {/* Circle 2 - Center Left - Desktop only */}
       <div
-        className="absolute rounded-full blur-lg md:blur-xl"
+        className="hidden md:block absolute rounded-full blur-xl"
         style={{
           top: '35%',
           left: '35%',
@@ -57,9 +57,9 @@ export function CirclePattern({ className, variant = "default" }: CirclePatternP
         }}
       />
       
-      {/* Circle 3 - Bottom Left */}
+      {/* Circle 3 - Bottom Left - Desktop only */}
       <div
-        className="absolute rounded-full blur-lg md:blur-xl"
+        className="hidden md:block absolute rounded-full blur-xl"
         style={{
           bottom: '15%',
           left: '12.5%',

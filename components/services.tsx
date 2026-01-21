@@ -137,30 +137,23 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
   )
 }
 
-// Componente helper para texto con colores por letra (solo usado en Services)
+// Componente optimizado para texto con gradiente - usa CSS gradient en lugar de renderizar letras
+// Mucho más eficiente que renderizar cada letra individualmente
 function ColoredText({ text }: { text: string }) {
-  const colors = ["#a855f7", "#ec4899", "#3b82f6", "#eab308"];
-  
   return (
-    <span className="block">
-      {text.split("").map((letter, index) => {
-        const colorIndex = index % colors.length;
-        return (
-          <span
-            key={index}
-            style={{
-              background: `linear-gradient(to right, ${colors[colorIndex]}, ${colors[colorIndex]})`,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-              color: "transparent",
-              display: "inline-block",
-            }}
-          >
-            {letter === " " ? "\u00A0" : letter}
-          </span>
-        );
-      })}
+    <span
+      className="block gradient-text"
+      style={{
+        background: "linear-gradient(to right, #a855f7, #ec4899, #3b82f6, #eab308, #a855f7)",
+        backgroundSize: "200% auto",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        backgroundClip: "text",
+        color: "transparent",
+        animation: "gradient-shift 3s ease infinite",
+      }}
+    >
+      {text}
     </span>
   );
 }

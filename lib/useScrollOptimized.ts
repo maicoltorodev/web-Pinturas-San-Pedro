@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { useIsMobile } from './useIsMobile'
 
 interface UseScrollOptimizedOptions {
   threshold?: number
@@ -17,22 +18,16 @@ export function useScrollOptimized({
 }: UseScrollOptimizedOptions = {}) {
   const rafIdRef = useRef<number | null>(null)
   const lastScrollYRef = useRef(0)
-  const isMobileRef = useRef(false)
+  const isMobile = useIsMobile()
   const lastUpdateTimeRef = useRef(0)
 
   useEffect(() => {
     if (!enabled) return
 
-    // Detectar si es móvil una sola vez
-    const checkMobile = () => {
-      isMobileRef.current = window.matchMedia('(max-width: 768px)').matches
-    }
-    checkMobile()
-
     // Throttle más agresivo en móvil: 50ms vs 16ms (60fps)
-    const throttleDelay = isMobileRef.current ? 50 : 16
+    const throttleDelay = isMobile ? 50 : 16
     // Threshold mayor en móvil para reducir updates
-    const scrollThreshold = isMobileRef.current ? threshold * 2 : threshold
+    const scrollThreshold = isMobile ? threshold * 2 : threshold
 
     const handleScroll = () => {
       // Cancelar RAF anterior si existe
@@ -73,9 +68,9 @@ export function useScrollOptimized({
         rafIdRef.current = null
       }
     }
-  }, [threshold, onScroll, enabled])
+  }, [threshold, onScroll, enabled, isMobile])
 
   return {
-    isMobile: isMobileRef.current,
+    isMobile,
   }
 }

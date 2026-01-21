@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Menu, X, ArrowRight, Facebook, Instagram } from "lucide-react"
+import { useIsMobile } from "@/lib/useIsMobile"
 
 // TikTok Icon Component (not available in lucide-react)
 function TikTokIcon({ className }: { className?: string }) {
@@ -36,6 +37,7 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isImageLoaded, setIsImageLoaded] = useState(false)
+  const isMobile = useIsMobile()
 
   useEffect(() => {
     let rafId: number | null = null
@@ -43,8 +45,6 @@ export function Header() {
     let lastIsScrolled = false
     let lastUpdateTime = 0
     
-    // Detectar móvil una sola vez
-    const isMobile = window.matchMedia('(max-width: 768px)').matches
     // Threshold mayor en móvil para reducir frecuencia de updates
     const scrollThreshold = isMobile ? 25 : 10
     // Throttling más agresivo en móvil: 50ms vs 16ms
@@ -89,7 +89,7 @@ export function Header() {
         cancelAnimationFrame(rafId)
       }
     }
-  }, []) // Sin dependencias para evitar recreación del effect
+  }, [isMobile]) // Incluir isMobile en dependencias
 
   return (
     <header

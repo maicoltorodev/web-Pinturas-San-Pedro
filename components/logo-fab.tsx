@@ -4,20 +4,20 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { blurDataURL } from "@/lib/image-utils"
+import { useIsMobile } from "@/lib/useIsMobile"
 
 export function LogoFAB() {
   const [isVisible, setIsVisible] = useState(false)
   const phoneNumber = "3223716811" // Número de WhatsApp de Pinturas San Pedro - Formato: 322 3716811
   const message = "Hola, me interesa conocer más sobre sus productos de pintura."
   const whatsappUrl = `https://wa.me/57${phoneNumber}?text=${encodeURIComponent(message)}`
+  const isMobile = useIsMobile()
 
   useEffect(() => {
     let rafId: number | null = null
     let lastScrollY = window.scrollY
     let lastUpdateTime = 0
     
-    // Detectar móvil una sola vez
-    const isMobile = window.matchMedia('(max-width: 768px)').matches
     // Threshold mayor en móvil para reducir frecuencia de updates
     const scrollThreshold = isMobile ? 30 : 10
     // Throttling más agresivo en móvil: 50ms vs 16ms
@@ -58,7 +58,7 @@ export function LogoFAB() {
         cancelAnimationFrame(rafId)
       }
     }
-  }, [])
+  }, [isMobile])
 
   return (
     <a
