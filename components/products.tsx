@@ -451,19 +451,20 @@ const products: Product[] = [
     ]
   },
   {
-    name: "Bandeja de pintura",
+    name: "Bandejas",
     category: "Herramientas",
-    description: "Bandeja de pintura plástica resistente para cargar rodillos de manera eficiente. Diseño práctico para facilitar la aplicación uniforme.",
-    features: ["Plástica resistente", "Fácil limpieza", "Diseño práctico"],
+    description: "Recipiente estructurado para verter la pintura, permitiendo una carga controlada del rodillo y eliminando el exceso mediante su zona de descarga.",
+    features: ["Carga controlada", "Zona de descarga", "Estructurado"],
     icon: Wrench,
     color: "from-gray-500 to-gray-600",
     image: "/productos/bandeja-pintura.png",
     presentations: [
-      { size: "Bandeja estándar" }
+      { size: "Estándar" }
     ],
     uses: [
+      "Verter pintura",
       "Carga de rodillos",
-      "Aplicación uniforme"
+      "Eliminar exceso"
     ]
   },
   {
@@ -483,20 +484,21 @@ const products: Product[] = [
     ]
   },
   {
-    name: "Cinta de enmascarar",
+    name: "Cinta de Enmascarar Cellux / Estándar",
     category: "Herramientas",
-    description: "Cinta de enmascarar para proteger áreas que no deseas pintar. Permite líneas limpias y precisas en tus trabajos de pintura.",
-    features: ["Protección precisa", "Líneas limpias", "Fácil remoción"],
+    description: "Para trabajos de precisión y multipropósito, destacada por ser fácil de remover sin transferir pegante a la superficie.",
+    features: ["Precisión", "Multipropósito", "Fácil de remover", "No deja pegante"],
     icon: Wrench,
     color: "from-gray-600 to-gray-700",
     image: "/productos/cinta-enmascarar.png",
     presentations: [
-      { size: "Variedad de anchos" }
+      { size: "24 mm x 40 yd" },
+      { size: "40 mm x 40 mts" }
     ],
     uses: [
-      "Protección de áreas",
-      "Líneas precisas",
-      "Bordes limpios"
+      "Trabajos de precisión",
+      "Protección de superficies",
+      "Líneas limpias"
     ]
   },
   {
@@ -583,6 +585,295 @@ const products: Product[] = [
       "Limpieza de herramientas",
       "Preparación de superficies"
     ]
+  },
+
+  // RODILLOS
+  {
+    name: "Rodillo Popular 9\"",
+    category: "Rodillos",
+    description: "Fabricado con sistema de termo fusión (sin costuras) para evitar que se suelte la felpa. Ofrece un óptimo rendimiento en la aplicación de pinturas a base de agua y vinilos.",
+    features: ["Sistema termo fusión", "Sin costuras", "Para base agua y vinilos"],
+    icon: Paintbrush,
+    color: "from-blue-400 to-blue-500",
+    image: "/productos/rodillo-popular-9''.png",
+    presentations: [{ size: "9\"" }]
+  },
+  {
+    name: "Rodillo Felpa Semiprofesional 9\"",
+    category: "Rodillos",
+    description: "Posee sistema de termo fusión y no tiene costuras. Está diseñado para ofrecer un acabado de calidad superior en superficies que requieran pinturas a base de agua o vinilos.",
+    features: ["Termo fusión", "Sin costuras", "Acabado superior", "Para base agua"],
+    icon: Paintbrush,
+    color: "from-blue-500 to-blue-600",
+    image: "/productos/rodillo-felpa-semiprofesional-9''.png",
+    presentations: [{ size: "9\"" }]
+  },
+  {
+    name: "Rodillo Profesional 9\" Anillo",
+    category: "Rodillos",
+    description: "Elaborado con felpa industrial de alta densidad y sistema de termo fusión. No tiene costuras y no deja huella al pintar. Especial para pinturas base agua.",
+    features: ["Felpa industrial alta densidad", "No deja huella", "Termo fusión", "Especial base agua"],
+    icon: Paintbrush,
+    color: "from-indigo-500 to-indigo-600",
+    image: "/productos/rodillo-profesional-9''-anillo.png",
+    presentations: [{ size: "9\"" }]
+  },
+  {
+    name: "Rodillo Hilo Antigota 9\"",
+    category: "Rodillos",
+    description: "Fabricado con hilo de microfibra de última tecnología y termo fusión. Más duradero y ideal para pinturas complejas como epóxicas, de tráfico, esmaltes y vinilos.",
+    features: ["Hilo microfibra", "Antigota", "Mayor durabilidad", "Para epóxicas y esmaltes"],
+    icon: Paintbrush,
+    color: "from-cyan-500 to-cyan-600",
+    image: "/productos/rodillo-hilo-antigota-9''.png",
+    presentations: [{ size: "9\"" }]
+  },
+  {
+    name: "Rodillo Espuma 9\"",
+    category: "Rodillos",
+    description: "Hecho de espuma de poliuretano de alta calidad. Es la herramienta básica y efectiva para aplicaciones sencillas de pinturas a base de agua.",
+    features: ["Espuma poliuretano", "Alta calidad", "Para aplicaciones sencillas"],
+    icon: Paintbrush,
+    color: "from-yellow-400 to-yellow-500",
+    image: "/productos/rodillo-espuma-9''.png",
+    presentations: [{ size: "9\"" }]
+  },
+  {
+    name: "Rodillo Teja de Felpa Industrial",
+    category: "Rodillos",
+    description: "Su estructura es ergonómica y está diseñada específicamente para adaptarse a la ondulación de las tejas tipo Eternit, facilitando el cubrimiento uniforme.",
+    features: ["Estructura ergonómica", "Para tejas onduladas", "Cubrimiento uniforme"],
+    icon: Paintbrush,
+    color: "from-orange-400 to-orange-500",
+    image: "/productos/rodillo-teja-felpa-industrial.png",
+    presentations: [{ size: "Estándar" }]
+  },
+  {
+    name: "Mini Rodillos Hilo Antigota",
+    category: "Rodillos",
+    description: "Versiones pequeñas con tecnología de microfibra y termo fusión. Ideales para marcos, esquinas y áreas de difícil acceso.",
+    features: ["Microfibra", "Termo fusión", "Para áreas difíciles", "Epóxicas y esmaltes"],
+    icon: Paintbrush,
+    color: "from-cyan-400 to-cyan-500",
+    image: "/productos/rodillo-mini-hilo-antigota.png",
+    presentations: [
+      { size: "1\"" }, { size: "2\"" }, { size: "3\"" }, 
+      { size: "4\"" }, { size: "5\"" }, { size: "6\"" }
+    ]
+  },
+  {
+    name: "Rodillo Junior",
+    category: "Rodillos",
+    description: "Versiones compactas del rodillo de felpa industrial con termo fusión. Sin costuras, para detalles en pinturas base agua.",
+    features: ["Compacto", "Felpa industrial", "Sin costuras", "Para detalles"],
+    icon: Paintbrush,
+    color: "from-green-400 to-green-500",
+    image: "/productos/rodillo-junior.png",
+    presentations: [
+      { size: "7\"" }, { size: "5\"" }, { size: "3\"" }
+    ]
+  },
+  {
+    name: "Rodillo Texturizador",
+    category: "Rodillos",
+    description: "Rodillo especial con relieve diseñado para crear acabados decorativos, texturas y efectos rústicos en paredes o techos.",
+    features: ["Con relieve", "Acabados decorativos", "Efectos rústicos"],
+    icon: Paintbrush,
+    color: "from-purple-400 to-purple-500",
+    image: "/productos/rodillo-texturizador.png",
+    presentations: [
+      { size: "9\"" }, { size: "7\"" }, { size: "5\"" }, { size: "3\"" }
+    ]
+  },
+  {
+    name: "Rodillo Epóxico 9\"",
+    category: "Rodillos",
+    description: "Reforzado con termo fusión para resistir los químicos de las pinturas epóxicas, de tráfico y esmaltes, asegurando que la felpa no se desprenda.",
+    features: ["Resistente a químicos", "Para epóxicas y tráfico", "Felpa asegurada"],
+    icon: Paintbrush,
+    color: "from-red-400 to-red-500",
+    image: "/productos/rodillo-epoxico-9''.png",
+    presentations: [{ size: "9\"" }]
+  },
+  {
+    name: "Rodillo Teja Ovejero",
+    category: "Rodillos",
+    description: "Similar al de felpa industrial pero con material \"ovejero\" para una mayor carga de pintura en superficies irregulares de tejas.",
+    features: ["Material ovejero", "Mayor carga de pintura", "Para superficies irregulares"],
+    icon: Paintbrush,
+    color: "from-amber-400 to-amber-500",
+    image: "/productos/rodillo-teja-ovejero.png",
+    presentations: [{ size: "Estándar" }]
+  },
+  {
+    name: "Rodillo Felpa Ovejera 9\"",
+    category: "Rodillos",
+    description: "Rodillo de alta capacidad de absorción con sistema de termo fusión, ideal para cubrir grandes áreas con pintura base agua rápidamente.",
+    features: ["Alta absorción", "Termo fusión", "Para grandes áreas"],
+    icon: Paintbrush,
+    color: "from-amber-200 to-amber-300",
+    image: "/productos/rodillo-felpa-ovejera-9''.png",
+    presentations: [{ size: "9\"" }]
+  },
+
+  // BROCHAS
+  {
+    name: "Brocha Cerda Popular (Superka)",
+    category: "Brochas",
+    description: "Es una brocha versátil y económica diseñada para aplicar toda clase de pinturas en trabajos generales.",
+    features: ["Versátil", "Económica", "Para trabajos generales"],
+    icon: Brush,
+    color: "from-orange-300 to-orange-400",
+    image: "/productos/brocha-cerda-popular.png",
+    presentations: [
+      { size: "2 1/2\"" }, { size: "3\"" }, { size: "4\"" }
+    ]
+  },
+  {
+    name: "Brocha Cerda Premium",
+    category: "Brochas",
+    description: "Se distingue por su empaque rojo. Es de calidad superior, con mejor retención de pintura y apta para acabados exigentes con cualquier tipo de pintura.",
+    features: ["Calidad superior", "Mejor retención", "Para acabados exigentes"],
+    icon: Brush,
+    color: "from-red-500 to-red-600",
+    image: "/productos/brocha-cerda-premium.png",
+    presentations: [
+      { size: "1/2\"" }, { size: "1\"" }, { size: "1 1/2\"" }, 
+      { size: "2\"" }, { size: "2 1/2\"" }, { size: "3\"" }, 
+      { size: "4\"" }, { size: "5\"" }
+    ]
+  },
+
+  // OTROS (HERRAMIENTAS Y COMPLEMENTOS)
+  {
+    name: "Mezclador",
+    category: "Herramientas",
+    description: "Herramienta plástica diseñada para batir la pintura y asegurar que los pigmentos y resinas se integren perfectamente.",
+    features: ["Plástico", "Integración de pigmentos", "Fácil uso"],
+    icon: Wrench,
+    color: "from-gray-400 to-gray-500",
+    image: "/productos/mezclador.png"
+  },
+  {
+    name: "Destapacuñete",
+    category: "Herramientas",
+    description: "Herramienta especializada para abrir las tapas de los cuñetes de pintura de forma rápida, evitando daños y desperdicios.",
+    features: ["Apertura rápida", "Evita daños", "Sin desperdicios"],
+    icon: Wrench,
+    color: "from-gray-500 to-gray-600",
+    image: "/productos/destapacuñete.png"
+  },
+  {
+    name: "Espátula Plástica",
+    category: "Herramientas",
+    description: "Ligeras y flexibles, diseñadas específicamente para aplicar masilla y resanar agujeros en paredes.",
+    features: ["Ligera", "Flexible", "Para masilla"],
+    icon: Wrench,
+    color: "from-blue-300 to-blue-400",
+    image: "/productos/espatula-plastica.png",
+    presentations: [
+      { size: "4\"" }, { size: "5\"" }, { size: "6\"" }
+    ]
+  },
+  {
+    name: "Espátula Boreal Acero al Carbón",
+    category: "Herramientas",
+    description: "Herramienta profesional de alta durabilidad para raspar superficies o aplicar materiales más densos.",
+    features: ["Alta durabilidad", "Acero al carbón", "Para raspar"],
+    icon: Wrench,
+    color: "from-gray-600 to-gray-700",
+    image: "/productos/espatula-acero-carbon.png",
+    presentations: [
+      { size: "4\"" }, { size: "5\"" }
+    ]
+  },
+  {
+    name: "Cepillo de Alambre Todo Uso",
+    category: "Herramientas",
+    description: "Con cerdas de acero, ideal para limpiar superficies oxidadas, remover pintura vieja o limpiar herramientas.",
+    features: ["Cerdas de acero", "Remoción de óxido", "Limpieza profunda"],
+    icon: Wrench,
+    color: "from-red-600 to-red-700",
+    image: "/productos/cepillo-alambre.png"
+  },
+  {
+    name: "Lija de Agua Negra",
+    category: "Herramientas",
+    description: "Para lijado fino y acabados suaves usando agua como lubricante.",
+    features: ["Lijado fino", "Acabados suaves", "Uso con agua"],
+    icon: Wrench,
+    color: "from-gray-800 to-gray-900",
+    image: "/productos/lija-agua-negra.png",
+    presentations: [{ size: "Granos 60 a 600" }]
+  },
+  {
+    name: "Lija Roja en Seco",
+    category: "Herramientas",
+    description: "Para desbaste y preparación de superficies de madera o pared sin necesidad de líquidos.",
+    features: ["Lijado en seco", "Desbaste", "Para madera o pared"],
+    icon: Wrench,
+    color: "from-red-400 to-red-500",
+    image: "/productos/lija-rojo-seco.png",
+    presentations: [{ size: "Granos 60 a 600" }]
+  },
+  {
+    name: "Pasta de Pulir Mercury",
+    category: "Herramientas",
+    description: "Compuesto abrasivo fino para dar brillo y acabado espejo a superficies pintadas.",
+    features: ["Abrasivo fino", "Da brillo", "Acabado espejo"],
+    icon: Sparkles,
+    color: "from-amber-100 to-amber-200",
+    image: "/productos/pasta-pulir.png",
+    presentations: [{ size: "700 g" }]
+  },
+  {
+    name: "Disco de Desbaste y Pulido",
+    category: "Herramientas",
+    description: "Disco Flap Grano 60, diseñado para esmerilar y pulir metal (hierro) y madera.",
+    features: ["Grano 60", "Esmerilar", "Pulir metal y madera"],
+    icon: Wrench,
+    color: "from-blue-700 to-blue-800",
+    image: "/productos/disco-desbaste-pulido.png"
+  },
+  {
+    name: "Veteador WI 4+6\"",
+    category: "Herramientas",
+    description: "Veteador mediano con aplicador de caucho. Ideal para crear efectos decorativos que imitan las vetas naturales de la madera.",
+    features: ["Efectos madera", "Aplicador de caucho", "Decorativo"],
+    icon: Palette,
+    color: "from-amber-600 to-amber-700",
+    image: "/productos/veteador-wi.png",
+    presentations: [{ size: "4+6\"" }]
+  },
+  {
+    name: "Veteador SBWR-2.5\"",
+    category: "Herramientas",
+    description: "Veteador de tamaño mediano con mango de madera. Específicamente diseñado para imitar motivos leñosos naturales.",
+    features: ["Motivos leñosos", "Mango de madera", "Decorativo"],
+    icon: Palette,
+    color: "from-amber-700 to-amber-800",
+    image: "/productos/veteador-sbwr.png",
+    presentations: [{ size: "2.5\"" }]
+  },
+  {
+    name: "Veteador SB-PY 4\"",
+    category: "Herramientas",
+    description: "Veteador de tamaño mediano con mango de plástico. Recomendado para lograr acabados decorativos tipo madera.",
+    features: ["Acabados tipo madera", "Mango plástico", "Decorativo"],
+    icon: Palette,
+    color: "from-amber-500 to-amber-600",
+    image: "/productos/veteador-sb-py.png",
+    presentations: [{ size: "4\"" }]
+  },
+  {
+    name: "Veteador SB-PB 5\"",
+    category: "Herramientas",
+    description: "Versión de tamaño grande con mango de madera. Ideal para superficies más amplias donde se requiera imitar el aspecto natural de la madera.",
+    features: ["Superficies amplias", "Aspecto natural", "Tamaño grande"],
+    icon: Palette,
+    color: "from-amber-400 to-amber-500",
+    image: "/productos/veteador-sb-pb.png",
+    presentations: [{ size: "5\"" }]
   }
 ]
 
