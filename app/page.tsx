@@ -4,43 +4,35 @@ import dynamic from "next/dynamic"
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
 import { LazySection } from "@/components/lazy-section"
-import { Skeleton } from "@/components/ui/skeleton"
 
 // Lazy load components below the fold for better initial load
-// Using loading option for better UX
+// SSR disabled for true client-side lazy loading and better performance
 const Services = dynamic(() => import("@/components/services").then(mod => ({ default: mod.Services })), {
-  ssr: true, // Enable SSR for better SEO
-  loading: () => <Skeleton className="h-96 w-full" />,
+  ssr: false,
 })
 
 const ColorPalette = dynamic(() => import("@/components/color-palette").then(mod => ({ default: mod.ColorPalette })), {
-  ssr: true,
-  loading: () => <Skeleton className="h-96 w-full" />,
+  ssr: false,
 })
 
 const Process = dynamic(() => import("@/components/process").then(mod => ({ default: mod.Process })), {
-  ssr: true,
-  loading: () => <Skeleton className="h-96 w-full" />,
+  ssr: false,
 })
 
 const Location = dynamic(() => import("@/components/location").then(mod => ({ default: mod.Location })), {
-  ssr: true,
-  loading: () => <Skeleton className="h-96 w-full" />,
+  ssr: false,
 })
 
 const Testimonials = dynamic(() => import("@/components/testimonials").then(mod => ({ default: mod.Testimonials })), {
-  ssr: true,
-  loading: () => <Skeleton className="h-96 w-full" />,
+  ssr: false,
 })
 
 const Contact = dynamic(() => import("@/components/contact").then(mod => ({ default: mod.Contact })), {
-  ssr: true,
-  loading: () => <Skeleton className="h-96 w-full" />,
+  ssr: false,
 })
 
 const Footer = dynamic(() => import("@/components/footer").then(mod => ({ default: mod.Footer })), {
-  ssr: true,
-  loading: () => <Skeleton className="h-32 w-full" />,
+  ssr: false,
 })
 
 export default function Home() {
@@ -48,25 +40,25 @@ export default function Home() {
     <main className="min-h-screen" role="main">
       <Header />
       <Hero />
-      <LazySection fallback={<Skeleton className="h-96 w-full" />}>
+      <LazySection fallback={<div className="h-64" />}>
         <Services />
       </LazySection>
-      <LazySection fallback={<Skeleton className="h-96 w-full" />}>
+      <LazySection fallback={<div className="h-64" />}>
         <ColorPalette />
       </LazySection>
-      <LazySection fallback={<Skeleton className="h-96 w-full" />}>
+      <LazySection fallback={<div className="h-64" />}>
         <Process />
       </LazySection>
-      <LazySection fallback={<Skeleton className="h-96 w-full" />}>
+      <LazySection fallback={<div className="h-64" />}>
         <Testimonials />
       </LazySection>
-      <LazySection fallback={<Skeleton className="h-96 w-full" />}>
+      <LazySection fallback={<div className="h-64" />}>
         <Location />
       </LazySection>
-      <LazySection fallback={<Skeleton className="h-96 w-full" />}>
+      <LazySection fallback={<div className="h-64" />}>
         <Contact />
       </LazySection>
-      <LazySection fallback={<Skeleton className="h-32 w-full" />}>
+      <LazySection fallback={<div className="h-32" />}>
         <Footer />
       </LazySection>
     </main>
