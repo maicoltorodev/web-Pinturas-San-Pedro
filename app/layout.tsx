@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://demo-pinturas-san-pedro.vercel.app'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://pinturas-san-pedro.vercel.app'),
   applicationName: "Pinturas San Pedro",
   category: "Productos de Pintura",
   alternates: {
