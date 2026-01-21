@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
+import { blurDataURL } from "@/lib/image-utils"
 
 export function LogoFAB() {
   const [isVisible, setIsVisible] = useState(false)
@@ -78,11 +79,14 @@ export function LogoFAB() {
           }}
         >
           <Image
-            src="/logo.png"
+            src="/logo.webp"
             alt="Pinturas San Pedro"
             fill
             className="object-contain transition-transform duration-500 group-hover:scale-110"
             sizes="96px"
+            loading="lazy"
+            placeholder="blur"
+            blurDataURL={blurDataURL.small}
             style={{ 
               filter: 'drop-shadow(0 0 4px rgba(255, 215, 0, 0.8))',
               objectFit: 'contain',

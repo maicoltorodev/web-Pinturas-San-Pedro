@@ -5,6 +5,7 @@ import { SectionHeader } from "@/components/ui/section-header"
 import { SectionBackground } from "@/components/ui/section-background"
 import { LazySection } from "@/components/lazy-section"
 import Image from "next/image"
+import { blurDataURL } from "@/lib/image-utils"
 
 export function Location() {
   return (
@@ -71,13 +72,14 @@ export function Location() {
                 <div className="rounded-2xl overflow-hidden shadow-premium-lg border-4 border-secondary bg-card/10 md:backdrop-blur-sm relative group">
                   <div className="relative w-full h-[450px]">
                     <Image
-                      src="/fachada.png"
+                      src="/fachada.webp"
                       alt="Fachada de Pinturas San Pedro - Calle 132D N 145A-02, Bogotá"
                       fill
                       className="object-cover transition-transform duration-500 md:group-hover:scale-105"
                       sizes="(max-width: 1024px) 100vw, 50vw"
-                      priority={false}
                       loading="lazy"
+                      placeholder="blur"
+                      blurDataURL={blurDataURL.large}
                     />
                     {/* Overlay con información */}
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/40 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 flex items-end">

@@ -17,6 +17,7 @@ import {
   LucideIcon
 } from "lucide-react"
 import Image from "next/image"
+import { blurDataURL } from "@/lib/image-utils"
 import { useState, useMemo, useCallback } from "react"
 
 // Types
@@ -49,7 +50,7 @@ const products: Product[] = [
     features: ["Acabado mate lavable", "Con cubrimiento", "Bajo aroma", "Con nivelación"],
     icon: Paintbrush,
     color: "from-green-500 to-green-600",
-    image: "/productos/vinilo-acrilico.png",
+    image: "/productos/vinilo-acrilico.webp",
     presentations: [
       { size: "Cuñete" },
       { size: "Medio" },
@@ -65,7 +66,7 @@ const products: Product[] = [
     features: ["Acabado mate", "Con cubrimiento", "Bajo aroma", "Opción semilavable"],
     icon: Paintbrush,
     color: "from-teal-500 to-teal-600",
-    image: "/productos/vinilo-semilavable.png",
+    image: "/productos/vinilo-semilavable.webp",
     presentations: [
       { size: "Cuñete" },
       { size: "Medio" },
@@ -80,7 +81,7 @@ const products: Product[] = [
     features: ["Acabado satinado", "Hidrofugable", "Con resistencia", "Fachadas o uso interior"],
     icon: Paintbrush,
     color: "from-purple-500 to-purple-600",
-    image: "/productos/vinilo-hidrofugado.png",
+    image: "/productos/vinilo-hidrofugado.webp",
     presentations: [
       { size: "Cuñete" },
       { size: "Medio" },
@@ -94,7 +95,7 @@ const products: Product[] = [
     features: ["Económica", "Con calidad", "Fácil aplicación"],
     icon: Brush,
     color: "from-gray-500 to-gray-600",
-    image: "/productos/vinilo-tipo-2-certificado.png",
+    image: "/productos/vinilo-tipo-2-certificado.webp",
     presentations: [
       { size: "Cuñete" },
       { size: "Medio" },
@@ -108,7 +109,7 @@ const products: Product[] = [
     features: ["Acabado mate lavable", "Con cubrimiento", "Bajo aroma", "Con nivelación", "Certificado"],
     icon: Paintbrush,
     color: "from-green-600 to-green-700",
-    image: "/productos/vinilo-tipo-1-certificado.png",
+    image: "/productos/vinilo-tipo-1-certificado.webp",
     presentations: [
       { size: "Cuñete" },
       { size: "Medio" },
@@ -123,7 +124,7 @@ const products: Product[] = [
     features: ["Económica", "Con calidad", "Fácil aplicación"],
     icon: Brush,
     color: "from-gray-400 to-gray-500",
-    image: "/productos/vinilo-tipo-3.png",
+    image: "/productos/vinilo-tipo-3.webp",
     presentations: [
       { size: "Cuñete" },
       { size: "Medio" },
@@ -139,7 +140,7 @@ const products: Product[] = [
     features: ["Protección contra oxidación", "Mejora adhesión del esmalte", "Secado rápido", "Con resistencia"],
     icon: Shield,
     color: "from-orange-500 to-orange-600",
-    image: "/productos/anticorrosivo.png",
+    image: "/productos/anticorrosivo.webp",
     presentations: [
       { size: "Cuñete" },
       { size: "Medio" },
@@ -167,7 +168,7 @@ const products: Product[] = [
     features: ["Con protección", "Decoración", "Durabilidad"],
     icon: Sparkles,
     color: "from-blue-500 to-blue-600",
-    image: "/productos/esmalte-especial.png",
+    image: "/productos/esmalte-especial.webp",
     uses: [
       "Rejas, puertas, ventanas",
       "Marcos, persianas",
@@ -187,7 +188,7 @@ const products: Product[] = [
     features: ["Con protección", "Con calidad", "Con acabado"],
     icon: Sparkles,
     color: "from-amber-500 to-amber-600",
-    image: "/productos/esmalte-premium.png",
+    image: "/productos/esmalte-premium.webp",
     uses: [
       "Rejas, puertas, ventanas",
       "Marcos, persianas",
@@ -207,7 +208,7 @@ const products: Product[] = [
     features: ["Protección", "Decoración", "Versatilidad"],
     icon: Sparkles,
     color: "from-blue-400 to-blue-500",
-    image: "/productos/esmalte-tipo-1.png",
+    image: "/productos/esmalte-tipo-1.webp",
     uses: [
       "Rejas, puertas, ventanas",
       "Marcos, persianas",
@@ -226,7 +227,7 @@ const products: Product[] = [
     features: ["A base de agua", "Ecológico", "Con protección", "Fácil aplicación"],
     icon: Sparkles,
     color: "from-emerald-500 to-emerald-600",
-    image: "/productos/esmalte-base-agua.png",
+    image: "/productos/esmalte-base-agua.webp",
     uses: [
       "Rejas, puertas, ventanas",
       "Marcos, persianas",
@@ -247,7 +248,7 @@ const products: Product[] = [
     features: ["Con resistencia al desgaste", "Secado rápido", "Con durabilidad"],
     icon: Car,
     color: "from-red-500 to-red-600",
-    image: "/productos/trafico-pesado.png",
+    image: "/productos/trafico-pesado.webp",
     uses: [
       "Estacionamientos",
       "Carreteras",
@@ -268,7 +269,7 @@ const products: Product[] = [
     features: ["Acabado liso", "Con adherencia", "Fácil aplicación"],
     icon: Layers,
     color: "from-indigo-500 to-indigo-600",
-    image: "/productos/estuco-plastico-acrilico.png",
+    image: "/productos/estuco-plastico-acrilico.webp",
     presentations: [
       { size: "Cuñete" },
       { size: "Medio" },
@@ -287,7 +288,7 @@ const products: Product[] = [
     features: ["Acabado texturizado", "Decorativo", "Resistente"],
     icon: Layers,
     color: "from-blue-500 to-blue-600",
-    image: "/productos/graniplas.png",
+    image: "/productos/graniplas.webp",
     presentations: [
       { size: "Cuñete" },
       { size: "Medio" },
@@ -305,7 +306,7 @@ const products: Product[] = [
     features: ["Con adherencia", "Flexibilidad", "Decorativo"],
     icon: Layers,
     color: "from-cyan-500 to-cyan-600",
-    image: "/productos/garraplast.png",
+    image: "/productos/garraplast.webp",
     presentations: [
       { size: "Cuñete" },
       { size: "Medio" },
@@ -322,7 +323,7 @@ const products: Product[] = [
     features: ["Nivelación", "Preparación de superficies", "Acabado uniforme"],
     icon: Layers,
     color: "from-slate-500 to-slate-600",
-    image: "/productos/pasta acrilica.png",
+    image: "/productos/pasta acrilica.webp",
     presentations: [
       { size: "Cuñete" },
       { size: "Medio" },
@@ -342,7 +343,7 @@ const products: Product[] = [
     features: ["Protección contra filtraciones", "Alto rendimiento", "Resistente a condiciones extremas", "Alarga vida útil"],
     icon: Droplet,
     color: "from-blue-500 to-blue-600",
-    image: "/productos/Impermeabilizante_Uretanico.png",
+    image: "/productos/Impermeabilizante_Uretanico.webp",
     presentations: [
       { size: "Cuñete" },
       { size: "Medio" },
@@ -363,7 +364,7 @@ const products: Product[] = [
     features: ["Recambios disponibles", "Diferentes largos", "Fácil instalación"],
     icon: Wrench,
     color: "from-gray-400 to-gray-500",
-    image: "/productos/recambio-rodillo.png",
+    image: "/productos/recambio-rodillo.webp",
     presentations: [
       { size: "Variedad de tamaños" }
     ],
@@ -379,7 +380,7 @@ const products: Product[] = [
     features: ["Carga controlada", "Zona de descarga", "Estructurado"],
     icon: Wrench,
     color: "from-gray-500 to-gray-600",
-    image: "/productos/bandeja-pintura.png",
+    image: "/productos/bandeja-pintura.webp",
     presentations: [
       { size: "Estándar" }
     ],
@@ -396,7 +397,7 @@ const products: Product[] = [
     features: ["Elimina exceso", "Reduce desperdicio", "Mejora aplicación"],
     icon: Wrench,
     color: "from-gray-400 to-gray-500",
-    image: "/productos/rejilla-pintura.png",
+    image: "/productos/rejilla-pintura.webp",
     presentations: [
       { size: "Rejilla estándar" }
     ],
@@ -412,7 +413,7 @@ const products: Product[] = [
     features: ["Precisión", "Multipropósito", "Fácil de remover", "No deja pegante"],
     icon: Wrench,
     color: "from-gray-600 to-gray-700",
-    image: "/productos/cinta-enmascarar.png",
+    image: "/productos/cinta-enmascarar.webp",
     presentations: [
       { size: "24 mm x 40 yd" },
       { size: "40 mm x 40 mts" }
@@ -430,7 +431,7 @@ const products: Product[] = [
     features: ["Protección completa", "Resistentes", "Reutilizables"],
     icon: Wrench,
     color: "from-gray-500 to-gray-600",
-    image: "/productos/plastico-protector.png",
+    image: "/productos/plastico-protector.webp",
     presentations: [
       { size: "Variedad de tamaños" }
     ],
@@ -447,7 +448,7 @@ const products: Product[] = [
     features: ["Alcance extendido", "Ajustable", "Fácil de usar"],
     icon: Wrench,
     color: "from-gray-600 to-gray-700",
-    image: "/productos/extension-rodillo.png",
+    image: "/productos/extension-rodillo.webp",
     presentations: [
       { size: "Extensión estándar" }
     ],
@@ -464,7 +465,7 @@ const products: Product[] = [
     features: ["Resistente", "Con asa", "Fácil manejo"],
     icon: Wrench,
     color: "from-gray-500 to-gray-600",
-    image: "/productos/cubeta-pintura.png",
+    image: "/productos/cubeta-pintura.webp",
     presentations: [
       { size: "Variedad de capacidades" }
     ],
@@ -481,7 +482,7 @@ const products: Product[] = [
     features: ["Protección de superficies", "Resistente", "Fácil de usar"],
     icon: Wrench,
     color: "from-gray-500 to-gray-600",
-    image: "/productos/carton-corrugado-Photoroom.png",
+    image: "/productos/carton-corrugado-Photoroom.webp",
     presentations: [
       { size: "Variedad de tamaños" }
     ],
@@ -498,7 +499,7 @@ const products: Product[] = [
     features: ["Limpieza de herramientas", "Preparación de superficies"],
     icon: Wrench,
     color: "from-gray-600 to-gray-700",
-    image: "/productos/disolvente.png",
+    image: "/productos/disolvente.webp",
     presentations: [
       { size: "Galón" },
       { size: "Medio" }
@@ -517,7 +518,7 @@ const products: Product[] = [
     features: ["Sistema termo fusión", "Sin costuras", "Para base agua y vinilos"],
     icon: Paintbrush,
     color: "from-blue-400 to-blue-500",
-    image: "/productos/rodillo-popular-9''.png",
+    image: "/productos/rodillo-popular-9''.webp",
     presentations: [{ size: "9\"" }]
   },
   {
@@ -527,7 +528,7 @@ const products: Product[] = [
     features: ["Termo fusión", "Sin costuras", "Acabado superior", "Para base agua"],
     icon: Paintbrush,
     color: "from-blue-500 to-blue-600",
-    image: "/productos/rodillo-felpa-semiprofesional-9''.png",
+    image: "/productos/rodillo-felpa-semiprofesional-9''.webp",
     presentations: [{ size: "9\"" }]
   },
   {
@@ -537,7 +538,7 @@ const products: Product[] = [
     features: ["Felpa industrial alta densidad", "No deja huella", "Termo fusión", "Especial base agua"],
     icon: Paintbrush,
     color: "from-indigo-500 to-indigo-600",
-    image: "/productos/rodillo-profesional-9''-anillo.png",
+    image: "/productos/rodillo-profesional-9''-anillo.webp",
     presentations: [{ size: "9\"" }]
   },
   {
@@ -547,7 +548,7 @@ const products: Product[] = [
     features: ["Hilo microfibra", "Antigota", "Mayor durabilidad", "Para epóxicas y esmaltes"],
     icon: Paintbrush,
     color: "from-cyan-500 to-cyan-600",
-    image: "/productos/rodillo-hilo-antigota-9''.png",
+    image: "/productos/rodillo-hilo-antigota-9''.webp",
     presentations: [{ size: "9\"" }]
   },
   {
@@ -557,7 +558,7 @@ const products: Product[] = [
     features: ["Espuma poliuretano", "Alta calidad", "Para aplicaciones sencillas"],
     icon: Paintbrush,
     color: "from-yellow-400 to-yellow-500",
-    image: "/productos/rodillo-espuma-9''.png",
+    image: "/productos/rodillo-espuma-9''.webp",
     presentations: [{ size: "9\"" }]
   },
   {
@@ -567,7 +568,7 @@ const products: Product[] = [
     features: ["Estructura ergonómica", "Para tejas onduladas", "Cubrimiento uniforme"],
     icon: Paintbrush,
     color: "from-orange-400 to-orange-500",
-    image: "/productos/rodillo-teja-felpa-industrial.png",
+    image: "/productos/rodillo-teja-felpa-industrial.webp",
     presentations: [{ size: "Estándar" }]
   },
   {
@@ -577,7 +578,7 @@ const products: Product[] = [
     features: ["Microfibra", "Termo fusión", "Para áreas difíciles", "Epóxicas y esmaltes"],
     icon: Paintbrush,
     color: "from-cyan-400 to-cyan-500",
-    image: "/productos/rodillo-mini-hilo-antigota.png",
+    image: "/productos/rodillo-mini-hilo-antigota.webp",
     presentations: [
       { size: "1\"" }, { size: "2\"" }, { size: "3\"" },
       { size: "4\"" }, { size: "5\"" }, { size: "6\"" }
@@ -590,7 +591,7 @@ const products: Product[] = [
     features: ["Compacto", "Felpa industrial", "Sin costuras", "Para detalles"],
     icon: Paintbrush,
     color: "from-green-400 to-green-500",
-    image: "/productos/rodillo-junior.png",
+    image: "/productos/rodillo-junior.webp",
     presentations: [
       { size: "7\"" }, { size: "5\"" }, { size: "3\"" }
     ]
@@ -602,7 +603,7 @@ const products: Product[] = [
     features: ["Con relieve", "Acabados decorativos", "Efectos rústicos"],
     icon: Paintbrush,
     color: "from-purple-400 to-purple-500",
-    image: "/productos/rodillo-texturizador.png",
+    image: "/productos/rodillo-texturizador.webp",
     presentations: [
       { size: "9\"" }, { size: "7\"" }, { size: "5\"" }, { size: "3\"" }
     ]
@@ -614,7 +615,7 @@ const products: Product[] = [
     features: ["Resistente a químicos", "Para epóxicas y tráfico", "Felpa asegurada"],
     icon: Paintbrush,
     color: "from-red-400 to-red-500",
-    image: "/productos/rodillo-epoxico-9''.png",
+    image: "/productos/rodillo-epoxico-9''.webp",
     presentations: [{ size: "9\"" }]
   },
   {
@@ -624,7 +625,7 @@ const products: Product[] = [
     features: ["Material ovejero", "Mayor carga de pintura", "Para superficies irregulares"],
     icon: Paintbrush,
     color: "from-amber-400 to-amber-500",
-    image: "/productos/rodillo-teja-ovejero.png",
+    image: "/productos/rodillo-teja-ovejero.webp",
     presentations: [{ size: "Estándar" }]
   },
   {
@@ -634,7 +635,7 @@ const products: Product[] = [
     features: ["Alta absorción", "Termo fusión", "Para grandes áreas"],
     icon: Paintbrush,
     color: "from-amber-200 to-amber-300",
-    image: "/productos/rodillo-felpa-ovejera-9''.png",
+    image: "/productos/rodillo-felpa-ovejera-9''.webp",
     presentations: [{ size: "9\"" }]
   },
 
@@ -646,7 +647,7 @@ const products: Product[] = [
     features: ["Versátil", "Económica", "Para trabajos generales"],
     icon: Brush,
     color: "from-orange-300 to-orange-400",
-    image: "/productos/brocha-cerda-popular.png",
+    image: "/productos/brocha-cerda-popular.webp",
     presentations: [
       { size: "2 1/2\"" }, { size: "3\"" }, { size: "4\"" }
     ]
@@ -658,7 +659,7 @@ const products: Product[] = [
     features: ["Calidad superior", "Mejor retención", "Para acabados exigentes"],
     icon: Brush,
     color: "from-red-500 to-red-600",
-    image: "/productos/brocha-cerda-premium.png",
+    image: "/productos/brocha-cerda-premium.webp",
     presentations: [
       { size: "1/2\"" }, { size: "1\"" }, { size: "1 1/2\"" },
       { size: "2\"" }, { size: "2 1/2\"" }, { size: "3\"" },
@@ -674,7 +675,7 @@ const products: Product[] = [
     features: ["Plástico", "Integración de pigmentos", "Fácil uso"],
     icon: Wrench,
     color: "from-gray-400 to-gray-500",
-    image: "/productos/mezclador.png"
+    image: "/productos/mezclador.webp"
   },
   {
     name: "Destapacuñete",
@@ -683,7 +684,7 @@ const products: Product[] = [
     features: ["Apertura rápida", "Evita daños", "Sin desperdicios"],
     icon: Wrench,
     color: "from-gray-500 to-gray-600",
-    image: "/productos/destapacuñete.png"
+    image: "/productos/destapacuñete.webp"
   },
   {
     name: "Espátula Plástica",
@@ -692,7 +693,7 @@ const products: Product[] = [
     features: ["Ligera", "Flexible", "Para masilla"],
     icon: Wrench,
     color: "from-blue-300 to-blue-400",
-    image: "/productos/espatula-plastica.png",
+    image: "/productos/espatula-plastica.webp",
     presentations: [
       { size: "4\"" }, { size: "5\"" }, { size: "6\"" }
     ]
@@ -704,7 +705,7 @@ const products: Product[] = [
     features: ["Alta durabilidad", "Acero al carbón", "Para raspar"],
     icon: Wrench,
     color: "from-gray-600 to-gray-700",
-    image: "/productos/espatula-acero-carbon.png",
+    image: "/productos/espatula-acero-carbon.webp",
     presentations: [
       { size: "4\"" }, { size: "5\"" }
     ]
@@ -716,7 +717,7 @@ const products: Product[] = [
     features: ["Cerdas de acero", "Remoción de óxido", "Limpieza profunda"],
     icon: Wrench,
     color: "from-red-600 to-red-700",
-    image: "/productos/cepillo-alambre.png"
+    image: "/productos/cepillo-alambre.webp"
   },
   {
     name: "Lija de Agua Negra",
@@ -725,7 +726,7 @@ const products: Product[] = [
     features: ["Lijado fino", "Acabados suaves", "Uso con agua"],
     icon: Wrench,
     color: "from-gray-800 to-gray-900",
-    image: "/productos/lija-agua-negra.png",
+    image: "/productos/lija-agua-negra.webp",
     presentations: [{ size: "Granos 60 a 600" }]
   },
   {
@@ -735,7 +736,7 @@ const products: Product[] = [
     features: ["Lijado en seco", "Desbaste", "Para madera o pared"],
     icon: Wrench,
     color: "from-red-400 to-red-500",
-    image: "/productos/lija-rojo-seco.png",
+    image: "/productos/lija-rojo-seco.webp",
     presentations: [{ size: "Granos 60 a 600" }]
   },
   {
@@ -745,7 +746,7 @@ const products: Product[] = [
     features: ["Abrasivo fino", "Da brillo", "Acabado espejo"],
     icon: Sparkles,
     color: "from-amber-100 to-amber-200",
-    image: "/productos/pasta-pulir.png",
+    image: "/productos/pasta-pulir.webp",
     presentations: [{ size: "700 g" }]
   },
   {
@@ -755,7 +756,7 @@ const products: Product[] = [
     features: ["Grano 60", "Esmerilar", "Pulir metal y madera"],
     icon: Wrench,
     color: "from-blue-700 to-blue-800",
-    image: "/productos/disco-desbaste-pulido.png"
+    image: "/productos/disco-desbaste-pulido.webp"
   },
   {
     name: "Veteador WI 4+6\"",
@@ -764,7 +765,7 @@ const products: Product[] = [
     features: ["Efectos madera", "Aplicador de caucho", "Decorativo"],
     icon: Palette,
     color: "from-amber-600 to-amber-700",
-    image: "/productos/veteador-wi.png",
+    image: "/productos/veteador-wi.webp",
     presentations: [{ size: "4+6\"" }]
   },
   {
@@ -774,7 +775,7 @@ const products: Product[] = [
     features: ["Motivos leñosos", "Mango de madera", "Decorativo"],
     icon: Palette,
     color: "from-amber-700 to-amber-800",
-    image: "/productos/veteador-sbwr.png",
+    image: "/productos/veteador-sbwr.webp",
     presentations: [{ size: "2.5\"" }]
   },
   {
@@ -784,7 +785,7 @@ const products: Product[] = [
     features: ["Acabados tipo madera", "Mango plástico", "Decorativo"],
     icon: Palette,
     color: "from-amber-500 to-amber-600",
-    image: "/productos/veteador-sb-py.png",
+    image: "/productos/veteador-sb-py.webp",
     presentations: [{ size: "4\"" }]
   },
   {
@@ -794,7 +795,7 @@ const products: Product[] = [
     features: ["Superficies amplias", "Aspecto natural", "Tamaño grande"],
     icon: Palette,
     color: "from-amber-400 to-amber-500",
-    image: "/productos/veteador-sb-pb.png",
+    image: "/productos/veteador-sb-pb.webp",
     presentations: [{ size: "5\"" }]
   }
 ]
@@ -887,6 +888,8 @@ function ProductCard({ product }: { product: Product }) {
                   product.name === "Anticorrosivo")
                   ? "176px" : "144px"}
                 loading="lazy"
+                placeholder="blur"
+                blurDataURL={blurDataURL.product}
                 quality={90}
               />
             </div>

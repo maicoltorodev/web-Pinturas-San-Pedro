@@ -19,6 +19,7 @@ function TikTokIcon({ className }: { className?: string }) {
 }
 import Image from "next/image"
 import { cn } from "@/lib/utils"
+import { blurDataURL } from "@/lib/image-utils"
 
 // Define navLinks outside component to ensure consistency between server and client
 // This array is static and should never change during runtime
@@ -93,7 +94,7 @@ export function Header() {
               <div className="absolute inset-0 bg-primary" />
             )}
             <Image
-              src="/pintura-amarilla.png"
+              src="/pintura-amarilla.webp"
               alt="Pinturas San Pedro"
               width={280}
               height={100}
@@ -102,6 +103,9 @@ export function Header() {
                 isImageLoaded ? "opacity-100" : "opacity-0"
               )}
               priority
+              fetchPriority="high"
+              placeholder="blur"
+              blurDataURL={blurDataURL.small}
               sizes="(max-width: 768px) 180px, 280px"
               onLoad={() => setIsImageLoaded(true)}
             />

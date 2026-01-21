@@ -6,6 +6,7 @@ import { CirclePattern } from "@/components/ui/circle-pattern"
 import { ArrowRight, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
+import { blurDataURL } from "@/lib/image-utils"
 
 export function Hero() {
   const [isMounted, setIsMounted] = useState(false)
@@ -125,11 +126,14 @@ export function Hero() {
                   zIndex: 5
                 }} />
                 <Image
-                  src="/logo.png"
+                  src="/logo.webp"
                   alt="Pinturas San Pedro"
                   fill
                   className="object-contain relative z-10 md:[filter:drop-shadow(0_0_10px_rgba(255,215,0,0.3))]"
                   priority
+                  fetchPriority="high"
+                  placeholder="blur"
+                  blurDataURL={blurDataURL.large}
                   sizes="(max-width: 640px) 256px, (max-width: 768px) 320px, (max-width: 1024px) 384px, 500px"
                   style={{ 
                     objectFit: 'contain',

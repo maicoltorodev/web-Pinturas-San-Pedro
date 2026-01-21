@@ -56,11 +56,11 @@ export const metadata: Metadata = {
     siteName: "Pinturas San Pedro",
     images: [
       {
-        url: '/imagen-metadata.jpg',
+        url: '/imagen-metadata.webp',
         width: 1200,
         height: 630,
         alt: 'Pinturas San Pedro',
-        type: 'image/jpeg',
+        type: 'image/webp',
       },
     ],
     locale: 'es_CO',
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     title: "Pinturas San Pedro",
     description:
       "Venta de productos de pintura premium: Vinilo Acrílico Superlavable, Impermeabilizante, Vinilo Coraza Certificado. Calidad certificada.",
-    images: ['/imagen-metadata.jpg'],
+    images: ['/imagen-metadata.webp'],
     creator: '@pinturassanpedro',
   },
   robots: {
@@ -88,7 +88,7 @@ export const metadata: Metadata = {
   },
   icons: {
     apple: [
-      { url: '/logo.png', sizes: '180x180', type: 'image/png' },
+      { url: '/logo.webp', sizes: '180x180', type: 'image/webp' },
     ],
   },
   manifest: '/manifest.json',

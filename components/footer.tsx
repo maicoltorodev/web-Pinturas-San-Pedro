@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { Mail, Phone, MapPin, ArrowRight, Facebook, Instagram } from "lucide-react"
+import { blurDataURL } from "@/lib/image-utils"
 
 // TikTok Icon Component (not available in lucide-react)
 function TikTokIcon({ className }: { className?: string }) {
@@ -52,11 +53,14 @@ export function Footer() {
                 }}
               >
                 <Image
-                  src="/logo.png"
+                  src="/logo.webp"
                   alt="Pinturas San Pedro"
                   fill
                   className="object-contain"
                   sizes="40px"
+                  loading="lazy"
+                  placeholder="blur"
+                  blurDataURL={blurDataURL.small}
                   style={{
                     objectFit: 'contain',
                     width: '100%',
