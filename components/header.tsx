@@ -14,7 +14,6 @@ import { blurDataURL } from "@/lib/image-utils"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isImageLoaded, setIsImageLoaded] = useState(false)
   const { isScrolled } = useScroll()
 
   return (
@@ -34,24 +33,17 @@ export function Header() {
             href="/" 
             className="flex-shrink-0 relative h-16 w-[180px] md:w-[280px] overflow-hidden block"
           >
-            {!isImageLoaded && (
-              <div className="absolute inset-0 bg-primary" />
-            )}
             <Image
               src="/pintura-amarilla.webp"
               alt={siteConfig.name}
               width={280}
               height={100}
-              className={cn(
-                "object-contain h-full w-auto transition-opacity duration-300 hover:scale-105",
-                isImageLoaded ? "opacity-100" : "opacity-0"
-              )}
+              className="object-contain h-full w-auto transition-transform duration-300 hover:scale-105"
               priority
               fetchPriority="high"
               placeholder="blur"
               blurDataURL={blurDataURL.small}
               sizes="(max-width: 768px) 180px, 280px"
-              onLoad={() => setIsImageLoaded(true)}
             />
           </a>
 
