@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Geist } from "next/font/google"
 import { LogoFABLazy } from "@/components/logo-fab-lazy"
 import { AnalyticsLazy } from "@/components/AnalyticsLazy"
+import { ServiceWorkerRegistration } from "@/components/ServiceWorkerRegistration"
 import { ScrollProvider } from "@/contexts/ScrollContext"
 import { defaultMetadata } from "@/lib/config/metadata"
 import { localBusinessSchema, organizationSchema } from "@/lib/config/seo"
@@ -49,6 +50,7 @@ export default function RootLayout({
           {children}
           <LogoFABLazy />
           <AnalyticsLazy />
+          <ServiceWorkerRegistration />
         </ScrollProvider>
       </body>
     </html>
