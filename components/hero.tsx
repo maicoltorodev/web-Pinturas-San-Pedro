@@ -49,7 +49,7 @@ export function Hero() {
             <div className="flex justify-center mb-6">
               <div 
                 ref={logoRef}
-                className="relative w-64 h-32 sm:w-80 sm:h-40 md:w-96 md:h-48 lg:w-[500px] lg:h-[250px] aspect-[2/1]"
+                className="relative w-64 h-32 sm:w-80 sm:h-40 md:w-96 md:h-48 lg:w-[500px] lg:h-[250px] aspect-[2/1] animate-float"
                 style={{ 
                   minWidth: '256px',
                   minHeight: '128px',

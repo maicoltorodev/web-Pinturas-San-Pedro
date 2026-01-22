@@ -31,7 +31,7 @@ export function LogoFAB() {
       
       {/* Logo con glow dorado pegado al borde */}
       <div 
-        className="relative w-24 h-24 flex items-center justify-center z-10 aspect-square"
+        className="relative w-24 h-24 flex items-center justify-center z-10 aspect-square animate-float"
         style={{
           minWidth: '96px',
           minHeight: '96px'

@@ -266,11 +266,11 @@
     perspective: 1000px;
   }
   
-  /* Mobile optimized float animation - DISABLED for hyper-speed */
+  /* Mobile optimized float animation - Lighter movement for better performance */
   @media (max-width: 768px) {
     .animate-float {
-      animation: none !important;
-      transform: none !important;
+      animation: float-mobile 3s ease-in-out infinite;
+      transform: translateZ(0);
     }
   }
   
