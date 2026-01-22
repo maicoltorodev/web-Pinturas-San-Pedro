@@ -14,6 +14,7 @@ import { blurDataURL } from "@/lib/image-utils"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isImageLoaded, setIsImageLoaded] = useState(false)
   const { isScrolled } = useScroll()
 
   return (
@@ -38,12 +39,16 @@ export function Header() {
               alt={siteConfig.name}
               width={280}
               height={100}
-              className="object-contain h-full w-auto transition-transform duration-300 hover:scale-105"
+              className={cn(
+                "object-contain h-full w-auto transition-all duration-300 hover:scale-105",
+                isImageLoaded ? "opacity-100" : "opacity-0"
+              )}
               priority
               fetchPriority="high"
               placeholder="blur"
               blurDataURL={blurDataURL.small}
               sizes="(max-width: 768px) 180px, 280px"
+              onLoad={() => setIsImageLoaded(true)}
             />
           </a>
 
