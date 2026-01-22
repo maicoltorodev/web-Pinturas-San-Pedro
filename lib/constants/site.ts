@@ -41,6 +41,7 @@ export const socialLinks: SocialLink[] = [
 
 export const navigationLinks: NavigationLink[] = [
   { href: '/#services', label: 'Soluciones' },
+  { href: '/#productos', label: 'Productos' },
   { href: '/#color-palette', label: 'Colores' },
   { href: '/#testimonials', label: 'Testimonios' },
   { href: '/#location', label: 'Ubicación' },

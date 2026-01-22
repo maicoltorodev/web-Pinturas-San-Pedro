@@ -78,3 +78,29 @@ export interface SiteConfig {
   socialLinks: SocialLink[]
   navigation: NavigationLink[]
 }
+
+export type ProductCategory = 
+  | 'vinilos'
+  | 'anticorrosivo'
+  | 'esmaltes'
+  | 'trafico-pesado'
+  | 'estucos'
+  | 'impermeabilizante'
+  | 'herramientas'
+  | 'rodillos'
+  | 'brochas'
+
+export interface Product {
+  id: string
+  name: string
+  category: ProductCategory
+  image: string
+  description: string
+  characteristics: string[]
+  presentations?: string[]
+  certifications?: string[]
+  uses?: string[]
+  benefits?: string[]
+  colors?: string[]
+  application?: string
+}

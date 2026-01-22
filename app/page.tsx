@@ -10,6 +10,10 @@ const Services = dynamic(() => import("@/components/services").then(mod => ({ de
   ssr: false,
 })
 
+const Products = dynamic(() => import("@/components/products").then(mod => ({ default: mod.Products })), {
+  ssr: false,
+})
+
 const ColorPalette = dynamic(() => import("@/components/color-palette").then(mod => ({ default: mod.ColorPalette })), {
   ssr: false,
 })
@@ -40,6 +44,7 @@ export default function Home() {
       <Header />
       <Hero />
       <Services />
+      <Products />
       <ColorPalette />
       <Process />
       <Testimonials />
