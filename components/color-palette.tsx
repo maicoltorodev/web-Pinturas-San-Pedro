@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils"
 import { Palette, Search, Copy, Check, X } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { whatsappUrls } from "@/lib/constants/site"
+import { useDebounce } from "@/hooks/useDebounce"
 
 const colorCategories = [
   {
@@ -131,10 +132,16 @@ export function ColorPalette() {
   const [searchQuery, setSearchQuery] = useState("")
   const [copiedColor, setCopiedColor] = useState<string | null>(null)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+  
+  // Debounce búsqueda para mejor rendimiento (500ms en móvil, 300ms en desktop)
+  const debouncedSearchQuery = useDebounce(
+    searchQuery,
+    typeof window !== 'undefined' && window.innerWidth < 768 ? 500 : 300
+  )
 
   // Filtrar colores según búsqueda y pestaña activa - optimizado
   const filteredCategories = useMemo(() => {
-    const query = searchQuery.trim().toLowerCase()
+    const query = debouncedSearchQuery.trim().toLowerCase()
     const hasSearch = query.length > 0
     
     // Si hay búsqueda, filtrar primero por búsqueda y luego por tab
@@ -160,7 +167,7 @@ export function ColorPalette() {
     }
 
     return categories
-  }, [activeTab, searchQuery])
+  }, [activeTab, debouncedSearchQuery])
 
   // Cleanup de timeout al desmontar
   useEffect(() => {

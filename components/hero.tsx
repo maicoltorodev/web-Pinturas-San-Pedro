@@ -1,39 +1,19 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { CirclePattern } from "@/components/ui/circle-pattern"
 import { ArrowRight, Sparkles } from "lucide-react"
-import { cn } from "@/lib/utils"
 import Image from "next/image"
 import { blurDataURL } from "@/lib/image-utils"
 import { siteConfig, whatsappUrls, businessStats } from "@/lib/constants/site"
+import { useSharedIntersectionObserver } from "@/hooks/useSharedIntersectionObserver"
 
 export function Hero() {
-  const [shouldAnimate, setShouldAnimate] = useState(false)
-  const logoRef = useRef<HTMLDivElement>(null)
-
-  // Activar animación solo cuando el logo está visible
-  useEffect(() => {
-    const element = logoRef.current
-    if (!element) return
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setShouldAnimate(entry.isIntersecting)
-      },
-      {
-        threshold: 0.1,
-        rootMargin: "50px",
-      }
-    )
-
-    observer.observe(element)
-
-    return () => {
-      observer.disconnect()
-    }
-  }, [])
+  // Observer compartido para el logo (aunque ya no animamos, mantenemos para futuras optimizaciones)
+  const [logoRef] = useSharedIntersectionObserver<HTMLDivElement>({
+    threshold: 0.1,
+    rootMargin: "50px",
+  })
 
   return (
     <section
@@ -45,47 +25,8 @@ export function Hero() {
       <div className="absolute inset-0 z-0">
         {/* Gradiente base simplificado en móvil */}
         <div className="absolute inset-0 bg-primary md:bg-gradient-to-br md:from-primary md:via-primary md:to-[oklch(0.25_0.15_252)]" />
-        {/* CirclePattern optimizado para móvil y desktop */}
+        {/* CirclePattern optimizado - minimal para máximo rendimiento */}
         <CirclePattern variant="default" />
-        {/* Círculos adicionales solo en desktop */}
-        <div className="hidden md:block absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-          {/* Circle 4 - Top Right */}
-          <div
-            className="absolute rounded-full blur-xl"
-            style={{
-              top: '20%',
-              right: '18%',
-              width: '13vw',
-              height: '13vw',
-              maxWidth: '360px',
-              maxHeight: '360px',
-              minWidth: '115px',
-              minHeight: '115px',
-              backgroundColor: 'oklch(0.85 0.22 90)',
-              opacity: 0.5,
-              transform: 'translateZ(0)',
-            }}
-          />
-          {/* Circle 5 - Bottom Right */}
-          <div
-            className="absolute rounded-full blur-xl"
-            style={{
-              bottom: '20%',
-              right: '15%',
-              width: '14vw',
-              height: '14vw',
-              maxWidth: '370px',
-              maxHeight: '370px',
-              minWidth: '120px',
-              minHeight: '120px',
-              backgroundColor: 'oklch(0.85 0.22 90)',
-              opacity: 0.5,
-              transform: 'translateZ(0)',
-            }}
-          />
-        </div>
-        {/* Overlay solo en desktop */}
-        <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60" />
       </div>
 
       {/* Content */}
@@ -104,21 +45,12 @@ export function Hero() {
             <div className="flex justify-center mb-6">
               <div 
                 ref={logoRef}
-                className={cn(
-                  "relative w-64 h-32 sm:w-80 sm:h-40 md:w-96 md:h-48 lg:w-[500px] lg:h-[250px] aspect-[2/1]",
-                  shouldAnimate && "animate-float"
-                )}
+                className="relative w-64 h-32 sm:w-80 sm:h-40 md:w-96 md:h-48 lg:w-[500px] lg:h-[250px] aspect-[2/1]"
                 style={{ 
                   minWidth: '256px',
                   minHeight: '128px',
                   maxWidth: '500px',
                   maxHeight: '250px',
-                  // will-change solo cuando está animando, se limpia automáticamente
-                  ...(shouldAnimate ? { willChange: 'transform' } : {}),
-                  // GPU acceleration para móvil
-                  transform: 'translateZ(0)',
-                  backfaceVisibility: 'hidden',
-                  WebkitBackfaceVisibility: 'hidden'
                 }}
               >
                 {/* Simplified: Single glow effect instead of multiple layers */}
@@ -168,7 +100,7 @@ export function Hero() {
               <Button
                 variant="secondary"
                 size="lg"
-                className="group bg-secondary text-secondary-foreground hover:bg-secondary/90 w-full sm:w-auto h-14 md:h-16 text-base md:text-lg px-8 md:px-10 rounded-xl shadow-premium hover:shadow-premium-lg transition-all duration-300 hover:scale-105 animate-button-glow flex items-center justify-center"
+                className="group bg-secondary text-secondary-foreground hover:bg-secondary/90 w-full sm:w-auto h-14 md:h-16 text-base md:text-lg px-8 md:px-10 rounded-xl shadow-premium hover:shadow-premium-lg transition-all duration-300 hover:scale-105 flex items-center justify-center"
                 asChild
               >
                 <a
@@ -211,12 +143,7 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator - Hidden on mobile for performance */}
-      <div className="hidden md:block absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary-foreground/30 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-primary-foreground/50 rounded-full mt-2 animate-pulse" />
-        </div>
-      </div>
+      {/* Scroll indicator - Removed for hyper-speed optimization */}
     </section>
   )
 }

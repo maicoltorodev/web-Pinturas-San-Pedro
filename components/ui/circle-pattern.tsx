@@ -8,22 +8,21 @@ interface CirclePatternProps {
 }
 
 export function CirclePattern({ className, variant = "default" }: CirclePatternProps) {
-  const opacity = variant === "subtle" ? 0.35 : variant === "bold" ? 0.6 : 0.5
+  const opacity = variant === "subtle" ? 0.2 : variant === "bold" ? 0.4 : 0.3
   
-  // Optimized: Using CSS divs instead of SVG for better performance
-  // Mobile: 1 circle with blur-sm for better performance
-  // Desktop: 3 circles with blur-xl
-  // GPU-accelerated with transform
-  // Mobile optimized: reduced blur and fewer circles
+  // Hyper-optimized: Minimal circles, lighter blur for maximum performance
+  // Mobile: 1 circle with blur-sm (minimal)
+  // Desktop: 2 circles with blur-md (reduced from blur-xl)
+  // Removed third circle for better performance
   
   return (
     <div
       className={cn("absolute inset-0 overflow-hidden pointer-events-none", className)}
       aria-hidden="true"
     >
-      {/* Circle 1 - Top Left - Visible on all devices */}
+      {/* Circle 1 - Top Left - Visible on all devices with minimal blur */}
       <div
-        className="absolute rounded-full blur-sm md:blur-xl"
+        className="absolute rounded-full blur-sm"
         style={{
           top: '10%',
           left: '15%',
@@ -35,13 +34,13 @@ export function CirclePattern({ className, variant = "default" }: CirclePatternP
           minHeight: '120px',
           backgroundColor: 'oklch(0.85 0.22 90)',
           opacity: opacity,
-          transform: 'translateZ(0)', // GPU acceleration
+          transform: 'translateZ(0)',
         }}
       />
       
-      {/* Circle 2 - Center Left - Desktop only */}
+      {/* Circle 2 - Center Left - Desktop only with reduced blur */}
       <div
-        className="hidden md:block absolute rounded-full blur-xl"
+        className="hidden md:block absolute rounded-full blur-md"
         style={{
           top: '35%',
           left: '35%',
@@ -52,26 +51,8 @@ export function CirclePattern({ className, variant = "default" }: CirclePatternP
           minWidth: '130px',
           minHeight: '130px',
           backgroundColor: 'oklch(0.85 0.22 90)',
-          opacity: opacity,
-          transform: 'translateZ(0)', // GPU acceleration
-        }}
-      />
-      
-      {/* Circle 3 - Bottom Left - Desktop only */}
-      <div
-        className="hidden md:block absolute rounded-full blur-xl"
-        style={{
-          bottom: '15%',
-          left: '12.5%',
-          width: '14.5vw',
-          height: '14.5vw',
-          maxWidth: '390px',
-          maxHeight: '390px',
-          minWidth: '125px',
-          minHeight: '125px',
-          backgroundColor: 'oklch(0.85 0.22 90)',
-          opacity: opacity,
-          transform: 'translateZ(0)', // GPU acceleration
+          opacity: opacity * 0.7, // Reduced opacity
+          transform: 'translateZ(0)',
         }}
       />
     </div>

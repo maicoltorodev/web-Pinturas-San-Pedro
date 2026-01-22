@@ -29,7 +29,6 @@ const nextConfig: NextConfig = {
     optimizeCss: true,
     optimizePackageImports: [
       'lucide-react',
-      'swiper',
       '@radix-ui/react-slot',
     ],
   },

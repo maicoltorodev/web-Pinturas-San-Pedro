@@ -1,18 +1,18 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Geist } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
-import { SpeedInsights } from "@vercel/speed-insights/next"
 import { LogoFABLazy } from "@/components/logo-fab-lazy"
+import { AnalyticsLazy } from "@/components/AnalyticsLazy"
+import { ScrollProvider } from "@/contexts/ScrollContext"
 import { defaultMetadata } from "@/lib/config/metadata"
-import { generateLocalBusinessSchema, generateOrganizationSchema } from "@/lib/config/seo"
+import { localBusinessSchema, organizationSchema } from "@/lib/config/seo"
 import "./globals.css"
 
-// Optimize font loading - only load what's needed
+// Optimize font loading - no preload to avoid blocking render
 const geist = Geist({ 
   subsets: ["latin"],
   display: 'swap',
-  preload: true,
+  preload: false, // Changed to false to avoid blocking initial render
   variable: '--font-geist',
 })
 
@@ -23,9 +23,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const localBusinessSchema = generateLocalBusinessSchema()
-  const organizationSchema = generateOrganizationSchema()
-
   return (
     <html lang="es" className={geist.variable}>
       <head>
@@ -48,10 +45,11 @@ export default function RootLayout({
         />
       </head>
       <body className={`font-sans antialiased`}>
-        {children}
-        <LogoFABLazy />
-        <Analytics />
-        <SpeedInsights />
+        <ScrollProvider>
+          {children}
+          <LogoFABLazy />
+          <AnalyticsLazy />
+        </ScrollProvider>
       </body>
     </html>
   )

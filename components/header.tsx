@@ -1,9 +1,9 @@
 "use client"
 
-import { useState, useCallback } from "react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Menu, X, ArrowRight } from "lucide-react"
-import { useScrollOptimized } from "@/lib/useScrollOptimized"
+import { useScroll } from "@/contexts/ScrollContext"
 import { SocialLinks } from "@/components/ui/social-link"
 import { navigationLinks, whatsappUrls } from "@/lib/constants/site"
 import { siteConfig } from "@/lib/constants/site"
@@ -14,19 +14,8 @@ import { blurDataURL } from "@/lib/image-utils"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
   const [isImageLoaded, setIsImageLoaded] = useState(false)
-  
-  const handleScroll = useCallback((scrollY: number) => {
-    const newIsScrolled = scrollY > 20
-    setIsScrolled(prev => prev !== newIsScrolled ? newIsScrolled : prev)
-  }, [])
-
-  useScrollOptimized({
-    threshold: 10,
-    onScroll: handleScroll,
-    enabled: true,
-  })
+  const { isScrolled } = useScroll()
 
   return (
     <header

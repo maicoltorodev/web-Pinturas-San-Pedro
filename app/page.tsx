@@ -3,10 +3,9 @@
 import dynamic from "next/dynamic"
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
-import { LazySection } from "@/components/lazy-section"
 
-// Lazy load components below the fold for better initial load
-// SSR disabled for true client-side lazy loading and better performance
+// Lazy load components below the fold - Next.js dynamic() handles intersection observer internally
+// No need for LazySection wrapper (redundant overhead)
 const Services = dynamic(() => import("@/components/services").then(mod => ({ default: mod.Services })), {
   ssr: false,
 })
@@ -40,27 +39,13 @@ export default function Home() {
     <main className="min-h-screen" role="main">
       <Header />
       <Hero />
-      <LazySection fallback={<div className="h-64" />}>
-        <Services />
-      </LazySection>
-      <LazySection fallback={<div className="h-64" />}>
-        <ColorPalette />
-      </LazySection>
-      <LazySection fallback={<div className="h-64" />}>
-        <Process />
-      </LazySection>
-      <LazySection fallback={<div className="h-64" />}>
-        <Testimonials />
-      </LazySection>
-      <LazySection fallback={<div className="h-64" />}>
-        <Location />
-      </LazySection>
-      <LazySection fallback={<div className="h-64" />}>
-        <Contact />
-      </LazySection>
-      <LazySection fallback={<div className="h-32" />}>
-        <Footer />
-      </LazySection>
+      <Services />
+      <ColorPalette />
+      <Process />
+      <Testimonials />
+      <Location />
+      <Contact />
+      <Footer />
     </main>
   )
 }

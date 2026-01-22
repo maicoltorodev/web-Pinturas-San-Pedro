@@ -1,35 +1,18 @@
 "use client"
 
-import { useState, useCallback, useEffect } from "react"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { blurDataURL } from "@/lib/image-utils"
-import { useScrollOptimized } from "@/lib/useScrollOptimized"
+import { useScroll } from "@/contexts/ScrollContext"
+import { whatsappUrls } from "@/lib/constants/site"
 
 export function LogoFAB() {
-  const [isVisible, setIsVisible] = useState(false)
-  const phoneNumber = "3223716811"
-  const message = "Hola, me interesa conocer más."
-  const whatsappUrl = `https://wa.me/57${phoneNumber}?text=${encodeURIComponent(message)}`
-
-  const handleScroll = useCallback((scrollY: number) => {
-    setIsVisible(scrollY > 300)
-  }, [])
-
-  useScrollOptimized({
-    threshold: 10,
-    onScroll: handleScroll,
-    enabled: true,
-  })
-
-  // Check initial state
-  useEffect(() => {
-    setIsVisible(window.scrollY > 300)
-  }, [])
+  const { scrollY } = useScroll()
+  const isVisible = scrollY > 300
 
   return (
     <a
-      href={whatsappUrl}
+      href={whatsappUrls.contact}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contactar por WhatsApp"
@@ -40,7 +23,6 @@ export function LogoFAB() {
         "transition-all duration-500 ease-out",
         "hover:scale-110 active:scale-95",
         "group cursor-pointer",
-        "animate-float",
         isVisible 
           ? "opacity-100 translate-y-0 pointer-events-auto" 
           : "opacity-0 translate-y-4 pointer-events-none"

@@ -1,23 +1,14 @@
 "use client"
 
-import { useRef, useState, useEffect, useMemo, memo } from "react"
+import { useMemo, memo, useRef, useState, useEffect } from "react"
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { SectionHeader } from "@/components/ui/section-header"
 import { CirclePattern } from "@/components/ui/circle-pattern"
 import { cn } from "@/lib/utils"
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Autoplay } from 'swiper/modules'
-import type { Swiper as SwiperType } from 'swiper'
 import { testimonials as testimonialsData, paintColors, googleReviewsStats } from "@/lib/constants/testimonials"
 import type { Testimonial, PaintColor } from "@/lib/types"
-
-// Importar estilos de Swiper desde el paquete local
-// Next.js optimizará esto automáticamente
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/autoplay'
 
 // Componente del icono de Google
 function GoogleIcon({ className }: { className?: string }) {
@@ -137,9 +128,7 @@ const TestimonialCard = memo(function TestimonialCard({
 })
 
 export function Testimonials() {
-  const swiperRef = useRef<SwiperType | null>(null)
-  const prevButtonRef = useRef<HTMLButtonElement>(null)
-  const nextButtonRef = useRef<HTMLButtonElement>(null)
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [activeIndex, setActiveIndex] = useState(0)
 
   // Preparar testimonios con colores - memoizado para evitar recálculos
@@ -151,20 +140,44 @@ export function Testimonials() {
         color: paintColors[colorIndex]
       }
     })
-  }, []) // Array estático, no necesita dependencias
-
-  // Cleanup de Swiper al desmontar
-  useEffect(() => {
-    return () => {
-      if (swiperRef.current) {
-        // Detener autoplay antes de destruir
-        swiperRef.current.autoplay?.stop()
-        // Destruir instancia de Swiper
-        swiperRef.current.destroy(true, true)
-        swiperRef.current = null
-      }
-    }
   }, [])
+
+  // Track scroll position for indicators
+  useEffect(() => {
+    const container = scrollContainerRef.current
+    if (!container) return
+
+    const handleScroll = () => {
+      const scrollLeft = container.scrollLeft
+      const cardWidth = container.clientWidth / (window.innerWidth >= 768 ? 3 : 1)
+      const newIndex = Math.round(scrollLeft / cardWidth)
+      setActiveIndex(newIndex)
+    }
+
+    container.addEventListener('scroll', handleScroll, { passive: true })
+    return () => container.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const scrollToIndex = (index: number) => {
+    const container = scrollContainerRef.current
+    if (!container) return
+    const cardWidth = container.clientWidth / (window.innerWidth >= 768 ? 3 : 1)
+    container.scrollTo({ left: index * cardWidth, behavior: 'smooth' })
+  }
+
+  const scrollPrev = () => {
+    const container = scrollContainerRef.current
+    if (!container) return
+    const cardWidth = container.clientWidth / (window.innerWidth >= 768 ? 3 : 1)
+    container.scrollBy({ left: -cardWidth, behavior: 'smooth' })
+  }
+
+  const scrollNext = () => {
+    const container = scrollContainerRef.current
+    if (!container) return
+    const cardWidth = container.clientWidth / (window.innerWidth >= 768 ? 3 : 1)
+    container.scrollBy({ left: cardWidth, behavior: 'smooth' })
+  }
 
   return (
     <section
@@ -206,85 +219,55 @@ export function Testimonials() {
           </div>
         </div>
 
-        {/* Carrusel con Swiper */}
+        {/* Carrusel nativo con CSS scroll-snap - 0KB JavaScript */}
         <div className="relative max-w-7xl mx-auto">
-          {/* Botones de navegación personalizados */}
+          {/* Botones de navegación desktop */}
           <Button
-            ref={prevButtonRef}
             variant="outline"
             size="lg"
             className="hidden md:flex absolute -left-6 top-1/2 -translate-y-1/2 z-20 rounded-full w-12 h-12 border-2 border-border text-foreground hover:bg-secondary hover:border-secondary hover:text-white transition-all duration-300 shadow-md hover:shadow-lg bg-white"
             aria-label="Anterior"
-            onClick={() => swiperRef.current?.slidePrev()}
+            onClick={scrollPrev}
           >
             <ChevronLeft className="h-5 w-5" />
           </Button>
 
           <Button
-            ref={nextButtonRef}
             variant="outline"
             size="lg"
             className="hidden md:flex absolute -right-6 top-1/2 -translate-y-1/2 z-20 rounded-full w-12 h-12 border-2 border-border text-foreground hover:bg-secondary hover:border-secondary hover:text-white transition-all duration-300 shadow-md hover:shadow-lg bg-white"
             aria-label="Siguiente"
-            onClick={() => swiperRef.current?.slideNext()}
+            onClick={scrollNext}
           >
             <ChevronRight className="h-5 w-5" />
           </Button>
 
-          {/* Swiper Carousel */}
-          <Swiper
-            onSwiper={(swiper) => {
-              swiperRef.current = swiper
-            }}
-            modules={[Navigation, Autoplay]}
-            spaceBetween={32}
-            slidesPerView={1}
-            slidesPerGroup={1}
-            autoplay={{
-              delay: 7000,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: true,
-            }}
-            breakpoints={{
-              768: {
-                slidesPerView: 3,
-                slidesPerGroup: 1,
-                spaceBetween: 32,
-                centeredSlides: false,
-              },
-            }}
-            centeredSlides={false}
-            className="testimonials-swiper"
-            onInit={(swiper) => {
-              // Actualizar navegación después de la inicialización
-              if (
-                swiper.params.navigation && 
-                typeof swiper.params.navigation === 'object' &&
-                prevButtonRef.current && 
-                nextButtonRef.current
-              ) {
-                swiper.params.navigation.prevEl = prevButtonRef.current
-                swiper.params.navigation.nextEl = nextButtonRef.current
-                swiper.navigation.init()
-                swiper.navigation.update()
-              }
-            }}
-            onSlideChange={(swiper) => {
-              setActiveIndex(swiper.activeIndex)
+          {/* Carousel nativo con scroll-snap */}
+          <div
+            ref={scrollContainerRef}
+            className="flex gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide"
+            style={{
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+              WebkitOverflowScrolling: 'touch',
             }}
           >
             {testimonialsWithColors.map((testimonial, index) => (
-              <SwiperSlide key={index}>
-                <div className="h-full">
+              <div
+                key={index}
+                className="flex-shrink-0 snap-start w-full md:w-[calc(33.333%-21.33px)]"
+                style={{ minWidth: '100%' }}
+              >
+                <div className="md:min-w-0 md:w-full h-full px-2">
                   <TestimonialCard 
                     testimonial={testimonial} 
                     isActive={true}
                     color={testimonial.color}
                   />
                 </div>
-              </SwiperSlide>
+              </div>
             ))}
-          </Swiper>
+          </div>
 
           {/* Controles móviles */}
           <div className="md:hidden flex items-center justify-between mt-6 px-4">
@@ -293,17 +276,17 @@ export function Testimonials() {
               size="lg"
               className="flex rounded-full w-12 h-12 border-2 border-border text-foreground hover:bg-secondary hover:border-secondary hover:text-white transition-all duration-300 shadow-md hover:shadow-lg bg-white"
               aria-label="Anterior"
-              onClick={() => swiperRef.current?.slidePrev()}
+              onClick={scrollPrev}
             >
               <ChevronLeft className="h-5 w-5" />
             </Button>
             
-            {/* Indicador de posición móvil */}
+            {/* Indicador de posición */}
             <div className="flex items-center gap-2">
               {testimonialsData.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => swiperRef.current?.slideTo(index)}
+                  onClick={() => scrollToIndex(index)}
                   className={cn(
                     "rounded-full transition-all duration-300",
                     activeIndex === index 
@@ -320,7 +303,7 @@ export function Testimonials() {
               size="lg"
               className="flex rounded-full w-12 h-12 border-2 border-border text-foreground hover:bg-secondary hover:border-secondary hover:text-white transition-all duration-300 shadow-md hover:shadow-lg bg-white"
               aria-label="Siguiente"
-              onClick={() => swiperRef.current?.slideNext()}
+              onClick={scrollNext}
             >
               <ChevronRight className="h-5 w-5" />
             </Button>

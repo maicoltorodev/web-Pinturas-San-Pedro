@@ -317,12 +317,14 @@
   }
   
   .animate-glow-pulse {
-    animation: glow-pulse 2s ease-in-out infinite;
+    /* Disabled for hyper-speed */
+    animation: none;
   }
   
   /* Subtle version uses same animation with lower opacity */
   .animate-glow-pulse-subtle {
-    animation: glow-pulse 2s ease-in-out infinite;
+    /* Disabled for hyper-speed */
+    animation: none;
     opacity: 0.7;
   }
   
@@ -337,7 +339,8 @@
   }
   
   .animate-button-glow {
-    animation: button-glow 2s ease-in-out infinite;
+    /* Disabled for hyper-speed - animation removed */
+    animation: none;
   }
   
   /* Simplified sunshine animation - removed unused delayed variant */
@@ -421,20 +424,26 @@
     animation: fade-slide 0.5s ease-out forwards;
   }
   
-  /* Estilos para Swiper carousel de testimonios */
-  .testimonials-swiper {
-    padding: 0;
-    overflow: visible;
+  /* Scroll snap carousel - nativo, sin JavaScript pesado */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
   
-  .testimonials-swiper .swiper-slide {
-    height: auto;
-    display: flex;
-  }
-  
-  .testimonials-swiper .swiper-button-next,
-  .testimonials-swiper .swiper-button-prev {
+  .scrollbar-hide::-webkit-scrollbar {
     display: none;
+  }
+  
+  .snap-x {
+    scroll-snap-type: x mandatory;
+  }
+  
+  .snap-start {
+    scroll-snap-align: start;
+  }
+  
+  .snap-mandatory {
+    scroll-snap-type: x mandatory;
   }
   
   /* Glow optimizado para móvil - usa box-shadow en lugar de blur para mejor rendimiento */
