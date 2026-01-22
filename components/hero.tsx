@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { CirclePattern } from "@/components/ui/circle-pattern"
 import { ArrowRight, Sparkles } from "lucide-react"
@@ -7,8 +8,11 @@ import Image from "next/image"
 import { blurDataURL } from "@/lib/image-utils"
 import { siteConfig, whatsappUrls, businessStats } from "@/lib/constants/site"
 import { useSharedIntersectionObserver } from "@/hooks/useSharedIntersectionObserver"
+import { cn } from "@/lib/utils"
 
 export function Hero() {
+  const [isImageLoaded, setIsImageLoaded] = useState(false)
+  
   // Observer compartido para el logo (aunque ya no animamos, mantenemos para futuras optimizaciones)
   const [logoRef] = useSharedIntersectionObserver<HTMLDivElement>({
     threshold: 0.1,
@@ -62,7 +66,10 @@ export function Hero() {
                   src="/logo.webp"
                   alt={siteConfig.name}
                   fill
-                  className="object-contain relative z-10 md:[filter:drop-shadow(0_0_10px_rgba(255,215,0,0.3))]"
+                  className={cn(
+                    "object-contain relative z-10 md:[filter:drop-shadow(0_0_10px_rgba(255,215,0,0.3))] transition-opacity duration-300",
+                    isImageLoaded ? "opacity-100" : "opacity-0"
+                  )}
                   priority
                   fetchPriority="high"
                   placeholder="blur"
@@ -75,6 +82,7 @@ export function Hero() {
                     maxWidth: '100%',
                     maxHeight: '100%'
                   }}
+                  onLoad={() => setIsImageLoaded(true)}
                 />
               </div>
             </div>
