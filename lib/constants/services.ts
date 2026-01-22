@@ -26,4 +26,11 @@ export const services: Service[] = [
       'Pinturas especializadas para fachadas y exteriores. Impermeabilizantes con alta resistencia a la intemperie.',
     color: 'yellow',
   },
+  {
+    icon: 'Package',
+    title: 'Catálogo de Productos',
+    description:
+      'Amplia variedad de pinturas, herramientas y accesorios de calidad. Encuentra todo lo que necesitas para tu proyecto.',
+    color: 'purple',
+  },
 ] as const

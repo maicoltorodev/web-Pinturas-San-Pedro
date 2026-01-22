@@ -4,7 +4,7 @@ import { memo } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { SectionHeader } from "@/components/ui/section-header"
 import { SectionBackground } from "@/components/ui/section-background"
-import { Home, Building2, Sparkles } from "lucide-react"
+import { Home, Building2, Sparkles, Package } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { services } from "@/lib/constants/services"
 
@@ -12,6 +12,7 @@ const iconMap = {
   Sparkles,
   Home,
   Building2,
+  Package,
 }
 
 // Color map optimizado - estructura simplificada manteniendo compatibilidad con Tailwind
