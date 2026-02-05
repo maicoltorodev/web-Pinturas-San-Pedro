@@ -46,7 +46,7 @@ export const products: Product[] = [
     category: 'vinilos',
     image: '/productos/vinilo-hidrofugado.webp',
     description: 'Pintura diluible en agua con acabado satinado que brinda mayor protección y durabilidad. Su tecnología hidrofugada ayuda a proteger las superficies de la humedad, manteniendo los espacios limpios y con excelente apariencia.',
-    characteristics: ['Protección contra la humedad', 'Acabado satinado uniforme', 'Excelente cubrimiento', 'Alta resistencia', 'Fácil aplicación'],
+    characteristics: ['✔ Protección contra la humedad', '✔ Acabado satinado uniforme', '✔ Excelente cubrimiento', '✔ Alta resistencia', '✔ Fácil aplicación'],
     presentations: ['Cuñete', 'Medio', 'Galón'],
   },
   {

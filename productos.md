@@ -73,11 +73,11 @@
 **Descripción:** Pintura diluible en agua con acabado satinado que brinda mayor protección y durabilidad. Su tecnología hidrofugada ayuda a proteger las superficies de la humedad, manteniendo los espacios limpios y con excelente apariencia.
 
 **Características:**
-- Protección contra la humedad
-- Acabado satinado uniforme
-- Excelente cubrimiento
-- Alta resistencia
-- Fácil aplicación
+- ✔ Protección contra la humedad
+- ✔ Acabado satinado uniforme
+- ✔ Excelente cubrimiento
+- ✔ Alta resistencia
+- ✔ Fácil aplicación
 
 **Presentaciones disponibles:**
 - Cuñete

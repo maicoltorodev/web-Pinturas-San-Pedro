@@ -76,9 +76,9 @@ function ProductCard({ product }: ProductCardProps) {
           {product.characteristics && product.characteristics.length > 0 && (
             <div className="mb-6">
               <ul className="space-y-2">
-                {product.characteristics.slice(0, 3).map((char, idx) => (
+                {product.characteristics.slice(0, 5).map((char, idx) => (
                   <li key={idx} className="text-xs md:text-sm text-muted-foreground flex items-start gap-2">
-                    <span className="text-secondary mt-1">•</span>
+                    {!char.trim().startsWith('✔') && <span className="text-secondary mt-1">•</span>}
                     <span className="line-clamp-2">{char}</span>
                   </li>
                 ))}
