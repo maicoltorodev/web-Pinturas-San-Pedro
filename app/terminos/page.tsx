@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { FileText, CheckCircle, AlertCircle, Scale } from "lucide-react"
-import { siteConfig } from "@/lib/constants/site"
+import { siteConfig, contactInfo } from "@/lib/constants/site"
 
 export const metadata: Metadata = {
   title: `Términos y Condiciones - ${siteConfig.name}`,
@@ -161,7 +161,7 @@ export default function TerminosPage() {
               </p>
               <div className="space-y-2 text-foreground/80">
                 <p><strong>Email:</strong> pinturassanpedro@hotmail.com</p>
-                <p><strong>Teléfono:</strong> +57 322 3716811</p>
+                <p><strong>Teléfonos:</strong> {contactInfo.phone}, {contactInfo.additionalPhones?.join(', ')}</p>
                 <p><strong>Dirección:</strong> Calle 132D N 145A-02, Bogotá, Colombia</p>
               </div>
             </div>

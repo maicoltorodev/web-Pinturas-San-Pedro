@@ -6,6 +6,7 @@ import type { SiteConfig, ContactInfo, BusinessHours, SocialLink, NavigationLink
 
 export const contactInfo: ContactInfo = {
   phone: '+573223716811',
+  additionalPhones: ['+573112297182', '+573224579483'],
   email: 'pinturassanpedro@hotmail.com',
   address: 'Calle 132D N 145A-02, Bogotá',
   whatsapp: '573223716811',

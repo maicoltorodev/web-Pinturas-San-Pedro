@@ -48,6 +48,17 @@ export function Contact() {
                   Escribir por WhatsApp
                 </a>
 
+                {contactInfo.additionalPhones?.map((phone) => (
+                  <a
+                    key={phone}
+                    href={`tel:${phone}`}
+                    className="flex items-center justify-center gap-2 w-full bg-primary/10 hover:bg-primary/20 text-primary font-bold py-4 rounded-xl transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 border border-primary/20"
+                  >
+                    <Phone className="h-5 w-5" />
+                    Llamar: {phone.replace('+57', '')}
+                  </a>
+                ))}
+
                 <a
                   href={`mailto:${contactInfo.email}`}
                   className="flex items-center justify-center gap-2 w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold py-4 rounded-xl transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"

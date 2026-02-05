@@ -11,6 +11,7 @@ export interface SocialLink {
 
 export interface ContactInfo {
   phone: string
+  additionalPhones?: string[]
   email: string
   address: string
   whatsapp: string

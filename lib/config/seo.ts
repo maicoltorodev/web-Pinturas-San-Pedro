@@ -11,7 +11,7 @@ export interface LocalBusinessSchema {
   image: string
   '@id': string
   url: string
-  telephone: string
+  telephone: string | string[]
   email: string
   address: {
     '@type': string
@@ -46,7 +46,7 @@ export interface OrganizationSchema {
   logo: string
   contactPoint: {
     '@type': string
-    telephone: string
+    telephone: string | string[]
     contactType: string
     email: string
   }
@@ -64,7 +64,7 @@ export const localBusinessSchema: LocalBusinessSchema = {
   image: `${siteConfig.url}/logo.webp`,
   '@id': `${siteConfig.url}/#organization`,
   url: siteConfig.url,
-  telephone: siteConfig.contact.phone,
+  telephone: [siteConfig.contact.phone, ...(siteConfig.contact.additionalPhones || [])],
   email: siteConfig.contact.email,
   address: {
     '@type': 'PostalAddress',
@@ -112,7 +112,7 @@ export const organizationSchema: OrganizationSchema = {
   logo: `${siteConfig.url}/logo.webp`,
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: siteConfig.contact.phone,
+    telephone: [siteConfig.contact.phone, ...(siteConfig.contact.additionalPhones || [])],
     contactType: 'customer service',
     email: siteConfig.contact.email,
   },

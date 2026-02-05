@@ -78,5 +78,11 @@ export const defaultMetadata: Metadata = {
   manifest: '/manifest.json',
   other: {
     'theme-color': '#0D47A1',
+    'og:phone_number': siteConfig.contact.phone,
+    'business:contact_data:phone_number': siteConfig.contact.phone,
+    'business:contact_data:street_address': siteConfig.contact.address,
+    'business:contact_data:locality': 'Bogotá',
+    'business:contact_data:country_name': 'Colombia',
+    'business:contact_data:email': siteConfig.contact.email,
   },
 }

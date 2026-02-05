@@ -27,7 +27,7 @@ export function Footer() {
           {/* Brand Section */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
-              <div 
+              <div
                 className="relative h-10 w-10 flex-shrink-0 aspect-square"
                 style={{
                   minWidth: '40px',
@@ -60,7 +60,7 @@ export function Footer() {
               </div>
             </div>
             <p className="text-primary-foreground/80 leading-relaxed text-sm mb-4 max-w-sm">
-              <span className="font-bold text-secondary">Profesionales en Color</span> - 
+              <span className="font-bold text-secondary">Profesionales en Color</span> -
               {siteConfig.description}
             </p>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20 mb-4">
@@ -68,7 +68,7 @@ export function Footer() {
                 {siteConfig.tagline}
               </span>
             </div>
-            
+
             {/* Redes Sociales */}
             <SocialLinks size="md" />
             <a
@@ -113,6 +113,17 @@ export function Footer() {
                   {contactInfo.phone}
                 </a>
               </li>
+              {contactInfo.additionalPhones?.map((phone) => (
+                <li key={phone} className="flex items-start gap-3">
+                  <Phone className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <a
+                    href={`tel:${phone}`}
+                    className="text-primary-foreground/80 hover:text-secondary transition-colors text-sm"
+                  >
+                    {phone}
+                  </a>
+                </li>
+              ))}
               <li className="flex items-start gap-3">
                 <Mail className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
                 <a
