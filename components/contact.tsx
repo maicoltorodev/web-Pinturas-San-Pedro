@@ -3,11 +3,26 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { SectionHeader } from "@/components/ui/section-header"
 import { SectionBackground } from "@/components/ui/section-background"
-import { Mail, Phone, Clock, Instagram } from "lucide-react"
+import { Mail, Phone, Clock, Instagram, MessageSquare, X, PhoneCall } from "lucide-react"
 import { SocialLinks } from "@/components/ui/social-link"
 import { contactInfo, businessHours, whatsappUrls } from "@/lib/constants/site"
+import { useState, useEffect } from "react"
 
 export function Contact() {
+  const [showOptions, setShowOptions] = useState(false)
+
+  // Deshabilitar scroll cuando el modal está abierto
+  useEffect(() => {
+    if (showOptions) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "unset"
+    }
+    return () => {
+      document.body.style.overflow = "unset"
+    }
+  }, [showOptions])
+
   return (
     <section
       id="contact"
@@ -38,15 +53,20 @@ export function Contact() {
               </p>
 
               <div className="space-y-4 mt-auto">
-                <a
-                  href={whatsappUrls.contact}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-4 rounded-xl transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                <button
+                  type="button"
+                  onClick={() => setShowOptions(true)}
+                  className="flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-4 rounded-xl transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 cursor-pointer relative overflow-hidden group/btn"
                 >
-                  <Phone className="h-5 w-5" />
-                  WhatsApp: {contactInfo.whatsapp.replace('57', '')}
-                </a>
+                  <div className="flex items-center gap-1.5">
+                    <MessageSquare className="h-5 w-5" />
+                    <Phone className="h-4 w-4" />
+                  </div>
+                  <span>Atención: {contactInfo.whatsapp.replace('57', '')}</span>
+
+                  {/* Subtle shine effect */}
+                  <div className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700 pointer-events-none" />
+                </button>
 
                 {contactInfo.additionalPhones?.map((phone) => (
                   <a
@@ -118,6 +138,71 @@ export function Contact() {
           </Card>
         </div>
       </div>
+
+      {/* Contact Options Modal */}
+      {showOptions && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+          role="dialog"
+          aria-modal="true"
+        >
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity animate-in fade-in duration-300"
+            onClick={() => setShowOptions(false)}
+          />
+
+          {/* Modal Content */}
+          <div className="relative w-full max-w-sm bg-card border border-border shadow-2xl rounded-3xl overflow-hidden animate-in zoom-in-95 fade-in duration-300">
+            <div className="p-6 border-b border-border/50 flex justify-between items-center bg-muted/30">
+              <h4 className="text-xl font-bold flex items-center gap-2">
+                <PhoneCall className="h-5 w-5 text-primary" />
+                ¿Cómo prefieres contactarnos?
+              </h4>
+              <button
+                onClick={() => setShowOptions(false)}
+                className="p-2 rounded-full hover:bg-muted transition-colors"
+                aria-label="Cerrar"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            <div className="p-8 space-y-4">
+              <p className="text-muted-foreground text-center mb-6">
+                Estamos listos para atenderte por el medio que más te guste.
+              </p>
+
+              <a
+                href={`tel:${contactInfo.phone}`}
+                className="flex items-center justify-center gap-3 w-full bg-primary text-primary-foreground font-bold py-5 rounded-2xl transition-all hover:scale-[1.02] shadow-lg active:scale-95"
+                onClick={() => setShowOptions(false)}
+              >
+                <PhoneCall className="h-6 w-6" />
+                <span>Llamar Ahora</span>
+              </a>
+
+              <a
+                href={whatsappUrls.contact}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3 w-full bg-[#25D366] text-white font-bold py-5 rounded-2xl transition-all hover:scale-[1.02] shadow-lg active:scale-95"
+                onClick={() => setShowOptions(false)}
+              >
+                <MessageSquare className="h-6 w-6" />
+                <span>Enviar WhatsApp</span>
+              </a>
+
+              <button
+                onClick={() => setShowOptions(false)}
+                className="w-full text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
+              >
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }

@@ -457,25 +457,6 @@
 
 ---
 
-### Rejilla para bandeja
-
-![Rejilla para bandeja](public/productos/rejilla-pintura.webp)
-
-**Descripción:** Rejilla para bandeja que permite eliminar el exceso de pintura del rodillo. Mejora la aplicación y reduce el desperdicio de pintura.
-
-**Características:**
-- Elimina exceso
-- Reduce desperdicio
-- Mejora aplicación
-
-**Presentaciones disponibles:**
-- Rejilla estándar
-
-**Usos:**
-- Control de pintura
-- Aplicación eficiente
-
----
 
 ### Cinta de Enmascarar Cellux / Estándar
 
@@ -521,47 +502,7 @@
 
 ---
 
-### Extensión para rodillo
 
-![Extensión para rodillo](public/productos/extension-rodillo.webp)
-
-**Descripción:** Varilla extensora para rodillos que permite alcanzar áreas altas sin necesidad de escaleras. Ideal para techos y paredes altas.
-
-**Características:**
-- Alcance extendido
-- Ajustable
-- Fácil de usar
-
-**Presentaciones disponibles:**
-- Extensión estándar
-
-**Usos:**
-- Áreas altas
-- Techos
-- Paredes altas
-
----
-
-### Cubeta de pintura
-
-![Cubeta de pintura](public/productos/cubeta-pintura.webp)
-
-**Descripción:** Cubeta de pintura resistente para almacenar y transportar pintura durante tus trabajos. Diseño práctico con asa para fácil manejo.
-
-**Características:**
-- Resistente
-- Con asa
-- Fácil manejo
-
-**Presentaciones disponibles:**
-- Variedad de capacidades
-
-**Usos:**
-- Almacenamiento
-- Transporte
-- Mezcla de pintura
-
----
 
 ### Cartón corrugado
 

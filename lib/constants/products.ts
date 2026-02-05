@@ -77,7 +77,7 @@ export const products: Product[] = [
     characteristics: ['Económica', 'Con calidad', 'Fácil aplicación'],
     presentations: ['Cuñete', 'Medio', 'Galón'],
   },
-  
+
   // ANTICORROSIVO
   {
     id: 'anticorrosivo',
@@ -91,7 +91,7 @@ export const products: Product[] = [
     benefits: ['Previene la formación de óxido', 'Mejora la adhesión del esmalte', 'Fácil aplicación y secado rápido', 'Con resistencia y durabilidad'],
     application: 'Listo para usar. Aplicable con rodillo o brocha. Se disuelve con thinner o varsol.',
   },
-  
+
   // ESMALTES
   {
     id: 'esmalte-especial',
@@ -133,7 +133,7 @@ export const products: Product[] = [
     presentations: ['Cuñete', 'Medio', 'Galón'],
     uses: ['Rejas, puertas, ventanas', 'Marcos, persianas', 'Tuberías, zócalos'],
   },
-  
+
   // TRÁFICO PESADO
   {
     id: 'trafico-pesado',
@@ -145,7 +145,7 @@ export const products: Product[] = [
     presentations: ['Cuñete', 'Galón', 'Medio Cuñete'],
     uses: ['Estacionamientos', 'Carreteras', 'Zonas industriales'],
   },
-  
+
   // ESTUCOS
   {
     id: 'estuco-plastico-acrilico',
@@ -187,7 +187,7 @@ export const products: Product[] = [
     presentations: ['Cuñete', 'Medio', 'Galón'],
     benefits: ['Garantiza un acabado uniforme y profesional', 'Mejora la apariencia final de la pintura'],
   },
-  
+
   // IMPERMEABILIZANTE
   {
     id: 'impermeabilizante',
@@ -199,7 +199,7 @@ export const products: Product[] = [
     presentations: ['Cuñete', 'Medio', 'Galón'],
     benefits: ['Con durabilidad', 'Protección frente al clima y la humedad'],
   },
-  
+
   // HERRAMIENTAS
   {
     id: 'recambio-rodillo',
@@ -222,16 +222,6 @@ export const products: Product[] = [
     uses: ['Verter pintura', 'Carga de rodillos', 'Eliminar exceso'],
   },
   {
-    id: 'rejilla-pintura',
-    name: 'Rejilla para bandeja',
-    category: 'herramientas',
-    image: '/productos/rejilla-pintura.webp',
-    description: 'Rejilla para bandeja que permite eliminar el exceso de pintura del rodillo.',
-    characteristics: ['Elimina exceso', 'Reduce desperdicio', 'Mejora aplicación'],
-    presentations: ['Rejilla estándar'],
-    uses: ['Control de pintura', 'Aplicación eficiente'],
-  },
-  {
     id: 'cinta-enmascarar',
     name: 'Cinta de Enmascarar Cellux / Estándar',
     category: 'herramientas',
@@ -250,26 +240,6 @@ export const products: Product[] = [
     characteristics: ['Protección completa', 'Resistentes', 'Reutilizables'],
     presentations: ['Variedad de tamaños'],
     uses: ['Protección de muebles', 'Cubrir pisos', 'Protección de superficies'],
-  },
-  {
-    id: 'extension-rodillo',
-    name: 'Extensión para rodillo',
-    category: 'herramientas',
-    image: '/productos/extension-rodillo.webp',
-    description: 'Varilla extensora para rodillos que permite alcanzar áreas altas sin necesidad de escaleras.',
-    characteristics: ['Alcance extendido', 'Ajustable', 'Fácil de usar'],
-    presentations: ['Extensión estándar'],
-    uses: ['Áreas altas', 'Techos', 'Paredes altas'],
-  },
-  {
-    id: 'cubeta-pintura',
-    name: 'Cubeta de pintura',
-    category: 'herramientas',
-    image: '/productos/cubeta-pintura.webp',
-    description: 'Cubeta de pintura resistente para almacenar y transportar pintura durante tus trabajos.',
-    characteristics: ['Resistente', 'Con asa', 'Fácil manejo'],
-    presentations: ['Variedad de capacidades'],
-    uses: ['Almacenamiento', 'Transporte', 'Mezcla de pintura'],
   },
   {
     id: 'carton-corrugado',
@@ -404,7 +374,7 @@ export const products: Product[] = [
     characteristics: ['Superficies amplias', 'Aspecto natural', 'Tamaño grande'],
     presentations: ['5"'],
   },
-  
+
   // RODILLOS
   {
     id: 'rodillo-popular-9',
@@ -514,7 +484,7 @@ export const products: Product[] = [
     characteristics: ['Alta absorción', 'Termo fusión', 'Para grandes áreas'],
     presentations: ['9"'],
   },
-  
+
   // BROCHAS
   {
     id: 'brocha-cerda-popular',
