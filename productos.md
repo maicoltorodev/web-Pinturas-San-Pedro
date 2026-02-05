@@ -20,12 +20,12 @@
 
 ![Vinilo acrílico](public/productos/vinilo-acrilico.webp)
 
-**Descripción:** Vinilo acrílico con acabado mate lavable, ideal para interiores. Con desempeño y cubrimiento, bajo aroma y nivelación.
+**Descripción:** Vinilo acrílico con acabado mate lavable, ideal para interiores. Con desempeño y cubrimiento, Bajo olor y nivelación.
 
 **Características:**
 - Acabado mate lavable
 - Con cubrimiento
-- Bajo aroma
+- Bajo olor
 - Con nivelación
 
 **Presentaciones disponibles:**
@@ -47,13 +47,14 @@
 
 ![Vinilo tipo 2 Semilavable](public/productos/vinilo-semilavable.webp)
 
-**Descripción:** Vinilo con acabado mate, ideal para interiores. Con cubrimiento y rendimiento, bajo aroma.
+**Descripción:** Pintura para interiores con acabado mate, diseñada para brindar buen cubrimiento, rendimiento óptimo y Bajo olor. Ideal para obtener superficies uniformes y de excelente apariencia.
 
 **Características:**
 - Acabado mate
-- Con cubrimiento
-- Bajo aroma
-- Opción semilavable
+- Buen cubrimiento
+- Rendimiento óptimo
+- Bajo olor
+- Superficies uniformes
 
 **Presentaciones disponibles:**
 - Cuñete
@@ -106,12 +107,12 @@
 
 ![Vinilo acrílico tipo 1 certificado](public/productos/vinilo-tipo-1-certificado.webp)
 
-**Descripción:** Vinilo acrílico certificado con acabado mate lavable, ideal para interiores. Con desempeño y cubrimiento, bajo aroma y nivelación.
+**Descripción:** Vinilo acrílico certificado con acabado mate lavable, ideal para interiores. Con desempeño y cubrimiento, Bajo olor y nivelación.
 
 **Características:**
 - Acabado mate lavable
 - Con cubrimiento
-- Bajo aroma
+- Bajo olor
 - Con nivelación
 - Certificado
 
@@ -154,7 +155,6 @@
 **Características:**
 - Protección contra oxidación
 - Mejora adhesión del esmalte
-- Secado rápido
 - Con resistencia
 
 **Presentaciones disponibles:**
@@ -170,7 +170,7 @@
 **Beneficios:**
 - Previene la formación de óxido
 - Mejora la adhesión del esmalte
-- Fácil aplicación y secado rápido
+- Fácil aplicación 
 - Con resistencia y durabilidad
 
 **Aplicación:** Listo para usar. Aplicable con rodillo o brocha. Se disuelve con thinner o varsol.
