@@ -20,13 +20,13 @@
 
 ![Vinilo acrílico](public/productos/vinilo-acrilico.webp)
 
-**Descripción:** Vinilo acrílico con acabado mate lavable, ideal para interiores. Con desempeño y cubrimiento, Bajo olor y nivelación.
+**Descripción:** Pintura acrílica de acabado mate diseñada para ofrecer alta cobertura y durabilidad en espacios interiores.
 
 **Características:**
 - Acabado mate lavable
-- Con cubrimiento
+- Alto cubrimiento
 - Bajo olor
-- Con nivelación
+- Excelente nivelación
 
 **Presentaciones disponibles:**
 - Cuñete
@@ -47,7 +47,7 @@
 
 ![Vinilo tipo 2 Semilavable](public/productos/vinilo-semilavable.webp)
 
-**Descripción:** Pintura para interiores con acabado mate, diseñada para brindar buen cubrimiento, rendimiento óptimo y Bajo olor. Ideal para obtener superficies uniformes y de excelente apariencia.
+**Descripción:** Pintura para interiores con acabado mate, desarrollada para proporcionar un cubrimiento eficiente y un rendimiento superior en cada aplicación.
 
 **Características:**
 - Acabado mate
@@ -70,13 +70,13 @@
 
 ![Vinilo tipo coraza](public/productos/vinilo-hidrofugado.webp)
 
-**Descripción:** Pintura diluible en agua con acabado satinado, hidrofugable y con resistencia. Ideal para fachadas o uso interior con exigencias de impermeabilización y lavabilidad.
+**Descripción:** Pintura de alto rendimiento con acabado satinado y tecnología hidrófuga, ideal para proteger fachadas y muros bajo condiciones de humedad.
 
 **Características:**
 - Acabado satinado
-- Hidrofugable
-- Con resistencia
-- Fachadas o uso interior
+- Propiedades hidrofugantes
+- Alta resistencia a la intemperie
+- Uso en fachadas e interiores
 
 **Presentaciones disponibles:**
 - Cuñete
@@ -89,12 +89,12 @@
 
 ![Vinilo tipo 2 certificado](public/productos/vinilo-tipo-2-certificado.webp)
 
-**Descripción:** Pintura económica con calidad para interiores. Ideal para proyectos con presupuesto ajustado sin comprometer la calidad.
+**Descripción:** Pintura económica de calidad certificada para interiores, ideal para proyectos que requieren un balance entre presupuesto y buen acabado.
 
 **Características:**
-- Económica
-- Con calidad
-- Fácil aplicación
+- Costo eficiente
+- Calidad certificada
+- Fácil de aplicar
 
 **Presentaciones disponibles:**
 - Cuñete
@@ -107,14 +107,14 @@
 
 ![Vinilo acrílico tipo 1 certificado](public/productos/vinilo-tipo-1-certificado.webp)
 
-**Descripción:** Vinilo acrílico certificado con acabado mate lavable, ideal para interiores. Con desempeño y cubrimiento, Bajo olor y nivelación.
+**Descripción:** Producto acrílico de nivel superior con certificación de calidad, diseñado para obtener acabados profesionales de gran resistencia y lavabilidad.
 
 **Características:**
 - Acabado mate lavable
-- Con cubrimiento
+- Cubrimiento excepcional
 - Bajo olor
-- Con nivelación
-- Certificado
+- Nivelación profesional
+- Certificación NTC 1335
 
 **Presentaciones disponibles:**
 - Cuñete
@@ -130,12 +130,12 @@
 
 ![Vinilo tipo 3](public/productos/vinilo-tipo-3.webp)
 
-**Descripción:** Pintura económica con calidad para interiores. Ideal para proyectos con presupuesto ajustado sin comprometer la calidad.
+**Descripción:** Pintura básica de alta rotación para techos o primeras manos, ofreciendo una solución rentable para la renovación de espacios.
 
 **Características:**
 - Económica
-- Con calidad
-- Fácil aplicación
+- Ideal para techos
+- Aplicación sencilla
 
 **Presentaciones disponibles:**
 - Cuñete
@@ -150,12 +150,12 @@
 
 ![Anticorrosivo](public/productos/anticorrosivo.webp)
 
-**Descripción:** Producto diseñado con protección contra la oxidación y el desgaste.
+**Descripción:** Pintura técnica formulada para detener la progresión de la oxidación y proteger estructuras metálicas en diversos entornos.
 
 **Características:**
-- Protección contra oxidación
-- Mejora adhesión del esmalte
-- Con resistencia
+- Protección contra la corrosión
+- Base para esmaltes
+- Resistencia climática
 
 **Presentaciones disponibles:**
 - Cuñete
@@ -183,12 +183,12 @@
 
 ![Esmalte Especial](public/productos/esmalte-especial.webp)
 
-**Descripción:** Con protección y decoración de superficies de metal y madera.
+**Descripción:** Esmalte sintético de uso general diseñado para el embellecimiento y la protección duradera de elementos en metal y madera.
 
 **Características:**
-- Con protección
-- Decoración
-- Durabilidad
+- Protección duradera
+- Acabado decorativo
+- Alta adherencia
 
 **Presentaciones disponibles:**
 - Cuñete
@@ -207,12 +207,12 @@
 
 ![Esmalte Premium](public/productos/esmalte-premium.webp)
 
-**Descripción:** Con protección para superficies de metal y madera.
+**Descripción:** Esmalte de calidad superior que proporciona un acabado estético impecable y una barrera protectora reforzada contra el desgaste.
 
 **Características:**
-- Con protección
-- Con calidad
-- Con acabado
+- Protección de alto nivel
+- Excelente acabado
+- Calidad premium
 
 **Presentaciones disponibles:**
 - Cuñete
@@ -231,12 +231,12 @@
 
 ![Esmalte Tipo 1](public/productos/esmalte-tipo-1.webp)
 
-**Descripción:** Pintar y proteger superficies de metal y madera.
+**Descripción:** Pintura versátil enfocada en el mantenimiento estándar de superficies metálicas y de madera con resultados consistentes.
 
 **Características:**
-- Protección
-- Decoración
-- Versatilidad
+- Protección estándar
+- Versatilidad de uso
+- Resultados uniformes
 
 **Presentaciones disponibles:**
 - Cuñete
@@ -254,13 +254,13 @@
 
 ![Esmalte a base agua](public/productos/esmalte-base-agua.webp)
 
-**Descripción:** Esmalte ecológico a base de agua para protección y decoración de superficies de metal y madera.
+**Descripción:** Esmalte ecológico formulado sin solventes agresivos, ideal para proyectos sostenibles que requieren protección en metal y madera.
 
 **Características:**
-- A base de agua
-- Ecológico
-- Con protección
-- Fácil aplicación
+- Fórmula base agua
+- Bajo impacto ambiental
+- Fácil limpieza
+- Protección efectiva
 
 **Presentaciones disponibles:**
 - Cuñete
@@ -280,12 +280,12 @@
 
 ![Tráfico Pesado](public/productos/trafico-pesado.webp)
 
-**Descripción:** Pintura con desempeño para señalización y demarcación de pavimentos.
+**Descripción:** Pintura de alta resistencia diseñada para resistir el roce constante y las condiciones climáticas en la demarcación vial.
 
 **Características:**
-- Con resistencia al desgaste
-- Secado rápido
-- Con durabilidad
+- Resistencia al tráfico
+- Secado extra rápido
+- Larga durabilidad
 
 **Presentaciones disponibles:**
 - Cuñete
@@ -305,12 +305,12 @@
 
 ![Estuco Plástico Acrílico](public/productos/estuco-plastico-acrilico.webp)
 
-**Descripción:** Producto de acabado liso para paredes.
+**Descripción:** Masa lista para suavizar paredes y ocultar imperfecciones, proporcionando la base perfecta para cualquier tipo de pintura.
 
 **Características:**
-- Acabado liso
-- Con adherencia
-- Fácil aplicación
+- Acabado liso premium
+- Alta adherencia
+- Lijado sencillo
 
 **Presentaciones disponibles:**
 - Cuñete
@@ -328,12 +328,12 @@
 
 ![Graniplast](public/productos/graniplast.webp)
 
-**Descripción:** Revestimiento para acabados texturizados decorativos.
+**Descripción:** Revestimiento plástico que permite crear texturas decorativas resistentes a la intemperie y de gran impacto visual.
 
 **Características:**
-- Acabado texturizado
-- Decorativo
-- Resistente
+- Textura decorativa
+- Resistencia exterior
+- Gran durabilidad
 
 **Presentaciones disponibles:**
 - Cuñete
@@ -350,12 +350,12 @@
 
 ![Carraplast](public/productos/garraplast.webp)
 
-**Descripción:** Revestimiento decorativo con adherencia y flexibilidad.
+**Descripción:** Revestimiento versátil diseñado para ofrecer acabados flexibles y de alta adherencia en muros exteriores e interiores.
 
 **Características:**
-- Con adherencia
-- Flexibilidad
-- Decorativo
+- Alta flexibilidad
+- Excelente adherencia
+- Variedad de acabados
 
 **Presentaciones disponibles:**
 - Cuñete
@@ -371,11 +371,11 @@
 
 ![Pasta Acrílica](public/productos/pasta acrilica.webp)
 
-**Descripción:** Producto para nivelar y preparar superficies antes de pintar.
+**Descripción:** Pasta especializada para la preparación técnica de superficies, asegurando un plano uniforme antes de los acabados finales.
 
 **Características:**
-- Nivelación
-- Preparación de superficies
+- Nivelación de superficies
+- Base técnica
 - Acabado uniforme
 
 **Presentaciones disponibles:**
@@ -395,13 +395,13 @@
 
 ![Impermeabilizante](public/productos/Impermeabilizante_Uretanico.webp)
 
-**Descripción:** Protege tu inversión con impermeabilizantes de alto rendimiento. Soluciones profesionales para evitar filtraciones, humedades y deterioro en techos, terrazas, muros y fachadas. Diseñados para resistir condiciones climáticas extremas y alargar la vida útil de cualquier superficie.
+**Descripción:** Sistema de protección hidrófuga diseñado para sellar superficies y prevenir filtraciones críticas en cubiertas y fachadas.
 
 **Características:**
-- Protección contra filtraciones
-- Alto rendimiento
-- Resistente a condiciones extremas
-- Alarga vida útil
+- Barrera contra humedad
+- Alto rendimiento elástico
+- Resistencia a climas extremos
+- Protección estructural
 
 **Presentaciones disponibles:**
 - Cuñete
@@ -420,12 +420,12 @@
 
 ![Recambios para rodillos](public/productos/recambio-rodillo.webp)
 
-**Descripción:** Recambios para rodillos en diferentes largos de pelo. Ideal para mantener tus rodillos en perfecto estado y continuar trabajando sin interrupciones.
+**Descripción:** Repuestos fabricados con diferentes largos de lana, ideales para renovar el rodillo y mantener un acabado uniforme.
 
 **Características:**
-- Recambios disponibles
-- Diferentes largos
+- Variedad de fibras
 - Fácil instalación
+- Renovación de herramienta
 
 **Presentaciones disponibles:**
 - Variedad de tamaños
@@ -440,12 +440,12 @@
 
 ![Bandejas](public/productos/bandeja-pintura.webp)
 
-**Descripción:** Recipiente estructurado para verter la pintura, permitiendo una carga controlada del rodillo y eliminando el exceso mediante su zona de descarga.
+**Descripción:** Recipiente estructurado que facilita la distribución uniforme de la pintura y permite una carga controlada del rodillo.
 
 **Características:**
-- Carga controlada
-- Zona de descarga
-- Estructurado
+- Carga equilibrada
+- Zona de descarga integrada
+- Estructura resistente
 
 **Presentaciones disponibles:**
 - Estándar
@@ -462,13 +462,12 @@
 
 ![Cinta de Enmascarar Cellux / Estándar](public/productos/cinta-enmascarar.webp)
 
-**Descripción:** Para trabajos de precisión y multipropósito, destacada por ser fácil de remover sin transferir pegante a la superficie.
+**Descripción:** Cinta adhesiva de alta precisión diseñada para proteger áreas específicas y obtener líneas de pintura limpias sin dejar residuos.
 
 **Características:**
-- Precisión
-- Multipropósito
-- Fácil de remover
-- No deja pegante
+- Alta precisión
+- Uso multipropósito
+- Remoción limpia y sencilla
 
 **Presentaciones disponibles:**
 - 24 mm x 40 yd
@@ -485,12 +484,12 @@
 
 ![Lonas y plásticos protectores](public/productos/plastico-protector.webp)
 
-**Descripción:** Lonas y plásticos protectores para cubrir muebles, pisos y superficies durante trabajos de pintura. Protección esencial para mantener limpio tu espacio.
+**Descripción:** Cubiertas resistentes diseñadas para proteger muebles y pisos de salpicaduras, polvo y manchas durante trabajos de pintura.
 
 **Características:**
-- Protección completa
-- Resistentes
-- Reutilizables
+- Protección integral
+- Material resistente
+- Reutilizable
 
 **Presentaciones disponibles:**
 - Variedad de tamaños
@@ -508,12 +507,12 @@
 
 ![Cartón corrugado](public/productos/carton-corrugado-Photoroom.webp)
 
-**Descripción:** Cartón corrugado para protección de superficies durante trabajos de pintura. Ideal para cubrir pisos, muebles y áreas que requieren protección.
+**Descripción:** Material de protección robusto utilizado para cubrir pisos y superficies amplias durante procesos de remodelación y pintura.
 
 **Características:**
-- Protección de superficies
-- Resistente
-- Fácil de usar
+- Protección de alto impacto
+- Fácil despliegue
+- Resistencia al tráfico
 
 **Presentaciones disponibles:**
 - Variedad de tamaños
@@ -529,11 +528,12 @@
 
 ![Disolventes](public/productos/disolvente.webp)
 
-**Descripción:** Limpieza de herramientas y preparación de superficies para un acabado óptimo.
+**Descripción:** Sustancia especializada diseñada para la dilución de pinturas, limpieza profunda de herramientas y preparación técnica de superficies.
 
 **Características:**
-- Limpieza de herramientas
-- Preparación de superficies
+- Limpieza efectiva
+- Dilución controlada
+- Uso técnico
 
 **Presentaciones disponibles:**
 - Galón
@@ -549,12 +549,12 @@
 
 ![Mezclador](public/productos/mezclador.webp)
 
-**Descripción:** Herramienta plástica diseñada para batir la pintura y asegurar que los pigmentos y resinas se integren perfectamente.
+**Descripción:** Accesorio ergonómico diseñado para batir la pintura, asegurando una integración completa de pigmentos y resinas.
 
 **Características:**
-- Plástico
-- Integración de pigmentos
-- Fácil uso
+- Mezcla homogénea
+- Material plástico duradero
+- Fácil manejo
 
 ---
 
@@ -562,12 +562,12 @@
 
 ![Destapacuñete](public/productos/destapacuñete.webp)
 
-**Descripción:** Herramienta especializada para abrir las tapas de los cuñetes de pintura de forma rápida, evitando daños y desperdicios.
+**Descripción:** Herramienta práctica fabricada para abrir envases de gran tamaño de manera segura, rápida y sin desperdicios.
 
 **Características:**
-- Apertura rápida
-- Evita daños
-- Sin desperdicios
+- Apertura de seguridad
+- Prevención de daños al envase
+- Uso profesional
 
 ---
 
@@ -575,12 +575,12 @@
 
 ![Espátula Plástica](public/productos/espatula-plastica.webp)
 
-**Descripción:** Ligeras y flexibles, diseñadas específicamente para aplicar masilla y resanar agujeros en paredes.
+**Descripción:** Herramientas ligeras y flexibles ideales para la aplicación de masilla y el resane de pequeñas imperfecciones en muros.
 
 **Características:**
-- Ligera
-- Flexible
-- Para masilla
+- Alta flexibilidad
+- Peso ligero
+- Ideal para resanes
 
 **Presentaciones disponibles:**
 - 4"
@@ -593,12 +593,12 @@
 
 ![Espátula Boreal Acero al Carbón](public/productos/espatula-acero-carbon.webp)
 
-**Descripción:** Herramienta profesional de alta durabilidad para raspar superficies o aplicar materiales más densos.
+**Descripción:** Herramienta profesional de alta resistencia diseñada para raspar superficies difíciles o aplicar materiales de alta densidad.
 
 **Características:**
-- Alta durabilidad
-- Acero al carbón
-- Para raspar
+- Durabilidad extrema
+- Acero al carbón forjado
+- Uso pesado
 
 **Presentaciones disponibles:**
 - 4"
@@ -610,11 +610,11 @@
 
 ![Cepillo de Alambre Todo Uso](public/productos/cepillo-alambre.webp)
 
-**Descripción:** Con cerdas de acero, ideal para limpiar superficies oxidadas, remover pintura vieja o limpiar herramientas.
+**Descripción:** Cepillo de cerdas metálicas diseñado para la remoción profunda de óxido, pintura vieja y limpieza técnica de herramientas.
 
 **Características:**
-- Cerdas de acero
-- Remoción de óxido
+- Remoción de corrosión
+- Cerdas de alta resistencia
 - Limpieza profunda
 
 ---
@@ -623,12 +623,12 @@
 
 ![Lija de Agua Negra](public/productos/lija-agua-negra.webp)
 
-**Descripción:** Para lijado fino y acabados suaves usando agua como lubricante.
+**Descripción:** Material abrasivo de grano fino diseñado para procesos de lijado que requieren lubricación con agua para obtener acabados extra suaves.
 
 **Características:**
-- Lijado fino
-- Acabados suaves
-- Uso con agua
+- Lijado de precisión
+- Acabado terso
+- Uso húmedo
 
 **Presentaciones disponibles:**
 - Granos 60 a 600
@@ -639,12 +639,12 @@
 
 ![Lija Roja en Seco](public/productos/lija-rojo-seco.webp)
 
-**Descripción:** Para desbaste y preparación de superficies de madera o pared sin necesidad de líquidos.
+**Descripción:** Material abrasivo optimizado para procesos de desbaste y nivelación de madera o muros sin necesidad de utilizar líquidos.
 
 **Características:**
-- Lijado en seco
-- Desbaste
-- Para madera o pared
+- Desbaste eficiente
+- Uso en seco
+- Especial para madera y muro
 
 **Presentaciones disponibles:**
 - Granos 60 a 600
@@ -655,12 +655,12 @@
 
 ![Pasta de Pulir Mercury](public/productos/pasta-pulir.webp)
 
-**Descripción:** Compuesto abrasivo fino para dar brillo y acabado espejo a superficies pintadas.
+**Descripción:** Compuesto abrasivo de alta gama desarrollado para restaurar el brillo y proporcionar un acabado espejo en superficies pintadas.
 
 **Características:**
-- Abrasivo fino
-- Da brillo
-- Acabado espejo
+- Brillo intenso
+- Acabado tipo espejo
+- Abrasión controlada
 
 **Presentaciones disponibles:**
 - 700 g
@@ -671,12 +671,12 @@
 
 ![Disco de Desbaste y Pulido](public/productos/disco-desbaste-pulido.webp)
 
-**Descripción:** Disco Flap Grano 60, diseñado para esmerilar y pulir metal (hierro) y madera.
+**Descripción:** Disco abrasivo especializado para procesos de esmerilado, pulido y nivelación de superficies metálicas y de madera.
 
 **Características:**
-- Grano 60
-- Esmerilar
-- Pulir metal y madera
+- Grano 60 optimizado
+- Uso dual metal/madera
+- Desbaste rápido
 
 ---
 
@@ -684,12 +684,12 @@
 
 ![Veteador WI 4+6"](public/productos/veteador-wi.webp)
 
-**Descripción:** Veteador mediano con aplicador de caucho. Ideal para crear efectos decorativos que imitan las vetas naturales de la madera.
+**Descripción:** Herramienta decorativa con aplicador de caucho diseñada para simular las vetas naturales de la madera en diversas superficies.
 
 **Características:**
-- Efectos madera
-- Aplicador de caucho
-- Decorativo
+- Efecto madera realista
+- Caucho flexible
+- Fácil de limpiar
 
 **Presentaciones disponibles:**
 - 4+6"
@@ -700,12 +700,12 @@
 
 ![Veteador SBWR-2.5"](public/productos/veteador-sbwr.webp)
 
-**Descripción:** Veteador de tamaño mediano con mango de madera. Específicamente diseñado para imitar motivos leñosos naturales.
+**Descripción:** Herramienta de acabado equipada con mango de madera, ideal para replicar motivos leñosos con gran detalle decorativo.
 
 **Características:**
-- Motivos leñosos
-- Mango de madera
-- Decorativo
+- Detalle definido
+- Agarre ergonómico
+- Larga durabilidad
 
 **Presentaciones disponibles:**
 - 2.5"
@@ -716,12 +716,12 @@
 
 ![Veteador SB-PY 4"](public/productos/veteador-sb-py.webp)
 
-**Descripción:** Veteador de tamaño mediano con mango de plástico. Recomendado para lograr acabados decorativos tipo madera.
+**Descripción:** Accesorio decorativo con mango ergonómico diseñado para lograr acabados que imitan la apariencia de maderas naturales.
 
 **Características:**
-- Acabados tipo madera
-- Mango plástico
-- Decorativo
+- Acabado tipo madera
+- Mango de alta resistencia
+- Versatilidad
 
 **Presentaciones disponibles:**
 - 4"
@@ -732,12 +732,12 @@
 
 ![Veteador SB-PB 5"](public/productos/veteador-sb-pb.webp)
 
-**Descripción:** Versión de tamaño grande con mango de madera. Ideal para superficies más amplias donde se requiera imitar el aspecto natural de la madera.
+**Descripción:** Herramienta de gran tamaño diseñada para imitar vetas de madera en áreas extensas de forma rápida y eficiente.
 
 **Características:**
-- Superficies amplias
-- Aspecto natural
-- Tamaño grande
+- Cobertura amplia
+- Efecto natural
+- Ideal para grandes áreas
 
 **Presentaciones disponibles:**
 - 5"
@@ -750,12 +750,12 @@
 
 ![Rodillo Popular 9"](public/productos/rodillo-popular-9''.webp)
 
-**Descripción:** Fabricado con sistema de termo fusión (sin costuras) para evitar que se suelte la felpa. Ofrece un óptimo rendimiento en la aplicación de pinturas a base de agua y vinilos.
+**Descripción:** Herramienta de aplicación fabricada con sistema de termo fusión que garantiza durabilidad y un rendimiento constante en pinturas base agua.
 
 **Características:**
-- Sistema termo fusión
-- Sin costuras
-- Para base agua y vinilos
+- Termo fusión sin costuras
+- Alta durabilidad de felpa
+- Ideal para vinilos
 
 **Presentaciones disponibles:**
 - 9"
@@ -766,13 +766,12 @@
 
 ![Rodillo Felpa Semiprofesional 9"](public/productos/rodillo-felpa-semiprofesional-9''.webp)
 
-**Descripción:** Posee sistema de termo fusión y no tiene costuras. Está diseñado para ofrecer un acabado de calidad superior en superficies que requieran pinturas a base de agua o vinilos.
+**Descripción:** Rodillo de alta calidad diseñado para proporcionar acabados superiores en superficies lisas o semirrugosas con pinturas base agua.
 
 **Características:**
-- Termo fusión
-- Sin costuras
-- Acabado superior
-- Para base agua
+- Felpa seleccionada
+- Acabado de alta gama
+- Sin desprendimiento
 
 **Presentaciones disponibles:**
 - 9"
@@ -783,13 +782,12 @@
 
 ![Rodillo Profesional 9" Anillo](public/productos/rodillo-profesional-9''-anillo.webp)
 
-**Descripción:** Elaborado con felpa industrial de alta densidad y sistema de termo fusión. No tiene costuras y no deja huella al pintar. Especial para pinturas base agua.
+**Descripción:** Herramienta profesional con felpa de alta densidad desarrollada para obtener coberturas uniformes sin dejar huellas en la superficie.
 
 **Características:**
-- Felpa industrial alta densidad
-- No deja huella
-- Termo fusión
-- Especial base agua
+- Densidad industrial
+- Zero huella
+- Carga máxima de pintura
 
 **Presentaciones disponibles:**
 - 9"
@@ -800,13 +798,12 @@
 
 ![Rodillo Hilo Antigota 9"](public/productos/rodillo-hilo-antigota-9''.webp)
 
-**Descripción:** Fabricado con hilo de microfibra de última tecnología y termo fusión. Más duradero y ideal para pinturas complejas como epóxicas, de tráfico, esmaltes y vinilos.
+**Descripción:** Rodillo de alta tecnología fabricado con microfibra diseñado para minimizar el salpicado y maximizar la descarga de pintura técnica.
 
 **Características:**
-- Hilo microfibra
-- Antigota
-- Mayor durabilidad
-- Para epóxicas y esmaltes
+- Tecnología antigota
+- Microfibra avanzada
+- Compatible con epóxicos
 
 **Presentaciones disponibles:**
 - 9"
@@ -817,12 +814,12 @@
 
 ![Rodillo Espuma 9"](public/productos/rodillo-espuma-9''.webp)
 
-**Descripción:** Hecho de espuma de poliuretano de alta calidad. Es la herramienta básica y efectiva para aplicaciones sencillas de pinturas a base de agua.
+**Descripción:** Herramienta básica y ligera fabricada en poliuretano, ideal para aplicaciones sencillas y retoques rápidos con pinturas base agua.
 
 **Características:**
-- Espuma poliuretano
-- Alta calidad
-- Para aplicaciones sencillas
+- Espuma de alta porosidad
+- Peso ligero
+- Económico y efectivo
 
 **Presentaciones disponibles:**
 - 9"
@@ -833,12 +830,12 @@
 
 ![Rodillo Teja de Felpa Industrial](public/productos/rodillo-teja-felpa-industrial.webp)
 
-**Descripción:** Su estructura es ergonómica y está diseñada específicamente para adaptarse a la ondulación de las tejas tipo Eternit, facilitando el cubrimiento uniforme.
+**Descripción:** Rodillo ergonómico con diseño especializado para adaptarse a la forma ondulada de las tejas, facilitando un cubrimiento homogéneo.
 
 **Características:**
-- Estructura ergonómica
-- Para tejas onduladas
-- Cubrimiento uniforme
+- Forma anatómica para teja
+- Aplicación ergonómica
+- Cubrimiento total
 
 **Presentaciones disponibles:**
 - Estándar
@@ -849,13 +846,12 @@
 
 ![Mini Rodillos Hilo Antigota](public/productos/rodillo-mini-hilo-antigota.webp)
 
-**Descripción:** Versiones pequeñas con tecnología de microfibra y termo fusión. Ideales para marcos, esquinas y áreas de difícil acceso.
+**Descripción:** Mini rodillos de microfibra diseñados para trabajar con precisión en marcos, esquinas y áreas de difícil acceso.
 
 **Características:**
-- Microfibra
-- Termo fusión
-- Para áreas difíciles
-- Epóxicas y esmaltes
+- Precisión en detalles
+- Fibras antigota
+- Uso en espacios reducidos
 
 **Presentaciones disponibles:**
 - 1"
@@ -871,13 +867,12 @@
 
 ![Rodillo Junior](public/productos/rodillo-junior.webp)
 
-**Descripción:** Versiones compactas del rodillo de felpa industrial con termo fusión. Sin costuras, para detalles en pinturas base agua.
+**Descripción:** Versión compacta del rodillo de felpa industrial, ideal para realizar detalles y acabados finales en espacios reducidos.
 
 **Características:**
-- Compacto
-- Felpa industrial
-- Sin costuras
-- Para detalles
+- Tamaño compacto
+- Felpa industrial resistente
+- Acabado detallado
 
 **Presentaciones disponibles:**
 - 7"
@@ -890,12 +885,12 @@
 
 ![Rodillo Texturizador](public/productos/rodillo-texturizador.webp)
 
-**Descripción:** Rodillo especial con relieve diseñado para crear acabados decorativos, texturas y efectos rústicos en paredes o techos.
+**Descripción:** Herramienta con relieve diseñada para crear efectos decorativos rústicos y texturas personalizadas en paredes y techos.
 
 **Características:**
-- Con relieve
-- Acabados decorativos
-- Efectos rústicos
+- Efecto texturizado
+- Relieve definido
+- Versatilidad creativa
 
 **Presentaciones disponibles:**
 - 9"
@@ -909,12 +904,12 @@
 
 ![Rodillo Epóxico 9"](public/productos/rodillo-epoxico-9''.webp)
 
-**Descripción:** Reforzado con termo fusión para resistir los químicos de las pinturas epóxicas, de tráfico y esmaltes, asegurando que la felpa no se desprenda.
+**Descripción:** Herramienta reforzada diseñada para resistir componentes químicos agresivos presentes en pinturas epóxicas y de tráfico.
 
 **Características:**
-- Resistente a químicos
-- Para epóxicas y tráfico
-- Felpa asegurada
+- Resistencia química
+- Fijación de felpa extrema
+- Uso industrial
 
 **Presentaciones disponibles:**
 - 9"
@@ -925,12 +920,12 @@
 
 ![Rodillo Teja Ovejero](public/productos/rodillo-teja-ovejero.webp)
 
-**Descripción:** Similar al de felpa industrial pero con material "ovejero" para una mayor carga de pintura en superficies irregulares de tejas.
+**Descripción:** Rodillo de alta carga con material ovejero diseñado para cubrir eficazmente las irregularidades de tejas y superficies muy rugosas.
 
 **Características:**
-- Material ovejero
-- Mayor carga de pintura
-- Para superficies irregulares
+- Carga máxima de pintura
+- Adaptación a rugosidades
+- Uso en exteriores
 
 **Presentaciones disponibles:**
 - Estándar
@@ -941,12 +936,12 @@
 
 ![Rodillo Felpa Ovejera 9"](public/productos/rodillo-felpa-ovejera-9''.webp)
 
-**Descripción:** Rodillo de alta capacidad de absorción con sistema de termo fusión, ideal para cubrir grandes áreas con pintura base agua rápidamente.
+**Descripción:** Herramienta de alta absorción diseñada para la aplicación rápida y eficiente de pintura en superficies de gran extensión.
 
 **Características:**
-- Alta absorción
-- Termo fusión
-- Para grandes áreas
+- Absorción superior
+- Rapidez de cobertura
+- Uso en muros amplios
 
 **Presentaciones disponibles:**
 - 9"
@@ -959,12 +954,12 @@
 
 ![Brocha Cerda Popular](public/productos/brocha-cerda-popular.webp)
 
-**Descripción:** Es una brocha versátil y económica diseñada para aplicar toda clase de pinturas en trabajos generales.
+**Descripción:** Herramienta versátil y económica diseñada para la aplicación de diversos tipos de pintura en tareas de mantenimiento general.
 
 **Características:**
-- Versátil
-- Económica
-- Para trabajos generales
+- Polivalencia de uso
+- Cerdas equilibradas
+- Costo accesible
 
 **Presentaciones disponibles:**
 - 2 1/2"
@@ -977,12 +972,12 @@
 
 ![Brocha Cerda Premium](public/productos/brocha-cerda-premium.webp)
 
-**Descripción:** Se distingue por su empaque rojo. Es de calidad superior, con mejor retención de pintura y apta para acabados exigentes con cualquier tipo de pintura.
+**Descripción:** Brocha de calidad superior diseñada para ofrecer una excelente retención de pintura y acabados profesionales en cualquier superficie.
 
 **Características:**
-- Calidad superior
-- Mejor retención
-- Para acabados exigentes
+- Retención de carga óptima
+- Acabado sin rayas
+- Durabilidad profesional
 
 **Presentaciones disponibles:**
 - 1/2"
