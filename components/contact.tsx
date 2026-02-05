@@ -45,7 +45,7 @@ export function Contact() {
                   className="flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-4 rounded-xl transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
                 >
                   <Phone className="h-5 w-5" />
-                  Escribir por WhatsApp
+                  WhatsApp: {contactInfo.whatsapp.replace('57', '')}
                 </a>
 
                 {contactInfo.additionalPhones?.map((phone) => (
