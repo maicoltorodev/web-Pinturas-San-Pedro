@@ -47,7 +47,7 @@
 
 ![Vinilo tipo 2 Semilavable](public/productos/vinilo-semilavable.webp)
 
-**Descripción:** Pintura para interiores con acabado mate, desarrollada para proporcionar un cubrimiento eficiente y un rendimiento superior en cada aplicación.
+**Descripción:** Pintura para interiores con acabado mate, diseñada para brindar buen cubrimiento, rendimiento óptimo y bajo olor. Ideal para obtener superficies uniformes y de excelente apariencia.
 
 **Características:**
 - Acabado mate

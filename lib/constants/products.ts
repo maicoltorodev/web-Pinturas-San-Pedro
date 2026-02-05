@@ -35,7 +35,7 @@ export const products: Product[] = [
     name: 'Vinilo tipo 2 Semilavable',
     category: 'vinilos',
     image: '/productos/vinilo-semilavable.webp',
-    description: 'Pintura para interiores con acabado mate, desarrollada para proporcionar un cubrimiento eficiente y un rendimiento superior en cada aplicación.',
+    description: 'Pintura para interiores con acabado mate, diseñada para brindar buen cubrimiento, rendimiento óptimo y bajo olor. Ideal para obtener superficies uniformes y de excelente apariencia.',
     characteristics: ['Acabado mate', 'Buen cubrimiento', 'Rendimiento óptimo', 'Bajo olor', 'Superficies uniformes'],
     presentations: ['Cuñete', 'Medio', 'Galón'],
     certifications: ['NTC 1335 (algunas referencias)'],
