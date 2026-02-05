@@ -63,23 +63,23 @@ function ProductCard({ product }: ProductCardProps) {
         </div>
 
         {/* Información del producto */}
-        <div className="p-4 md:p-5 flex-1 flex flex-col">
-          <h3 className="font-bold text-lg md:text-xl text-foreground mb-2 group-hover:text-secondary transition-colors line-clamp-2">
+        <div className="p-5 md:p-6 lg:p-7 flex-1 flex flex-col">
+          <h3 className="font-bold text-lg md:text-xl text-foreground mb-3 group-hover:text-secondary transition-colors line-clamp-3">
             {product.name}
           </h3>
-          
-          <p className="text-sm md:text-base text-muted-foreground mb-4 line-clamp-3 flex-1">
+
+          <p className="text-sm md:text-base text-muted-foreground mb-6 line-clamp-5 flex-1">
             {product.description}
           </p>
 
           {/* Características principales */}
           {product.characteristics && product.characteristics.length > 0 && (
-            <div className="mb-4">
-              <ul className="space-y-1">
+            <div className="mb-6">
+              <ul className="space-y-2">
                 {product.characteristics.slice(0, 3).map((char, idx) => (
                   <li key={idx} className="text-xs md:text-sm text-muted-foreground flex items-start gap-2">
                     <span className="text-secondary mt-1">•</span>
-                    <span className="line-clamp-1">{char}</span>
+                    <span className="line-clamp-2">{char}</span>
                   </li>
                 ))}
               </ul>
@@ -105,7 +105,7 @@ export function Products() {
   const [selectedCategory, setSelectedCategory] = useState<ProductCategory | 'all'>('all')
   const [searchQuery, setSearchQuery] = useState("")
   const [showFilters, setShowFilters] = useState(false)
-  
+
   // Debounce búsqueda para mejor rendimiento
   const debouncedSearchQuery = useDebounce(
     searchQuery,
