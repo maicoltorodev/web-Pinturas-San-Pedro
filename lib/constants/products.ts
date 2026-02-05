@@ -158,10 +158,10 @@ export const products: Product[] = [
     uses: ['Paredes interiores', 'Superficies de madera en interiores', 'Aplicación sobre pañetes antes de vinilo o esmalte'],
   },
   {
-    id: 'graniplas',
-    name: 'Graniplas',
+    id: 'graniplast',
+    name: 'Graniplast',
     category: 'estucos',
-    image: '/productos/graniplas.webp',
+    image: '/productos/graniplast.webp',
     description: 'Revestimiento para acabados texturizados decorativos.',
     characteristics: ['Acabado texturizado', 'Decorativo', 'Resistente'],
     presentations: ['Cuñete', 'Medio', 'Galón'],

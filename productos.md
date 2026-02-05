@@ -324,9 +324,9 @@
 
 ---
 
-### Graniplas
+### Graniplast
 
-![Graniplas](public/productos/graniplas.webp)
+![Graniplast](public/productos/graniplast.webp)
 
 **Descripción:** Revestimiento para acabados texturizados decorativos.
 
