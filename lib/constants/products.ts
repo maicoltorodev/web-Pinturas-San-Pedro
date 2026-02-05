@@ -42,11 +42,11 @@ export const products: Product[] = [
   },
   {
     id: 'vinilo-hidrofugado',
-    name: 'Vinilo tipo coraza',
+    name: 'Vinilo Coraza Hidrofugado',
     category: 'vinilos',
     image: '/productos/vinilo-hidrofugado.webp',
-    description: 'Pintura de alto rendimiento con acabado satinado y tecnología hidrófuga, ideal para proteger fachadas y muros bajo condiciones de humedad.',
-    characteristics: ['Acabado satinado', 'Propiedades hidrofugantes', 'Alta resistencia a la intemperie', 'Uso en fachadas e interiores'],
+    description: 'Pintura diluible en agua con acabado satinado que brinda mayor protección y durabilidad. Su tecnología hidrofugada ayuda a proteger las superficies de la humedad, manteniendo los espacios limpios y con excelente apariencia.',
+    characteristics: ['Protección contra la humedad', 'Acabado satinado uniforme', 'Excelente cubrimiento', 'Alta resistencia', 'Fácil aplicación'],
     presentations: ['Cuñete', 'Medio', 'Galón'],
   },
   {

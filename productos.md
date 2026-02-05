@@ -66,17 +66,18 @@
 
 ---
 
-### Vinilo tipo coraza
+### Vinilo Coraza Hidrofugado
 
-![Vinilo tipo coraza](public/productos/vinilo-hidrofugado.webp)
+![Vinilo Coraza Hidrofugado](public/productos/vinilo-hidrofugado.webp)
 
-**Descripción:** Pintura de alto rendimiento con acabado satinado y tecnología hidrófuga, ideal para proteger fachadas y muros bajo condiciones de humedad.
+**Descripción:** Pintura diluible en agua con acabado satinado que brinda mayor protección y durabilidad. Su tecnología hidrofugada ayuda a proteger las superficies de la humedad, manteniendo los espacios limpios y con excelente apariencia.
 
 **Características:**
-- Acabado satinado
-- Propiedades hidrofugantes
-- Alta resistencia a la intemperie
-- Uso en fachadas e interiores
+- Protección contra la humedad
+- Acabado satinado uniforme
+- Excelente cubrimiento
+- Alta resistencia
+- Fácil aplicación
 
 **Presentaciones disponibles:**
 - Cuñete
