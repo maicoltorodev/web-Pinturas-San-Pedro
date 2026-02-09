@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useMemo } from "react"
-import { Search, X, Package, Filter } from "lucide-react"
+import { Search, X, Package, Filter, MessageSquare } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { SectionHeader } from "@/components/ui/section-header"
@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils"
 import Image from "next/image"
 import { blurDataURL } from "@/lib/image-utils"
 import { products, productCategories } from "@/lib/constants/products"
+import { whatsappUrls } from "@/lib/constants/site"
 import { useDebounce } from "@/hooks/useDebounce"
 import { useSharedIntersectionObserver } from "@/hooks/useSharedIntersectionObserver"
 import type { Product, ProductCategory } from "@/lib/types"
@@ -95,6 +96,19 @@ function ProductCard({ product }: ProductCardProps) {
               </p>
             </div>
           )}
+
+          {/* Botón de WhatsApp */}
+          <div className="mt-4 pt-4 border-t border-primary-foreground/10">
+            <a
+              href={whatsappUrls.product(product.name)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-3 rounded-xl transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+            >
+              <MessageSquare className="h-4 w-4" />
+              <span className="text-sm">Consultar por WhatsApp</span>
+            </a>
+          </div>
         </div>
       </CardContent>
     </Card>

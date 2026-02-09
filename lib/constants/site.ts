@@ -65,6 +65,7 @@ export const whatsappUrls = {
   quote: `https://wa.me/${contactInfo.whatsapp}?text=${contactInfo.whatsappMessage}`,
   contact: `https://wa.me/${contactInfo.whatsapp}?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s.`,
   colors: `https://wa.me/${contactInfo.whatsapp}?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20colores%20de%20pintura.%20Tengo%20consultas%20sobre%20colores%20personalizados%20y%20mezclas%20especiales.`,
+  product: (productName: string) => `https://wa.me/${contactInfo.whatsapp}?text=Hola%2C%20me%20interesa%20el%20producto%3A%20${encodeURIComponent(productName)}%2C%20%C2%BFpodr%C3%ADan%20darme%20m%C3%A1s%20informaci%C3%B3n%3F`,
 } as const
 
 // Estadísticas del negocio
