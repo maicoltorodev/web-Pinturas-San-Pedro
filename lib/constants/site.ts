@@ -53,7 +53,7 @@ export const siteConfig: SiteConfig = {
   name: 'Pinturas San Pedro',
   tagline: 'CREAMOS COLOR!',
   description: 'Pinturas de la más alta calidad. Calidad certificada, más de 30 años de experiencia.',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://pinturas-san-pedro.vercel.app',
+  url: 'https://pinturassanpedro.com',
   contact: contactInfo,
   hours: businessHours,
   socialLinks,
