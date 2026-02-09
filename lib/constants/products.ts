@@ -51,11 +51,11 @@ export const products: Product[] = [
   },
   {
     id: 'vinilo-tipo-2-certificado',
-    name: 'Vinilo tipo 2 certificado',
+    name: 'Tipo 2 Profesional',
     category: 'vinilos',
     image: '/productos/vinilo-tipo-2-certificado.webp',
-    description: 'Pintura económica de calidad certificada para interiores, ideal para proyectos que requieren un balance entre presupuesto y buen acabado.',
-    characteristics: ['Costo eficiente', 'Calidad certificada', 'Fácil de aplicar'],
+    description: 'Pintura para interiores, desarrollada para ofrecer excelente cubrimiento, acabado uniforme y buen rendimiento en aplicaciones profesionales. Ideal para proyectos que requieren un balance entre economía, calidad y desempeño, proporcionando superficies de buena apariencia y fácil mantenimiento.',
+    characteristics: ['✔ Tipo 2 de uso profesional', '✔ Excelente relación costo – beneficio', '✔ Calidad certificada', '✔ Fácil aplicación y buen rendimiento'],
     presentations: ['Cuñete', 'Medio', 'Galón'],
   },
   {
