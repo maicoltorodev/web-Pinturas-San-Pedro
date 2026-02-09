@@ -131,8 +131,8 @@ export function Contact() {
                 Descubre nuestros proyectos, tips de pintura y ofertas exclusivas en redes sociales.
               </p>
 
-              <div className="grid grid-cols-1 gap-4 mt-auto">
-                <SocialLinks size="lg" className="flex-col gap-4" />
+              <div className="flex items-center justify-center gap-6 mt-auto">
+                <SocialLinks size="lg" className="gap-6" />
               </div>
             </CardContent>
           </Card>
