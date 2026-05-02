@@ -123,7 +123,7 @@ export default function ShowroomPage() {
           <span className="hidden sm:inline">Volver al sitio</span>
           <span className="sm:hidden">Inicio</span>
         </a>
-        <div className="text-white/90 text-[10px] md:text-xs font-bold uppercase tracking-[0.4em]">
+        <div className="absolute left-1/2 -translate-x-1/2 text-white/90 text-[10px] md:text-xs font-bold uppercase tracking-[0.4em]">
           Catálogo
         </div>
         <div className="w-[80px]" />
