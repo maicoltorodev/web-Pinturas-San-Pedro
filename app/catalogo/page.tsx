@@ -109,6 +109,10 @@ export default function ShowroomPage() {
       className="relative bg-black"
       style={{ height: "100dvh", width: "100vw", overflow: "hidden" }}
     >
+      <style>{`
+        .showroom-img { height: clamp(160px, 30vh, 300px); }
+        @media (min-width: 768px) { .showroom-img { height: clamp(320px, 55vh, 600px); } }
+      `}</style>
       {/* Header flotante */}
       <header className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-5 md:px-10 py-4 mix-blend-difference">
         <a
@@ -120,7 +124,7 @@ export default function ShowroomPage() {
           <span className="sm:hidden">Inicio</span>
         </a>
         <div className="text-white/90 text-[10px] md:text-xs font-bold uppercase tracking-[0.4em]">
-          Pinturas San Pedro
+          Catálogo
         </div>
         <div className="w-[80px]" />
       </header>
@@ -198,12 +202,12 @@ export default function ShowroomPage() {
                 {/* Imagen del producto */}
                 <div
                   className={cn(
-                    "relative flex items-center justify-center transition-all duration-1000 ease-out flex-shrink-0",
+                    "showroom-img relative flex items-center justify-center transition-all duration-1000 ease-out flex-shrink-0",
                     isActive
                       ? "opacity-100 translate-y-0 scale-100"
                       : "opacity-0 translate-y-12 scale-90"
                   )}
-                  style={{ width: "100%", height: "clamp(160px, 30vh, 560px)" }}
+                  style={{ width: "100%" }}
                 >
                   <div className="relative w-full h-full">
                     {/* Sombra debajo */}
@@ -391,7 +395,7 @@ export default function ShowroomPage() {
               </div>
 
               {/* Indicador de scroll en primera sección */}
-              {idx === 0 && (
+              {idx < showroomProducts.length - 1 && (
                 <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 animate-bounce">
                   <span
                     className={cn(
