@@ -25,44 +25,51 @@ const SHOWROOM_IDS = [
 
 const THEMES: Record<string, Theme> = {
   "vinilo-acrilico": {
-    bg: "linear-gradient(135deg, #fef3e2 0%, #fde4c0 50%, #f5cf95 100%)",
-    accent: "#c97a2b",
-    accentText: "#7a3e0f",
+    bg: "linear-gradient(135deg, #f8faff 0%, #e8f0fe 55%, #c7d9fc 100%)",
+    accent: "#1d4ed8",
+    accentText: "#1e40af",
     textOnDark: false,
-    paintBg: "radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.6), transparent 70%)",
-    swatches: ["#ffffff", "#f3e3c8", "#c9302c"],
+    paintBg: "radial-gradient(ellipse at 35% 45%, rgba(255,255,255,0.92), transparent 65%)",
+    swatches: ["#ffffff", "#e8f0fe", "#1d4ed8"],
   },
   "vinilo-semilavable": {
-    bg: "linear-gradient(135deg, #e8eef5 0%, #cfdce9 50%, #a8bcd3 100%)",
-    accent: "#3b5d80",
-    accentText: "#1e3552",
-    textOnDark: false,
-    paintBg: "radial-gradient(ellipse at 50% 60%, rgba(255,255,255,0.7), transparent 70%)",
-    swatches: ["#ffffff", "#f0f0f0", "#dfe7ef"],
+    bg: "linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 60%, #3b82f6 100%)",
+    accent: "#fbbf24",
+    accentText: "#fef9c3",
+    textOnDark: true,
+    paintBg: "radial-gradient(ellipse at 50% 40%, rgba(251,191,36,0.18), transparent 65%)",
+    swatches: ["#ffffff", "#fbbf24", "#93c5fd"],
   },
   "vinilo-hidrofugado": {
-    bg: "linear-gradient(135deg, #0a2540 0%, #0f3b5f 50%, #1a5d80 100%)",
-    accent: "#5dd9e6",
-    accentText: "#a8eef5",
-    textOnDark: true,
-    paintBg: "radial-gradient(ellipse at 50% 50%, rgba(93,217,230,0.18), transparent 70%)",
-    swatches: ["#ffffff", "#e8f4f8", "#5dd9e6"],
+    bg: "linear-gradient(135deg, #fefce8 0%, #fef9c3 50%, #fde047 100%)",
+    accent: "#b45309",
+    accentText: "#78350f",
+    textOnDark: false,
+    paintBg: "radial-gradient(ellipse at 40% 55%, rgba(255,255,255,0.75), transparent 65%)",
+    swatches: ["#fde047", "#ffffff", "#b45309"],
   },
   "vinilo-tipo-2-certificado": {
-    bg: "linear-gradient(135deg, #fef9e7 0%, #fae8a0 45%, #f5cb47 100%)",
-    accent: "#a87f15",
-    accentText: "#5d4407",
-    textOnDark: false,
-    paintBg: "radial-gradient(ellipse at 50% 60%, rgba(255,255,255,0.55), transparent 70%)",
-    swatches: ["#ffffff", "#fae8a0", "#dca85f"],
+    bg: "linear-gradient(135deg, #0c1830 0%, #172554 55%, #1e3a8a 100%)",
+    accent: "#fbbf24",
+    accentText: "#fef9c3",
+    textOnDark: true,
+    paintBg: "radial-gradient(ellipse at 50% 50%, rgba(251,191,36,0.1), transparent 65%)",
+    swatches: ["#fbbf24", "#ffffff", "#93c5fd"],
   },
+}
+
+const SHOWROOM_IMAGES: Record<string, string> = {
+  "vinilo-acrilico": "/productos_catalogo/vinilo-acrilico.png",
+  "vinilo-semilavable": "/productos_catalogo/vinilo-semilavable.png",
+  "vinilo-hidrofugado": "/productos_catalogo/vinilo-hidrofugado.png",
+  "vinilo-tipo-2-certificado": "/productos_catalogo/vinilo-tipo-2-certificado.png",
 }
 
 const TAGLINES: Record<string, string> = {
   "vinilo-acrilico": "Tu hogar, en su mejor versión.",
-  "vinilo-semilavable": "Limpieza, color, tranquilidad.",
+  "vinilo-semilavable": "Limpieza que dura. Color que permanece.",
   "vinilo-hidrofugado": "La humedad ya no es un problema.",
-  "vinilo-tipo-2-certificado": "Calidad profesional al alcance de todos.",
+  "vinilo-tipo-2-certificado": "Certificado. Porque tu obra lo merece.",
 }
 
 export default function ShowroomPage() {
@@ -100,7 +107,7 @@ export default function ShowroomPage() {
   return (
     <div
       className="relative bg-black"
-      style={{ height: "100vh", width: "100vw", overflow: "hidden" }}
+      style={{ height: "100dvh", width: "100vw", overflow: "hidden" }}
     >
       {/* Header flotante */}
       <header className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-5 md:px-10 py-4 mix-blend-difference">
@@ -113,7 +120,7 @@ export default function ShowroomPage() {
           <span className="sm:hidden">Inicio</span>
         </a>
         <div className="text-white/90 text-[10px] md:text-xs font-bold uppercase tracking-[0.4em]">
-          Showroom · San Pedro
+          Pinturas San Pedro
         </div>
         <div className="w-[80px]" />
       </header>
@@ -121,9 +128,9 @@ export default function ShowroomPage() {
       {/* Contenedor scroll-snap */}
       <main
         ref={mainRef}
-        className="scroll-smooth"
+        className="scroll-smooth scrollbar-hide"
         style={{
-          height: "100vh",
+          height: "100dvh",
           width: "100vw",
           overflowY: "scroll",
           scrollSnapType: "y mandatory",
@@ -140,7 +147,7 @@ export default function ShowroomPage() {
               className="relative flex items-center justify-center"
               style={{
                 background: theme.bg,
-                height: "100vh",
+                height: "100dvh",
                 width: "100vw",
                 overflow: "hidden",
                 scrollSnapAlign: "start",
@@ -187,29 +194,25 @@ export default function ShowroomPage() {
               </div>
 
               {/* Contenido principal */}
-              <div className="relative z-10 w-full max-w-7xl mx-auto h-full flex flex-col md:grid md:grid-cols-2 md:gap-12 items-center px-6 md:px-12 pt-20 md:pt-16 pb-20 md:pb-12">
+              <div className="relative z-10 w-full max-w-7xl mx-auto h-full flex flex-col md:grid md:grid-cols-2 md:gap-12 items-center px-6 md:px-12 pt-16 md:pt-16 pb-4 md:pb-12 overflow-hidden">
                 {/* Imagen del producto */}
                 <div
                   className={cn(
-                    "relative flex items-center justify-center transition-all duration-1000 ease-out",
+                    "relative flex items-center justify-center transition-all duration-1000 ease-out flex-shrink-0",
                     isActive
                       ? "opacity-100 translate-y-0 scale-100"
                       : "opacity-0 translate-y-12 scale-90"
                   )}
-                  style={{
-                    flex: "1 1 auto",
-                    minHeight: 0,
-                    width: "100%",
-                  }}
+                  style={{ width: "100%", height: "clamp(160px, 30vh, 560px)" }}
                 >
-                  <div className="relative w-full h-full max-h-[42vh] md:max-h-[70vh] aspect-square md:aspect-auto">
+                  <div className="relative w-full h-full">
                     {/* Sombra debajo */}
                     <div
                       className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-8 rounded-[50%] blur-2xl"
                       style={{ backgroundColor: theme.accent, opacity: 0.4 }}
                     />
                     <Image
-                      src={product.image}
+                      src={SHOWROOM_IMAGES[product.id] ?? product.image}
                       alt={product.name}
                       fill
                       className="object-contain drop-shadow-2xl"
@@ -222,7 +225,7 @@ export default function ShowroomPage() {
                 {/* Info editorial */}
                 <div
                   className={cn(
-                    "relative flex flex-col gap-3 md:gap-5 w-full",
+                    "relative flex flex-col gap-2 md:gap-5 w-full flex-1 min-h-0",
                     theme.textOnDark ? "text-white" : "text-gray-900"
                   )}
                 >
