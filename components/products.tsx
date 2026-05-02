@@ -171,8 +171,8 @@ export function Products() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeader
           badge={{ icon: Package, text: "Productos" }}
-          title="Nuestro"
-          subtitle="Catálogo de Productos"
+          title="Nuestros"
+          subtitle="Productos"
           description="Explora nuestra amplia gama de productos de pintura, herramientas y accesorios profesionales. Calidad garantizada para todos tus proyectos."
           className="text-primary-foreground [&_p]:text-primary-foreground/80 mb-8 md:mb-12"
         />
