@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react"
 import dynamic from "next/dynamic"
 
-// Lazy load Analytics only after initial page load and user interaction
 const Analytics = dynamic(() => import("@vercel/analytics/next").then(mod => ({ default: mod.Analytics })), {
   ssr: false,
 })
