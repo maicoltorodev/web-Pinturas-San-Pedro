@@ -37,10 +37,6 @@ type Theme = {
     swatches: { hex: string; name: string }[]   // colores destacados a mostrar
 }
 
-const SHOWROOM_IDS = [
-    "vinilo-acrilico",
-] as const
-
 const THEMES: Record<string, Theme> = {
     "vinilo-acrilico": {
         bg: "linear-gradient(180deg, #eef4ff 0%, #cfdcfb 60%, #a3bdf6 100%)",
