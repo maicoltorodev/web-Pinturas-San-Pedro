@@ -7,7 +7,26 @@ import { siteConfig, contactInfo, businessHours, whatsappUrls } from "@/lib/cons
 import { quickLinks } from "@/lib/constants/navigation"
 import { SocialLinks } from "@/components/ui/social-link"
 
-export function Footer() {
+interface FooterProps {
+  overridePhone?: string
+  overrideAdditionalPhones?: string[]
+  overrideEmail?: string
+  overrideAddress?: string
+  overrideHours?: { weekdays: string; saturday: string; sunday: string }
+}
+
+export function Footer({
+  overridePhone,
+  overrideAdditionalPhones,
+  overrideEmail,
+  overrideAddress,
+  overrideHours,
+}: FooterProps = {}) {
+  const phone = overridePhone ?? contactInfo.phone
+  const additionalPhones = overrideAdditionalPhones ?? contactInfo.additionalPhones
+  const email = overrideEmail ?? contactInfo.email
+  const address = overrideAddress ?? contactInfo.address
+  const hours = overrideHours ?? businessHours
   // Calcular año directamente sin estado innecesario
   const currentYear = new Date().getFullYear()
 
@@ -107,35 +126,35 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <Phone className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
                 <a
-                  href={`tel:${contactInfo.phone}`}
+                  href={`tel:${phone}`}
                   className="text-primary-foreground/80 hover:text-secondary transition-colors text-sm"
                 >
-                  {contactInfo.phone}
+                  {phone}
                 </a>
               </li>
-              {contactInfo.additionalPhones?.map((phone) => (
-                <li key={phone} className="flex items-start gap-3">
+              {additionalPhones?.map((p) => (
+                <li key={p} className="flex items-start gap-3">
                   <Phone className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
                   <a
-                    href={`tel:${phone}`}
+                    href={`tel:${p}`}
                     className="text-primary-foreground/80 hover:text-secondary transition-colors text-sm"
                   >
-                    {phone}
+                    {p}
                   </a>
                 </li>
               ))}
               <li className="flex items-start gap-3">
                 <Mail className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
                 <a
-                  href={`mailto:${contactInfo.email}`}
+                  href={`mailto:${email}`}
                   className="text-primary-foreground/80 hover:text-secondary transition-colors text-sm break-all"
                 >
-                  {contactInfo.email}
+                  {email}
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
-                <span className="text-primary-foreground/80 text-sm">{contactInfo.address}</span>
+                <span className="text-primary-foreground/80 text-sm">{address}</span>
               </li>
             </ul>
           </div>
@@ -146,15 +165,15 @@ export function Footer() {
             <ul className="space-y-2 text-primary-foreground/80 text-sm">
               <li className="flex justify-between">
                 <span>Lunes - Viernes</span>
-                <span className="text-secondary font-semibold">{businessHours.weekdays}</span>
+                <span className="text-secondary font-semibold">{hours.weekdays}</span>
               </li>
               <li className="flex justify-between">
                 <span>Sábado</span>
-                <span className="text-secondary font-semibold">{businessHours.saturday}</span>
+                <span className="text-secondary font-semibold">{hours.saturday}</span>
               </li>
               <li className="flex justify-between">
                 <span>Domingo</span>
-                <span className="text-secondary font-semibold">{businessHours.sunday}</span>
+                <span className="text-secondary font-semibold">{hours.sunday}</span>
               </li>
             </ul>
           </div>

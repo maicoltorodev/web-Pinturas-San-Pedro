@@ -1,0 +1,22 @@
+{
+  "businessInfo": {
+    "phone": "+573223716811",
+    "additionalPhones": ["+573112297182", "+573224579483", "+573116048063"],
+    "email": "pinturassanpedro@hotmail.com",
+    "address": "Calle 132D N 145A-02, Bogotá"
+  },
+  "hours": {
+    "weekdays": "7am - 6pm",
+    "saturday": "7am - 5pm",
+    "sunday": "8am - 1pm"
+  },
+  "hero": {
+    "tagline": "CREAMOS COLOR!",
+    "description": "Pinturas de la más alta calidad. Calidad certificada, más de 30 años de experiencia."
+  },
+  "stats": [
+    { "number": "30+", "label": "Años de Experiencia" },
+    { "number": "500+", "label": "Clientes Satisfechos" },
+    { "number": "100%", "label": "Satisfacción" }
+  ]
+}
