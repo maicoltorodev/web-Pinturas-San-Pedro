@@ -424,56 +424,6 @@
     animation: fade-slide 0.5s ease-out forwards;
   }
 
-  /* ------- Catalog cover orbs: drift suave, GPU-only ------- */
-  @keyframes orb-drift-1 {
-    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-    33%      { transform: translate3d(28px, -22px, 0) scale(1.05); }
-    66%      { transform: translate3d(-18px, 14px, 0) scale(0.97); }
-  }
-  @keyframes orb-drift-2 {
-    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-    33%      { transform: translate3d(-32px, 18px, 0) scale(1.04); }
-    66%      { transform: translate3d(20px, -24px, 0) scale(0.96); }
-  }
-  @keyframes orb-drift-3 {
-    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-    33%      { transform: translate3d(22px, 26px, 0) scale(0.95); }
-    66%      { transform: translate3d(-26px, -16px, 0) scale(1.06); }
-  }
-  .animate-orb-1 { animation: orb-drift-1 22s ease-in-out infinite; will-change: transform; }
-  .animate-orb-2 { animation: orb-drift-2 28s ease-in-out infinite; will-change: transform; }
-  .animate-orb-3 { animation: orb-drift-3 26s ease-in-out infinite; will-change: transform; }
-
-  @media (prefers-reduced-motion: reduce) {
-    .animate-orb-1, .animate-orb-2, .animate-orb-3 { animation: none !important; }
-  }
-
-  /* Cover entrance stagger: fade + lift sutil */
-  @keyframes cover-rise {
-    0%   { opacity: 0; transform: translateY(18px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
-  .cover-rise {
-    opacity: 0;
-    animation: cover-rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .cover-rise { animation: none !important; opacity: 1 !important; transform: none !important; }
-  }
-
-  /* Divider expand: para los pequeños line-dividers de la portada */
-  @keyframes line-expand {
-    0%   { transform: scaleX(0); }
-    100% { transform: scaleX(1); }
-  }
-  .animate-line-expand {
-    transform-origin: center;
-    animation: line-expand 0.9s 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .animate-line-expand { animation: none !important; transform: none !important; }
-  }
-
   /* Scroll snap carousel - nativo, sin JavaScript pesado */
   .scrollbar-hide {
     -ms-overflow-style: none;

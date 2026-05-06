@@ -36,6 +36,7 @@ const nextConfig: NextConfig = {
   transpilePackages: [],
   // Headers for cache optimization
   async headers() {
+    if (process.env.NODE_ENV !== 'production') return []
     return [
       {
         source: '/_next/static/:path*',
