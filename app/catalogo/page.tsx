@@ -1065,7 +1065,8 @@ function FachadasSection({ onProductClick }: { onProductClick: (id: string) => v
                         fontWeight: 900,
                         fontSize: "clamp(2rem, 8vw, 3.2rem)",
                         lineHeight: 1,
-                        letterSpacing: "-0.01em",
+                        letterSpacing: "0.02em",
+                        textTransform: "uppercase",
                         color: "var(--color-primary)",
                         textShadow: "0 1px 0 rgba(255,255,255,0.3)",
                     }}
