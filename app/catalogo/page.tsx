@@ -694,7 +694,7 @@ function CoverSection() {
                     top: "25%",
                     left: "-12%",
                     width: "124%",
-                    height: "clamp(46px, 8vh, 64px)",
+                    height: "clamp(64px, 11vh, 96px)",
                     background: "linear-gradient(180deg, #fde68a 0%, var(--color-secondary) 45%, #b45309 100%)",
                     transform: "translateY(-50%) rotate(-8deg)",
                     boxShadow:
@@ -732,8 +732,8 @@ function CoverSection() {
                     aria-hidden
                     strokeWidth={2.25}
                     style={{
-                        width: "clamp(15px, 3.6vw, 22px)",
-                        height: "clamp(15px, 3.6vw, 22px)",
+                        width: "clamp(22px, 5.2vw, 34px)",
+                        height: "clamp(22px, 5.2vw, 34px)",
                         color: "var(--color-primary)",
                         flexShrink: 0,
                         position: "relative",
@@ -742,16 +742,17 @@ function CoverSection() {
                     }}
                 />
                 <span style={{
-                    fontSize: "clamp(14px, 3.4vw, 20px)",
+                    fontSize: "clamp(2rem, 8vw, 3.2rem)",
                     fontWeight: 900,
                     fontStyle: "italic",
-                    letterSpacing: "0.32em",
+                    letterSpacing: "0.05em",
                     textTransform: "uppercase",
                     color: "var(--color-primary)",
                     whiteSpace: "nowrap",
                     textShadow: "0 1px 0 rgba(255,255,255,0.25)",
                     position: "relative",
                     zIndex: 1,
+                    lineHeight: 1,
                 }}>
                     Catálogo · 2026
                 </span>
@@ -759,8 +760,8 @@ function CoverSection() {
                     aria-hidden
                     strokeWidth={2.25}
                     style={{
-                        width: "clamp(15px, 3.6vw, 22px)",
-                        height: "clamp(15px, 3.6vw, 22px)",
+                        width: "clamp(22px, 5.2vw, 34px)",
+                        height: "clamp(22px, 5.2vw, 34px)",
                         color: "var(--color-primary)",
                         flexShrink: 0,
                         position: "relative",
