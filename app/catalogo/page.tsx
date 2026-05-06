@@ -742,7 +742,7 @@ function CoverSection() {
                     }}
                 />
                 <span style={{
-                    fontSize: "clamp(2rem, 8vw, 3.2rem)",
+                    fontSize: "clamp(1.5rem, 6vw, 2.8rem)",
                     fontWeight: 900,
                     fontStyle: "italic",
                     letterSpacing: "0.05em",
@@ -1063,7 +1063,7 @@ function FachadasSection({ onProductClick }: { onProductClick: (id: string) => v
                         margin: 0,
                         fontStyle: "italic",
                         fontWeight: 900,
-                        fontSize: "clamp(2rem, 8vw, 3.2rem)",
+                        fontSize: "clamp(1.5rem, 6vw, 2.8rem)",
                         lineHeight: 1,
                         letterSpacing: "0.02em",
                         textTransform: "uppercase",
