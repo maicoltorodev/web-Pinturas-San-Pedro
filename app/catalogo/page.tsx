@@ -1035,7 +1035,7 @@ function FachadasSection({ onProductClick }: { onProductClick: (id: string) => v
                         "inset 0 1px 0 rgba(255,255,255,0.55), " +
                         "inset 0 -2px 0 rgba(120,53,15,0.25)",
                     padding: "clamp(0.9rem, 3.2vh, 1.3rem) clamp(1.5rem, 5vw, 2.5rem)",
-                    paddingTop: "calc(env(safe-area-inset-top, 0px) + 0.9rem)",
+                    paddingTop: "calc(env(safe-area-inset-top, 0px) + clamp(0.9rem, 3.2vh, 1.3rem))",
                     overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
