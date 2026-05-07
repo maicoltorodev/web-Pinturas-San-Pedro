@@ -7,26 +7,7 @@ import { siteConfig, contactInfo, businessHours, whatsappUrls } from "@/lib/cons
 import { quickLinks } from "@/lib/constants/navigation"
 import { SocialLinks } from "@/components/ui/social-link"
 
-interface FooterProps {
-  overridePhone?: string
-  overrideAdditionalPhones?: string[]
-  overrideEmail?: string
-  overrideAddress?: string
-  overrideHours?: { weekdays: string; saturday: string; sunday: string }
-}
-
-export function Footer({
-  overridePhone,
-  overrideAdditionalPhones,
-  overrideEmail,
-  overrideAddress,
-  overrideHours,
-}: FooterProps = {}) {
-  const phone = overridePhone ?? contactInfo.phone
-  const additionalPhones = overrideAdditionalPhones ?? contactInfo.additionalPhones
-  const email = overrideEmail ?? contactInfo.email
-  const address = overrideAddress ?? contactInfo.address
-  const hours = overrideHours ?? businessHours
+export function Footer() {
   // Calcular año directamente sin estado innecesario
   const currentYear = new Date().getFullYear()
 
@@ -126,35 +107,35 @@ export function Footer({
               <li className="flex items-start gap-3">
                 <Phone className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
                 <a
-                  href={`tel:${phone}`}
+                  href={`tel:${contactInfo.phone}`}
                   className="text-primary-foreground/80 hover:text-secondary transition-colors text-sm"
                 >
-                  {phone}
+                  {contactInfo.phone}
                 </a>
               </li>
-              {additionalPhones?.map((p) => (
-                <li key={p} className="flex items-start gap-3">
+              {contactInfo.additionalPhones?.map((phone) => (
+                <li key={phone} className="flex items-start gap-3">
                   <Phone className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
                   <a
-                    href={`tel:${p}`}
+                    href={`tel:${phone}`}
                     className="text-primary-foreground/80 hover:text-secondary transition-colors text-sm"
                   >
-                    {p}
+                    {phone}
                   </a>
                 </li>
               ))}
               <li className="flex items-start gap-3">
                 <Mail className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
                 <a
-                  href={`mailto:${email}`}
+                  href={`mailto:${contactInfo.email}`}
                   className="text-primary-foreground/80 hover:text-secondary transition-colors text-sm break-all"
                 >
-                  {email}
+                  {contactInfo.email}
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
-                <span className="text-primary-foreground/80 text-sm">{address}</span>
+                <span className="text-primary-foreground/80 text-sm">{contactInfo.address}</span>
               </li>
             </ul>
           </div>
@@ -165,15 +146,15 @@ export function Footer({
             <ul className="space-y-2 text-primary-foreground/80 text-sm">
               <li className="flex justify-between">
                 <span>Lunes - Viernes</span>
-                <span className="text-secondary font-semibold">{hours.weekdays}</span>
+                <span className="text-secondary font-semibold">{businessHours.weekdays}</span>
               </li>
               <li className="flex justify-between">
                 <span>Sábado</span>
-                <span className="text-secondary font-semibold">{hours.saturday}</span>
+                <span className="text-secondary font-semibold">{businessHours.saturday}</span>
               </li>
               <li className="flex justify-between">
                 <span>Domingo</span>
-                <span className="text-secondary font-semibold">{hours.sunday}</span>
+                <span className="text-secondary font-semibold">{businessHours.sunday}</span>
               </li>
             </ul>
           </div>

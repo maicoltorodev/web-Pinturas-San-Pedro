@@ -1,22 +1,29 @@
 {
-  "businessInfo": {
-    "phone": "+573223716811",
-    "additionalPhones": ["+573112297182", "+573224579483", "+573116048063"],
-    "email": "pinturassanpedro@hotmail.com",
-    "address": "Calle 132D N 145A-02, Bogotá"
-  },
-  "hours": {
-    "weekdays": "7am - 6pm",
-    "saturday": "7am - 5pm",
-    "sunday": "8am - 1pm"
-  },
-  "hero": {
+  "cover": {
+    "ribbonText": "Catálogo · 2026",
     "tagline": "CREAMOS COLOR!",
-    "description": "Pinturas de la más alta calidad. Calidad certificada, más de 30 años de experiencia."
+    "location": "Bogotá · Colombia"
   },
-  "stats": [
-    { "number": "30+", "label": "Años de Experiencia" },
-    { "number": "500+", "label": "Clientes Satisfechos" },
-    { "number": "100%", "label": "Satisfacción" }
-  ]
+  "fachadas": {
+    "title": "Fachadas",
+    "colorChip": {
+      "code": "PSP-001",
+      "name": "Azul San Pedro"
+    },
+    "mainProducts": [
+      {
+        "label": "A",
+        "blurb": "Mate de alta cobertura para muros exteriores."
+      },
+      {
+        "label": "B",
+        "blurb": "Protege rejas, portones y estructuras metálicas."
+      }
+    ],
+    "complementarios": [
+      { "label": "C", "displayName": "Estuco Acrílico" },
+      { "label": "D", "displayName": "Brocha Premium" },
+      { "label": "E", "displayName": "Rodillo Profesional" }
+    ]
+  }
 }

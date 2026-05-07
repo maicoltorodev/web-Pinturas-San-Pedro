@@ -10,17 +10,8 @@ import { siteConfig, whatsappUrls, businessStats } from "@/lib/constants/site"
 import { useSharedIntersectionObserver } from "@/hooks/useSharedIntersectionObserver"
 import { cn } from "@/lib/utils"
 
-interface HeroProps {
-  tagline?: string
-  description?: string
-  stats?: { number: string; label: string }[]
-}
-
-export function Hero({ tagline, description, stats }: HeroProps = {}) {
+export function Hero() {
   const [isImageLoaded, setIsImageLoaded] = useState(false)
-  const heroTagline = tagline ?? siteConfig.tagline
-  const heroDescription = description ?? siteConfig.description
-  const heroStats = stats ?? businessStats
   
   // Observer compartido para el logo (aunque ya no animamos, mantenemos para futuras optimizaciones)
   const [logoRef] = useSharedIntersectionObserver<HTMLDivElement>({
@@ -100,14 +91,14 @@ export function Hero({ tagline, description, stats }: HeroProps = {}) {
             <div className="flex items-center justify-center gap-3 mb-6">
               <div className="h-px w-16 bg-primary-foreground" />
               <span className="text-xl sm:text-2xl md:text-3xl font-black text-primary-foreground uppercase tracking-wider">
-                {heroTagline}
+                {siteConfig.tagline}
               </span>
               <div className="h-px w-16 bg-primary-foreground" />
             </div>
 
             {/* Description */}
             <p className="text-lg sm:text-xl md:text-2xl text-primary-foreground/80 leading-relaxed max-w-3xl mx-auto font-light">
-              {heroDescription.split('.')[0]}.
+              {siteConfig.description.split('.')[0]}.
               <span className="font-semibold text-primary-foreground"> Calidad garantizada</span>,
               atención personalizada y asesoría experta.
             </p>
@@ -145,7 +136,7 @@ export function Hero({ tagline, description, stats }: HeroProps = {}) {
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4 md:gap-8 pt-12 md:pt-16 max-w-2xl mx-auto">
-              {heroStats.map((stat, index) => (
+              {businessStats.map((stat, index) => (
                 <div key={index} className="text-center">
                   <div className="text-2xl md:text-3xl lg:text-4xl font-black text-secondary mb-1">
                     {stat.number}

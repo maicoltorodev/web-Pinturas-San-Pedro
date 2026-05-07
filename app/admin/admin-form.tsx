@@ -2,22 +2,20 @@
 
 import { useState, useTransition } from "react"
 import Link from "next/link"
-import { ArrowLeft, Building2, Clock, ImageIcon, Save, Sparkles, Check, ExternalLink } from "lucide-react"
-import { type SiteData, type SiteStat } from "@/lib/site-data"
-import { saveSiteData } from "./actions"
+import { ArrowLeft, BookOpen, Building2, Save, Check, ExternalLink } from "lucide-react"
+import { type CatalogData } from "@/lib/site-data"
+import { saveCatalogData } from "./actions"
 
-type Tab = "info" | "hours" | "hero" | "stats"
+type Tab = "cover" | "fachadas"
 
-const TABS: { id: Tab; label: string; icon: typeof Building2 }[] = [
-    { id: "info", label: "Información", icon: Building2 },
-    { id: "hero", label: "Inicio", icon: Sparkles },
-    { id: "hours", label: "Horarios", icon: Clock },
-    { id: "stats", label: "Estadísticas", icon: ImageIcon },
+const TABS: { id: Tab; label: string; icon: typeof BookOpen }[] = [
+    { id: "cover", label: "Portada", icon: BookOpen },
+    { id: "fachadas", label: "Fachadas", icon: Building2 },
 ]
 
-export function AdminForm({ initialData }: { initialData: SiteData }) {
-    const [tab, setTab] = useState<Tab>("info")
-    const [data, setData] = useState<SiteData>(initialData)
+export function AdminForm({ initialData }: { initialData: CatalogData }) {
+    const [tab, setTab] = useState<Tab>("cover")
+    const [data, setData] = useState<CatalogData>(initialData)
     const [isPending, startTransition] = useTransition()
     const [savedAt, setSavedAt] = useState<number | null>(null)
     const [error, setError] = useState<string | null>(null)
@@ -28,9 +26,8 @@ export function AdminForm({ initialData }: { initialData: SiteData }) {
         setError(null)
         startTransition(async () => {
             try {
-                const result = await saveSiteData(data)
+                const result = await saveCatalogData(data)
                 setSavedAt(result.savedAt)
-                // Hide toast after 3s
                 setTimeout(() => setSavedAt(null), 3000)
             } catch (e) {
                 setError(e instanceof Error ? e.message : "Error guardando")
@@ -39,33 +36,121 @@ export function AdminForm({ initialData }: { initialData: SiteData }) {
     }
 
     return (
-        <div className="min-h-screen bg-slate-50 text-slate-900">
-            {/* Header */}
-            <header className="sticky top-0 z-30 bg-white border-b border-slate-200">
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+        <div
+            className="min-h-screen relative"
+            style={{
+                background: "var(--color-primary)",
+                color: "#ffffff",
+            }}
+        >
+            {/* Círculos amarillos decorativos — referencia a la fachada */}
+            <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0, overflow: "hidden" }}>
+                <div style={{
+                    position: "absolute",
+                    top: "-12vw", right: "-12vw",
+                    width: "32vw", height: "32vw",
+                    maxWidth: "320px", maxHeight: "320px",
+                    borderRadius: "50%",
+                    backgroundColor: "var(--color-secondary)",
+                    opacity: 0.85,
+                }} />
+                <div style={{
+                    position: "absolute",
+                    bottom: "-10vw", left: "-10vw",
+                    width: "26vw", height: "26vw",
+                    maxWidth: "260px", maxHeight: "260px",
+                    borderRadius: "50%",
+                    backgroundColor: "var(--color-secondary)",
+                    opacity: 0.85,
+                }} />
+            </div>
+
+            {/* Marco interior — mismo lenguaje del catálogo */}
+            <div
+                aria-hidden
+                style={{
+                    position: "fixed",
+                    inset: "7px",
+                    border: "1px solid color-mix(in srgb, var(--color-secondary) 38%, transparent)",
+                    pointerEvents: "none",
+                    zIndex: 1,
+                }}
+            />
+
+            {/* Cinta amarilla con título — mismo lenguaje de la portada del catálogo */}
+            <header
+                style={{
+                    position: "relative",
+                    zIndex: 5,
+                    background: "linear-gradient(180deg, #fde68a 0%, var(--color-secondary) 45%, #b45309 100%)",
+                    boxShadow:
+                        "0 10px 24px rgba(0,0,0,0.28), " +
+                        "inset 0 1px 0 rgba(255,255,255,0.55), " +
+                        "inset 0 -2px 0 rgba(120,53,15,0.25)",
+                    padding: "clamp(0.9rem, 3.2vh, 1.3rem) clamp(1rem, 4vw, 2rem)",
+                    paddingTop: "calc(env(safe-area-inset-top, 0px) + clamp(0.9rem, 3.2vh, 1.3rem))",
+                    overflow: "hidden",
+                }}
+            >
+                {/* Líneas de costura */}
+                <div aria-hidden style={{ position: "absolute", top: "6px", left: 0, right: 0, height: "1px", background: "rgba(120,53,15,0.30)" }} />
+                <div aria-hidden style={{ position: "absolute", bottom: "6px", left: 0, right: 0, height: "1px", background: "rgba(120,53,15,0.30)" }} />
+
+                <div className="max-w-5xl mx-auto flex items-center justify-between gap-4">
                     <div className="flex items-center gap-3 min-w-0">
-                        <div className="w-9 h-9 rounded-xl bg-[oklch(0.32_0.18_252)] flex items-center justify-center flex-shrink-0">
-                            <Sparkles className="w-5 h-5 text-[oklch(0.82_0.18_90)]" />
-                        </div>
-                        <div className="min-w-0">
-                            <h1 className="text-sm sm:text-base font-bold leading-tight truncate">Panel de Administración</h1>
-                            <p className="text-xs text-slate-500 leading-tight truncate">Pinturas San Pedro</p>
-                        </div>
+                        <h1 style={{
+                            margin: 0,
+                            fontStyle: "italic",
+                            fontWeight: 900,
+                            fontSize: "clamp(1.3rem, 5vw, 2rem)",
+                            lineHeight: 1,
+                            letterSpacing: "0.02em",
+                            textTransform: "uppercase",
+                            color: "var(--color-primary)",
+                            textShadow: "0 1px 0 rgba(255,255,255,0.3)",
+                        }}>
+                            Admin
+                        </h1>
+                        <span style={{
+                            fontSize: "clamp(9px, 2vw, 11px)",
+                            fontWeight: 800,
+                            letterSpacing: "0.32em",
+                            textTransform: "uppercase",
+                            color: "rgba(11,21,48,0.7)",
+                            lineHeight: 1,
+                        }}>
+                            Pinturas San Pedro
+                        </span>
                     </div>
                     <Link
-                        href="/"
+                        href="/catalogo"
                         target="_blank"
-                        className="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-slate-600 hover:text-[oklch(0.32_0.18_252)] px-3 py-2 rounded-lg hover:bg-slate-100 transition-colors flex-shrink-0"
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "0.5rem",
+                            padding: "0.5rem 0.85rem",
+                            borderRadius: "999px",
+                            backgroundColor: "rgba(11,21,48,0.85)",
+                            color: "#ffffff",
+                            border: "1px solid rgba(11,21,48,0.4)",
+                            fontSize: "11px",
+                            fontWeight: 800,
+                            letterSpacing: "0.2em",
+                            textTransform: "uppercase",
+                            textDecoration: "none",
+                            flexShrink: 0,
+                        }}
                     >
-                        <ExternalLink className="w-4 h-4" />
-                        <span className="hidden sm:inline">Ver sitio</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                        <span className="hidden sm:inline">Ver Catálogo</span>
                     </Link>
                 </div>
             </header>
 
             {/* Tabs */}
-            <nav className="bg-white border-b border-slate-200 sticky top-16 z-20">
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex gap-1 overflow-x-auto">
+            <nav className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+                <div className="flex gap-1 border-b border-white/10">
                     {TABS.map((t) => {
                         const Icon = t.icon
                         const active = tab === t.id
@@ -74,11 +159,13 @@ export function AdminForm({ initialData }: { initialData: SiteData }) {
                                 key={t.id}
                                 type="button"
                                 onClick={() => setTab(t.id)}
-                                className={`flex items-center gap-2 px-3 sm:px-4 py-3 text-sm font-semibold whitespace-nowrap border-b-2 transition-colors ${
-                                    active
-                                        ? "text-[oklch(0.32_0.18_252)] border-[oklch(0.82_0.18_90)]"
-                                        : "text-slate-500 border-transparent hover:text-slate-900"
-                                }`}
+                                className="flex items-center gap-2 px-4 py-3 text-sm font-bold whitespace-nowrap border-b-2 transition-colors"
+                                style={{
+                                    color: active ? "var(--color-secondary)" : "rgba(255,255,255,0.55)",
+                                    borderColor: active ? "var(--color-secondary)" : "transparent",
+                                    letterSpacing: "0.08em",
+                                    textTransform: "uppercase",
+                                }}
                             >
                                 <Icon className="w-4 h-4" />
                                 {t.label}
@@ -89,128 +176,143 @@ export function AdminForm({ initialData }: { initialData: SiteData }) {
             </nav>
 
             {/* Content */}
-            <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 pb-32">
-                {tab === "info" && (
-                    <Section title="Información del Negocio" subtitle="Datos de contacto que aparecen en el footer y la sección de contacto.">
-                        <Field label="Teléfono principal">
+            <main className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 pb-32">
+                {tab === "cover" && (
+                    <Section
+                        title="Portada del Catálogo"
+                        subtitle="La página inicial del catálogo — lo primero que ven los clientes."
+                    >
+                        <Field label="Cinta superior" hint="El texto en la cinta diagonal amarilla.">
                             <Input
-                                value={data.businessInfo.phone}
-                                onChange={(v) => setData({ ...data, businessInfo: { ...data.businessInfo, phone: v } })}
+                                value={data.cover.ribbonText}
+                                onChange={(v) => setData({ ...data, cover: { ...data.cover, ribbonText: v } })}
                             />
                         </Field>
-                        <Field label="Teléfonos adicionales" hint="Uno por línea">
-                            <Textarea
-                                rows={3}
-                                value={data.businessInfo.additionalPhones.join("\n")}
-                                onChange={(v) =>
-                                    setData({
-                                        ...data,
-                                        businessInfo: {
-                                            ...data.businessInfo,
-                                            additionalPhones: v.split("\n").map((s) => s.trim()).filter(Boolean),
-                                        },
-                                    })
-                                }
+                        <Field label="Lema" hint="El lema bajo el logo (en italic).">
+                            <Input
+                                value={data.cover.tagline}
+                                onChange={(v) => setData({ ...data, cover: { ...data.cover, tagline: v } })}
                             />
                         </Field>
-                        <Field label="Email">
+                        <Field label="Ubicación lateral" hint="Texto vertical en el lateral izquierdo.">
                             <Input
-                                type="email"
-                                value={data.businessInfo.email}
-                                onChange={(v) => setData({ ...data, businessInfo: { ...data.businessInfo, email: v } })}
-                            />
-                        </Field>
-                        <Field label="Dirección">
-                            <Input
-                                value={data.businessInfo.address}
-                                onChange={(v) => setData({ ...data, businessInfo: { ...data.businessInfo, address: v } })}
+                                value={data.cover.location}
+                                onChange={(v) => setData({ ...data, cover: { ...data.cover, location: v } })}
                             />
                         </Field>
                     </Section>
                 )}
 
-                {tab === "hero" && (
-                    <Section title="Sección de Inicio" subtitle="El texto grande que ven los visitantes al entrar al sitio.">
-                        <Field label="Lema (CREAMOS COLOR!)" hint="Aparece debajo del logo, en mayúsculas con líneas a los lados.">
-                            <Input
-                                value={data.hero.tagline}
-                                onChange={(v) => setData({ ...data, hero: { ...data.hero, tagline: v } })}
-                            />
-                        </Field>
-                        <Field label="Descripción" hint="Texto descriptivo bajo el lema.">
-                            <Textarea
-                                rows={3}
-                                value={data.hero.description}
-                                onChange={(v) => setData({ ...data, hero: { ...data.hero, description: v } })}
-                            />
-                        </Field>
-                    </Section>
-                )}
-
-                {tab === "hours" && (
-                    <Section title="Horarios de Atención" subtitle="Los horarios aparecen en el footer y en la sección de contacto.">
-                        <Field label="Lunes - Viernes">
-                            <Input
-                                value={data.hours.weekdays}
-                                onChange={(v) => setData({ ...data, hours: { ...data.hours, weekdays: v } })}
-                            />
-                        </Field>
-                        <Field label="Sábado">
-                            <Input
-                                value={data.hours.saturday}
-                                onChange={(v) => setData({ ...data, hours: { ...data.hours, saturday: v } })}
-                            />
-                        </Field>
-                        <Field label="Domingo">
-                            <Input
-                                value={data.hours.sunday}
-                                onChange={(v) => setData({ ...data, hours: { ...data.hours, sunday: v } })}
-                            />
-                        </Field>
-                    </Section>
-                )}
-
-                {tab === "stats" && (
-                    <Section title="Estadísticas" subtitle="Las 3 cifras que aparecen en el hero (años de experiencia, clientes, etc).">
-                        {data.stats.map((stat, idx) => (
-                            <div key={idx} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <Field label={`Cifra ${idx + 1} — Número`}>
+                {tab === "fachadas" && (
+                    <div className="space-y-6">
+                        <Section title="Fachadas — Encabezado" subtitle="El título y el chip de color que aparecen en la página de Fachadas.">
+                            <Field label="Título de la categoría">
+                                <Input
+                                    value={data.fachadas.title}
+                                    onChange={(v) => setData({ ...data, fachadas: { ...data.fachadas, title: v } })}
+                                />
+                            </Field>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <Field label="Código del color destacado">
                                     <Input
-                                        value={stat.number}
-                                        onChange={(v) => {
-                                            const next = [...data.stats]
-                                            next[idx] = { ...next[idx], number: v }
-                                            setData({ ...data, stats: next })
-                                        }}
+                                        value={data.fachadas.colorChip.code}
+                                        onChange={(v) =>
+                                            setData({
+                                                ...data,
+                                                fachadas: { ...data.fachadas, colorChip: { ...data.fachadas.colorChip, code: v } },
+                                            })
+                                        }
                                     />
                                 </Field>
-                                <Field label={`Cifra ${idx + 1} — Etiqueta`}>
+                                <Field label="Nombre del color destacado">
                                     <Input
-                                        value={stat.label}
-                                        onChange={(v) => {
-                                            const next: SiteStat[] = [...data.stats]
-                                            next[idx] = { ...next[idx], label: v }
-                                            setData({ ...data, stats: next })
-                                        }}
+                                        value={data.fachadas.colorChip.name}
+                                        onChange={(v) =>
+                                            setData({
+                                                ...data,
+                                                fachadas: { ...data.fachadas, colorChip: { ...data.fachadas.colorChip, name: v } },
+                                            })
+                                        }
                                     />
                                 </Field>
                             </div>
-                        ))}
-                    </Section>
+                        </Section>
+
+                        <Section title="Productos Principales" subtitle="Las cards A y B con el blurb que describe cada producto.">
+                            {data.fachadas.mainProducts.map((p, idx) => (
+                                <Field key={idx} label={`Card ${p.label} — Descripción corta`}>
+                                    <Textarea
+                                        rows={2}
+                                        value={p.blurb}
+                                        onChange={(v) => {
+                                            const next = [...data.fachadas.mainProducts]
+                                            next[idx] = { ...next[idx], blurb: v }
+                                            setData({ ...data, fachadas: { ...data.fachadas, mainProducts: next } })
+                                        }}
+                                    />
+                                </Field>
+                            ))}
+                        </Section>
+
+                        <Section title="Complementarios" subtitle="Los nombres que se muestran en las mini-cards C, D y E.">
+                            {data.fachadas.complementarios.map((c, idx) => (
+                                <Field key={idx} label={`Mini-card ${c.label}`}>
+                                    <Input
+                                        value={c.displayName}
+                                        onChange={(v) => {
+                                            const next = [...data.fachadas.complementarios]
+                                            next[idx] = { ...next[idx], displayName: v }
+                                            setData({ ...data, fachadas: { ...data.fachadas, complementarios: next } })
+                                        }}
+                                    />
+                                </Field>
+                            ))}
+                        </Section>
+                    </div>
                 )}
             </main>
 
-            {/* Footer/Save bar */}
-            <div className="fixed bottom-0 inset-x-0 bg-white border-t border-slate-200 z-30">
+            {/* Save bar — fixed bottom */}
+            <div
+                className="fixed bottom-0 inset-x-0 z-30"
+                style={{
+                    background: "rgba(4,8,28,0.92)",
+                    backdropFilter: "blur(12px)",
+                    borderTop: "1px solid color-mix(in srgb, var(--color-secondary) 25%, transparent)",
+                }}
+            >
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
                     <div className="flex items-center gap-2 min-w-0">
                         {dirty ? (
-                            <span className="text-xs sm:text-sm text-amber-600 font-medium flex items-center gap-1.5">
-                                <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
+                            <span style={{
+                                fontSize: "clamp(11px, 2.5vw, 13px)",
+                                fontWeight: 700,
+                                color: "var(--color-secondary)",
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "0.5rem",
+                                letterSpacing: "0.08em",
+                                textTransform: "uppercase",
+                            }}>
+                                <span style={{
+                                    width: "8px",
+                                    height: "8px",
+                                    borderRadius: "50%",
+                                    backgroundColor: "var(--color-secondary)",
+                                    animation: "pulse 1.5s ease-in-out infinite",
+                                }} />
                                 Cambios sin guardar
                             </span>
                         ) : (
-                            <span className="text-xs sm:text-sm text-slate-500 flex items-center gap-1.5">
+                            <span style={{
+                                fontSize: "clamp(11px, 2.5vw, 13px)",
+                                color: "rgba(255,255,255,0.55)",
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "0.5rem",
+                                letterSpacing: "0.08em",
+                                textTransform: "uppercase",
+                            }}>
                                 <Check className="w-4 h-4" />
                                 Todo al día
                             </span>
@@ -220,52 +322,114 @@ export function AdminForm({ initialData }: { initialData: SiteData }) {
                         type="button"
                         onClick={onSave}
                         disabled={!dirty || isPending}
-                        className="inline-flex items-center gap-2 bg-[oklch(0.32_0.18_252)] hover:bg-[oklch(0.28_0.18_252)] disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-bold text-sm px-5 py-2.5 rounded-xl transition-colors shadow-md"
+                        style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "0.5rem",
+                            background: dirty && !isPending
+                                ? "linear-gradient(180deg, #fde68a 0%, var(--color-secondary) 45%, #b45309 100%)"
+                                : "rgba(255,255,255,0.15)",
+                            color: dirty && !isPending ? "var(--color-primary)" : "rgba(255,255,255,0.5)",
+                            fontWeight: 900,
+                            fontSize: "clamp(12px, 2.6vw, 14px)",
+                            letterSpacing: "0.18em",
+                            textTransform: "uppercase",
+                            padding: "0.7rem 1.25rem",
+                            borderRadius: "999px",
+                            border: "1px solid rgba(255,255,255,0.15)",
+                            cursor: dirty && !isPending ? "pointer" : "not-allowed",
+                            boxShadow: dirty && !isPending ? "0 6px 16px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.5)" : "none",
+                            transition: "transform 200ms ease",
+                            fontStyle: "italic",
+                        }}
                     >
                         {isPending ? (
                             <>
-                                <span className="w-4 h-4 rounded-full border-2 border-white/40 border-t-white animate-spin" />
-                                Guardando...
+                                <span className="w-4 h-4 rounded-full border-2 border-current border-t-transparent animate-spin" />
+                                Guardando
                             </>
                         ) : (
                             <>
                                 <Save className="w-4 h-4" />
-                                Guardar cambios
+                                Guardar
                             </>
                         )}
                     </button>
                 </div>
             </div>
 
-            {/* Toast */}
+            {/* Toast success */}
             {savedAt && (
                 <div
                     role="status"
-                    className="fixed top-20 right-4 sm:right-6 z-40 bg-emerald-600 text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 animate-in fade-in slide-in-from-top-2 duration-300"
+                    style={{
+                        position: "fixed",
+                        top: "calc(env(safe-area-inset-top, 0px) + 5rem)",
+                        right: "1rem",
+                        zIndex: 40,
+                        background: "linear-gradient(180deg, #fde68a 0%, var(--color-secondary) 45%, #b45309 100%)",
+                        color: "var(--color-primary)",
+                        padding: "0.85rem 1.25rem",
+                        borderRadius: "999px",
+                        boxShadow: "0 12px 28px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.55)",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "0.6rem",
+                        fontWeight: 900,
+                        fontSize: "13px",
+                        letterSpacing: "0.08em",
+                        textTransform: "uppercase",
+                    }}
+                    className="animate-in fade-in slide-in-from-top-2 duration-300"
                 >
                     <Check className="w-5 h-5" />
-                    <span className="font-semibold text-sm">Cambios guardados — el sitio se actualizó</span>
+                    <span>Catálogo actualizado</span>
                 </div>
             )}
 
-            {/* Error */}
             {error && (
                 <div
                     role="alert"
-                    className="fixed top-20 right-4 sm:right-6 z-40 bg-red-600 text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2"
+                    style={{
+                        position: "fixed",
+                        top: "calc(env(safe-area-inset-top, 0px) + 5rem)",
+                        right: "1rem",
+                        zIndex: 40,
+                        background: "#dc2626",
+                        color: "#ffffff",
+                        padding: "0.75rem 1rem",
+                        borderRadius: "12px",
+                        fontSize: "13px",
+                        fontWeight: 700,
+                    }}
                 >
-                    <span className="font-semibold text-sm">Error: {error}</span>
+                    Error: {error}
                 </div>
             )}
 
-            {/* Back link discreto en mobile */}
+            {/* Back link mobile */}
             <Link
-                href="/"
-                className="fixed bottom-20 left-4 sm:hidden text-xs text-slate-400 hover:text-slate-600 flex items-center gap-1 z-20"
+                href="/catalogo"
+                className="fixed bottom-20 left-4 sm:hidden z-20"
+                style={{
+                    fontSize: "10px",
+                    fontWeight: 700,
+                    letterSpacing: "0.3em",
+                    textTransform: "uppercase",
+                    color: "rgba(255,255,255,0.5)",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.4rem",
+                    textDecoration: "none",
+                }}
             >
                 <ArrowLeft className="w-3.5 h-3.5" />
-                Volver al sitio
+                Catálogo
             </Link>
+
+            <style>{`
+                @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+            `}</style>
         </div>
     )
 }
@@ -274,12 +438,39 @@ export function AdminForm({ initialData }: { initialData: SiteData }) {
 
 function Section({ title, subtitle, children }: { title: string; subtitle: string; children: React.ReactNode }) {
     return (
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-            <div className="px-5 sm:px-6 py-5 border-b border-slate-100">
-                <h2 className="text-lg sm:text-xl font-bold text-slate-900">{title}</h2>
-                <p className="text-sm text-slate-500 mt-1">{subtitle}</p>
+        <div
+            style={{
+                background: "rgba(255,255,255,0.06)",
+                border: "1px solid rgba(251,191,36,0.22)",
+                borderRadius: "16px",
+                overflow: "hidden",
+            }}
+        >
+            <div
+                style={{
+                    padding: "1.1rem 1.25rem",
+                    borderBottom: "1px solid rgba(255,255,255,0.08)",
+                }}
+            >
+                <h2 style={{
+                    margin: 0,
+                    fontSize: "clamp(15px, 3vw, 18px)",
+                    fontWeight: 900,
+                    fontStyle: "italic",
+                    color: "#ffffff",
+                    letterSpacing: "0.01em",
+                }}>
+                    {title}
+                </h2>
+                <p style={{
+                    margin: "4px 0 0",
+                    fontSize: "13px",
+                    color: "rgba(255,255,255,0.6)",
+                }}>
+                    {subtitle}
+                </p>
             </div>
-            <div className="px-5 sm:px-6 py-5 space-y-5">{children}</div>
+            <div className="p-5 space-y-4">{children}</div>
         </div>
     )
 }
@@ -288,8 +479,23 @@ function Field({ label, hint, children }: { label: string; hint?: string; childr
     return (
         <label className="block">
             <div className="flex items-center justify-between mb-1.5">
-                <span className="text-sm font-semibold text-slate-700">{label}</span>
-                {hint && <span className="text-xs text-slate-400">{hint}</span>}
+                <span style={{
+                    fontSize: "11px",
+                    fontWeight: 800,
+                    letterSpacing: "0.18em",
+                    textTransform: "uppercase",
+                    color: "var(--color-secondary)",
+                }}>
+                    {label}
+                </span>
+                {hint && (
+                    <span style={{
+                        fontSize: "11px",
+                        color: "rgba(255,255,255,0.4)",
+                    }}>
+                        {hint}
+                    </span>
+                )}
             </div>
             {children}
         </label>
@@ -302,7 +508,25 @@ function Input({ value, onChange, type = "text" }: { value: string; onChange: (v
             type={type}
             value={value}
             onChange={(e) => onChange(e.target.value)}
-            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:outline-none focus:border-[oklch(0.32_0.18_252)] focus:ring-2 focus:ring-[oklch(0.32_0.18_252_/_0.15)] transition-colors"
+            style={{
+                width: "100%",
+                padding: "0.7rem 0.9rem",
+                borderRadius: "10px",
+                border: "1px solid rgba(255,255,255,0.15)",
+                backgroundColor: "rgba(0,0,0,0.25)",
+                color: "#ffffff",
+                fontSize: "14px",
+                outline: "none",
+                transition: "border-color 200ms ease, box-shadow 200ms ease",
+            }}
+            onFocus={(e) => {
+                e.currentTarget.style.borderColor = "var(--color-secondary)"
+                e.currentTarget.style.boxShadow = "0 0 0 3px color-mix(in srgb, var(--color-secondary) 18%, transparent)"
+            }}
+            onBlur={(e) => {
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)"
+                e.currentTarget.style.boxShadow = "none"
+            }}
         />
     )
 }
@@ -313,7 +537,27 @@ function Textarea({ value, onChange, rows = 3 }: { value: string; onChange: (v: 
             rows={rows}
             value={value}
             onChange={(e) => onChange(e.target.value)}
-            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-sm font-mono focus:outline-none focus:border-[oklch(0.32_0.18_252)] focus:ring-2 focus:ring-[oklch(0.32_0.18_252_/_0.15)] transition-colors resize-y"
+            style={{
+                width: "100%",
+                padding: "0.7rem 0.9rem",
+                borderRadius: "10px",
+                border: "1px solid rgba(255,255,255,0.15)",
+                backgroundColor: "rgba(0,0,0,0.25)",
+                color: "#ffffff",
+                fontSize: "14px",
+                outline: "none",
+                resize: "vertical",
+                fontFamily: "inherit",
+                lineHeight: 1.5,
+            }}
+            onFocus={(e) => {
+                e.currentTarget.style.borderColor = "var(--color-secondary)"
+                e.currentTarget.style.boxShadow = "0 0 0 3px color-mix(in srgb, var(--color-secondary) 18%, transparent)"
+            }}
+            onBlur={(e) => {
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)"
+                e.currentTarget.style.boxShadow = "none"
+            }}
         />
     )
 }

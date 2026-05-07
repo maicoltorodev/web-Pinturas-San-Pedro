@@ -8,24 +8,7 @@ import { SocialLinks } from "@/components/ui/social-link"
 import { contactInfo, businessHours, whatsappUrls } from "@/lib/constants/site"
 import { useState, useEffect } from "react"
 
-interface ContactProps {
-  overridePhone?: string
-  overrideAdditionalPhones?: string[]
-  overrideEmail?: string
-  overrideHours?: { weekdays: string; saturday: string; sunday: string }
-}
-
-export function Contact({
-  overridePhone,
-  overrideAdditionalPhones,
-  overrideEmail,
-  overrideHours,
-}: ContactProps = {}) {
-  const phone = overridePhone ?? contactInfo.phone
-  const additionalPhones = overrideAdditionalPhones ?? contactInfo.additionalPhones
-  const email = overrideEmail ?? contactInfo.email
-  const hours = overrideHours ?? businessHours
-  const whatsappNumber = phone.replace(/^\+/, "")
+export function Contact() {
   const [showOptions, setShowOptions] = useState(false)
 
   // Deshabilitar scroll cuando el modal está abierto
@@ -79,25 +62,25 @@ export function Contact({
                     <MessageSquare className="h-5 w-5" />
                     <Phone className="h-4 w-4" />
                   </div>
-                  <span>Atención: {whatsappNumber.replace('57', '')}</span>
+                  <span>Atención: {contactInfo.whatsapp.replace('57', '')}</span>
 
                   {/* Subtle shine effect */}
                   <div className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700 pointer-events-none" />
                 </button>
 
-                {additionalPhones?.map((p) => (
+                {contactInfo.additionalPhones?.map((phone) => (
                   <a
-                    key={p}
-                    href={`tel:${p}`}
+                    key={phone}
+                    href={`tel:${phone}`}
                     className="flex items-center justify-center gap-2 w-full bg-primary/10 hover:bg-primary/20 text-primary font-bold py-4 rounded-xl transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 border border-primary/20"
                   >
                     <Phone className="h-5 w-5" />
-                    Llamar: {p.replace('+57', '')}
+                    Llamar: {phone.replace('+57', '')}
                   </a>
                 ))}
 
                 <a
-                  href={`mailto:${email}`}
+                  href={`mailto:${contactInfo.email}`}
                   className="flex items-center justify-center gap-2 w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold py-4 rounded-xl transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
                 >
                   <Mail className="h-5 w-5" />
@@ -122,15 +105,15 @@ export function Contact({
               <div className="space-y-4 bg-muted/50 p-6 rounded-xl border border-border/50">
                 <div className="flex justify-between items-center border-b border-border/50 pb-3">
                   <span className="font-medium">Lunes - Viernes</span>
-                  <span className="font-bold text-primary">{hours.weekdays}</span>
+                  <span className="font-bold text-primary">{businessHours.weekdays}</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-border/50 pb-3">
                   <span className="font-medium">Sábados</span>
-                  <span className="font-bold text-primary">{hours.saturday}</span>
+                  <span className="font-bold text-primary">{businessHours.saturday}</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="font-medium">Domingos</span>
-                  <span className="font-bold text-primary">{hours.sunday}</span>
+                  <span className="font-bold text-primary">{businessHours.sunday}</span>
                 </div>
               </div>
             </CardContent>
@@ -191,7 +174,7 @@ export function Contact({
               </p>
 
               <a
-                href={`tel:${phone}`}
+                href={`tel:${contactInfo.phone}`}
                 className="flex items-center justify-center gap-3 w-full bg-primary text-primary-foreground font-bold py-5 rounded-2xl transition-all hover:scale-[1.02] shadow-lg active:scale-95"
                 onClick={() => setShowOptions(false)}
               >
